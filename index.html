@@ -321,6 +321,8 @@
         #dashHeader .site-nav{position:relative;gap:6px;}
         #dashHeader .user-pill .who{display:none;}
         #dashHeader .user-pill{padding:4px;gap:0;}
+        #aboutNet4LogSection .site-nav.is-logged-in .user-pill .who{display:none;}
+        #aboutNet4LogSection .site-nav.is-logged-in .user-pill{padding:4px;gap:0;}
     }
     .sidebar-backdrop{
         position:fixed;inset:0;top:var(--header-h,65px);background:transparent;
@@ -569,7 +571,10 @@
 
     /* header */
 .n4l-public-page header.site{background:#fff;border-bottom:1px solid #F0E7DC;position:sticky;top:0;z-index:50;}
-.n4l-public-page .site-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 24px;}
+.n4l-public-page .site-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 24px;max-width:none;}
+.n4l-public-page .site-nav.is-logged-in{gap:0;max-width:none;padding-left:24px;padding-right:24px;}
+.n4l-public-page .site-nav.is-logged-in .logo-group{gap:10px;}
+.n4l-public-page .site-nav.is-logged-in .nav-burger{margin:0;}
 .n4l-public-page .site-nav .logo img{height:32px;}
 .n4l-public-page .site-nav nav ul{display:flex;align-items:center;gap:30px;list-style:none;margin:0;padding:0;font-weight:600;font-size:14.5px;}
 .n4l-public-page .site-nav nav a{opacity:.8;}
@@ -577,6 +582,21 @@
 .n4l-public-page .nav-actions{display:flex;gap:10px;}
 .n4l-public-page .nav-burger{display:none;background:none;border:none;padding:8px;margin:0;color:var(--ink);cursor:pointer;border-radius:8px;}
 .n4l-public-page .nav-burger:hover{background:var(--cream-2);}
+.n4l-public-page .site-nav.is-logged-in .nav-burger{display:flex;align-items:center;justify-content:center;}
+#aboutMobileNav.logged-in-drawer > ul{display:none;}
+#aboutMobileNav.logged-in-drawer #aboutMobileSidebarWrap .dash-sidebar-divider{display:none;}
+#aboutMobileNav.logged-in-drawer.open{
+    width:264px;left:0;right:auto;top:var(--header-h,65px);bottom:0;height:calc(100vh - var(--header-h,65px));position:fixed;
+    padding:22px 14px;box-shadow:0 18px 40px -18px rgba(42,0,124,.3);
+}
+@media(max-width:860px){
+    #aboutMobileNav.logged-in-drawer > ul{display:block;}
+    #aboutMobileNav.logged-in-drawer #aboutMobileSidebarWrap .dash-sidebar-divider{display:block;}
+    #aboutMobileNav.logged-in-drawer.open{
+        width:auto;position:absolute;top:100%;left:0;right:0;height:auto;bottom:auto;
+        padding:6px 24px 18px;box-shadow:0 16px 28px -12px rgba(43,33,64,.18);
+    }
+}
 .n4l-public-page .mobile-nav-panel{display:none;}
 .n4l-public-page .mobile-nav-panel.open{display:block;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid #F0E7DC;box-shadow:0 16px 28px -12px rgba(43,33,64,.18);z-index:60;padding:8px 24px 20px;}
 .n4l-public-page .mobile-nav-panel ul{list-style:none;margin:0;padding:0;}
@@ -1478,7 +1498,12 @@
 <div class="n4l-public-page">
 <header class="site">
     <div class="wrap site-nav">
-        <a class="logo" href="#" onclick="closeAboutNet4Log(event)" aria-label="Net4Log home"><img id="aboutPageLogo" alt="Net4Log" /></a>
+        <div class="logo-group" style="display:flex;align-items:center;">
+            <button type="button" class="nav-burger" onclick="toggleMobileNav(event,'aboutMobileNav')" aria-label="Menu" aria-expanded="false" aria-controls="aboutMobileNav">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <a class="logo" href="#" onclick="closeAboutNet4Log(event)" aria-label="Net4Log home"><img id="aboutPageLogo" alt="Net4Log" /></a>
+        </div>
         <nav aria-label="Main">
             <ul>
                 <li><a href="#" onclick="closeAboutNet4Log(event)" aria-current="page">Home</a></li>
@@ -1514,17 +1539,35 @@
                 <li><a href="#">Knowledge Centre</a></li>
             </ul>
         </nav>
-        <div class="nav-actions">
+        <div class="nav-actions" id="aboutNavActions">
             <a class="btn btn-ghost btn-sm" href="#" onclick="openLoginModal();return false;">Login</a>
             <a class="btn btn-primary btn-sm" href="#" onclick="openRegistration(event)">Join Now</a>
         </div>
-        <button type="button" class="nav-burger" onclick="toggleMobileNav(event,'aboutMobileNav')" aria-label="Menu" aria-expanded="false" aria-controls="aboutMobileNav">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        </button>
+        <div class="user-menu" id="aboutUserMenu" style="display:none;">
+            <div class="user-pill" onclick="toggleUserMenu(event,'aboutUserMenu')">
+                <div class="avatar">AA</div>
+                <div class="who">
+                    <b>Mr. Aslam AT <svg class="badge-ic" width="18" height="18" title="Registered Partner"><use href="#icon-badge-registered"></use></svg></b>
+                    <span>D7 International &middot; NET000094</span>
+                </div>
+            </div>
+            <div class="user-dropdown">
+                <a href="#" onclick="closeAboutNet4Log(event);activatePartnerWorld(event)"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span> Partner's Home</a>
+                <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> My Profile</a>
+                <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span> Billing Centre</a>
+                <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></span> Service Request</a>
+                <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span> Change Password</a>
+                <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span> Help Centre</a>
+                <div class="divider"></div>
+                <a href="#" class="signout" onclick="logoutUser(event)"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span> Sign Out</a>
+                <div class="user-dropdown-meta">D7 International &middot; NET000094</div>
+                <a href="#" class="danger" title="Visible in test mode only"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg></span> Delete Users</a>
+            </div>
+        </div>
     </div>
     <div class="mobile-nav-panel" id="aboutMobileNav">
         <ul>
-            <li><a href="#" onclick="closeMobileNav('aboutMobileNav');scrollToId(event,'publicHome')" aria-current="page">Home</a></li>
+            <li><a href="#" onclick="closeMobileNav('aboutMobileNav');closeAboutNet4Log(event)" aria-current="page">Home</a></li>
             <li class="mobile-nav-group">
                 <div class="mobile-nav-trigger" onclick="togglePublicSubnav(event,this)">
                     <span>About Us</span>
@@ -1562,7 +1605,40 @@
             <li><a href="#" onclick="closeMobileNav('aboutMobileNav')">Contact Us</a></li>
             <li><a href="#" onclick="closeMobileNav('aboutMobileNav')">Knowledge Centre</a></li>
         </ul>
-        <div class="mobile-nav-actions">
+        <div id="aboutMobileSidebarWrap" style="display:none;">
+            <div class="dash-sidebar-divider"></div>
+            <nav class="dash-nav">
+                <div class="dash-nav-group">
+                    <div class="dash-nav-item" onclick="toggleMobileSubnav(event,this)">
+                        <span class="ic"><svg width="18" height="18"><use href="#icon-partnerworld"></use></svg></span>
+                        <span class="lbl">Partner World</span>
+                        <span class="chev"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                    </div>
+                    <div class="dash-subnav">
+                        <a href="#" onclick="closeMobileNav('aboutMobileNav')">Directory</a>
+                        <a href="#" onclick="closeMobileNav('aboutMobileNav')">My Profile</a>
+                        <a href="#" onclick="closeMobileNav('aboutMobileNav')">TP Application</a>
+                    </div>
+                </div>
+                <div class="dash-nav-item" onclick="closeMobileNav('aboutMobileNav')">
+                    <span class="ic"><svg width="18" height="18"><use href="#icon-partnermarketplace"></use></svg></span>
+                    <span class="lbl">Net4Log Marketplace</span>
+                </div>
+                <div class="dash-nav-group">
+                    <div class="dash-nav-item" onclick="toggleMobileSubnav(event,this)">
+                        <span class="ic"><svg width="18" height="18"><use href="#icon-digitalconnect"></use></svg></span>
+                        <span class="lbl">Net4Log Digital</span>
+                        <span class="chev"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                    </div>
+                    <div class="dash-subnav">
+                        <a href="#" onclick="closeMobileNav('aboutMobileNav')">E-Shipments</a>
+                        <a href="#" onclick="closeMobileNav('aboutMobileNav')">E-SOA</a>
+                        <a href="#" onclick="closeMobileNav('aboutMobileNav')">E-Leads</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="mobile-nav-actions" id="aboutMobileNavActions">
             <a class="btn btn-ghost btn-sm" href="#" onclick="closeMobileNav('aboutMobileNav');openLoginModal();return false;">Login</a>
             <a class="btn btn-primary btn-sm" href="#" onclick="closeMobileNav('aboutMobileNav');openRegistration(event)">Join Now</a>
         </div>
@@ -1743,15 +1819,17 @@
                 <div class="sec-head" style="margin-bottom:28px;">
                     <span class="kicker">Registration</span>
                     <h2>Join For a <span>Good Start</span></h2>
-                    <p>Become a Registered Partner of Net4Log in 3 simple steps &mdash; join us to unleash the power of Net4Log.</p>
+                    <p>Become a Registered Partner of Net4Log in 4 simple steps &mdash; join us to unleash the power of Net4Log.</p>
                 </div>
 
                 <div class="reg-steps" id="regSteps">
-                    <div class="reg-step-dot active" data-step="1"><span>1</span><small>Company</small></div>
+                    <div class="reg-step-dot active" data-step="1" onclick="regShowPage(1)" style="cursor:pointer;"><span>1</span><small>Company</small></div>
                     <div class="reg-step-line"></div>
-                    <div class="reg-step-dot" data-step="2"><span>2</span><small>Contacts</small></div>
+                    <div class="reg-step-dot" data-step="2" onclick="regShowPage(2)" style="cursor:pointer;"><span>2</span><small>Contacts</small></div>
                     <div class="reg-step-line"></div>
-                    <div class="reg-step-dot" data-step="3"><span>3</span><small>Review</small></div>
+                    <div class="reg-step-dot" data-step="3" onclick="regShowPage(3)" style="cursor:pointer;"><span>3</span><small>Review</small></div>
+                    <div class="reg-step-line"></div>
+                    <div class="reg-step-dot" data-step="4" onclick="regShowPage(4)" style="cursor:pointer;"><span>4</span><small>Agreement</small></div>
                 </div>
 
                 <div id="regMsg" class="reg-msg" style="display:none;"></div>
@@ -1905,17 +1983,25 @@
                                 </table>
                             </div>
                         </div>
-                        <hr class="reg-hr">
-                        <div class="reg-agreement">
-                            <i class="reg-agreement-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg></i>
-                            <span>NET4LOG Registered Partner Agreement</span>
+                        <div class="reg-actions">
+                            <button type="button" class="btn btn-ghost" onclick="regShowPage(2)">Edit Information</button>
+                            <button type="button" class="btn btn-primary" onclick="regShowPage(4)">Next</button>
                         </div>
-                        <label class="reg-inline-check" style="margin-top:10px;display:flex;align-items:flex-start;gap:10px;">
+                    </div>
+
+                    <div id="regPage4" style="display:none;">
+                        <h4 class="reg-subhead" style="margin-bottom:16px;">NET4LOG Registered Partner Agreement</h4>
+                        <div class="reg-agreement-box" style="max-height:280px;overflow-y:auto;border:1px solid var(--lavender-line);border-radius:12px;padding:18px 20px;background:var(--cream);font-size:13.5px;line-height:1.7;color:var(--ink-soft);">
+                            <p>This NET4LOG Registered Partner Agreement ("Agreement") governs your participation as a Registered Partner on the NET4LOG platform. By proceeding, you agree to maintain accurate company and contact information, conduct business in good faith with other members of the network, and comply with NET4LOG's trading and conduct guidelines.</p>
+                            <p>NET4LOG acts solely as a facilitator connecting freight forwarders, carriers, and NVOCCs, and is not a party to any transaction concluded between members. Registered Partners remain responsible for their own statutory, tax, and regulatory obligations in their respective jurisdictions.</p>
+                            <p>This Agreement remains in effect until terminated by either party. NET4LOG reserves the right to suspend or revoke Registered Partner status for breach of these terms or the platform's conduct guidelines.</p>
+                        </div>
+                        <label class="reg-inline-check" style="margin-top:16px;display:flex;align-items:flex-start;gap:10px;">
                             <input type="checkbox" id="regAgree" style="margin-top:3px;">
                             <span>I have read and agree to the NET4LOG Registered Partner Agreement.</span>
                         </label>
                         <div class="reg-actions">
-                            <button type="button" class="btn btn-ghost" onclick="regShowPage(2)">Edit Information</button>
+                            <button type="button" class="btn btn-ghost" onclick="regShowPage(3)">Previous</button>
                             <button type="button" class="btn btn-primary" onclick="regSubmit()">Submit Registration</button>
                         </div>
                     </div>
@@ -2439,7 +2525,7 @@
 <script>
     try{
         function closeAllMenus(exceptId){
-            ['userMenu','navAboutUs','navServices','pubAboutUs','pubServices','aboutNavAboutUs','aboutNavServices'].forEach(function(id){
+            ['userMenu','navAboutUs','navServices','pubAboutUs','pubServices','aboutNavAboutUs','aboutNavServices','aboutUserMenu'].forEach(function(id){
                 if(id !== exceptId){
                     var el = document.getElementById(id);
                     if(el) el.classList.remove('open');
@@ -2447,11 +2533,12 @@
             });
         }
 
-        function toggleUserMenu(e){
+        function toggleUserMenu(e, menuId){
             e.stopPropagation();
-            var um = document.getElementById('userMenu');
+            menuId = menuId || 'userMenu';
+            var um = document.getElementById(menuId);
             var willOpen = !um.classList.contains('open');
-            closeAllMenus(willOpen ? 'userMenu' : null);
+            closeAllMenus(willOpen ? menuId : null);
             um.classList.toggle('open', willOpen);
         }
 
@@ -2464,7 +2551,7 @@
         }
 
         document.addEventListener('click', function(e){
-            ['userMenu','navAboutUs','navServices','pubAboutUs','pubServices','aboutNavAboutUs','aboutNavServices'].forEach(function(id){
+            ['userMenu','navAboutUs','navServices','pubAboutUs','pubServices','aboutNavAboutUs','aboutNavServices','aboutUserMenu'].forEach(function(id){
                 var el = document.getElementById(id);
                 if(el && !el.contains(e.target)) el.classList.remove('open');
             });
@@ -2527,7 +2614,7 @@
             regShowPage(1);
         }
         function regShowPage(n){
-            [1,2,3].forEach(function(i){
+            [1,2,3,4].forEach(function(i){
                 document.getElementById('regPage'+i).style.display = (i===n) ? '' : 'none';
                 var dot = document.querySelector('.reg-step-dot[data-step="'+i+'"]');
                 dot.classList.remove('active','done');
@@ -2539,35 +2626,7 @@
             msg.style.display = 'none';
             msg.innerHTML = '';
         }
-        function regRequired(ids){
-            var labels = {
-                regCustName:'Company Name', regCustCity:'City', regCustCountry:'Country',
-                regCustAdd:'Address', regPhoneCode:'Phone Code', regCustTel:'Phone No',
-                regCustEmail:'Company Email ID', regCustUrl:'Company Website',
-                regAdmTitle:'Admin Title', regAdmName:'Admin Contact Name', regAdmPhone:'Admin Phone No',
-                regAdmEmail:'Admin Email ID', regLoginId:'Login ID',
-                regBillTitle:'Billing Title', regBillName:'Billing Contact Name',
-                regBillPhone:'Billing Phone No', regBillEmail:'Billing Email ID'
-            };
-            var missing = [];
-            ids.forEach(function(id){
-                var el = document.getElementById(id);
-                if(!el.value || !el.value.trim()) missing.push(labels[id] || id);
-            });
-            return missing;
-        }
-        function regShowMsg(items){
-            var msg = document.getElementById('regMsg');
-            msg.innerHTML = '<strong>Please complete the following:</strong><ul>' + items.map(function(m){return '<li>'+m+' not entered</li>';}).join('') + '</ul>';
-            msg.style.display = '';
-            msg.scrollIntoView({behavior:'smooth', block:'center'});
-        }
         function regNext(n){
-            var ids = (n === 2)
-                ? ['regCustName','regCustCity','regCustCountry','regCustAdd','regPhoneCode','regCustTel','regCustEmail','regCustUrl']
-                : ['regAdmTitle','regAdmName','regAdmPhone','regAdmEmail','regLoginId','regBillTitle','regBillName','regBillPhone','regBillEmail'];
-            var missing = regRequired(ids);
-            if(missing.length){ regShowMsg(missing); return; }
             regShowPage(n);
         }
         function regCopyBillingFn(){
@@ -2634,6 +2693,19 @@
             if(beforeEl) beforeEl.style.display = 'none';
             if(afterEl) afterEl.style.display = 'none';
             if(aboutEl) aboutEl.style.display = '';
+            var loggedIn = (__aboutReturnState === 'after');
+            var navActions = document.getElementById('aboutNavActions');
+            var userMenuEl = document.getElementById('aboutUserMenu');
+            var mobileNavActions = document.getElementById('aboutMobileNavActions');
+            if(navActions) navActions.style.display = loggedIn ? 'none' : '';
+            if(userMenuEl) userMenuEl.style.display = loggedIn ? '' : 'none';
+            if(mobileNavActions) mobileNavActions.style.display = loggedIn ? 'none' : '';
+            var aboutSiteNav = aboutEl.querySelector('.site-nav');
+            if(aboutSiteNav) aboutSiteNav.classList.toggle('is-logged-in', loggedIn);
+            var sidebarWrap = document.getElementById('aboutMobileSidebarWrap');
+            if(sidebarWrap) sidebarWrap.style.display = loggedIn ? '' : 'none';
+            var mobileNavPanel = document.getElementById('aboutMobileNav');
+            if(mobileNavPanel) mobileNavPanel.classList.toggle('logged-in-drawer', loggedIn);
             window.dispatchEvent(new Event('resize'));
             window.scrollTo({top:0, behavior:'smooth'});
         }
@@ -2681,6 +2753,7 @@
         function toggleMobileNav(e, panelId){
             if(e) e.preventDefault();
             panelId = panelId || 'publicMobileNav';
+            if(typeof syncHeaderHeight === 'function') syncHeaderHeight();
             var panel = document.getElementById(panelId);
             var btn = document.querySelector('[aria-controls="' + panelId + '"]');
             if(!panel) return;
@@ -2719,8 +2792,11 @@
             closeLoginModal();
             var beforeEl = document.getElementById('beforeLoginSection');
             var afterEl = document.getElementById('afterLoginSection');
+            var aboutEl = document.getElementById('aboutNet4LogSection');
             if(beforeEl) beforeEl.style.display = 'none';
+            if(aboutEl) aboutEl.style.display = 'none';
             if(afterEl) afterEl.style.display = '';
+            showDashMain();
             window.scrollTo({top:0, behavior:'smooth'});
         }
         function logoutUser(e){
@@ -2728,7 +2804,9 @@
             closeAllMenus(null);
             var beforeEl = document.getElementById('beforeLoginSection');
             var afterEl = document.getElementById('afterLoginSection');
+            var aboutEl = document.getElementById('aboutNet4LogSection');
             if(afterEl) afterEl.style.display = 'none';
+            if(aboutEl) aboutEl.style.display = 'none';
             if(beforeEl) beforeEl.style.display = '';
             showDashMain();
             window.scrollTo({top:0, behavior:'smooth'});
@@ -2808,7 +2886,13 @@
 
         function syncHeaderHeight(){
             var header = document.getElementById('dashHeader');
-            if(header){
+            if(!header || header.offsetParent === null){
+                var aboutHeader = document.querySelector('#aboutNet4LogSection header.site');
+                if(aboutHeader && aboutHeader.offsetParent !== null){
+                    header = aboutHeader;
+                }
+            }
+            if(header && header.offsetParent !== null){
                 var bottom = header.getBoundingClientRect().bottom;
                 document.documentElement.style.setProperty('--header-h', Math.max(bottom, 0) + 'px');
             }
