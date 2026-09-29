@@ -703,6 +703,10 @@
 
     /* features */
 .n4l-public-page .feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
+    /* fixed column-count variants (used instead of an inline grid-template-columns override, which
+       would always beat the responsive .feature-grid rules below and never collapse on mobile) */
+.n4l-public-page .feature-grid.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+.n4l-public-page .feature-grid.grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr));}
 .n4l-public-page .feature{background:#fff;border:1px solid #F0E4D6;border-radius:var(--radius-md);padding:26px 24px;transition:transform .2s ease,box-shadow .2s ease;}
 .n4l-public-page .feature:hover{transform:translateY(-4px);box-shadow:0 20px 40px -22px rgba(42,0,124,.3);}
 .n4l-public-page .f-ic{width:48px;height:48px;border-radius:14px;background:var(--purple);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
@@ -835,7 +839,7 @@
 .n4l-public-page .hero-grid, .n4l-public-page .welcome, .n4l-public-page .parl, .n4l-public-page .president, .n4l-public-page .join{grid-template-columns:1fr;}
 .n4l-public-page .hero h1{font-size:40px;}
 .n4l-public-page .hero-art{height:380px;}
-.n4l-public-page .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+.n4l-public-page .feature-grid, .n4l-public-page .feature-grid.grid-cols-2, .n4l-public-page .feature-grid.grid-cols-4{grid-template-columns:repeat(2,minmax(0,1fr));}
 .n4l-public-page .group-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
 .n4l-public-page .foot-grid{grid-template-columns:1fr 1fr;}
 .n4l-public-page .join .actions{align-items:flex-start;}
@@ -856,7 +860,7 @@
 .n4l-public-page .stat-float.one{left:0;bottom:0;}
 .n4l-public-page .stat-float.two{left:auto;right:0;top:6px;bottom:auto;}
 .n4l-public-page .sec-head h2, .n4l-public-page .h2, .n4l-public-page .join h2{font-size:27px;}
-.n4l-public-page .feature-grid, .n4l-public-page .steps, .n4l-public-page .group-grid, .n4l-public-page .foot-grid{grid-template-columns:1fr;}
+.n4l-public-page .feature-grid, .n4l-public-page .feature-grid.grid-cols-2, .n4l-public-page .feature-grid.grid-cols-4, .n4l-public-page .steps, .n4l-public-page .group-grid, .n4l-public-page .foot-grid{grid-template-columns:1fr;}
 .n4l-public-page .flow{display:none;}
 .n4l-public-page .step{margin-top:54px;}
 .n4l-public-page .join{padding:36px 24px;}
@@ -1731,7 +1735,7 @@
                 <span class="kicker">What drives us</span>
                 <h2>Our <span>Vision</span> &amp; Mission</h2>
             </div>
-            <div class="feature-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));">
+            <div class="feature-grid grid-cols-2">
                 <article class="feature">
                     <span class="f-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
                     <h3>Our Vision</h3>
@@ -1752,7 +1756,7 @@
                 <span class="kicker">Our foundation</span>
                 <h2>Key Principles of <span>Net4Log</span></h2>
             </div>
-            <div class="feature-grid" style="grid-template-columns:repeat(4,minmax(0,1fr));">
+            <div class="feature-grid grid-cols-4">
                 <article class="feature" style="position:relative;">
                     <span style="position:absolute;top:14px;right:16px;font-family:'Poppins',sans-serif;font-weight:800;font-size:13px;color:var(--lavender-line);">01</span>
                     <span class="f-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
@@ -2195,7 +2199,7 @@
 
     <section class="section" style="padding-top:0;">
         <div class="wrap">
-            <div class="feature-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));">
+            <div class="feature-grid grid-cols-2">
                 <article class="feature">
                     <h3>Advisory Committee</h3>
                     <ul style="margin:10px 0 0;padding-left:18px;font-size:14px;color:var(--ink-soft);display:flex;flex-direction:column;gap:8px;">
@@ -2360,7 +2364,7 @@
     <section class="section">
         <div class="wrap">
             <div class="sec-head"><h2>Registered <span>vs.</span> Trusted Partner</h2></div>
-            <div class="feature-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));">
+            <div class="feature-grid grid-cols-2">
                 <article class="feature"><h3>Registered Partner</h3><p>Join Net4Log and gain access to a global network of vetted logisticians through our Partner World Directory. Discover new collaboration opportunities, streamline operations with our digital tools, and grow your business with a trusted community.</p></article>
                 <article class="feature"><h3>Trusted Partner</h3><p>Become a trusted partner by completing our pre-qualification process. Submit your organisation's details online for review, and our committee will evaluate your reputation, financial stability, and compliance with industry standards.</p></article>
             </div>
@@ -2477,7 +2481,7 @@
     <section class="section">
         <div class="wrap">
             <div class="sec-head"><h2>Our Connectivity <span>Solutions</span></h2></div>
-            <div class="feature-grid" style="grid-template-columns:repeat(3,minmax(0,1fr));">
+            <div class="feature-grid">
                 <article class="feature"><h3>EDI</h3><p>Extensive use of various EDI (Electronic Data Interchange) formats to communicate with partner systems, making integrations easy.</p></article>
                 <article class="feature"><h3>Blockchain</h3><p>Smart contracts on the blockchain in action, managing transport documents.</p></article>
                 <article class="feature"><h3>Rest API</h3><p>Use the current integration standards of REST API to seamlessly integrate with the Net4Log platform.</p></article>
@@ -2565,7 +2569,7 @@
 
     <section class="section alt">
         <div class="wrap">
-            <div class="feature-grid" style="grid-template-columns:repeat(4,minmax(0,1fr));">
+            <div class="feature-grid grid-cols-4">
                 <article class="feature"><h3>Legal Consultation</h3><p>Access to professional legal guidance for cross-border logistics operations.</p></article>
                 <article class="feature"><h3>Cargo Insurance</h3><p>Protection against financial risk due to loss or damage during shipment.</p></article>
                 <article class="feature"><h3>Business Start-up Services</h3><p>Support to help new logistics businesses get established quickly and compliantly.</p></article>
@@ -2580,7 +2584,7 @@
         </div>
         <div class="sec-head" style="margin-top:36px;"><h2>JBM modules <span>include</span></h2></div>
         <div class="wrap">
-            <div class="feature-grid" style="grid-template-columns:repeat(3,minmax(0,1fr));">
+            <div class="feature-grid">
                 <article class="feature"><h3>Liner Agency</h3></article>
                 <article class="feature"><h3>NVOCC Liner Management</h3></article>
                 <article class="feature"><h3>International Freight Forwarding Management</h3></article>
@@ -2638,7 +2642,7 @@
 
     <section class="section">
         <div class="wrap">
-            <div class="feature-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));">
+            <div class="feature-grid grid-cols-2">
                 <article class="feature">
                     <h3>Benefits of this Process</h3>
                     <ul style="margin:10px 0 0;padding-left:18px;font-size:14px;color:var(--ink-soft);display:flex;flex-direction:column;gap:8px;">
@@ -2695,7 +2699,7 @@
     <section class="section alt">
         <div class="wrap">
             <div class="sec-head"><h2>Join The NET4LOG <span>Experience</span></h2></div>
-            <div class="feature-grid" style="grid-template-columns:repeat(3,minmax(0,1fr));">
+            <div class="feature-grid">
                 <article class="feature"><h3>Registration &amp; Participation</h3><p>Participation in the conference is subject to a separate registration fee, covering the costs of hosting a world-class event. Registration typically closes two months prior to the event.</p></article>
                 <article class="feature"><h3>Planning &amp; Accessibility</h3><p>To ensure accessibility for a global membership base, conference locations are meticulously selected, with announcements made six months in advance.</p></article>
                 <article class="feature"><h3>Event Management</h3><p>A dedicated team of experienced event professionals meticulously plans and executes Net4Log conferences, ensuring a seamless experience for all participants.</p></article>
