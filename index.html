@@ -124,6 +124,11 @@
         padding:56px 0 64px;
     }
     .hero .wrap{display:grid;grid-template-columns:1.15fr 0.85fr;gap:40px;align-items:center;position:relative;z-index:2;}
+    /* Simple centered heroes (About Net4Log + every static sub-page) are a single stacked pill+heading,
+       not the two-column dashboard hero above -- the legacy grid rule was splitting pill and heading into
+       separate columns instead of centering them as one block (root cause of the "stretch looks different"
+       report). .hero-stack resets back to a plain centered block, independent of hero width or content length. */
+    .hero .wrap.hero-stack{display:block !important;}
     .eyebrow{
         display:inline-flex;align-items:center;gap:8px;
         background:#fff;border:1px solid #FFD9B3;color:var(--orange);
@@ -649,6 +654,20 @@
 .n4l-public-page .hero h1 .tagline-line{display:block;font-size:26px;line-height:1.3;margin-top:12px;font-weight:700;letter-spacing:0;}
     @media(min-width:1021px){.n4l-public-page .hero h1{font-size:clamp(30px,3.4vw,40px);}.n4l-public-page .hero h1 .h1-main{white-space:nowrap;}}
 .n4l-public-page .hero .lead{font-size:17px;color:var(--ink-soft);max-width:520px;margin-bottom:28px;}
+    /* static sub-page hero (About Us / Services / Contact) — fixed height + decorative accents so every destination page lands at the same height below the nav bar, whatever its title length */
+.n4l-public-page .static-hero{min-height:260px;padding:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#FFFAF5 0%,#FFF2E6 45%,#FFFCF8 100%);}
+.n4l-public-page .static-hero::before{content:"";position:absolute;top:-70px;right:8%;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(254,95,0,.16),rgba(254,95,0,0) 70%);pointer-events:none;}
+.n4l-public-page .static-hero::after{content:"";position:absolute;bottom:-90px;left:6%;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(42,0,124,.12),rgba(42,0,124,0) 70%);pointer-events:none;}
+.n4l-public-page .static-hero .wrap{position:relative;z-index:1;}
+.n4l-public-page .static-hero .pill{box-shadow:0 8px 20px -10px rgba(254,95,0,.35);}
+.n4l-public-page .static-hero h1{margin-top:16px;}
+    /* per-page blended watermark graphic — one large, low-opacity icon matched to that page's own topic, bled off the right edge and clipped by .hero's overflow:hidden so it reads as a soft background texture rather than a literal icon */
+.n4l-public-page .static-hero .hero-watermark{position:absolute;top:50%;right:3%;transform:translateY(-50%) rotate(-6deg);width:300px;height:300px;opacity:.07;color:var(--purple);pointer-events:none;z-index:0;}
+    @media(max-width:900px){.n4l-public-page .static-hero .hero-watermark{width:220px;height:220px;right:-30px;opacity:.06;}}
+    @media(max-width:640px){
+        .n4l-public-page .static-hero{min-height:220px;}
+        .n4l-public-page .static-hero .hero-watermark{width:190px;height:190px;top:50%;left:50%;right:auto;transform:translate(-50%,-50%) rotate(-6deg);opacity:.06;}
+    }
 .n4l-public-page .hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
 .n4l-public-page .hero-note{display:flex;align-items:center;gap:8px;margin-top:18px;font-size:13.5px;color:var(--ink-soft);}
 .n4l-public-page .hero-note svg{color:#1E9E5A;}
@@ -1662,8 +1681,9 @@
 </header>
     <main>
 
-    <section class="hero" style="padding:56px 0 48px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">About Net4Log</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">Welcome To The World</span>
@@ -1672,7 +1692,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap" style="text-align:center;">
             <p style="font-size:16px;color:var(--ink-soft);"><strong style="color:var(--purple);">Welcome to Net4Log,</strong> a democratic platform connecting logisticians worldwide to meet, collaborate, and transact business with complete trust and confidence. Net4Log helps you expand beyond your local market and private professional network. As a Net4Log partner, you gain full control over your business dynamics while feeling supported, guided, and confident in delivering exceptional service to your end customers.</p>
             <p style="font-size:16px;color:var(--ink-soft);margin-top:14px;">Start your journey with <strong style="color:var(--purple);">Net4Log</strong> today.</p>
@@ -1971,8 +1991,9 @@
 <div class="static-page" id="page-organisation">
 
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"/><path d="M2 22h20"/><path d="M9 6h1M9 10h1M9 14h1M14 6h1M14 10h1M14 14h1"/></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">About Organisation</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">About Organisation</span>
@@ -1980,7 +2001,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap" style="max-width:900px;text-align:center;">
             <p style="font-size:16px;color:var(--ink-soft);">Net4Log leverages a unique management structure that fosters collaboration and strong governance. Through a democratic election process, managing committees composed of elected members provide oversight and guidance on key network decisions. This ensures active participation from every member while balancing operational excellence with effective representation.</p>
         </div>
@@ -2033,8 +2054,9 @@
 
 <div class="static-page" id="page-core-management-team" style="display:none;">
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">Core Management Team</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">Core Management<br>Team</span>
@@ -2042,7 +2064,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap">
             <div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;background:#fff;border:1px solid #F0E4D6;border-radius:var(--radius-lg);padding:30px 28px;box-shadow:var(--shadow-soft);margin-bottom:24px;">
                 <div style="flex:0 0 auto;width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--purple-soft));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;font-family:'Poppins',sans-serif;">SB</div>
@@ -2072,8 +2094,9 @@
 
 <div class="static-page" id="page-founding-partners" style="display:none;">
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 5a4 4 0 1 0-8 0"/><path d="M3 21l4-9 5 4 5-4 4 9"/></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">Founding Partners</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">Founding Partners</span>
@@ -2081,7 +2104,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap" style="max-width:900px;text-align:center;margin-left:auto;margin-right:auto;margin-bottom:8px;">
             <p style="font-size:16px;color:var(--ink-soft);">Our Founding Partners are key personalities in the logistics industry, nominated for their exceptional contributions and insights. Onboarded early into the Net4Log network, they play a crucial role in guiding the platform's development and shaping it into a thriving, trusted business model for partners worldwide.</p>
         </div>
@@ -2154,8 +2177,9 @@
 
 <div class="static-page" id="page-parliament" style="display:none;">
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">Net4Log Parliament</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">NET4LOG Parliament</span>
@@ -2163,7 +2187,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap" style="max-width:900px;text-align:center;margin-left:auto;margin-right:auto;">
             <p style="font-size:16px;color:var(--ink-soft);"><strong style="color:var(--purple);">Democracy</strong> serves as a fundamental value at the core of Net4Log, guiding its operations and decision-making processes. The Net4Log Parliament is composed of members selected through a <strong style="color:var(--purple);">democratic election process</strong>. Parliamentarians are elected by their peers to serve on specialized committees, each dedicated to key areas aligned with the organization's mission and strategic objectives. This structure ensures full representation and active participation of all members while fostering diverse perspectives for effective decision-making.</p>
         </div>
@@ -2217,8 +2241,9 @@
 
 <div class="static-page" id="page-admin-support-team" style="display:none;">
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">Admin/Support Team</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">Admin/Support Team</span>
@@ -2226,7 +2251,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap" style="max-width:900px;text-align:center;margin-left:auto;margin-right:auto;">
             <p style="font-size:16px;color:var(--ink-soft);">At <strong style="color:var(--purple);">Net4Log</strong>, we are proud to have a young, dynamic, and diverse team of professionals dedicated to managing the organisation's operations. This team provides the expertise and support needed to propel Net4Log into the future while ensuring confidence and comfort for all stakeholders. Being a part of Net4Log feels like joining a family. Our highly motivated team is <strong style="color:var(--purple);">committed to creating a supportive and enriching experience</strong> for everyone involved.</p>
         </div>
@@ -2261,8 +2286,9 @@
 
 <div class="static-page" id="page-technology-team" style="display:none;">
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">Technology Team</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">Technology Team</span>
@@ -2270,7 +2296,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap" style="max-width:900px;text-align:center;margin-left:auto;margin-right:auto;margin-bottom:28px;">
             <h4 style="font-size:16px;color:var(--purple);margin-bottom:10px;">Jupiter Business Systems</h4>
             <p style="font-size:15px;color:var(--ink-soft);">Net4Log was established by the stakeholders and founders of Jupiter Business Systems FZC, along with its group companies, who developed Jupiter Business Manager (JBM) &ndash; a leading and widely recognized ERP solution for the shipping and logistics industry. Built on the solid foundation of JBM, the Net4Log platform delivers the same reliable and robust support to its users and businesses, enabling seamless automation across the globe. JBM is fully supported by Amplitude Software Systems Pvt Ltd, a specialized software development company with expertise in managing diverse technologies. The combined expertise of the technology team plays a pivotal role in delivering the support needed to realize the vision of Net4Log's founders and partners.</p>
@@ -2297,8 +2323,9 @@
 
 <div class="static-page" id="page-partner-world" style="display:none;">
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 512 512" aria-hidden="true"><use href="#icon-partnerworld"></use></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">Partner World</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">NET4LOG Partner World</span>
@@ -2306,7 +2333,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap" style="max-width:900px;text-align:center;margin-left:auto;margin-right:auto;">
             <p style="font-size:16px;color:var(--ink-soft);">Net4Log Partner World is an integral part of our network &mdash; a truly one-of-a-kind product that brings partners from every corner of the world to you. At its core is the Partner Directory, a comprehensive listing of both Registered Partners and Trusted Partners within the Net4Log ecosystem. It serves as a valuable resource for members to discover and connect with potential partners based on their services, expertise, and geographical coverage.</p>
         </div>
@@ -2356,8 +2383,9 @@
 
 <div class="static-page" id="page-partner-marketplace" style="display:none;">
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 64 64" aria-hidden="true"><use href="#icon-partnermarketplace"></use></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">Partner Marketplace</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">NET4LOG Partner Marketplace</span>
@@ -2365,7 +2393,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap" style="max-width:900px;text-align:center;margin-left:auto;margin-right:auto;">
             <p style="font-size:16px;color:var(--ink-soft);">The Net4Log Marketplace offers a valuable platform for partners to showcase their unique offerings, connect with other partners, and promote their products and services. Partners can create targeted listings, while an intuitive search engine helps others find the right solutions. Built-in communication tools facilitate lead generation and collaboration, while success stories and reviews help build trust.</p>
         </div>
@@ -2413,8 +2441,9 @@
 
 <div class="static-page" id="page-digital-connect" style="display:none;">
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 512 512" aria-hidden="true"><use href="#icon-digitalconnect"></use></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">Digital Connect</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">NET4LOG Digital Connect</span>
@@ -2422,7 +2451,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap" style="max-width:900px;text-align:center;margin-left:auto;margin-right:auto;">
             <p style="font-size:16px;color:var(--ink-soft);">Net4Log provides a <strong style="color:var(--purple);">comprehensive suite of digital products</strong> designed to streamline your business operations across every stage of shipment execution. Each digital product is meticulously crafted to enhance transparency in your operations, and with a transaction-based pricing model, we make these innovative solutions both affordable and accessible. Powered by JBM as its backbone, Net4Log welcomes innovative ideas to foster mutual benefit for all partners.</p>
         </div>
@@ -2473,8 +2502,9 @@
 
 <div class="static-page" id="page-statistics" style="display:none;">
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-statistics"></use></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">Statistics</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">NET4LOG Statistics</span>
@@ -2482,7 +2512,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap" style="max-width:900px;text-align:center;margin-left:auto;margin-right:auto;">
             <p style="font-size:16px;color:var(--ink-soft);">At Net4Log, transparency and data-driven insights form the backbone of our approach to fostering network growth and member success. By leveraging the collective power of our logistics network, we negotiate competitive rates, provide detailed performance reporting, and celebrate top contributors, empowering partners to thrive in a highly competitive market.</p>
         </div>
@@ -2517,8 +2547,9 @@
 
 <div class="static-page" id="page-value-adds" style="display:none;">
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-valueadds"></use></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">Value Adds</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">NET4LOG Value Adds</span>
@@ -2526,7 +2557,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap" style="max-width:900px;text-align:center;margin-left:auto;margin-right:auto;">
             <p style="font-size:16px;color:var(--ink-soft);">Net4Log offers more than just connecting businesses; we offer a comprehensive suite of add-on services designed to streamline your global operations. By sharing outsourced services with our partners, we extend our scope beyond a networking platform into an enhanced community for logisticians &mdash; made possible by our successful association through trustworthy partnerships.</p>
         </div>
@@ -2577,8 +2608,9 @@
 
 <div class="static-page" id="page-legal-council" style="display:none;">
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 512 512" aria-hidden="true"><use href="#icon-legalcounsel"></use></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">Legal Council</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">NET4LOG Legal Council</span>
@@ -2586,7 +2618,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap" style="max-width:900px;text-align:center;margin-left:auto;margin-right:auto;">
             <p style="font-size:16px;color:var(--ink-soft);"><strong style="color:var(--purple);">Net4Log</strong> encourages partners to prioritize amicable resolutions for disputes whenever possible. Open communication and a collaborative approach are essential for fostering positive relationships within the network. If an amicable resolution cannot be reached, partners have the option to escalate the matter to <strong style="color:var(--purple);">Net4Log Legal</strong> for further intervention.</p>
         </div>
@@ -2644,8 +2676,9 @@
 
 <div class="static-page" id="page-conference" style="display:none;">
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 64 64" aria-hidden="true"><use href="#icon-conference"></use></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">Conference</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">NET4LOG Conference</span>
@@ -2653,7 +2686,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap" style="max-width:900px;text-align:center;margin-left:auto;margin-right:auto;">
             <p style="font-size:16px;color:var(--ink-soft);">The <strong style="color:var(--purple);">Net4Log Conference</strong> is your gateway to building meaningful personal connections with Net4Log partners, fostering stronger and more enduring business relationships. This event provides a unique platform to cultivate valuable professional networks through face-to-face interactions, encouraging collaboration and exploring innovative solutions while strengthening mutual trust among peers.</p>
         </div>
@@ -2687,8 +2720,9 @@
 
 <div class="static-page" id="page-better-buy" style="display:none;">
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 64 64" aria-hidden="true"><use href="#icon-betterbuy"></use></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">Better Buy</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">NET4LOG Better Buy</span>
@@ -2696,7 +2730,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap" style="max-width:900px;text-align:center;margin-left:auto;margin-right:auto;">
             <p style="font-size:16px;color:var(--ink-soft);">A comprehensive shipping solution: Net4Log Better Buy is a program designed to empower your business with significant cost savings and enhanced efficiency in your shipping operations. It leverages Net4Log's collective volume to negotiate advantageous rates and contracts with carriers and other vendors.</p>
         </div>
@@ -2731,8 +2765,9 @@
 
 <div class="static-page" id="page-freight-protection" style="display:none;">
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 512 512" aria-hidden="true"><use href="#icon-freightprotection"></use></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">Freight Protection Plan</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">NET4LOG Freight<br>Protection Plan</span>
@@ -2740,7 +2775,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap" style="max-width:900px;text-align:center;margin-left:auto;margin-right:auto;">
             <p style="font-size:16px;color:var(--ink-soft);"><strong style="color:var(--purple);">Net4Log Freight Protection Plan (FPP)</strong> is a specialised insurance solution that safeguards Trusted Members against potential financial losses arising from the non-payment of freight invoices due to a partner's bankruptcy or insolvency, ensuring affected members are protected from financial risk.</p>
         </div>
@@ -2782,8 +2817,9 @@
 
 <div class="static-page" id="page-trade-influencer" style="display:none;">
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 64 64" aria-hidden="true"><use href="#icon-tradeinfluencer"></use></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">Trade Influencer</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">NET4LOG Trade Influencer</span>
@@ -2791,7 +2827,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap" style="max-width:900px;text-align:center;margin-left:auto;margin-right:auto;">
             <p style="font-size:16px;color:var(--ink-soft);">Net4Log, as a platform, is committed to generating business for all Trusted Partners. Our vision is to become the digital marketplace for global supply chain demands.</p>
         </div>
@@ -2828,8 +2864,9 @@
 
 <div class="static-page" id="page-contact-us" style="display:none;">
     <main>
-    <section class="hero" style="padding:56px 0 40px;">
-        <div class="wrap" style="text-align:center;">
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
             <span class="pill">Contact</span>
             <h1 style="margin-top:18px;">
                 <span class="h1-main" style="white-space:normal;">Contact Us</span>
@@ -2837,10 +2874,10 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
+    <section class="section">
         <div class="wrap">
             <div style="display:flex;flex-wrap:wrap;gap:0;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-soft);">
-                <div style="flex:1 1 340px;background:linear-gradient(160deg,var(--purple) 0%,var(--purple-soft) 100%);color:#fff;padding:40px 34px;">
+                <div style="flex:1 1 340px;background:linear-gradient(160deg,#341552 0%,#7A2C4E 100%);color:#fff;padding:40px 34px;">
                     <h2 style="font-size:22px;color:#fff;margin-bottom:22px;">Contact Us Now</h2>
                     <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:20px;">
                         <span style="flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
