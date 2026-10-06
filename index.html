@@ -1288,7 +1288,20 @@
     #page-directory .dir2-tpf{display:none;align-items:center;gap:10px;flex-wrap:wrap;}
     #page-directory .dir2-tpf.on{display:flex;}
     #page-directory .dir2-tpf select,#page-directory .dir2-tpf input{border:1.5px solid #F0E4D6;background:#fff;border-radius:12px;padding:9px 12px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:var(--ink);}
-    #page-directory .dir2-tpf input{width:250px;}
+    #page-directory .dir2-tpf input{width:260px;}
+    /* the two Trusted filters name themselves: a small label sits ABOVE each box (never on its edge); every control in the row is the same height, bottoms aligned */
+    #page-directory .dir2-fld{display:inline-flex;flex-direction:column;gap:4px;}
+    #page-directory .dir2-fld > label{font:700 10.5px/1.2 'Inter',sans-serif;letter-spacing:.3px;color:var(--ink-soft);padding-left:4px;white-space:nowrap;}
+    #page-directory .dir2-fld select{min-width:170px;}
+    #page-directory .dir2-fld select,#page-directory .dir2-fld input{flex:0 0 auto !important;}   /* the label stacks above: the row's flex-basis must not become a height */
+    #page-directory .dir2-bar-r,#page-directory .dir2-tpf{align-items:flex-end;}
+    #page-directory .dir2-lock,#page-directory .dir2-sort,#page-directory .dir2-view,#page-directory .dir2-fld select,#page-directory .dir2-fld input{height:40px;box-sizing:border-box;}
+    #page-directory .dir2-view button{height:100%;}
+    #page-directory .dir2-clear{min-height:40px;display:inline-flex;align-items:center;}
+    @media(max-width:700px){
+        #page-directory .dir2-fld{flex:1 1 100%;}
+        #page-directory .dir2-fld select,#page-directory .dir2-fld input{width:100%;}
+    }
     #page-directory .dir2-tpf select:focus,#page-directory .dir2-tpf input:focus{outline:none;border-color:var(--orange);}
     #page-directory .dir2-clear{border:0;background:transparent;color:var(--orange);font-weight:700;font-size:12.5px;cursor:pointer;padding:6px 4px;display:none;}
     #page-directory .dir2-clear.on{display:inline;}
@@ -1302,11 +1315,18 @@
     #page-directory .dir2-view{display:flex;border:1.5px solid #F0E4D6;border-radius:12px;overflow:hidden;background:#fff;}
     #page-directory .dir2-view button{border:0;background:#fff;width:38px;height:38px;cursor:pointer;color:var(--ink-soft);display:flex;align-items:center;justify-content:center;}
     #page-directory .dir2-view button.on{background:var(--cream-2);color:var(--purple);}
+    #page-directory .dir2-lock{line-height:1.2;padding-top:0;padding-bottom:0;}
     #page-directory .dir2-note{display:block;line-height:1.55;background:#fff;border:1px solid #FFE3C4;border-radius:var(--radius-md);padding:11px 16px;font-size:12.5px;color:var(--ink-soft);margin-bottom:16px;}
     #page-directory .dir2-note b{color:var(--orange);}
     #page-directory .dir2-note a{margin-left:auto;font-weight:700;color:var(--purple);}
     #page-directory .dir2-list{display:flex;flex-direction:column;gap:12px;}
     #page-directory .dir2-item{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1fr) minmax(0,1.7fr) auto;align-items:center;gap:22px;background:#fff;border:1px solid #F5EBDF;border-radius:var(--radius-md);padding:16px 22px;box-shadow:var(--shadow-soft);transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;}
+    /* Trusted Partner cards carry a clear light colour (Registered stay white). Mockup compares three: lavender (brand purple family), sky, mint -- picked with the switch above the list */
+    #page-directory[data-tpc="lavender"] .dir2-item.t-tp{background:#EDE6FF;border-color:#D2C4F6;}
+    #page-directory[data-tpc="sky"] .dir2-item.t-tp{background:#E2F0FF;border-color:#BCD9F5;}
+    #page-directory[data-tpc="mint"] .dir2-item.t-tp{background:#DCF4EA;border-color:#B5E3CE;}
+    #page-directory .dir2-item.t-tp .dir2-logo{background:rgba(255,255,255,.75);}
+    #page-directory .dir2-item.t-tp .dir2-chips span{background:rgba(255,255,255,.75);}
     #page-directory .dir2-item:hover{transform:translateY(-2px);border-color:#FFD8BD;box-shadow:0 16px 32px -18px rgba(42,0,124,.3);}
     #page-directory .dir2-id{display:flex;align-items:center;gap:14px;min-width:0;}
     #page-directory .dir2-logo{flex:0 0 auto;width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--cream-2),#FFDDBB);color:var(--purple);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;font-family:'Poppins',sans-serif;}
@@ -2182,8 +2202,8 @@
                 <a href="#" onclick="showStaticPage('tp-application',event)"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span> TP Application</a>
                 <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span> Billing Centre</a>
                 <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></span> Service Request</a>
-                <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span> Change Password</a>
-                <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span> Help Centre</a>
+                <a href="#" onclick="showStaticPage('change-password',event)"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span> Change Password</a>
+                <a href="#" onclick="showStaticPage('help-centre',event)"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span> Help Centre</a>
                 <div class="divider"></div>
                 <a href="#" class="signout" onclick="logoutUser(event)"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span> Sign Out</a>
                 <div class="user-dropdown-meta">D7 International &middot; NET000094</div>
@@ -2514,8 +2534,8 @@
                 <a href="#" onclick="showStaticPage('tp-application',event)"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span> TP Application</a>
                 <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span> Billing Centre</a>
                 <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></span> Service Request</a>
-                <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span> Change Password</a>
-                <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span> Help Centre</a>
+                <a href="#" onclick="showStaticPage('change-password',event)"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span> Change Password</a>
+                <a href="#" onclick="showStaticPage('help-centre',event)"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span> Help Centre</a>
                 <div class="divider"></div>
                 <a href="#" class="signout" onclick="logoutUser(event)"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span> Sign Out</a>
                 <div class="user-dropdown-meta">D7 International &middot; NET000094</div>
@@ -3723,7 +3743,7 @@
 <!-- ===================== PARTNER DIRECTORY v2 (2026-10-05) =====================
      Search-first header, segmented Trusted / Registered switch with live counts, one slim filter bar, compact rows (list default) or cards (grid).
      Services / Service Location filters stay Trusted-only (shown locked), as in the real directory. -->
-<div class="static-page" id="page-directory" style="display:none;">
+<div class="static-page" id="page-directory" data-tpc="lavender" style="display:none;">
     <main>
     <section class="dir2-hero t-plum" id="dir2Hero">
         <div class="dir2-theme"><span class="lbl">Mockup &middot; hero colour</span>
@@ -3771,14 +3791,20 @@
                     <button type="button" class="on" data-v="registered" onclick="dir2SetViewer('registered')">Registered Partner</button>
                     <button type="button" data-v="trusted" onclick="dir2SetViewer('trusted')">Trusted Partner</button>
                 </span>
+                <span>&middot; TP card colour</span>
+                <span class="seg" id="dir2TpcSeg">
+                    <button type="button" class="on" data-c="lavender" onclick="dir2Tpc('lavender')">Lavender</button>
+                    <button type="button" data-c="sky" onclick="dir2Tpc('sky')">Sky</button>
+                    <button type="button" data-c="mint" onclick="dir2Tpc('mint')">Mint</button>
+                </span>
             </div>
             <div class="dir2-bar">
                 <div class="dir2-count" id="dir2Count"></div>
                 <div class="dir2-bar-r">
                     <span class="dir2-lock" id="dir2Lock" title="Filtering by Services Offered and Service Location is a Trusted Partner benefit"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Services &amp; Location filters</span>
                     <div class="dir2-tpf" id="dir2Tpf">
-                        <select id="dir2Svc" onchange="dir2Apply()" aria-label="Services offered"><option value="">All services</option></select>
-                        <input type="text" id="dir2Loc" placeholder="Service location, e.g. Kolkata / INCCU" oninput="dir2Apply()" autocomplete="off" aria-label="Service location">
+                        <span class="dir2-fld"><label for="dir2Svc">Services Offered</label><select id="dir2Svc" onchange="dir2Apply()" aria-label="Services offered"><option value="">All services</option></select></span>
+                        <span class="dir2-fld"><label for="dir2Loc">Service Location</label><input type="text" id="dir2Loc" placeholder="e.g. Kolkata / INCCU" oninput="dir2Apply()" autocomplete="off" aria-label="Service location"></span>
                         <button type="button" class="dir2-clear" id="dir2Clear" onclick="dir2ClearFilters()">Clear</button>
                     </div>
                     <select class="dir2-sort" id="dir2Sort" onchange="dir2Apply()" aria-label="Sort partners">
@@ -3800,6 +3826,508 @@
         </div>
     </section>
     </main>
+</div>
+
+<!-- ===================== HELP CENTRE ===================== -->
+<script>
+/* shared hero network animation for the plum functional heroes (Help Centre, Forgot Password) */
+window.n4lHeroNet = function(pageId, canvasId){
+    var page = document.getElementById(pageId), cv = document.getElementById(canvasId), ctx = cv.getContext('2d'), nodes = [], W = 0, H = 0, run = false;
+    function size(){ var r = cv.getBoundingClientRect(); W = r.width; H = r.height; var d = Math.min(2, window.devicePixelRatio || 1); cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); }
+    function seed(){ nodes = []; var n = Math.max(26, Math.round(W / 38)); for(var i = 0; i < n; i++) nodes.push({x:Math.random() * W, y:Math.random() * H, vx:(Math.random() - .5) * .35, vy:(Math.random() - .5) * .35, o:Math.random() < .18}); }
+    function frame(){
+        if(page.style.display === 'none'){ run = false; return; }
+        ctx.clearRect(0, 0, W, H);
+        for(var i = 0; i < nodes.length; i++){
+            var a = nodes[i]; a.x += a.vx; a.y += a.vy; if(a.x < 0 || a.x > W) a.vx *= -1; if(a.y < 0 || a.y > H) a.vy *= -1;
+            for(var j = i + 1; j < nodes.length; j++){ var b = nodes[j], dx = a.x - b.x, dy = a.y - b.y, d = dx * dx + dy * dy; if(d < 17000){ ctx.strokeStyle = 'rgba(255,255,255,' + (0.32 * (1 - d / 17000)).toFixed(3) + ')'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); } }
+        }
+        for(var k = 0; k < nodes.length; k++){ var p = nodes[k]; ctx.beginPath(); ctx.arc(p.x, p.y, p.o ? 3.2 : 1.8, 0, 6.2832); ctx.fillStyle = p.o ? '#FE5F00' : 'rgba(255,255,255,.6)'; if(p.o){ ctx.shadowColor = '#FE5F00'; ctx.shadowBlur = 12; } ctx.fill(); ctx.shadowBlur = 0; }
+        requestAnimationFrame(frame);
+    }
+    function start(){ if(run) return; size(); if(!nodes.length) seed(); run = true; requestAnimationFrame(frame); }
+    window.addEventListener('resize', function(){ if(run){ size(); seed(); } });
+    new MutationObserver(function(){ if(page.style.display !== 'none') start(); }).observe(page, {attributes:true, attributeFilter:['style']});
+};
+</script>
+<div class="static-page" id="page-help-centre" style="display:none;">
+    <main>
+    <section class="hero static-hero">
+        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h12l2 5H4l2-5z"/><path d="M4 7h16v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7z"/><path d="M9 11a3 3 0 0 0 6 0"/></svg>
+        <div class="wrap hero-stack" style="text-align:center;">
+            <span class="pill">Help Centre</span>
+            <h1 style="margin-top:18px;">
+                <span class="h1-main" style="white-space:normal;">Net4Log Help Centre</span>
+            </h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
+            <p style="font-size:16px;color:var(--ink-soft);">Welcome to the Net4Log Help Centre, your go-to resource for everything related to our platform. Whether you're new to Net4Log or need help with specific features, we've got you covered. Here you'll find detailed guides and answers to common questions from navigating the portal to using our digital tools and accessing live support &mdash; so you can get the most out of Net4Log with ease.</p>
+        </div>
+    </section>
+
+    <section class="section alt">
+        <div class="wrap">
+            <div class="feature-grid">
+                <article class="feature"><h3>Navigating the Portal</h3><p>A step-by-step guide on how to access and use different features of the Net4Log portal efficiently.</p></article>
+                <article class="feature"><h3>Net4Log Digital</h3><p>Information about Net4Log's digital tools, services, and automation features designed to streamline logistics networking.</p></article>
+                <article class="feature"><h3>FAQs</h3><p>Answers to the most common questions about Net4Log, covering membership, platform usage, and troubleshooting.</p></article>
+                <article class="feature"><h3>Net4Log Live support</h3><p>A dedicated support system providing real-time assistance for queries and troubleshooting.</p></article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="wrap" style="max-width:820px;text-align:center;">
+            <p style="font-size:16px;color:var(--ink-soft);">Feel free to email us at <a href="https://mail.google.com/mail/?view=cm&amp;to=support@net4log.com" target="_blank" rel="noopener" style="color:var(--purple);font-weight:700;">support@net4log.com</a> for any queries and issues. This email is driven by the JBM help-desk manager</p>
+        </div>
+    </section>
+    </main>
+</div>
+
+<!-- ===================== FORGOT PASSWORD ===================== -->
+<div class="static-page" id="page-forgot-password" style="display:none;">
+<style>
+
+    #page-forgot-password{--purple:#341552;--purple-soft:#792c4e;--h-net:255,255,255;--h-node:#FF9A56;--h-grid:rgba(255,255,255,.12);--h-pill:rgba(255,255,255,.1);--h-pline:rgba(255,255,255,.26);}
+    #page-forgot-password .wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+    /* hero: same plum + height + futuristic effects as My Profile / TP Application */
+    #page-forgot-password .fp-hero{background:var(--plum-gradient);color:#fff;padding:38px 0 0;position:relative;overflow:hidden;min-height:var(--func-hero-h);display:flex;flex-direction:column;justify-content:center;}
+    #page-forgot-password .fp-hero::before{content:"";position:absolute;bottom:-140px;left:-90px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(254,95,0,.24),transparent 70%);pointer-events:none;}
+    #page-forgot-password .fp-hero::after{content:"";position:absolute;top:-120px;right:-80px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);pointer-events:none;animation:fpDrift 14s ease-in-out infinite alternate;}
+    @keyframes fpDrift{from{transform:translate(0,0);}to{transform:translate(-50px,40px);}}
+    #page-forgot-password .fp-net{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+    #page-forgot-password .fp-floor{position:absolute;left:-30%;right:-30%;bottom:0;height:150px;z-index:0;pointer-events:none;background-image:linear-gradient(var(--h-grid) 1px,transparent 1px),linear-gradient(90deg,var(--h-grid) 1px,transparent 1px);background-size:46px 46px;transform:perspective(380px) rotateX(62deg);transform-origin:50% 100%;-webkit-mask-image:linear-gradient(to top,#000 5%,transparent 90%);mask-image:linear-gradient(to top,#000 5%,transparent 90%);animation:fpGrid 7s linear infinite;}
+    @keyframes fpGrid{to{background-position:0 46px,0 0;}}
+    #page-forgot-password .fp-hero .wrap{position:relative;z-index:1;width:100%;flex:1;display:flex;flex-direction:column;justify-content:space-between;}
+    #page-forgot-password .fp-id{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+    #page-forgot-password .fp-badge{position:relative;flex:0 0 auto;width:88px;height:88px;border-radius:24px;background:linear-gradient(135deg,var(--cream-2),#FFDDBB);color:var(--purple);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px #4f1e50,0 14px 34px -8px rgba(254,95,0,.5);}
+    #page-forgot-password .fp-badge::before{content:"";position:absolute;inset:-7px;border-radius:30px;padding:2px;background:conic-gradient(from 0deg,#FE5F00,#FF9A56,#FF9A56,#FE5F00);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:fpSpin 6s linear infinite;}
+    @keyframes fpSpin{to{transform:rotate(360deg);}}
+    #page-forgot-password .fp-who{flex:1;min-width:240px;}
+    #page-forgot-password .fp-kick{font:700 11.5px 'Inter',sans-serif;letter-spacing:1.1px;text-transform:uppercase;color:#FFB27A;}
+    #page-forgot-password .fp-who h1{font:800 30px/1.15 'Poppins',sans-serif;color:#fff !important;margin:6px 0 10px;text-transform:none;}
+    #page-forgot-password .fp-meta{display:flex;flex-wrap:wrap;gap:8px 10px;font-size:13px;}
+    #page-forgot-password .fp-meta span{display:inline-flex;align-items:center;gap:7px;background:var(--h-pill);border:1px solid var(--h-pline);border-radius:30px;padding:5px 12px;color:#fff;}
+    #page-forgot-password .fp-actions{display:flex;gap:10px;flex-wrap:wrap;}
+    #page-forgot-password .fp-actions .btn{min-height:44px;padding:0 20px;font-size:14px;}
+    #page-forgot-password .fp-actions .btn-ghost{background:var(--h-pill);color:#fff;border:1.5px solid rgba(255,255,255,.35);}
+    #page-forgot-password .fp-actions .btn-ghost:hover{background:rgba(255,255,255,.2);border-color:#fff;}
+    #page-forgot-password .fp-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0 0;}
+    #page-forgot-password .fp-kpi{background:var(--h-pill);border:1px solid var(--h-pline);border-radius:16px;padding:12px 16px;color:#fff;min-width:0;}
+    #page-forgot-password .fp-kpi .l{font:700 11px 'Inter',sans-serif;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.86);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    #page-forgot-password .fp-kpi .v{font:800 28px/1.1 'Poppins',sans-serif;margin:4px 0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    #page-forgot-password .fp-kpi .t{font-size:12px;font-weight:600;color:#6EE7A8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    #page-forgot-password .fp-kpi.warn .v{color:var(--orange);} #page-forgot-password .fp-kpi.warn .t{color:#FFB27A;}
+    #page-forgot-password .fp-strength{margin-top:26px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.26);border-bottom:0;border-radius:18px 18px 0 0;padding:16px 22px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+    #page-forgot-password .fp-ring{--p:50;flex:0 0 auto;width:54px;height:54px;border-radius:50%;background:conic-gradient(#FE5F00 calc(var(--p)*1%),rgba(255,255,255,.2) 0);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(254,95,0,.45);animation:fpPulse 3s ease-in-out infinite;}
+    @keyframes fpPulse{0%,100%{box-shadow:0 0 12px rgba(254,95,0,.35);}50%{box-shadow:0 0 28px rgba(254,95,0,.7);}}
+    #page-forgot-password .fp-ring b{width:42px;height:42px;border-radius:50%;background:#43194C;display:flex;align-items:center;justify-content:center;font:700 13px 'Poppins',sans-serif;}
+    #page-forgot-password .fp-strength .tx{flex:1;min-width:220px;}
+    #page-forgot-password .fp-strength .tx b{display:block;font:700 15px 'Poppins',sans-serif;}
+    #page-forgot-password .fp-strength .tx span{font-size:12.5px;color:rgba(255,255,255,.86);}
+    #page-forgot-password .fp-strength a{color:#FFB27A !important;font-weight:700;border-bottom:1.5px solid rgba(255,178,122,.5);cursor:pointer;}
+    #page-forgot-password .fp-sact .btn{min-height:38px;padding:0 16px;font-size:13px;background:var(--orange);color:#fff !important;border:0;}
+    #page-forgot-password .fp-sw{position:absolute;right:20px;top:10px;z-index:3;display:flex;align-items:center;gap:8px;font:700 10.5px 'Inter',sans-serif;letter-spacing:.3px;text-transform:uppercase;color:rgba(255,255,255,.86);}
+    #page-forgot-password .fp-sw .seg{display:inline-flex;border:1.5px dashed var(--h-pline);border-radius:9px;overflow:hidden;background:var(--h-pill);}
+    #page-forgot-password .fp-sw button{border:0;background:transparent;color:#fff;font:700 10.5px 'Inter',sans-serif;padding:4px 10px;cursor:pointer;text-transform:none;letter-spacing:0;}
+    #page-forgot-password .fp-sw button.on{background:var(--orange);}
+    /* body */
+    #page-forgot-password .fp-in input,#page-forgot-password .fp-in select,#page-forgot-password .fp-in textarea{width:100%;box-sizing:border-box;border:1.5px solid #E7D8C6;border-radius:13px;background:#FFFDFA;padding:10px 13px;font:500 14px 'Inter',sans-serif;color:var(--ink);outline:0;}
+    #page-forgot-password .fp-in input:focus,#page-forgot-password .fp-in select:focus,#page-forgot-password .fp-in textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(42,0,124,.12);}
+    #page-forgot-password .fp-in textarea{resize:vertical;min-height:110px;}
+    /* dialogs */
+    #page-forgot-password .fp-mod{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(27,19,48,.55);}
+    #page-forgot-password .fp-mod.open{display:flex;}
+    #page-forgot-password .fp-dlg{width:100%;max-width:640px;max-height:calc(100vh - 36px);display:flex;flex-direction:column;background:#fff;border-radius:22px;box-shadow:0 40px 80px -30px rgba(27,19,48,.7);overflow:hidden;}
+    #page-forgot-password .fp-dlg.sm{max-width:460px;}
+    #page-forgot-password .fp-dh{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid #F5EBDF;}
+    #page-forgot-password .fp-dh h3{font:700 17px 'Poppins',sans-serif;color:var(--purple);margin:0;text-transform:none;}
+    #page-forgot-password .fp-x{border:0;background:var(--cream-2);width:34px;height:34px;border-radius:10px;font-size:20px;line-height:1;cursor:pointer;color:var(--ink-soft);}
+    #page-forgot-password .fp-db{padding:18px 22px;overflow-y:auto;}
+    #page-forgot-password .fp-df{display:flex;gap:10px;justify-content:flex-end;padding:14px 22px;border-top:1px solid #F5EBDF;background:#FFFDFA;}
+    #page-forgot-password .fp-df .btn{min-height:44px;padding:0 22px;}
+    #page-forgot-password .fp-note{display:flex;gap:10px;align-items:flex-start;background:#FFF6EC;border:1px solid #FBDDBF;border-radius:14px;padding:12px 14px;font-size:12.5px;color:var(--ink-soft);margin-bottom:14px;line-height:1.5;}
+    #page-forgot-password .fp-note svg{flex:0 0 auto;color:var(--orange);margin-top:1px;}
+    #page-forgot-password .fp-err{display:none;margin-top:5px;font-size:12px;font-weight:600;color:#D23C32;}
+    #page-forgot-password .fp-thx{text-align:center;padding:26px 10px;}
+    #page-forgot-password .fp-thx .ck{width:76px;height:76px;border-radius:50%;background:#E3F7EC;color:#1E8A52;display:inline-flex;align-items:center;justify-content:center;margin-bottom:10px;}
+    #page-forgot-password .fp-thx h3{font:800 20px 'Poppins',sans-serif;color:var(--purple);margin:0 0 6px;} #page-forgot-password .fp-thx p{color:var(--ink-soft);font-size:14px;margin:0 0 16px;}
+    #page-forgot-password .fp-toast{position:fixed;left:50%;top:84px;transform:translateX(-50%);z-index:110;background:#14532D;color:#fff;border-radius:14px;padding:11px 18px;font-size:13.5px;font-weight:600;box-shadow:0 18px 40px -16px rgba(0,0,0,.5);display:none;max-width:calc(100% - 24px);}
+    #page-forgot-password .fp-toast.show{display:block;}
+    #page-forgot-password .btn[disabled]{opacity:.5;cursor:not-allowed;box-shadow:none;}
+    @media(max-width:1279px){#page-forgot-password .fp-kpis{display:none;}}
+    @media(max-width:1000px){
+        #page-forgot-password .fp-sact{display:none;}
+    }
+    @media(max-width:700px){
+        #page-forgot-password .fp-hero{padding-top:14px;min-height:0;}
+        #page-forgot-password .fp-meta span:nth-child(n+2){display:none;}
+        #page-forgot-password .fp-badge{width:58px;height:58px;border-radius:17px;}
+        #page-forgot-password .fp-who h1{font-size:21px;margin:4px 0 8px;}
+        #page-forgot-password .fp-meta{gap:6px 8px;} #page-forgot-password .fp-meta span{font-size:12px;padding:3px 10px;}
+        #page-forgot-password .fp-meta span:nth-child(n+3){display:none;}
+        #page-forgot-password .fp-actions .btn{min-height:40px;padding:0 14px;}
+        #page-forgot-password .fp-strength{margin-top:14px;padding:10px 14px;gap:12px;}
+        #page-forgot-password .fp-strength .tx span{display:none;} #page-forgot-password .fp-strength .tx b{font-size:14px;}
+        #page-forgot-password .fp-sw{display:none;}
+        #page-forgot-password .fp-floor{height:90px;}
+        #page-forgot-password .fp-mod{align-items:flex-end;padding:0;}
+        #page-forgot-password .fp-dlg{max-width:none;border-radius:22px 22px 0 0;max-height:92vh;}
+        #page-forgot-password .fp-df{padding:12px 18px calc(12px + env(safe-area-inset-bottom));} #page-forgot-password .fp-df .btn{flex:1;}
+        #page-forgot-password .fp-db{padding:16px 18px;}
+    }
+    @media(prefers-reduced-motion:reduce){#page-forgot-password .fp-hero::after,#page-forgot-password .fp-floor,#page-forgot-password .fp-badge::before,#page-forgot-password .fp-ring{animation:none;}}
+
+    #page-forgot-password .fp-body{background:#FFF9F3;padding:30px 0 90px;}
+    #page-forgot-password .fp-wrap{max-width:560px;margin:0 auto;}
+    #page-forgot-password .fp-card{background:#fff;border:1px solid #F5EBDF;border-radius:22px;box-shadow:var(--shadow-soft);padding:30px;}
+    #page-forgot-password .fp-step{display:none;} #page-forgot-password .fp-step.on{display:block;}
+    #page-forgot-password .fp-card h2{font:800 22px 'Poppins',sans-serif;color:var(--purple);margin:0 0 4px;text-transform:none;}
+    #page-forgot-password .fp-card p.sub{font-size:14px;line-height:1.5;color:var(--ink-soft);margin:0 0 20px;}
+    #page-forgot-password .fp-f{margin-bottom:16px;}
+    #page-forgot-password .fp-f label{display:block;font:600 13px 'Inter',sans-serif;color:var(--ink);margin-bottom:6px;}
+    #page-forgot-password .fp-in{position:relative;}
+    #page-forgot-password .fp-in input{width:100%;box-sizing:border-box;border:1.5px solid #E7D8C6;border-radius:13px;background:#FFFDFA;padding:12px 46px 12px 14px;font:500 15px 'Inter',sans-serif;color:var(--ink);outline:0;}
+    #page-forgot-password .fp-in input.plain{padding-right:14px;}
+    #page-forgot-password .fp-in input:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(42,0,124,.12);}
+    #page-forgot-password .fp-in input:disabled{background:var(--cream-2);color:var(--ink-soft);}
+    #page-forgot-password .fp-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:0;background:transparent;border-radius:10px;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;}
+    #page-forgot-password .fp-eye:hover{background:var(--cream-2);color:var(--purple);}
+    #page-forgot-password .fp-err{display:none;margin-top:5px;font-size:12px;font-weight:600;color:#D23C32;}
+    #page-forgot-password .fp-f.err .fp-err{display:block;} #page-forgot-password .fp-f.err .fp-in input{border-color:#E0483E;background:#FFF6F5;}
+    #page-forgot-password .fp-alert{display:none;gap:10px;align-items:flex-start;background:#FFF0EE;border:1px solid #F5C6C0;color:#B23A2E;border-radius:14px;padding:12px 14px;font-size:13.5px;margin-bottom:16px;}
+    #page-forgot-password .fp-alert.on{display:flex;} #page-forgot-password .fp-alert ul{margin:0;padding-left:18px;}
+    #page-forgot-password .fp-go{width:100%;min-height:48px;font-size:15px;}
+    #page-forgot-password .fp-center{text-align:center;}
+    #page-forgot-password .fp-ico{width:84px;height:84px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;background:#E3F7EC;color:#1E8A52;}
+    #page-forgot-password .fp-ico.mail{background:var(--cream-2);color:var(--purple);}
+    #page-forgot-password .fp-center p{color:var(--ink-soft);font-size:14px;margin:0 0 8px;}
+    #page-forgot-password .fp-center .btn{min-width:180px;min-height:46px;margin-top:12px;}
+    #page-forgot-password .fp-back{display:inline-block;margin-top:16px;font-size:13px;font-weight:700;color:var(--purple);cursor:pointer;}
+    #page-forgot-password .fp-sw{position:absolute;right:20px;top:10px;z-index:3;display:flex;align-items:center;gap:8px;font:700 10.5px 'Inter',sans-serif;letter-spacing:.3px;text-transform:uppercase;color:rgba(255,255,255,.86);}
+    #page-forgot-password .fp-sw .seg{display:inline-flex;border:1.5px dashed rgba(255,255,255,.26);border-radius:9px;overflow:hidden;background:rgba(255,255,255,.1);}
+    #page-forgot-password .fp-sw button{border:0;background:transparent;color:#fff;font:700 10.5px 'Inter',sans-serif;padding:4px 10px;cursor:pointer;text-transform:none;letter-spacing:0;}
+    #page-forgot-password .fp-sw button.on{background:var(--orange);}
+    #page-forgot-password .fp-mock{margin-top:12px;font-size:12px;color:var(--ink-soft);text-align:center;}
+    #page-forgot-password .fp-mock code{background:#fff;border:1.5px dashed #E7D8C6;border-radius:8px;padding:2px 8px;font-weight:700;color:var(--purple);}
+    @media(max-width:700px){#page-forgot-password .fp-card{padding:22px 16px;border-radius:18px;}#page-forgot-password .fp-strength{display:none;}#page-forgot-password .fp-sw{display:none;}}
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="fp-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2L20 3"/><path d="M16 7l3 3"/></symbol>
+    <symbol id="fp-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></symbol>
+    <symbol id="fp-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="fp-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="fp-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="fp-eyeoff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.9 17.9A10.9 10.9 0 0 1 12 20C5 20 1 12 1 12a18.5 18.5 0 0 1 5.1-5.9"/><path d="M9.9 4.2A10.9 10.9 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.2 3.2"/><path d="M14.1 14.1a3 3 0 1 1-4.2-4.2"/><line x1="1" y1="1" x2="23" y2="23"/></symbol>
+    <symbol id="fp-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></symbol>
+</defs></svg>
+<main>
+<section class="fp-hero">
+    <canvas class="fp-net" id="fpNet" aria-hidden="true"></canvas><div class="fp-floor" aria-hidden="true"></div>
+    <div class="fp-sw"><span>Mockup &middot; preview step</span><span class="seg" id="fpSw"><button type="button" class="on" data-s="1" onclick="fpStep(1)">Request</button><button type="button" data-s="2" onclick="fpStep(2)">Email sent</button><button type="button" data-s="3" onclick="fpStep(3)">From email link</button><button type="button" data-s="4" onclick="fpStep(4)">Done</button></span></div>
+    <div class="wrap">
+        <div class="fp-id">
+            <div class="fp-badge"><svg width="44" height="44"><use href="#fp-key"></use></svg></div>
+            <div class="fp-who">
+                <div class="fp-kick">Account access</div>
+                <h1>Reset your password</h1>
+                <div class="fp-meta"><span><svg width="14" height="14"><use href="#fp-mail"></use></svg> A reset link is sent to your email</span><span><svg width="14" height="14"><use href="#fp-lock"></use></svg> Then choose a new password</span></div>
+            </div>
+        </div>
+        <div class="fp-kpis" aria-label="At a glance">
+            <div class="fp-kpi"><div class="l">Step 1</div><div class="v">Enter ID</div><div class="t">your Login ID or email</div></div>
+            <div class="fp-kpi"><div class="l">Step 2</div><div class="v">Check email</div><div class="t">open the reset link</div></div>
+            <div class="fp-kpi"><div class="l">Step 3</div><div class="v">New password</div><div class="t">choose it and confirm</div></div>
+            <div class="fp-kpi"><div class="l">Link goes to</div><div class="v">Your email</div><div class="t">check spam if missing</div></div>
+        </div>
+        <div class="fp-strength">
+            <div class="fp-ring" style="--p:100"><b><svg width="20" height="20" style="color:#fff"><use href="#fp-key"></use></svg></b></div>
+            <div class="tx"><b>Locked out? It only takes a minute</b><span>Enter your Login ID or email, open the link we send you, and set a new password.</span></div>
+        </div>
+    </div>
+</section>
+<section class="fp-body"><div class="wrap"><div class="fp-wrap"><div class="fp-card">
+
+    <!-- 1. request -->
+    <div class="fp-step on" id="fpS1">
+        <h2>Reset password</h2>
+        <p class="sub">Enter your account login id or email to receive a password reset link</p>
+        <div class="fp-alert" id="fpAlert1" role="alert"><svg width="18" height="18" style="flex:0 0 auto;margin-top:1px;"><use href="#fp-info"></use></svg><ul id="fpAlert1L"></ul></div>
+        <div class="fp-f" id="fpF1"><label for="fpUser">Email or Username</label><div class="fp-in"><input class="plain" id="fpUser" placeholder="Email or Username" autocomplete="username" onkeydown="if(event.key==='Enter')fpRequest()"></div><div class="fp-err">Login ID Or Email Not Entered.</div></div>
+        <button type="button" class="btn btn-primary fp-go" onclick="fpRequest()">Reset Password</button>
+        <div class="fp-mock">Mockup &middot; type <code>unknown</code> to see a failed request</div>
+        <div class="fp-center"><a class="fp-back" onclick="closeStaticPage(event)">&larr; Back to home</a></div>
+    </div>
+
+    <!-- 2. check your email -->
+    <div class="fp-step fp-center" id="fpS2">
+        <span class="fp-ico mail"><svg width="40" height="40"><use href="#fp-mail"></use></svg></span>
+        <h2>Check your email</h2>
+        <p>We&rsquo;ve sent a password reset link to your email</p>
+        <p>Did you receive the email? if not. check your spam folder.</p>
+        <button type="button" class="btn btn-primary" onclick="closeStaticPage(event)">OK</button>
+    </div>
+
+    <!-- 3. create new password (opened from the email link) -->
+    <div class="fp-step" id="fpS3">
+        <h2>Create new password</h2>
+        <p class="sub">Enter new password below to complete the reset process</p>
+        <div class="fp-alert" id="fpAlert3" role="alert"><svg width="18" height="18" style="flex:0 0 auto;margin-top:1px;"><use href="#fp-info"></use></svg><ul id="fpAlert3L"></ul></div>
+        <div class="fp-f"><label for="fpName">User Name</label><div class="fp-in"><input class="plain" id="fpName" value="gulf.transport" disabled></div></div>
+        <div class="fp-f" id="fpF2"><label for="fpNew">Password</label><div class="fp-in"><input type="password" id="fpNew" placeholder="Password" autocomplete="new-password"><button type="button" class="fp-eye" onclick="fpEye('fpNew',this)" aria-label="Show password"><svg width="18" height="18"><use href="#fp-eye"></use></svg></button></div><div class="fp-err">New Password Not Entered.</div></div>
+        <div class="fp-f" id="fpF3"><label for="fpCon">Confirm Password</label><div class="fp-in"><input type="password" id="fpCon" placeholder="Password" autocomplete="new-password" onkeydown="if(event.key==='Enter')fpReset()"><button type="button" class="fp-eye" onclick="fpEye('fpCon',this)" aria-label="Show password"><svg width="18" height="18"><use href="#fp-eye"></use></svg></button></div><div class="fp-err">Confirm Password Not Entered.</div></div>
+        <button type="button" class="btn btn-primary fp-go" onclick="fpReset()">Reset Password</button>
+    </div>
+
+    <!-- 4. done -->
+    <div class="fp-step fp-center" id="fpS4">
+        <span class="fp-ico"><svg width="40" height="40"><use href="#fp-check"></use></svg></span>
+        <h2>Password changed successfully</h2>
+        <p>You can now log in with your new password.</p>
+        <button type="button" class="btn btn-primary" onclick="fpLogin(event)">Go to login</button>
+    </div>
+</div></div></div></section>
+</main>
+<script>
+(function(){
+    var $ = function(id){ return document.getElementById(id); };
+    function alertShow(id, list){ $(id + 'L').innerHTML = list.map(function(m){ return '<li>' + m + '</li>'; }).join(''); $(id).classList.add('on'); }
+    function clear(){ document.querySelectorAll('#page-forgot-password .fp-f').forEach(function(f){ f.classList.remove('err'); }); document.querySelectorAll('#page-forgot-password .fp-alert').forEach(function(a){ a.classList.remove('on'); }); $('fpF1').querySelector('.fp-err').textContent = 'Login ID Or Email Not Entered.'; $('fpF3').querySelector('.fp-err').textContent = 'Confirm Password Not Entered.'; }
+    window.fpStep = function(n){ clear(); for(var i = 1; i <= 4; i++) $('fpS' + i).classList.toggle('on', i === n); document.querySelectorAll('#fpSw button').forEach(function(b){ b.classList.toggle('on', +b.getAttribute('data-s') === n); }); };
+    window.fpOnShow = function(){ $('fpUser').value = ''; $('fpNew').value = ''; $('fpCon').value = ''; fpStep(1); };
+    window.fpEye = function(id, btn){ var i = $(id), show = i.type === 'password'; i.type = show ? 'text' : 'password'; btn.querySelector('use').setAttribute('href', show ? '#fp-eyeoff' : '#fp-eye'); btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password'); };
+    window.fpRequest = function(){
+        clear(); var u = $('fpUser').value.trim();
+        if(!u){ $('fpF1').classList.add('err'); alertShow('fpAlert1', ['Login ID Or Email Not Entered.']); return; }
+        if(u.toLowerCase() === 'unknown'){ $('fpF1').classList.add('err'); $('fpF1').querySelector('.fp-err').textContent = 'No account found for this Login ID or email (sample message).'; alertShow('fpAlert1', ['No account found for this Login ID or email (sample message).']); return; }
+        fpStep(2);
+    };
+    window.fpReset = function(){
+        clear(); var n = $('fpNew').value.trim(), c = $('fpCon').value.trim(), bad = [];
+        if(!n){ $('fpF2').classList.add('err'); bad.push('New Password Not Entered.'); }
+        if(!c){ $('fpF3').classList.add('err'); bad.push('Confirm Password Not Entered.'); }
+        if(bad.length){ alertShow('fpAlert3', bad); return; }
+        if(n !== c){ $('fpF3').classList.add('err'); $('fpF3').querySelector('.fp-err').textContent = 'New and Confirm Password do not match.'; alertShow('fpAlert3', ['New and Confirm Password do not match.']); return; }
+        fpStep(4);
+    };
+    window.fpLogin = function(e){ closeStaticPage(e); if(typeof openLoginModal === 'function') openLoginModal(); };
+    n4lHeroNet('page-forgot-password', 'fpNet');
+})();
+</script>
+</div>
+
+<!-- ===================== CHANGE PASSWORD ===================== -->
+<div class="static-page" id="page-change-password" style="display:none;">
+<style>
+
+    #page-change-password{--purple:#341552;--purple-soft:#792c4e;--h-net:255,255,255;--h-node:#FF9A56;--h-grid:rgba(255,255,255,.12);--h-pill:rgba(255,255,255,.1);--h-pline:rgba(255,255,255,.26);}
+    #page-change-password .wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+    /* hero: same plum + height + futuristic effects as My Profile / TP Application */
+    #page-change-password .cp-hero{background:var(--plum-gradient);color:#fff;padding:38px 0 0;position:relative;overflow:hidden;min-height:var(--func-hero-h);display:flex;flex-direction:column;justify-content:center;}
+    #page-change-password .cp-hero::before{content:"";position:absolute;bottom:-140px;left:-90px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(254,95,0,.24),transparent 70%);pointer-events:none;}
+    #page-change-password .cp-hero::after{content:"";position:absolute;top:-120px;right:-80px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);pointer-events:none;animation:cpDrift 14s ease-in-out infinite alternate;}
+    @keyframes cpDrift{from{transform:translate(0,0);}to{transform:translate(-50px,40px);}}
+    #page-change-password .cp-net{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+    #page-change-password .cp-floor{position:absolute;left:-30%;right:-30%;bottom:0;height:150px;z-index:0;pointer-events:none;background-image:linear-gradient(var(--h-grid) 1px,transparent 1px),linear-gradient(90deg,var(--h-grid) 1px,transparent 1px);background-size:46px 46px;transform:perspective(380px) rotateX(62deg);transform-origin:50% 100%;-webkit-mask-image:linear-gradient(to top,#000 5%,transparent 90%);mask-image:linear-gradient(to top,#000 5%,transparent 90%);animation:cpGrid 7s linear infinite;}
+    @keyframes cpGrid{to{background-position:0 46px,0 0;}}
+    #page-change-password .cp-hero .wrap{position:relative;z-index:1;width:100%;flex:1;display:flex;flex-direction:column;justify-content:space-between;}
+    #page-change-password .cp-id{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+    #page-change-password .cp-badge{position:relative;flex:0 0 auto;width:88px;height:88px;border-radius:24px;background:linear-gradient(135deg,var(--cream-2),#FFDDBB);color:var(--purple);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px #4f1e50,0 14px 34px -8px rgba(254,95,0,.5);}
+    #page-change-password .cp-badge::before{content:"";position:absolute;inset:-7px;border-radius:30px;padding:2px;background:conic-gradient(from 0deg,#FE5F00,#FF9A56,#FF9A56,#FE5F00);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:cpSpin 6s linear infinite;}
+    @keyframes cpSpin{to{transform:rotate(360deg);}}
+    #page-change-password .cp-who{flex:1;min-width:240px;}
+    #page-change-password .cp-kick{font:700 11.5px 'Inter',sans-serif;letter-spacing:1.1px;text-transform:uppercase;color:#FFB27A;}
+    #page-change-password .cp-who h1{font:800 30px/1.15 'Poppins',sans-serif;color:#fff !important;margin:6px 0 10px;text-transform:none;}
+    #page-change-password .cp-meta{display:flex;flex-wrap:wrap;gap:8px 10px;font-size:13px;}
+    #page-change-password .cp-meta span{display:inline-flex;align-items:center;gap:7px;background:var(--h-pill);border:1px solid var(--h-pline);border-radius:30px;padding:5px 12px;color:#fff;}
+    #page-change-password .cp-actions{display:flex;gap:10px;flex-wrap:wrap;}
+    #page-change-password .cp-actions .btn{min-height:44px;padding:0 20px;font-size:14px;}
+    #page-change-password .cp-actions .btn-ghost{background:var(--h-pill);color:#fff;border:1.5px solid rgba(255,255,255,.35);}
+    #page-change-password .cp-actions .btn-ghost:hover{background:rgba(255,255,255,.2);border-color:#fff;}
+    #page-change-password .cp-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0 0;}
+    #page-change-password .cp-kpi{background:var(--h-pill);border:1px solid var(--h-pline);border-radius:16px;padding:12px 16px;color:#fff;min-width:0;}
+    #page-change-password .cp-kpi .l{font:700 11px 'Inter',sans-serif;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.86);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    #page-change-password .cp-kpi .v{font:800 28px/1.1 'Poppins',sans-serif;margin:4px 0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    #page-change-password .cp-kpi .t{font-size:12px;font-weight:600;color:#6EE7A8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    #page-change-password .cp-kpi.warn .v{color:var(--orange);} #page-change-password .cp-kpi.warn .t{color:#FFB27A;}
+    #page-change-password .cp-strength{margin-top:26px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.26);border-bottom:0;border-radius:18px 18px 0 0;padding:16px 22px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+    #page-change-password .cp-ring{--p:50;flex:0 0 auto;width:54px;height:54px;border-radius:50%;background:conic-gradient(#FE5F00 calc(var(--p)*1%),rgba(255,255,255,.2) 0);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(254,95,0,.45);animation:cpPulse 3s ease-in-out infinite;}
+    @keyframes cpPulse{0%,100%{box-shadow:0 0 12px rgba(254,95,0,.35);}50%{box-shadow:0 0 28px rgba(254,95,0,.7);}}
+    #page-change-password .cp-ring b{width:42px;height:42px;border-radius:50%;background:#43194C;display:flex;align-items:center;justify-content:center;font:700 13px 'Poppins',sans-serif;}
+    #page-change-password .cp-strength .tx{flex:1;min-width:220px;}
+    #page-change-password .cp-strength .tx b{display:block;font:700 15px 'Poppins',sans-serif;}
+    #page-change-password .cp-strength .tx span{font-size:12.5px;color:rgba(255,255,255,.86);}
+    #page-change-password .cp-strength a{color:#FFB27A !important;font-weight:700;border-bottom:1.5px solid rgba(255,178,122,.5);cursor:pointer;}
+    #page-change-password .cp-sact .btn{min-height:38px;padding:0 16px;font-size:13px;background:var(--orange);color:#fff !important;border:0;}
+    #page-change-password .cp-sw{position:absolute;right:20px;top:10px;z-index:3;display:flex;align-items:center;gap:8px;font:700 10.5px 'Inter',sans-serif;letter-spacing:.3px;text-transform:uppercase;color:rgba(255,255,255,.86);}
+    #page-change-password .cp-sw .seg{display:inline-flex;border:1.5px dashed var(--h-pline);border-radius:9px;overflow:hidden;background:var(--h-pill);}
+    #page-change-password .cp-sw button{border:0;background:transparent;color:#fff;font:700 10.5px 'Inter',sans-serif;padding:4px 10px;cursor:pointer;text-transform:none;letter-spacing:0;}
+    #page-change-password .cp-sw button.on{background:var(--orange);}
+    /* body */
+    #page-change-password .cp-in input,#page-change-password .cp-in select,#page-change-password .cp-in textarea{width:100%;box-sizing:border-box;border:1.5px solid #E7D8C6;border-radius:13px;background:#FFFDFA;padding:10px 13px;font:500 14px 'Inter',sans-serif;color:var(--ink);outline:0;}
+    #page-change-password .cp-in input:focus,#page-change-password .cp-in select:focus,#page-change-password .cp-in textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(42,0,124,.12);}
+    #page-change-password .cp-in textarea{resize:vertical;min-height:110px;}
+    /* dialogs */
+    #page-change-password .cp-mod{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(27,19,48,.55);}
+    #page-change-password .cp-mod.open{display:flex;}
+    #page-change-password .cp-dlg{width:100%;max-width:640px;max-height:calc(100vh - 36px);display:flex;flex-direction:column;background:#fff;border-radius:22px;box-shadow:0 40px 80px -30px rgba(27,19,48,.7);overflow:hidden;}
+    #page-change-password .cp-dlg.sm{max-width:460px;}
+    #page-change-password .cp-dh{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid #F5EBDF;}
+    #page-change-password .cp-dh h3{font:700 17px 'Poppins',sans-serif;color:var(--purple);margin:0;text-transform:none;}
+    #page-change-password .cp-x{border:0;background:var(--cream-2);width:34px;height:34px;border-radius:10px;font-size:20px;line-height:1;cursor:pointer;color:var(--ink-soft);}
+    #page-change-password .cp-db{padding:18px 22px;overflow-y:auto;}
+    #page-change-password .cp-df{display:flex;gap:10px;justify-content:flex-end;padding:14px 22px;border-top:1px solid #F5EBDF;background:#FFFDFA;}
+    #page-change-password .cp-df .btn{min-height:44px;padding:0 22px;}
+    #page-change-password .cp-note{display:flex;gap:10px;align-items:flex-start;background:#FFF6EC;border:1px solid #FBDDBF;border-radius:14px;padding:12px 14px;font-size:12.5px;color:var(--ink-soft);margin-bottom:14px;line-height:1.5;}
+    #page-change-password .cp-note svg{flex:0 0 auto;color:var(--orange);margin-top:1px;}
+    #page-change-password .cp-err{display:none;margin-top:5px;font-size:12px;font-weight:600;color:#D23C32;}
+    #page-change-password .cp-thx{text-align:center;padding:26px 10px;}
+    #page-change-password .cp-thx .ck{width:76px;height:76px;border-radius:50%;background:#E3F7EC;color:#1E8A52;display:inline-flex;align-items:center;justify-content:center;margin-bottom:10px;}
+    #page-change-password .cp-thx h3{font:800 20px 'Poppins',sans-serif;color:var(--purple);margin:0 0 6px;} #page-change-password .cp-thx p{color:var(--ink-soft);font-size:14px;margin:0 0 16px;}
+    #page-change-password .cp-toast{position:fixed;left:50%;top:84px;transform:translateX(-50%);z-index:110;background:#14532D;color:#fff;border-radius:14px;padding:11px 18px;font-size:13.5px;font-weight:600;box-shadow:0 18px 40px -16px rgba(0,0,0,.5);display:none;max-width:calc(100% - 24px);}
+    #page-change-password .cp-toast.show{display:block;}
+    #page-change-password .btn[disabled]{opacity:.5;cursor:not-allowed;box-shadow:none;}
+    @media(max-width:1279px){#page-change-password .cp-kpis{display:none;}}
+    @media(max-width:1000px){
+        #page-change-password .cp-sact{display:none;}
+    }
+    @media(max-width:700px){
+        #page-change-password .cp-hero{padding-top:14px;min-height:0;}
+        #page-change-password .cp-meta span:nth-child(n+2){display:none;}
+        #page-change-password .cp-badge{width:58px;height:58px;border-radius:17px;}
+        #page-change-password .cp-who h1{font-size:21px;margin:4px 0 8px;}
+        #page-change-password .cp-meta{gap:6px 8px;} #page-change-password .cp-meta span{font-size:12px;padding:3px 10px;}
+        #page-change-password .cp-meta span:nth-child(n+3){display:none;}
+        #page-change-password .cp-actions .btn{min-height:40px;padding:0 14px;}
+        #page-change-password .cp-strength{margin-top:14px;padding:10px 14px;gap:12px;}
+        #page-change-password .cp-strength .tx span{display:none;} #page-change-password .cp-strength .tx b{font-size:14px;}
+        #page-change-password .cp-sw{display:none;}
+        #page-change-password .cp-floor{height:90px;}
+        #page-change-password .cp-mod{align-items:flex-end;padding:0;}
+        #page-change-password .cp-dlg{max-width:none;border-radius:22px 22px 0 0;max-height:92vh;}
+        #page-change-password .cp-df{padding:12px 18px calc(12px + env(safe-area-inset-bottom));} #page-change-password .cp-df .btn{flex:1;}
+        #page-change-password .cp-db{padding:16px 18px;}
+    }
+    @media(prefers-reduced-motion:reduce){#page-change-password .cp-hero::after,#page-change-password .cp-floor,#page-change-password .cp-badge::before,#page-change-password .cp-ring{animation:none;}}
+
+    #page-change-password .cp-body{background:#FFF9F3;padding:30px 0 90px;}
+    #page-change-password .cp-wrap{max-width:560px;margin:0 auto;}
+    #page-change-password .cp-card{background:#fff;border:1px solid #F5EBDF;border-radius:22px;box-shadow:var(--shadow-soft);padding:28px;}
+    #page-change-password .cp-card h2{font:800 22px 'Poppins',sans-serif;color:var(--purple);margin:0 0 4px;text-transform:none;}
+    #page-change-password .cp-card p.sub{font-size:14px;line-height:1.5;color:var(--ink-soft);margin:0 0 20px;}
+    #page-change-password .cp-f{margin-bottom:16px;}
+    #page-change-password .cp-f label{display:block;font:600 13px 'Inter',sans-serif;color:var(--ink);margin-bottom:6px;}
+    #page-change-password .cp-in{position:relative;}
+    #page-change-password .cp-in input{width:100%;box-sizing:border-box;border:1.5px solid #E7D8C6;border-radius:13px;background:#FFFDFA;padding:12px 46px 12px 14px;font:500 15px 'Inter',sans-serif;color:var(--ink);outline:0;}
+    #page-change-password .cp-in input:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(42,0,124,.12);}
+    #page-change-password .cp-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:0;background:transparent;border-radius:10px;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;}
+    #page-change-password .cp-eye:hover{background:var(--cream-2);color:var(--purple);}
+    #page-change-password .cp-err{display:none;margin-top:5px;font-size:12px;font-weight:600;color:#D23C32;}
+    #page-change-password .cp-f.err .cp-err{display:block;}
+    #page-change-password .cp-f.err .cp-in input{border-color:#E0483E;background:#FFF6F5;}
+    #page-change-password .cp-match{display:none;margin-top:5px;font-size:12px;font-weight:600;color:#1E8A52;}
+    #page-change-password .cp-match.on{display:block;}
+    #page-change-password .cp-alert{display:none;gap:10px;align-items:flex-start;background:#FFF0EE;border:1px solid #F5C6C0;color:#B23A2E;border-radius:14px;padding:12px 14px;font-size:13.5px;margin-bottom:16px;}
+    #page-change-password .cp-alert.on{display:flex;}
+    #page-change-password .cp-alert ul{margin:0;padding-left:18px;}
+    #page-change-password .cp-go{width:100%;min-height:48px;font-size:15px;}
+    #page-change-password .cp-done{display:none;text-align:center;padding:14px 4px 4px;}
+    #page-change-password .cp-done .ck{width:84px;height:84px;border-radius:50%;background:#E3F7EC;color:#1E8A52;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;}
+    #page-change-password .cp-done h2{font:800 22px 'Poppins',sans-serif;color:var(--purple);margin:0 0 6px;}
+    #page-change-password .cp-done p{color:var(--ink-soft);font-size:14px;margin:0 0 20px;}
+    #page-change-password .cp-done .btn{min-width:180px;min-height:46px;}
+    #page-change-password .cp-mock{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:14px;font-size:12px;color:var(--ink-soft);}
+    #page-change-password .cp-mock code{background:#fff;border:1.5px dashed #E7D8C6;border-radius:8px;padding:2px 8px;font-weight:700;color:var(--purple);}
+    @media(max-width:700px){#page-change-password .cp-card{padding:20px 16px;border-radius:18px;}}
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="cp-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16.5" r="1.2"/></symbol>
+    <symbol id="cp-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="cp-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="cp-eyeoff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.9 17.9A10.9 10.9 0 0 1 12 20C5 20 1 12 1 12a18.5 18.5 0 0 1 5.1-5.9"/><path d="M9.9 4.2A10.9 10.9 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.2 3.2"/><path d="M14.1 14.1a3 3 0 1 1-4.2-4.2"/><line x1="1" y1="1" x2="23" y2="23"/></symbol>
+    <symbol id="cp-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="cp-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></symbol>
+</defs></svg>
+<main>
+<section class="cp-hero">
+    <canvas class="cp-net" id="cpNet" aria-hidden="true"></canvas><div class="cp-floor" aria-hidden="true"></div>
+    <div class="wrap">
+        <div class="cp-id">
+            <div class="cp-badge"><svg width="44" height="44"><use href="#cp-lock"></use></svg></div>
+            <div class="cp-who">
+                <div class="cp-kick">Account security</div>
+                <h1>Change your password</h1>
+                <div class="cp-meta"><span><svg width="14" height="14"><use href="#cp-user"></use></svg> Partner ID <b>NET000076</b></span></div>
+            </div>
+        </div>
+        <div class="cp-kpis" aria-label="At a glance">
+            <div class="cp-kpi"><div class="l">Login ID</div><div class="v">gulf.transport</div><div class="t">used to sign in</div></div>
+            <div class="cp-kpi"><div class="l">Admin contact</div><div class="v">Omar Farsi</div><div class="t">receives account emails</div></div>
+            <div class="cp-kpi"><div class="l">Contact email</div><div class="v" style="font-size:19px;line-height:1.55;">o***@gulftransport.ae</div><div class="t">on file</div></div>
+            <div class="cp-kpi"><div class="l">Company</div><div class="v" style="font-size:22px;line-height:1.3;">Gulf transport llc</div><div class="t">Registered Partner</div></div>
+        </div>
+        <div class="cp-strength">
+            <div class="cp-ring" style="--p:100"><b><svg width="20" height="20" style="color:#fff"><use href="#cp-check"></use></svg></b></div>
+            <div class="tx"><b>Update it in three steps</b><span>Enter your current password, choose a new one and confirm it. You will be taken to the Home page afterwards.</span></div>
+        </div>
+    </div>
+</section>
+<section class="cp-body"><div class="wrap"><div class="cp-wrap">
+    <div class="cp-card">
+        <div id="cpForm">
+            <h2>Change password</h2>
+            <p class="sub">Enter new password below to complete the reset process</p>
+            <div class="cp-alert" id="cpAlert" role="alert"><svg width="18" height="18" style="flex:0 0 auto;margin-top:1px;"><use href="#cp-info"></use></svg><ul id="cpAlertList"></ul></div>
+            <div class="cp-f" id="cpF1"><label for="cpOld">Current Password</label><div class="cp-in"><input type="password" id="cpOld" autocomplete="current-password"><button type="button" class="cp-eye" onclick="cpEye('cpOld',this)" aria-label="Show password"><svg width="18" height="18"><use href="#cp-eye"></use></svg></button></div><div class="cp-err">Current Password Not Entered.</div></div>
+            <div class="cp-f" id="cpF2"><label for="cpNew">New Password</label><div class="cp-in"><input type="password" id="cpNew" autocomplete="new-password" oninput="cpMatch()"><button type="button" class="cp-eye" onclick="cpEye('cpNew',this)" aria-label="Show password"><svg width="18" height="18"><use href="#cp-eye"></use></svg></button></div><div class="cp-err">New Password Not Entered.</div></div>
+            <div class="cp-f" id="cpF3"><label for="cpCon">Confirm New Password</label><div class="cp-in"><input type="password" id="cpCon" autocomplete="new-password" oninput="cpMatch()" onkeydown="if(event.key==='Enter')cpSubmit()"><button type="button" class="cp-eye" onclick="cpEye('cpCon',this)" aria-label="Show password"><svg width="18" height="18"><use href="#cp-eye"></use></svg></button></div><div class="cp-err">Confirm Password Not Entered.</div><div class="cp-match" id="cpMatch">Passwords match</div></div>
+            <button type="button" class="btn btn-primary cp-go" id="cpBtn" onclick="cpSubmit()">Update Password</button>
+            <div class="cp-mock">Mockup &middot; the correct current password is <code>Demo@123</code></div>
+        </div>
+        <div class="cp-done" id="cpDone"><span class="ck"><svg width="40" height="40"><use href="#cp-check"></use></svg></span><h2>Password changed successfully</h2><p>Your password has been successfully changed.</p><button type="button" class="btn btn-primary" onclick="closeStaticPage(event)">Go to Home</button></div>
+    </div>
+</div></div></section>
+</main>
+<script>
+(function(){
+    var $ = function(id){ return document.getElementById(id); };
+    window.cpEye = function(id, btn){ var i = $(id), show = i.type === 'password'; i.type = show ? 'text' : 'password'; btn.querySelector('use').setAttribute('href', show ? '#cp-eyeoff' : '#cp-eye'); btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password'); };
+    window.cpMatch = function(){ var a = $('cpNew').value, b = $('cpCon').value; $('cpMatch').classList.toggle('on', !!b && a === b); };
+    function alertShow(list){ $('cpAlertList').innerHTML = list.map(function(m){ return '<li>' + m + '</li>'; }).join(''); $('cpAlert').classList.add('on'); }
+    function resetMsgs(){ $('cpF1').querySelector('.cp-err').textContent = 'Current Password Not Entered.'; $('cpF3').querySelector('.cp-err').textContent = 'Confirm Password Not Entered.'; }
+    window.cpOnShow = function(){ ['cpOld','cpNew','cpCon'].forEach(function(i){ $(i).value = ''; $(i).type = 'password'; }); document.querySelectorAll('#cpForm .cp-eye use').forEach(function(u){ u.setAttribute('href', '#cp-eye'); }); document.querySelectorAll('#cpForm .cp-f').forEach(function(f){ f.classList.remove('err'); }); resetMsgs(); $('cpAlert').classList.remove('on'); $('cpMatch').classList.remove('on'); $('cpForm').style.display = ''; $('cpDone').style.display = 'none'; };
+    window.cpSubmit = function(){
+        var o = $('cpOld').value.trim(), n = $('cpNew').value.trim(), c = $('cpCon').value.trim(), bad = [];
+        document.querySelectorAll('#cpForm .cp-f').forEach(function(f){ f.classList.remove('err'); }); resetMsgs(); $('cpAlert').classList.remove('on');
+        if(!o){ $('cpF1').classList.add('err'); bad.push('Current Password Not Entered.'); }
+        if(!n){ $('cpF2').classList.add('err'); bad.push('New Password Not Entered.'); }
+        if(!c){ $('cpF3').classList.add('err'); bad.push('Confirm Password Not Entered.'); }
+        if(bad.length){ alertShow(bad); return; }
+        if(n !== c){ $('cpF3').classList.add('err'); $('cpF3').querySelector('.cp-err').textContent = 'New and Confirm Password do not match.'; alertShow(['New and Confirm Password do not match.']); return; }
+        if(o !== 'Demo@123'){ $('cpF1').classList.add('err'); $('cpF1').querySelector('.cp-err').textContent = 'Old password is incorrect.'; alertShow(['Old password is incorrect.']); return; }
+        $('cpBtn').disabled = true; setTimeout(function(){ $('cpBtn').disabled = false; $('cpForm').style.display = 'none'; $('cpDone').style.display = 'block'; }, 500);
+    };
+    var page = $('page-change-password'), cv = $('cpNet'), ctx = cv.getContext('2d'), nodes = [], W = 0, H = 0, run = false;
+    function size(){ var r = cv.getBoundingClientRect(); W = r.width; H = r.height; var d = Math.min(2, window.devicePixelRatio || 1); cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); }
+    function seed(){ nodes = []; var n = Math.max(26, Math.round(W / 38)); for(var i = 0; i < n; i++) nodes.push({x:Math.random() * W, y:Math.random() * H, vx:(Math.random() - .5) * .35, vy:(Math.random() - .5) * .35, o:Math.random() < .18}); }
+    function frame(){
+        if(page.style.display === 'none'){ run = false; return; }
+        ctx.clearRect(0, 0, W, H);
+        for(var i = 0; i < nodes.length; i++){
+            var a = nodes[i]; a.x += a.vx; a.y += a.vy; if(a.x < 0 || a.x > W) a.vx *= -1; if(a.y < 0 || a.y > H) a.vy *= -1;
+            for(var j = i + 1; j < nodes.length; j++){ var b = nodes[j], dx = a.x - b.x, dy = a.y - b.y, d = dx * dx + dy * dy; if(d < 17000){ ctx.strokeStyle = 'rgba(255,255,255,' + (0.32 * (1 - d / 17000)).toFixed(3) + ')'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); } }
+        }
+        for(var k = 0; k < nodes.length; k++){ var p = nodes[k]; ctx.beginPath(); ctx.arc(p.x, p.y, p.o ? 3.2 : 1.8, 0, 6.2832); ctx.fillStyle = p.o ? '#FE5F00' : 'rgba(255,255,255,.6)'; if(p.o){ ctx.shadowColor = '#FE5F00'; ctx.shadowBlur = 12; } ctx.fill(); ctx.shadowBlur = 0; }
+        requestAnimationFrame(frame);
+    }
+    function start(){ if(run) return; size(); if(!nodes.length) seed(); run = true; requestAnimationFrame(frame); }
+    window.addEventListener('resize', function(){ if(run){ size(); seed(); } });
+    new MutationObserver(function(){ if(page.style.display !== 'none') start(); }).observe(page, {attributes:true, attributeFilter:['style']});
+})();
+</script>
 </div>
 
 <!-- ===================== E-SHIPMENTS (tracking dashboard, details, bulk upload) ===================== -->
@@ -6743,7 +7271,7 @@
             </div>
             <div class="row">
                 <label><input type="checkbox" name="remember"> Remember Me</label>
-                <a href="#">Forgot password?</a>
+                <a href="#" onclick="closeLoginModal();showStaticPage('forgot-password',event)">Forgot password?</a>
             </div>
             <button class="submit" type="submit">Login</button>
             <p class="join">Don’t Have An Account? <a href="#" onclick="closeLoginModal();openRegistration(event);">Join Now</a></p>
@@ -6838,8 +7366,8 @@
                 <a href="#" onclick="showStaticPage('tp-application',event)"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span> TP Application</a>
                 <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span> Billing Centre</a>
                 <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></span> Service Request</a>
-                <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span> Change Password</a>
-                <a href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span> Help Centre</a>
+                <a href="#" onclick="showStaticPage('change-password',event)"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span> Change Password</a>
+                <a href="#" onclick="showStaticPage('help-centre',event)"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span> Help Centre</a>
                 <div class="divider"></div>
                 <a href="#" class="signout" onclick="logoutUser(event)"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span> Sign Out</a>
                 <div class="user-dropdown-meta">D7 International · NET000094</div>
@@ -7290,6 +7818,7 @@
             if(beforeEl) beforeEl.style.display = 'none';
             if(afterEl) afterEl.style.display = 'none';
             if(aboutEl) aboutEl.style.display = 'none';
+            var staticEl = document.getElementById('staticPageSection'); if(staticEl) staticEl.style.display = 'none';
             if(regEl) regEl.style.display = '';
             regResetForm();
             window.dispatchEvent(new Event('resize'));
@@ -7730,6 +8259,8 @@
             if(slug === 'tp-application' && window.tpOnShow) window.tpOnShow();
             if(slug === 'marketplace' && window.mkOnShow) window.mkOnShow();
             if(slug === 'eshipments' && window.esOnShow) window.esOnShow();
+            if(slug === 'change-password' && window.cpOnShow) window.cpOnShow();
+            if(slug === 'forgot-password' && window.fpOnShow) window.fpOnShow();
             window.dispatchEvent(new Event('resize'));
             window.scrollTo({top:0, behavior:'smooth'});
         }
@@ -7998,7 +8529,7 @@
         if(p.l.length > 1) lchips += '<span class="more">+' + (p.l.length - 1) + '</span>';
         var lock = st.viewer === 'trusted' ? '' : ' locked';
         var lockTitle = st.viewer === 'trusted' ? '' : ' title="Services and locations are visible to Trusted Partners only"';
-        return '<div class="dir2-item">' +
+        return '<div class="dir2-item ' + (p.t === 'trusted' ? 't-tp' : 't-rp') + '">' +
             '<div class="dir2-id"><div class="dir2-logo">' + esc(initials(p.n)) + '</div>' +
             '<div class="dir2-name"><h4><span>' + esc(p.n) + '</span><svg width="16" height="16" aria-label="' + (p.t === 'trusted' ? 'Trusted Partner' : 'Registered Partner') + '"><use href="' + BADGE[p.t] + '"></use></svg></h4>' +
             '<div class="dir2-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>' + esc(p.c) + ', ' + esc(p.k) + '</div></div></div>' +
@@ -8042,6 +8573,10 @@
             ? 'You are a <b>Trusted Partner</b> &mdash; unlimited profile views, with Services and Service Location filters unlocked.'
             : 'Free profile views used: <b>3</b> / 10 &mdash; Trusted Partners get unlimited access. Services offered and locations are visible to Trusted Partners only.';
     }
+    window.dir2Tpc = function(c){
+        document.getElementById('page-directory').setAttribute('data-tpc', c);
+        document.querySelectorAll('#dir2TpcSeg button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-c') === c); });
+    };
     window.dir2SetViewer = function(v){
         st.viewer = v; st.shown = st.step;
         document.querySelectorAll('#dir2ViewerSeg button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-v') === v); });
