@@ -1321,12 +1321,10 @@
     #page-directory .dir2-note a{margin-left:auto;font-weight:700;color:var(--purple);}
     #page-directory .dir2-list{display:flex;flex-direction:column;gap:12px;}
     #page-directory .dir2-item{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1fr) minmax(0,1.7fr) auto;align-items:center;gap:22px;background:#fff;border:1px solid #F5EBDF;border-radius:var(--radius-md);padding:16px 22px;box-shadow:var(--shadow-soft);transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;}
-    /* Trusted Partner cards carry a clear light colour (Registered stay white). Mockup compares three: lavender (brand purple family), sky, mint -- picked with the switch above the list */
-    #page-directory[data-tpc="lavender"] .dir2-item.t-tp{background:#EDE6FF;border-color:#D2C4F6;}
-    #page-directory[data-tpc="sky"] .dir2-item.t-tp{background:#E2F0FF;border-color:#BCD9F5;}
-    #page-directory[data-tpc="mint"] .dir2-item.t-tp{background:#DCF4EA;border-color:#B5E3CE;}
+    /* Trusted Partner cards carry a light rose colour (Registered stay white) */
+    #page-directory .dir2-item.t-tp{background:#FDE7EF;border-color:#F3C3D5;}
     #page-directory .dir2-item.t-tp .dir2-logo{background:rgba(255,255,255,.75);}
-    #page-directory .dir2-item.t-tp .dir2-chips span{background:rgba(255,255,255,.75);}
+    #page-directory .dir2-item.t-tp .dir2-chips span:not(.more){background:rgba(255,255,255,.75);}
     #page-directory .dir2-item:hover{transform:translateY(-2px);border-color:#FFD8BD;box-shadow:0 16px 32px -18px rgba(42,0,124,.3);}
     #page-directory .dir2-id{display:flex;align-items:center;gap:14px;min-width:0;}
     #page-directory .dir2-logo{flex:0 0 auto;width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--cream-2),#FFDDBB);color:var(--purple);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;font-family:'Poppins',sans-serif;}
@@ -3743,7 +3741,7 @@
 <!-- ===================== PARTNER DIRECTORY v2 (2026-10-05) =====================
      Search-first header, segmented Trusted / Registered switch with live counts, one slim filter bar, compact rows (list default) or cards (grid).
      Services / Service Location filters stay Trusted-only (shown locked), as in the real directory. -->
-<div class="static-page" id="page-directory" data-tpc="lavender" style="display:none;">
+<div class="static-page" id="page-directory" style="display:none;">
     <main>
     <section class="dir2-hero t-plum" id="dir2Hero">
         <div class="dir2-theme"><span class="lbl">Mockup &middot; hero colour</span>
@@ -3790,12 +3788,6 @@
                 <span class="seg" id="dir2ViewerSeg">
                     <button type="button" class="on" data-v="registered" onclick="dir2SetViewer('registered')">Registered Partner</button>
                     <button type="button" data-v="trusted" onclick="dir2SetViewer('trusted')">Trusted Partner</button>
-                </span>
-                <span>&middot; TP card colour</span>
-                <span class="seg" id="dir2TpcSeg">
-                    <button type="button" class="on" data-c="lavender" onclick="dir2Tpc('lavender')">Lavender</button>
-                    <button type="button" data-c="sky" onclick="dir2Tpc('sky')">Sky</button>
-                    <button type="button" data-c="mint" onclick="dir2Tpc('mint')">Mint</button>
                 </span>
             </div>
             <div class="dir2-bar">
@@ -8573,10 +8565,6 @@ window.n4lHeroNet = function(pageId, canvasId){
             ? 'You are a <b>Trusted Partner</b> &mdash; unlimited profile views, with Services and Service Location filters unlocked.'
             : 'Free profile views used: <b>3</b> / 10 &mdash; Trusted Partners get unlimited access. Services offered and locations are visible to Trusted Partners only.';
     }
-    window.dir2Tpc = function(c){
-        document.getElementById('page-directory').setAttribute('data-tpc', c);
-        document.querySelectorAll('#dir2TpcSeg button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-c') === c); });
-    };
     window.dir2SetViewer = function(v){
         st.viewer = v; st.shown = st.step;
         document.querySelectorAll('#dir2ViewerSeg button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-v') === v); });
