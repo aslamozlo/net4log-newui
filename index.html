@@ -356,10 +356,11 @@
     .dash-nav{display:flex;flex-direction:column;gap:4px;}
     .dash-nav-item{
         display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;
-        font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:var(--ink);
+        font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:#554D66;
         cursor:pointer;transition:background .15s ease,color .15s ease;
     }
-    .dash-nav-item:hover{background:var(--cream-2);}
+    .dash-nav-item:hover{background:var(--cream-2);color:var(--orange);}
+    .dash-nav-item:hover .ic{color:var(--orange);}
     .dash-nav-item.active{background:linear-gradient(135deg,var(--cream-2),#FFE3C4);color:var(--purple);}
     .dash-nav-item .ic{
         flex:0 0 34px;width:34px;height:34px;border-radius:10px;background:var(--cream-2);
@@ -375,13 +376,14 @@
     }
     .dash-subnav.open,.dash-nav-group:hover .dash-subnav,.dash-nav-group.open .dash-subnav{margin:4px 0 8px 30px;}
     .dash-subnav.open{max-height:220px;}
-    .dash-subnav a{padding:9px 14px 9px 28px;border-left:2px solid #F0E3D3;border-radius:0 10px 10px 0;font-size:13px;font-weight:600;color:var(--ink-soft);transition:color .15s ease,background .15s ease,border-color .15s ease;}
-    .dash-subnav a:hover{color:var(--purple);border-left-color:#B9A6E8;background:#FFF8F0;}
+    .dash-subnav a{padding:9px 14px 9px 28px;border-left:2px solid #F0E3D3;border-radius:0 10px 10px 0;font-size:13px;font-weight:600;color:#554D66;transition:color .15s ease,background .15s ease,border-color .15s ease;}
+    .dash-subnav a:hover{color:var(--orange);border-left-color:#FFC9A3;background:#FFF8F0;}
     .dash-subnav a.current{color:var(--orange);font-weight:700;border-left-color:var(--orange);background:#FFF4E8;}
-    .dash-nav-group.open > .dash-nav-item{background:var(--cream-2);}
+    .dash-nav-group.open > .dash-nav-item{background:var(--cream-2);color:var(--orange);}
+    .dash-nav-group.open > .dash-nav-item .ic{color:var(--orange);}
     .dash-nav-group:hover .dash-subnav{max-height:220px;}
     .dash-nav-group:hover .dash-nav-item .chev{transform:rotate(180deg);}
-    .dash-nav-group:hover .dash-nav-item{background:var(--cream-2);}
+    .dash-nav-group:hover .dash-nav-item{background:var(--cream-2);color:var(--orange);}
     .dash-sidebar-divider{height:1px;background:#F0E7DC;margin:14px 6px;}
     .dash-nav-mobile-menu{display:none;}
     .dash-nav-group.open .dash-subnav{max-height:220px;}
