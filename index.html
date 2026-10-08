@@ -370,13 +370,15 @@
     .dash-nav-item .chev{transition:transform .18s ease;color:var(--ink-soft);flex:0 0 auto;display:flex;}
     .dash-nav-item.open .chev{transform:rotate(180deg);}
     .dash-subnav{
-        max-height:0;overflow:hidden;transition:max-height .22s ease;
-        display:flex;flex-direction:column;padding-left:22px;margin:0 0 0 17px;border-left:2px dashed #F0DCC5;
+        max-height:0;overflow:hidden;transition:max-height .22s ease,margin .22s ease;
+        display:flex;flex-direction:column;margin:0 0 0 30px;
     }
+    .dash-subnav.open,.dash-nav-group:hover .dash-subnav,.dash-nav-group.open .dash-subnav{margin:4px 0 8px 30px;}
     .dash-subnav.open{max-height:220px;}
-    .dash-subnav a{padding:9px 14px;font-size:13px;font-weight:600;color:var(--ink-soft);border-radius:10px;}
-    .dash-subnav a:hover{background:var(--cream-2);color:var(--purple);}
-    .dash-subnav a.current{color:var(--orange);background:var(--cream-2);}
+    .dash-subnav a{padding:9px 14px 9px 28px;border-left:2px solid #F0E3D3;border-radius:0 10px 10px 0;font-size:13px;font-weight:600;color:var(--ink-soft);transition:color .15s ease,background .15s ease,border-color .15s ease;}
+    .dash-subnav a:hover{color:var(--purple);border-left-color:#B9A6E8;background:#FFF8F0;}
+    .dash-subnav a.current{color:var(--orange);font-weight:700;border-left-color:var(--orange);background:#FFF4E8;}
+    .dash-nav-group.open > .dash-nav-item{background:var(--cream-2);}
     .dash-nav-group:hover .dash-subnav{max-height:220px;}
     .dash-nav-group:hover .dash-nav-item .chev{transform:rotate(180deg);}
     .dash-nav-group:hover .dash-nav-item{background:var(--cream-2);}
@@ -668,6 +670,7 @@
 @media(max-width:760px){.ill-hero{height:360px;padding:26px 0 80px}.ill-h1{font-size:30px}.ill-art{width:100%;right:-14%;opacity:.3;height:70%}.ill-sub{font-size:15px}.ill-sea.b{height:48px}.ill-sea.a{height:36px}}
 .n4l-public-page .hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
 .n4l-public-page .hero-note{display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding:8px 18px 8px 8px;border-radius:30px;background:#E7F6EE;border:1.5px solid #B7E4CB;font-size:15px;font-weight:500;color:#14532D;box-shadow:0 8px 20px -12px rgba(30,158,90,.45);}
+body.n4l-logged .guest-only{display:none !important;}
 .n4l-public-page .hero-note svg{flex:0 0 auto;width:24px;height:24px;padding:4px;border-radius:50%;background:#1E9E5A;color:#fff;}
 .n4l-public-page .hero-note strong{font-weight:700;color:#1E9E5A;}
 .n4l-public-page .hero-art{position:relative;height:430px;}
@@ -1731,10 +1734,10 @@
             <h1><span class="h1-main">Connecting the world digitally</span><span class="tagline-line">of the people, by the people,<br>for the people.</span></h1>
             <p class="lead">A transparent, trust-driven global community for Freight Forwarders, Carriers, and NVOCCs — powered by digital tools and dedicated services to accelerate your growth.</p>
             <div class="hero-cta">
-                <a class="btn btn-primary" href="#" onclick="openRegistration(event)">Register now</a>
+                <a class="btn btn-primary guest-only" href="#" onclick="openRegistration(event)">Register now</a>
                 <a class="btn btn-ghost" href="#how">How it works ↓</a>
             </div>
-            <p class="hero-note"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg> <span>Registration is <strong>absolutely free</strong>.</span></p>
+            <p class="hero-note guest-only"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg> <span>Registration is <strong>absolutely free</strong>.</span></p>
         </div>
         <div class="hero-art">
             <canvas class="hero-globe" id="heroGlobe" role="img" aria-label="A rotating globe showing logisticians connected across the world. Drag to turn it."></canvas>
@@ -1938,7 +1941,7 @@
 
 
 <!-- JOIN -->
-<section class="section" id="join" style="padding-top:0;">
+<section class="section guest-only" id="join" style="padding-top:0;">
     <div class="wrap">
         <div class="join">
             <div>
@@ -2428,7 +2431,7 @@
 <div class="ill-wrap"><span class="ill-pill"><i></i>About Us</span>
 <h1 class="ill-h1 brk">Welcome To The World <em>Of Logisticians</em></h1>
 <p class="ill-sub">A democratic platform connecting logisticians worldwide.</p>
-<div class="ill-cta"><a class="btn btn-primary" href="#" onclick="openRegistration(event)">Join free</a><a class="btn btn-ghost" href="#" onclick="showStaticPage('contact-us',event)">Talk to us</a></div>
+<div class="ill-cta guest-only"><a class="btn btn-primary" href="#" onclick="openRegistration(event)">Join free</a><a class="btn btn-ghost" href="#" onclick="showStaticPage('contact-us',event)">Talk to us</a></div>
 </div>
 <div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><g class="ill-birds" fill="none" stroke="#E8541B" stroke-linecap="round" stroke-linejoin="round"><path d="M18 58 q6-8 12 0 q6-8 12 0" stroke-width="2"/><path d="M56 40 q5-6 10 0 q5-6 10 0" stroke-width="1.8"/><path d="M44 76 q4-5 8 0 q4-5 8 0" stroke-width="1.6"/></g><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(-48 163 38)"><use href="#ill-plane" x="128" y="3" width="70" height="70"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
 </section>
@@ -3595,7 +3598,7 @@
     <section class="ill-hero full">
 <div class="ill-wrap"><span class="ill-pill"><i></i>Net4Log Services</span>
 <h1 class="ill-h1">NET4LOG <em>Services</em></h1>
-<div class="ill-cta"><a class="btn btn-primary" href="#" onclick="openRegistration(event)">Join free</a><a class="btn btn-ghost" href="#" onclick="showStaticPage('contact-us',event)">Talk to us</a></div>
+<div class="ill-cta guest-only"><a class="btn btn-primary" href="#" onclick="openRegistration(event)">Join free</a><a class="btn btn-ghost" href="#" onclick="showStaticPage('contact-us',event)">Talk to us</a></div>
 </div>
 <div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><g class="ill-birds" fill="none" stroke="#E8541B" stroke-linecap="round" stroke-linejoin="round"><path d="M18 58 q6-8 12 0 q6-8 12 0" stroke-width="2"/><path d="M56 40 q5-6 10 0 q5-6 10 0" stroke-width="1.8"/><path d="M44 76 q4-5 8 0 q4-5 8 0" stroke-width="1.6"/></g><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(-48 163 38)"><use href="#ill-plane" x="128" y="3" width="70" height="70"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
 </section>
@@ -3633,7 +3636,7 @@
 <h1 class="ill-h1">Let's talk <em>logistics</em></h1>
 <p class="ill-sub">Questions about membership, events or your account? Reach the Net4Log team directly, or send a message and we'll get back to you within 24 hours.</p>
 </div>
-<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><g class="ill-birds" fill="none" stroke="#E8541B" stroke-linecap="round" stroke-linejoin="round"><path d="M18 58 q6-8 12 0 q6-8 12 0" stroke-width="2"/><path d="M56 40 q5-6 10 0 q5-6 10 0" stroke-width="1.8"/><path d="M44 76 q4-5 8 0 q4-5 8 0" stroke-width="1.6"/></g><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M190 50 Q258 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><use href="#ill-env" x="140" y="26" width="52" height="39"/></g><g><rect x="316" y="84" width="44" height="30" rx="9" fill="#FE5F00"/><path d="M330 114 l-4 10 l14 -10z" fill="#FE5F00"/><circle cx="330" cy="99" r="2.6" fill="#fff"/><circle cx="338" cy="99" r="2.6" fill="#fff"/><circle cx="346" cy="99" r="2.6" fill="#fff"/></g></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><g class="ill-birds" fill="none" stroke="#E8541B" stroke-linecap="round" stroke-linejoin="round"><path d="M18 58 q6-8 12 0 q6-8 12 0" stroke-width="2"/><path d="M56 40 q5-6 10 0 q5-6 10 0" stroke-width="1.8"/><path d="M44 76 q4-5 8 0 q4-5 8 0" stroke-width="1.6"/></g><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(-48 163 38)"><use href="#ill-plane" x="128" y="3" width="70" height="70"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
 </section>
 
   <main style="position: relative; max-width: 1180px; margin: -56px auto 0; padding: 0 24px 72px; display: flex; flex-direction: column; gap: 40px">
@@ -3974,15 +3977,12 @@ window.n4lHeroNet = function(pageId, canvasId){
 </script>
 <div class="static-page" id="page-help-centre" style="display:none;">
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h12l2 5H4l2-5z"/><path d="M4 7h16v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7z"/><path d="M9 11a3 3 0 0 0 6 0"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">Help Centre</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">Net4Log Help Centre</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero full">
+<div class="ill-wrap"><span class="ill-pill"><i></i>Help Centre</span>
+<h1 class="ill-h1">Net4Log <em>Help Centre</em></h1>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><g class="ill-birds" fill="none" stroke="#E8541B" stroke-linecap="round" stroke-linejoin="round"><path d="M18 58 q6-8 12 0 q6-8 12 0" stroke-width="2"/><path d="M56 40 q5-6 10 0 q5-6 10 0" stroke-width="1.8"/><path d="M44 76 q4-5 8 0 q4-5 8 0" stroke-width="1.6"/></g><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(-48 163 38)"><use href="#ill-plane" x="128" y="3" width="70" height="70"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
@@ -8302,6 +8302,7 @@ window.n4lHeroNet = function(pageId, canvasId){
             if(afterEl) afterEl.style.display = 'none';
             if(aboutEl) aboutEl.style.display = '';
             var loggedIn = (__aboutReturnState === 'after');
+            document.body.classList.toggle('n4l-logged', loggedIn);
             var navActions = document.getElementById('aboutNavActions');
             var userMenuEl = document.getElementById('aboutUserMenu');
             var mobileNavActions = document.getElementById('aboutMobileNavActions');
@@ -8333,6 +8334,12 @@ window.n4lHeroNet = function(pageId, canvasId){
         }
 
         var __staticReturnState = null;
+        function markSubnavCurrent(slug){
+            document.querySelectorAll('.dash-subnav a').forEach(function(a){
+                var m = (a.getAttribute('onclick') || '').match(/showStaticPage\('([^']+)'/);
+                a.classList.toggle('current', !!slug && !!m && m[1] === slug);
+            });
+        }
         function showStaticPage(slug, e){
             if(e) e.preventDefault();
             closeAllMenus(null);
@@ -8342,7 +8349,9 @@ window.n4lHeroNet = function(pageId, canvasId){
             var afterEl = document.getElementById('afterLoginSection');
             var aboutEl = document.getElementById('aboutNet4LogSection');
             /* already on a static page: keep the login state, the home sections are hidden so it cannot be re-read from them */
-            if(!(staticEl && getComputedStyle(staticEl).display !== 'none' && __staticReturnState)) __staticReturnState = (afterEl && getComputedStyle(afterEl).display !== 'none') ? 'after' : 'before';
+            if(!(staticEl && getComputedStyle(staticEl).display !== 'none' && __staticReturnState)) __staticReturnState = (afterEl && getComputedStyle(afterEl).display !== 'none') ? 'after' : 'before'
+            /* coming from the About page: carry its login state across */
+            if(aboutEl && getComputedStyle(aboutEl).display !== 'none' && __aboutReturnState) __staticReturnState = __aboutReturnState;;
             if(beforeEl) beforeEl.style.display = 'none';
             if(afterEl) afterEl.style.display = 'none';
             if(aboutEl) aboutEl.style.display = 'none';
@@ -8351,6 +8360,7 @@ window.n4lHeroNet = function(pageId, canvasId){
                 p.style.display = (p.id === 'page-' + slug) ? '' : 'none';
             });
             var loggedIn = (__staticReturnState === 'after');
+            document.body.classList.toggle('n4l-logged', loggedIn);
             var navActions = document.getElementById('staticNavActions');
             var userMenuEl = document.getElementById('staticUserMenu');
             var mobileNavActions = document.getElementById('staticMobileNavActions');
@@ -8363,6 +8373,7 @@ window.n4lHeroNet = function(pageId, canvasId){
             if(sidebarWrap) sidebarWrap.style.display = loggedIn ? '' : 'none';
             var mobileNavPanel = document.getElementById('staticMobileNav');
             if(mobileNavPanel) mobileNavPanel.classList.toggle('logged-in-drawer', loggedIn);
+            markSubnavCurrent(slug);
             if(slug === 'tp-application' && window.tpOnShow) window.tpOnShow();
             if(slug === 'marketplace' && window.mkOnShow) window.mkOnShow();
             if(slug === 'eshipments' && window.esOnShow) window.esOnShow();
@@ -8386,6 +8397,7 @@ window.n4lHeroNet = function(pageId, canvasId){
             window.scrollTo({top:0, behavior:'smooth'});
         }
         function showDashMain(){
+            markSubnavCurrent(null);
             var mainEl = document.getElementById('dashMainContent');
             var homeEl = document.getElementById('dashHomeContent');
             var publicPage = document.querySelector('#beforeLoginSection .n4l-public-page');
@@ -8399,6 +8411,7 @@ window.n4lHeroNet = function(pageId, canvasId){
         }
         function showDashHome(e){
             if(e) e.preventDefault();
+            markSubnavCurrent(null);
             closeAllMenus(null);
             var mainEl = document.getElementById('dashMainContent');
             var homeEl = document.getElementById('dashHomeContent');
@@ -8468,6 +8481,7 @@ window.n4lHeroNet = function(pageId, canvasId){
             if(aboutEl) aboutEl.style.display = 'none';
             if(staticEl) staticEl.style.display = 'none';
             if(afterEl) afterEl.style.display = '';
+            document.body.classList.add('n4l-logged');
             showDashMain();
             window.scrollTo({top:0, behavior:'smooth'});
         }
@@ -8482,6 +8496,7 @@ window.n4lHeroNet = function(pageId, canvasId){
             if(aboutEl) aboutEl.style.display = 'none';
             if(staticEl) staticEl.style.display = 'none';
             if(beforeEl) beforeEl.style.display = '';
+            document.body.classList.remove('n4l-logged');
             showDashMain();
             window.scrollTo({top:0, behavior:'smooth'});
         }
