@@ -632,6 +632,52 @@
         .n4l-public-page .static-hero h1 .tagline-line{font-size:20px;}
         .n4l-public-page .static-hero .hero-watermark{width:104px;height:104px;top:50%;left:50%;right:auto;transform:translate(-50%,-50%) rotate(-6deg);opacity:.08;}
     }
+/* About Net4Log hero: moving country ticker (its animation is !important so the page's global reduced-motion rule, which kills every animation, cannot freeze it)  along the bottom edge (+40px so the title area keeps its spacing) */
+.n4l-public-page .static-hero.has-ticker{height:200px;}
+.n4l-public-page .static-hero .hero-ticker{position:absolute;left:0;right:0;bottom:0;height:40px;background:rgba(20,6,34,.38);border-top:1px solid rgba(255,255,255,.14);overflow:hidden;white-space:nowrap;z-index:1;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);}
+.n4l-public-page .static-hero .hero-ticker div{display:inline-block;padding:11px 0;font:600 12.5px 'Poppins',sans-serif;letter-spacing:1.2px;text-transform:uppercase;color:#fff;animation:heroTicker 48s linear infinite !important;}
+.n4l-public-page .static-hero .hero-ticker span{display:inline-block;margin:0 22px;}
+.n4l-public-page .static-hero .hero-ticker span:nth-child(even){color:#FFB27A;}
+.n4l-public-page .static-hero .hero-ticker:hover div{animation-play-state:paused !important;}
+@keyframes heroTicker{to{transform:translateX(-50%);}}
+@media(max-width:640px){.n4l-public-page .static-hero.has-ticker{height:252px;}.n4l-public-page .static-hero .hero-ticker{height:36px;}.n4l-public-page .static-hero .hero-ticker div{padding:9px 0;font-size:12px;}}
+
+/* ===== Illustrated hero (About Us, Services, Contact Us): peach sky, cargo ship, sun, clouds, moving sea.
+   One fixed height on every page (340px, 360px on phones); content varies by weight: .full (buttons), .mid (subtitle only), .slim (title only). Animations are !important so the page's global
+   reduced-motion rule cannot freeze them. ===== */
+.ill-hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#FFE5CF 0%,#FFEFE0 55%,#FFF7EF 100%);padding:26px 0 70px;height:340px;box-sizing:border-box;display:flex;align-items:center}
+.ill-wrap{position:relative;z-index:4;width:100%;max-width:1180px;margin:0 auto;padding:0 28px;box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+.ill-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1.5px solid #FFD9B3;color:#B84400;font:700 12px 'Inter',sans-serif;letter-spacing:.8px;text-transform:uppercase;padding:7px 14px;border-radius:30px;box-shadow:0 8px 18px -12px rgba(184,68,0,.5)}
+.ill-pill i{width:7px;height:7px;border-radius:50%;background:#FE5F00}
+.ill-h1{font:800 clamp(32px,4vw,46px)/1.1 'Poppins',sans-serif;color:#2A007C;letter-spacing:-.6px;margin:14px 0 0;max-width:640px}
+.ill-h1 em{font-style:normal;color:#FE5F00}.ill-h1.brk em{display:block}
+.ill-sub{font-size:16.5px;line-height:1.55;color:#2B1B3D;margin:12px 0 0;max-width:500px}
+.ill-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.ill-art{position:absolute;right:2%;bottom:34px;width:48%;height:86%;z-index:2;pointer-events:none}
+.ill-art svg{width:100%;height:100%;overflow:visible}
+.ill-sea{position:absolute;left:0;right:0;bottom:0;background-repeat:repeat-x}
+.ill-sea.b{height:62px;z-index:3;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='62'%3E%3Cpath d='M0 16 Q30 2 60 16 T120 16 T180 16 T240 16 V62 H0Z' fill='%238FCBE8'/%3E%3C/svg%3E");background-size:240px 62px;animation:illSeaB 14s linear infinite !important}
+.ill-sea.a{height:46px;z-index:5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='46'%3E%3Cpath d='M0 14 Q25 2 50 14 T100 14 T150 14 T200 14 V46 H0Z' fill='%233E9AC9'/%3E%3C/svg%3E");background-size:200px 46px;animation:illSeaA 9s linear infinite !important}
+@keyframes illSeaB{to{background-position:-240px 0}}@keyframes illSeaA{to{background-position:200px 0}}
+.ill-shipg{animation:illBob 5s ease-in-out infinite !important}
+@keyframes illBob{50%{transform:translateY(-6px)}}
+.ill-cloud1{animation:illDrift 22s ease-in-out infinite alternate !important}.ill-cloud2{animation:illDrift 30s ease-in-out infinite alternate-reverse !important}
+@keyframes illDrift{to{transform:translateX(34px)}}
+.ill-flyer{animation:illFly 6s ease-in-out infinite !important}@keyframes illFly{50%{transform:translateY(-8px)}}
+.ill-dash{stroke-dasharray:5 8;animation:illDash 2.6s linear infinite !important}@keyframes illDash{to{stroke-dashoffset:-52}}
+.ill-ping{transform-box:fill-box;transform-origin:center;animation:illPing 2.6s ease-out infinite !important}@keyframes illPing{0%{transform:scale(.4);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+.svc-card{cursor:pointer;display:flex;flex-direction:column;gap:6px}
+.svc-card:hover{transform:translateY(-3px);box-shadow:0 18px 30px -18px rgba(52,21,82,.45)}
+.svc-card:focus-visible{outline:3px solid #FF9A56;outline-offset:2px}
+.svc-ic{width:46px;height:46px;border-radius:14px;background:#FFEFE0;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:6px}
+.svc-card h3{margin:0}.svc-card p{margin:0;flex:1}
+.svc-go{font:700 13px 'Inter',sans-serif;color:#FE5F00;margin-top:8px}
+#page-contact-us main{z-index:7;margin-top:-22px !important;}
+.ill-tk{position:absolute;left:0;right:0;bottom:0;height:36px;z-index:6;background:rgba(20,6,34,.34);overflow:hidden;white-space:nowrap;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
+.ill-tk div{display:inline-block;padding:9px 0;font:600 12px 'Poppins',sans-serif;letter-spacing:1.2px;text-transform:uppercase;color:#fff;animation:illTk 48s linear infinite !important}
+.ill-tk span{display:inline-block;margin:0 22px}.ill-tk span:nth-child(even){color:#FFD2B0}.ill-tk:hover div{animation-play-state:paused !important}
+@keyframes illTk{to{transform:translateX(-50%)}}
+@media(max-width:760px){.ill-hero{height:360px;padding:26px 0 80px}.ill-h1{font-size:30px}.ill-art{width:100%;right:-14%;opacity:.3;height:70%}.ill-sub{font-size:15px}.ill-sea.b{height:48px}.ill-sea.a{height:36px}}
 .n4l-public-page .hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
 .n4l-public-page .hero-note{display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding:8px 18px 8px 8px;border-radius:30px;background:#E7F6EE;border:1.5px solid #B7E4CB;font-size:15px;font-weight:500;color:#14532D;box-shadow:0 8px 20px -12px rgba(30,158,90,.45);}
 .n4l-public-page .hero-note svg{flex:0 0 auto;width:24px;height:24px;padding:4px;border-radius:50%;background:#1E9E5A;color:#fff;}
@@ -1569,6 +1615,21 @@
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<pattern id="ill-rib" width="9" height="34" patternUnits="userSpaceOnUse"><rect x="3" width="2" height="34" fill="rgba(0,0,0,.18)"/></pattern>
+<symbol id="ill-ship" viewBox="0 0 440 170">
+<path d="M0 118H440L398 168H44Z" fill="#4A4259"/><rect y="118" width="440" height="7" fill="#FE5F00"/>
+<g><rect x="38" y="84" width="50" height="34" fill="#E8541B"/><rect x="88" y="84" width="50" height="34" fill="#FBD0B0"/><rect x="138" y="84" width="50" height="34" fill="#E8541B"/><rect x="188" y="84" width="50" height="34" fill="#C2410C"/><rect x="238" y="84" width="50" height="34" fill="#FBD0B0"/><rect x="288" y="84" width="50" height="34" fill="#E8541B"/>
+<rect x="66" y="50" width="50" height="34" fill="#FBD0B0"/><rect x="116" y="50" width="50" height="34" fill="#E8541B"/><rect x="166" y="50" width="50" height="34" fill="#C2410C"/><rect x="216" y="50" width="50" height="34" fill="#E8541B"/><rect x="266" y="50" width="50" height="34" fill="#FBD0B0"/>
+<rect x="116" y="16" width="50" height="34" fill="#E8541B"/><rect x="166" y="16" width="50" height="34" fill="#FBD0B0"/><rect x="216" y="16" width="50" height="34" fill="#E8541B"/></g>
+<g fill="url(#ill-rib)"><rect x="38" y="84" width="300" height="34"/><rect x="66" y="50" width="250" height="34"/><rect x="116" y="16" width="150" height="34"/></g>
+<rect x="340" y="56" width="72" height="62" rx="3" fill="#fff"/><rect x="350" y="68" width="52" height="10" fill="#4A4259"/><rect x="350" y="86" width="38" height="5" fill="#FBD0B0"/><rect x="374" y="32" width="22" height="24" fill="#E8541B"/>
+<circle cx="120" cy="143" r="4" fill="#fff"/><circle cx="150" cy="143" r="4" fill="#fff"/></symbol>
+<symbol id="ill-cloud" viewBox="0 0 120 44"><g fill="#fff"><circle cx="30" cy="28" r="14"/><circle cx="54" cy="20" r="18"/><circle cx="80" cy="26" r="15"/><circle cx="98" cy="32" r="10"/><rect x="26" y="30" width="76" height="12" rx="6"/></g></symbol>
+<symbol id="ill-plane" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#FE5F00"/><path d="M11.5 4.2v14.6" stroke="#fff" stroke-opacity=".35" stroke-width=".6"/></symbol>
+<symbol id="ill-env" viewBox="0 0 48 36"><rect x="2" y="3" width="44" height="30" rx="5" fill="#FE5F00"/><path d="M4 7 L24 21 L44 7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
 <div id="reviewNotesToggle" onclick="toggleReviewNotes()" title="Show/hide stakeholder review notes (state labels, SRS remarks)">
     <span class="rn-switch"></span>
     <span>Review notes</span>
@@ -2375,16 +2436,14 @@
 </header>
     <main>
 
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">About Net4Log</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">Welcome To The World</span>
-                <span class="tagline-line">Of Logisticians</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero full">
+<div class="ill-wrap"><span class="ill-pill"><i></i>About Us</span>
+<h1 class="ill-h1 brk">Welcome To The World <em>Of Logisticians</em></h1>
+<p class="ill-sub">A democratic platform connecting logisticians worldwide.</p>
+<div class="ill-cta"><a class="btn btn-primary" href="#" onclick="openRegistration(event)">Join free</a><a class="btn btn-ghost" href="#" onclick="showStaticPage('contact-us',event)">Talk to us</a></div>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div><div class="ill-tk" aria-hidden="true"><div><span>United Arab Emirates</span><span>India</span><span>Singapore</span><span>Kenya</span><span>Netherlands</span><span>Germany</span><span>China</span><span>Brazil</span><span>Egypt</span><span>United States</span><span>United Kingdom</span><span>Turkey</span><span>South Africa</span><span>Saudi Arabia</span><span>Vietnam</span><span>Australia</span><span>United Arab Emirates</span><span>India</span><span>Singapore</span><span>Kenya</span><span>Netherlands</span><span>Germany</span><span>China</span><span>Brazil</span><span>Egypt</span><span>United States</span><span>United Kingdom</span><span>Turkey</span><span>South Africa</span><span>Saudi Arabia</span><span>Vietnam</span><span>Australia</span></div></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;">
@@ -2709,15 +2768,13 @@
 <div class="static-page" id="page-organisation">
 
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"/><path d="M2 22h20"/><path d="M9 6h1M9 10h1M9 14h1M14 6h1M14 10h1M14 14h1"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">About Organisation</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">About Organisation</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero mid">
+<div class="ill-wrap"><span class="ill-pill"><i></i>About Us</span>
+<h1 class="ill-h1">About <em>Organisation</em></h1>
+<p class="ill-sub">A management structure built on collaboration and strong governance.</p>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;">
@@ -2772,15 +2829,12 @@
 
 <div class="static-page" id="page-core-management-team" style="display:none;">
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">Core Management Team</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">Core Management<br>Team</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero slim">
+<div class="ill-wrap"><span class="ill-pill"><i></i>About Us</span>
+<h1 class="ill-h1">Core <em>Management Team</em></h1>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap">
@@ -2812,15 +2866,12 @@
 
 <div class="static-page" id="page-founding-partners" style="display:none;">
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 5a4 4 0 1 0-8 0"/><path d="M3 21l4-9 5 4 5-4 4 9"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">Founding Partners</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">Founding Partners</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero slim">
+<div class="ill-wrap"><span class="ill-pill"><i></i>About Us</span>
+<h1 class="ill-h1">Founding <em>Partners</em></h1>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;margin-bottom:8px;">
@@ -2895,15 +2946,12 @@
 
 <div class="static-page" id="page-parliament" style="display:none;">
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">Net4Log Parliament</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">NET4LOG Parliament</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero slim">
+<div class="ill-wrap"><span class="ill-pill"><i></i>About Us</span>
+<h1 class="ill-h1">Net4Log <em>Parliament</em></h1>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
@@ -2959,15 +3007,12 @@
 
 <div class="static-page" id="page-admin-support-team" style="display:none;">
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">Admin/Support Team</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">Admin/Support Team</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero slim">
+<div class="ill-wrap"><span class="ill-pill"><i></i>About Us</span>
+<h1 class="ill-h1">Admin/Support <em>Team</em></h1>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
@@ -3004,15 +3049,12 @@
 
 <div class="static-page" id="page-technology-team" style="display:none;">
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">Technology Team</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">Technology Team</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero slim">
+<div class="ill-wrap"><span class="ill-pill"><i></i>About Us</span>
+<h1 class="ill-h1">Technology <em>Team</em></h1>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;margin-bottom:28px;">
@@ -3041,15 +3083,14 @@
 
 <div class="static-page" id="page-partner-world" style="display:none;">
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="6" r="2.6"/><circle cx="19" cy="6" r="2.6"/><circle cx="12" cy="18" r="2.6"/><line x1="7.2" y1="7.6" x2="10.2" y2="15.6"/><line x1="16.8" y1="7.6" x2="13.8" y2="15.6"/><line x1="7.6" y1="6" x2="16.4" y2="6"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">Partner World</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">NET4LOG Partner World</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero full">
+<div class="ill-wrap"><span class="ill-pill"><i></i>Services</span>
+<h1 class="ill-h1">Net4Log <em>Partner World</em></h1>
+<p class="ill-sub">Partners from every corner of the world, brought to you.</p>
+<div class="ill-cta"><a class="btn btn-primary" href="#" onclick="openRegistration(event)">Join free</a><a class="btn btn-ghost" href="#" onclick="showStaticPage('contact-us',event)">Talk to us</a></div>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
@@ -3101,15 +3142,13 @@
 
 <div class="static-page" id="page-partner-marketplace" style="display:none;">
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h12l2 5H4l2-5z"/><path d="M4 7h16v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7z"/><path d="M9 11a3 3 0 0 0 6 0"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">Partner Marketplace</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">NET4LOG Partner Marketplace</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero mid">
+<div class="ill-wrap"><span class="ill-pill"><i></i>Services</span>
+<h1 class="ill-h1">Net4Log <em>Partner Marketplace</em></h1>
+<p class="ill-sub">Showcase your offers and connect with other partners.</p>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
@@ -3159,15 +3198,14 @@
 
 <div class="static-page" id="page-digital-connect" style="display:none;">
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13a12 12 0 0 1 16 0"/><path d="M7.5 16.5a7 7 0 0 1 9 0"/><circle cx="12" cy="20" r="1"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">Digital Connect</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">NET4LOG Digital Connect</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero full">
+<div class="ill-wrap"><span class="ill-pill"><i></i>Services</span>
+<h1 class="ill-h1">Net4Log <em>Digital Connect</em></h1>
+<p class="ill-sub">Digital products that streamline every stage of shipment execution.</p>
+<div class="ill-cta"><a class="btn btn-primary" href="#" onclick="openRegistration(event)">Join free</a><a class="btn btn-ghost" href="#" onclick="showStaticPage('contact-us',event)">Talk to us</a></div>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
@@ -3220,15 +3258,13 @@
 
 <div class="static-page" id="page-statistics" style="display:none;">
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="4" y2="11"/><line x1="10" y1="20" x2="10" y2="4"/><line x1="16" y1="20" x2="16" y2="14"/><line x1="21" y1="20" x2="3" y2="20"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">Statistics</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">NET4LOG Statistics</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero mid">
+<div class="ill-wrap"><span class="ill-pill"><i></i>Services</span>
+<h1 class="ill-h1">Net4Log <em>Statistics</em></h1>
+<p class="ill-sub">Transparent, data-driven insights for network growth.</p>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
@@ -3265,15 +3301,13 @@
 
 <div class="static-page" id="page-value-adds" style="display:none;">
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">Value Adds</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">NET4LOG Value Adds</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero mid">
+<div class="ill-wrap"><span class="ill-pill"><i></i>Services</span>
+<h1 class="ill-h1">Net4Log <em>Value Adds</em></h1>
+<p class="ill-sub">Add-on services to streamline your global operations.</p>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
@@ -3326,15 +3360,13 @@
 
 <div class="static-page" id="page-legal-council" style="display:none;">
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 8l-3 6a3 3 0 0 0 6 0l-3-6z"/><path d="M19 8l-3 6a3 3 0 0 0 6 0l-3-6z"/><line x1="5" y1="8" x2="19" y2="8"/><line x1="8" y1="21" x2="16" y2="21"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">Legal Council</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">NET4LOG Legal Council</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero mid">
+<div class="ill-wrap"><span class="ill-pill"><i></i>Services</span>
+<h1 class="ill-h1">Net4Log <em>Legal Council</em></h1>
+<p class="ill-sub">Amicable dispute resolution, backed by the network.</p>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
@@ -3394,15 +3426,13 @@
 
 <div class="static-page" id="page-conference" style="display:none;">
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">Conference</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">NET4LOG Conference</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero mid">
+<div class="ill-wrap"><span class="ill-pill"><i></i>Services</span>
+<h1 class="ill-h1">Net4Log <em>Conference</em></h1>
+<p class="ill-sub">Meet Net4Log partners in person and build lasting relationships.</p>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
@@ -3438,15 +3468,13 @@
 
 <div class="static-page" id="page-better-buy" style="display:none;">
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">Better Buy</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">NET4LOG Better Buy</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero mid">
+<div class="ill-wrap"><span class="ill-pill"><i></i>Services</span>
+<h1 class="ill-h1">Net4Log <em>Better Buy</em></h1>
+<p class="ill-sub">Shipping savings and efficiency for your business.</p>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
@@ -3483,15 +3511,13 @@
 
 <div class="static-page" id="page-freight-protection" style="display:none;">
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5z"/><path d="M9 12l2 2 4-4"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">Freight Protection Plan</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">NET4LOG Freight<br>Protection Plan</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero mid">
+<div class="ill-wrap"><span class="ill-pill"><i></i>Services</span>
+<h1 class="ill-h1">Net4Log <em>Freight Protection Plan</em></h1>
+<p class="ill-sub">Insurance that safeguards Trusted Members against cargo loss.</p>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
@@ -3535,15 +3561,13 @@
 
 <div class="static-page" id="page-trade-influencer" style="display:none;">
     <main>
-    <section class="hero static-hero">
-        <svg class="hero-watermark" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h2l4 5V5L6 10H4a1 1 0 0 0-1 1z"/><path d="M14 8a4 4 0 0 1 0 8"/><path d="M17.5 5a8 8 0 0 1 0 14"/></svg>
-        <div class="wrap hero-stack" style="text-align:center;">
-            <span class="pill">Trade Influencer</span>
-            <h1 style="margin-top:18px;">
-                <span class="h1-main" style="white-space:normal;">NET4LOG Trade Influencer</span>
-            </h1>
-        </div>
-    </section>
+    <section class="ill-hero mid">
+<div class="ill-wrap"><span class="ill-pill"><i></i>Services</span>
+<h1 class="ill-h1">Net4Log <em>Trade Influencer</em></h1>
+<p class="ill-sub">Growing business for every Trusted Partner.</p>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
     <section class="section">
         <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
@@ -3580,41 +3604,51 @@
     </main>
 </div>
 
+<div class="static-page" id="page-net4log-services" style="display:none;">
+    <main>
+    <section class="ill-hero full">
+<div class="ill-wrap"><span class="ill-pill"><i></i>Net4Log Services</span>
+<h1 class="ill-h1">NET4LOG <em>Services</em></h1>
+<div class="ill-cta"><a class="btn btn-primary" href="#" onclick="openRegistration(event)">Join free</a><a class="btn btn-ghost" href="#" onclick="showStaticPage('contact-us',event)">Talk to us</a></div>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(112 163 38)"><use href="#ill-plane" x="132" y="7" width="62" height="62"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
+
+    <section class="section">
+        <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
+            <p style="font-size:16px;color:var(--ink-soft);"><strong style="color:var(--purple);">Net4Log offers more than a connection platform –</strong> it's a complete suite of products and services built to elevate your business. At its core is <strong style="color:var(--purple);">Partner World</strong>, the world's most trusted global directory of logisticians, connecting you with thoroughly vetted partners to power your global operations. We also offer a range of <strong style="color:var(--purple);">digital solutions</strong> to help you streamline processes through technology, and our annual <strong style="color:var(--purple);">Net4Log conferences</strong> bring your partners together in person to strengthen key relationships. Explore our services below to see how we can accelerate your growth.</p>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+        <div class="wrap">
+            <div class="feature-grid">
+<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('partner-world',event)" onkeydown="if(event.key==='Enter')showStaticPage('partner-world',event)"><span class="f-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="6" r="2.6"/><circle cx="19" cy="6" r="2.6"/><circle cx="12" cy="18" r="2.6"/><line x1="7.2" y1="7.6" x2="10.2" y2="15.6"/><line x1="16.8" y1="7.6" x2="13.8" y2="15.6"/><line x1="7.6" y1="6" x2="16.4" y2="6"/></svg></span><h3>Partner World</h3></article>
+<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('partner-marketplace',event)" onkeydown="if(event.key==='Enter')showStaticPage('partner-marketplace',event)"><span class="f-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h12l2 5H4l2-5z"/><path d="M4 7h16v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7z"/><path d="M9 11a3 3 0 0 0 6 0"/></svg></span><h3>Partner Marketplace</h3></article>
+<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('digital-connect',event)" onkeydown="if(event.key==='Enter')showStaticPage('digital-connect',event)"><span class="f-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13a12 12 0 0 1 16 0"/><path d="M7.5 16.5a7 7 0 0 1 9 0"/><circle cx="12" cy="20" r="1"/></svg></span><h3>Digital Connect</h3></article>
+<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('statistics',event)" onkeydown="if(event.key==='Enter')showStaticPage('statistics',event)"><span class="f-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="4" y2="11"/><line x1="10" y1="20" x2="10" y2="4"/><line x1="16" y1="20" x2="16" y2="14"/><line x1="21" y1="20" x2="3" y2="20"/></svg></span><h3>Statistics</h3></article>
+<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('value-adds',event)" onkeydown="if(event.key==='Enter')showStaticPage('value-adds',event)"><span class="f-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span><h3>Value Adds</h3></article>
+<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('legal-council',event)" onkeydown="if(event.key==='Enter')showStaticPage('legal-council',event)"><span class="f-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 8l-3 6a3 3 0 0 0 6 0l-3-6z"/><path d="M19 8l-3 6a3 3 0 0 0 6 0l-3-6z"/><line x1="5" y1="8" x2="19" y2="8"/><line x1="8" y1="21" x2="16" y2="21"/></svg></span><h3>Legal Council</h3></article>
+<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('conference',event)" onkeydown="if(event.key==='Enter')showStaticPage('conference',event)"><span class="f-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg></span><h3>Conference</h3></article>
+<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('better-buy',event)" onkeydown="if(event.key==='Enter')showStaticPage('better-buy',event)"><span class="f-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></span><h3>Better Buy</h3></article>
+<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('freight-protection',event)" onkeydown="if(event.key==='Enter')showStaticPage('freight-protection',event)"><span class="f-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Freight Protection Plan</h3></article>
+<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('trade-influencer',event)" onkeydown="if(event.key==='Enter')showStaticPage('trade-influencer',event)"><span class="f-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h2l4 5V5L6 10H4a1 1 0 0 0-1 1z"/><path d="M14 8a4 4 0 0 1 0 8"/><path d="M17.5 5a8 8 0 0 1 0 14"/></svg></span><h3>Trade Influencer</h3></article>
+            </div>
+        </div>
+    </section>
+    </main>
+</div>
+
 <div class="static-page" id="page-contact-us" style="display:none;">
 <!-- Contact Us (2026-10-05): the supplied net4log-contact-us design -- quick contact cards over the hero, offices panel + enquiry form. -->
 <!-- Static hero (plum dot-field, pill, watermark — same as the other static pages) -->
-  <section class="ct-hero">
-    <canvas class="ct-net" id="ctNet" aria-hidden="true"></canvas><div class="ct-floor" aria-hidden="true"></div>
-    <div style="position: relative; z-index: 1; width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 24px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px">
-      <span style="display: inline-flex; align-items: center; gap: 8px; background: #FFFFFF; color: #B84400; border: 1.5px solid #FFD8BD; font-size: 12.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; padding: 7px 14px; border-radius: 30px; box-shadow: 0 8px 20px -10px rgba(0,0,0,.45)">
-        <span style="width: 7px; height: 7px; border-radius: 50%; background: #FE5F00"></span>Contact
-      </span>
-      <h1 style="margin: 0; font-family: Poppins, Inter, sans-serif; font-weight: 800; font-size: clamp(32px, 3.6vw, 44px); line-height: 1.15; letter-spacing: -.5px; color: #FFFFFF"><span style="color: #FFFFFF">Let's talk</span> <span style="color: #FF9A56">logistics</span></h1>
-      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,.84); max-width: 700px">Questions about membership, events or your account? Reach the Net4Log team directly, or send a message and we'll get back to you within 24 hours.</p>
-    </div>
-  </section>
-  <script>
-  (function(){
-    var cv = document.getElementById('ctNet'); if(!cv || !cv.getContext) return;
-    var ctx = cv.getContext('2d'), nodes = [], W = 0, H = 0, run = false, page = cv.closest('.static-page');
-    function size(){ var r = cv.getBoundingClientRect(); W = r.width; H = r.height; var d = Math.min(2, window.devicePixelRatio || 1); cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); }
-    function seed(){ nodes = []; var n = Math.max(26, Math.round(W / 38)); for(var i = 0; i < n; i++) nodes.push({x:Math.random() * W, y:Math.random() * H, vx:(Math.random() - .5) * .35, vy:(Math.random() - .5) * .35, o:Math.random() < .18}); }
-    function frame(){
-      if(page && page.style.display === 'none'){ run = false; return; }
-      ctx.clearRect(0, 0, W, H);
-      for(var i = 0; i < nodes.length; i++){
-        var a = nodes[i]; a.x += a.vx; a.y += a.vy; if(a.x < 0 || a.x > W) a.vx *= -1; if(a.y < 0 || a.y > H) a.vy *= -1;
-        for(var j = i + 1; j < nodes.length; j++){ var b = nodes[j], dx = a.x - b.x, dy = a.y - b.y, d = dx * dx + dy * dy; if(d < 17000){ ctx.strokeStyle = 'rgba(255,255,255,' + (0.32 * (1 - d / 17000)).toFixed(3) + ')'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }}
-      }
-      for(var k = 0; k < nodes.length; k++){ var p = nodes[k]; ctx.beginPath(); ctx.arc(p.x, p.y, p.o ? 3.2 : 1.8, 0, 6.2832); ctx.fillStyle = p.o ? '#FE5F00' : 'rgba(255,255,255,.6)'; if(p.o){ ctx.shadowColor = '#FE5F00'; ctx.shadowBlur = 12; } ctx.fill(); ctx.shadowBlur = 0; }
-      requestAnimationFrame(frame);
-    }
-    function start(){ if(run) return; size(); if(!nodes.length) seed(); run = true; requestAnimationFrame(frame); }
-    window.addEventListener('resize', function(){ if(run){ size(); seed(); } });
-    if(page && page.style.display === 'none'){ new MutationObserver(function(){ if(page.style.display !== 'none') start(); }).observe(page, {attributes:true, attributeFilter:['style']}); }
-    else start();
-  })();
-  </script>
+  <section class="ill-hero full">
+<div class="ill-wrap"><span class="ill-pill"><i></i>Contact Us</span>
+<h1 class="ill-h1">Let's talk <em>logistics</em></h1>
+<p class="ill-sub">Questions about membership, events or your account? Reach the Net4Log team directly, or send a message and we'll get back to you within 24 hours.</p>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><path d="M20 52 q5-6 10 0 q5-6 10 0 M52 40 q4-5 8 0 q4-5 8 0" fill="none" stroke="#E8541B" stroke-width="1.6" stroke-linecap="round"/><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M190 50 Q258 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><use href="#ill-env" x="140" y="26" width="52" height="39"/></g><g><rect x="316" y="84" width="44" height="30" rx="9" fill="#FE5F00"/><path d="M330 114 l-4 10 l14 -10z" fill="#FE5F00"/><circle cx="330" cy="99" r="2.6" fill="#fff"/><circle cx="338" cy="99" r="2.6" fill="#fff"/><circle cx="346" cy="99" r="2.6" fill="#fff"/></g></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
 
   <main style="position: relative; max-width: 1180px; margin: -56px auto 0; padding: 0 24px 72px; display: flex; flex-direction: column; gap: 40px">
 
