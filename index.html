@@ -3270,10 +3270,6 @@ body.n4l-logged .guest-only{display:none !important;}
         <div class="wrap">
             <div class="sec-head"><h2>How to become a <span>Registered Partner</span></h2></div>
             <p class="pw-lead">Experience the benefits of being a registered member of Net4Log. Join our global community of logisticians and unlock new opportunities for growth and success in the logistics industry. <a href="#" class="guest-only" onclick="openRegistration(event)"><strong>Register Now on Net4Log!</strong></a></p>
-            <div class="feature-grid grid-cols-2">
-                <article class="feature"><h3>Access to Partner World Directory</h3><p>Gain limited access to the partner directory, where your profile will be published as a registered partner. Connect with a network of global logisticians through the Partner World Directory, thus increasing your chances of collaboration and business opportunities.</p></article>
-                <article class="feature"><h3>E-Shipments</h3><p>Simplify your shipping processes with our E-Shipments service. Register your shipment with Net4Log and enjoy our Track &amp; Trace feature, which you can share with your partners absolutely free. With real-time updates and notifications, you can stay informed about your shipments at all times.</p></article>
-            </div>
             <div class="feature-grid grid-cols-5 pw-steps">
                 <article class="feature"><span class="pw-n">1</span><p>Open <strong>www.net4log.com</strong> on your preferred web browser &amp; Click on <strong>‘Join Now’</strong></p></article>
                 <article class="feature"><span class="pw-n">2</span><p>Enter your company details, Admin Contact &amp; Billing Contact</p></article>
@@ -6401,6 +6397,10 @@ window.n4lHeroNet = function(pageId, canvasId){
     #page-eshipments .es-tbl .btn{min-height:30px;padding:0 12px;font-size:12px;color:#C0352B;border-color:#F3C9C5;}
     #page-eshipments .es-tag{display:inline-block;font:700 11px 'Inter',sans-serif;border-radius:20px;padding:2px 9px;background:#ECECEC;color:#666;}
     #page-eshipments .es-sp h5{font:700 13px 'Poppins',sans-serif;color:var(--purple);margin:14px 0 8px;text-transform:none;}
+    /* iOS Safari ignores width on date/time inputs and centres their text, which pushed them past the panel edge on phones */
+    #page-eshipments input[type="date"],#page-eshipments input[type="time"]{-webkit-appearance:none;appearance:none;display:block;width:100%;min-width:0;max-width:100%;box-sizing:border-box;min-height:40px;text-align:left;}
+    #page-eshipments input[type="date"]::-webkit-date-and-time-value,#page-eshipments input[type="time"]::-webkit-date-and-time-value{text-align:left;min-height:1.4em;}
+    #page-eshipments input[type="date"]::-webkit-datetime-edit,#page-eshipments input[type="time"]::-webkit-datetime-edit{padding:0;}
     #page-eshipments .es-scroll{overflow-x:auto;}
     #page-eshipments .es-prompt{background:#fff;border:1.5px dashed #E7D8C6;border-radius:20px;padding:34px 20px;text-align:center;color:var(--ink-soft);font-size:14px;}
     #page-eshipments .es-prompt b{color:var(--purple);}
