@@ -1455,6 +1455,7 @@ body.n4l-logged .guest-only{display:none !important;}
     #page-directory .dir2-lock{line-height:1.2;padding-top:0;padding-bottom:0;}
     #page-directory .dir2-note{display:block;line-height:1.55;background:#fff;border:1px solid #FFE3C4;border-radius:var(--radius-md);padding:11px 16px;font-size:12.5px;color:var(--ink-soft);margin-bottom:16px;}
     #page-directory .dir2-note b{color:var(--orange);}
+    #page-directory .dir2-note.warn{background:#FFF1E6;border-color:#F2C9A6;color:var(--ink);}
     #page-directory .dir2-note a{margin-left:auto;font-weight:700;color:var(--purple);}
     #page-directory .dir2-list{display:flex;flex-direction:column;gap:12px;}
     #page-directory .dir2-item{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1fr) minmax(0,1.7fr) auto;align-items:center;gap:22px;background:#fff;border:1px solid #F5EBDF;border-radius:var(--radius-md);padding:16px 22px;box-shadow:var(--shadow-soft);transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;}
@@ -2568,8 +2569,8 @@ body.n4l-logged .guest-only{display:none !important;}
                     </div>
                     <div class="dash-subnav">
                         <a href="#" onclick="closeMobileNav('aboutMobileNav');showStaticPage('eshipments',event)">E-Shipments</a>
-                        <a href="#" onclick="closeMobileNav('aboutMobileNav')">E-SOA</a>
-                        <a href="#" onclick="closeMobileNav('aboutMobileNav')">E-Leads</a>
+                        <a href="#" onclick="closeMobileNav('aboutMobileNav');showStaticPage('esoa',event)">E-SOA</a>
+                        <!-- E-Leads is hidden until it is published (portal feature flag "ELeads"): &lt;a href="#" onclick="closeMobileNav('aboutMobileNav')"&gt;E-Leads&lt;/a&gt; -->
                     </div>
                 </div>
             </nav>
@@ -2898,8 +2899,8 @@ body.n4l-logged .guest-only{display:none !important;}
                     </div>
                     <div class="dash-subnav">
                         <a href="#" onclick="closeMobileNav('staticMobileNav');showStaticPage('eshipments',event)">E-Shipments</a>
-                        <a href="#" onclick="closeMobileNav('staticMobileNav')">E-SOA</a>
-                        <a href="#" onclick="closeMobileNav('staticMobileNav')">E-Leads</a>
+                        <a href="#" onclick="closeMobileNav('staticMobileNav');showStaticPage('esoa',event)">E-SOA</a>
+                        <!-- E-Leads is hidden until it is published (portal feature flag "ELeads"): &lt;a href="#" onclick="closeMobileNav('staticMobileNav')"&gt;E-Leads&lt;/a&gt; -->
                     </div>
                 </div>
             </nav>
@@ -4251,6 +4252,1478 @@ body.n4l-logged .guest-only{display:none !important;}
     </section>
     </main>
 </div>
+
+<div class="static-page mp-fx th-plum" id="page-view-profile" style="display:none;">
+<!-- ===================== PARTNER PROFILE (View Member Details V2, 2026-10-09) =====================
+     What the Directory's "View profile" opens: the same public-profile design as the My Profile preview (plum hero + contact box, then the cards),
+     read-only, with a Back to Directory bar. Contact details are blurred for a Registered viewer (Trusted Partner benefit). Sample data only. -->
+<style>
+#page-view-profile{--mp-line:#F0E4D6;--mp-soft:#FFF8F1;}
+#page-view-profile .mp-hero{background:var(--plum-gradient);color:#fff;padding:34px 0 0;position:relative;overflow:hidden;}
+#page-view-profile .mp-hero::before{content:"";position:absolute;top:-90px;right:4%;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(254,95,0,.22),transparent 70%);pointer-events:none;}
+#page-view-profile .mp-hero .wrap{position:relative;z-index:1;}
+#page-view-profile .mp-id{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+#page-view-profile .mp-avatar{position:relative;flex:0 0 auto;width:88px;height:88px;border-radius:24px;background:linear-gradient(135deg,var(--cream-2),#FFDDBB);color:var(--purple);display:flex;align-items:center;justify-content:center;font:800 28px 'Poppins',sans-serif;box-shadow:0 18px 34px -16px rgba(0,0,0,.5);}
+#page-view-profile .mp-avatar button{position:absolute;right:-8px;bottom:-8px;width:32px;height:32px;border-radius:50%;border:3px solid #4f1e50;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;}
+#page-view-profile .mp-who{flex:1;min-width:240px;}
+#page-view-profile .mp-kick{font:700 11.5px 'Inter',sans-serif;letter-spacing:1.1px;text-transform:uppercase;color:#FFB27A;}
+#page-view-profile .mp-who h1{font:800 30px/1.15 'Poppins',sans-serif;color:#fff !important;margin:6px 0 10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;text-transform:none;}
+#page-view-profile .mp-meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:rgba(255,255,255,.86);}
+#page-view-profile .mp-meta span{display:inline-flex;align-items:center;gap:7px;}
+#page-view-profile .mp-meta svg{opacity:.8;}
+#page-view-profile .mp-card{background:#fff;border:1px solid #F5EBDF;border-radius:20px;box-shadow:var(--shadow-soft);padding:22px;margin-bottom:16px;}
+#page-view-profile .mp-card-h{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+#page-view-profile .mp-card-h .ic{flex:0 0 36px;width:36px;height:36px;border-radius:11px;background:var(--cream-2);color:var(--purple);display:flex;align-items:center;justify-content:center;}
+#page-view-profile .mp-card-h h3{font:700 15.5px 'Poppins',sans-serif;color:var(--purple);margin:0;text-transform:none;}
+#page-view-profile .mp-card-h small{display:block;font-size:12px;color:var(--ink-soft);font-weight:500;}
+#page-view-profile .mp-card-h .push{margin-left:auto;}
+#page-view-profile .mp-chips{display:flex;flex-wrap:wrap;gap:8px;}
+#page-view-profile .mp-chips span{display:inline-flex;align-items:center;gap:8px;background:var(--cream);border:1px solid var(--mp-line);border-radius:30px;padding:7px 8px 7px 14px;font-size:12.5px;font-weight:600;}
+#page-view-profile .mp-chips span button{border:0;background:#fff;width:20px;height:20px;border-radius:50%;line-height:1;font-size:13px;color:var(--ink-soft);cursor:pointer;padding:0;}
+#page-view-profile .mp-bars{display:flex;flex-direction:column;gap:14px;}
+#page-view-profile .mp-bar{display:grid;grid-template-columns:130px minmax(0,1fr) 90px;gap:14px;align-items:center;font-size:13px;}
+#page-view-profile .mp-bar i{display:block;height:10px;border-radius:8px;background:#F5EBDF;overflow:hidden;}
+#page-view-profile .mp-bar i u{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,var(--orange),#FF9A56);}
+#page-view-profile .mp-bar b{text-align:right;color:var(--purple);font-family:'Poppins',sans-serif;}
+@media(max-width:640px){
+  #page-view-profile .mp-hero{padding-top:24px;}
+  #page-view-profile .mp-avatar{width:68px;height:68px;border-radius:20px;font-size:22px;}
+  #page-view-profile .mp-who h1{font-size:23px;}
+  #page-view-profile .mp-card{padding:18px;border-radius:18px;}
+  #page-view-profile .mp-bar{grid-template-columns:1fr 70px;}
+  #page-view-profile .mp-bar i{grid-column:1 / -1;order:3;}
+}
+#page-view-profile.mp-fx{--purple:#341552;--purple-soft:#792c4e;}
+#page-view-profile.th-plum{--h-up:#6EE7A8;--h-bg:var(--plum-gradient);--h-ink:#fff;--h-sub:rgba(255,255,255,.86);--h-kick:#FFB27A;--h-pill:rgba(255,255,255,.1);--h-pline:rgba(255,255,255,.26);--h-net:255,255,255;--h-node:#FF9A56;--h-o1:rgba(254,95,0,.24);--h-o2:rgba(255,255,255,.08);--h-strength:rgba(255,255,255,.1);--h-ringin:#43194C;--h-track:rgba(255,255,255,.2);--h-grid:rgba(255,255,255,.12);--h-link:#FFB27A;--h-edge:#4f1e50;}
+#page-view-profile.mp-fx .mp-hero{background:var(--h-bg);color:var(--h-ink);padding-top:38px;}
+#page-view-profile.mp-fx .mp-hero::before{top:auto;bottom:-140px;right:auto;left:-90px;width:420px;height:420px;background:radial-gradient(circle,var(--h-o1),transparent 70%);}
+#page-view-profile.mp-fx .mp-hero::after{content:"";position:absolute;top:-120px;right:-80px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,var(--h-o2),transparent 70%);pointer-events:none;animation:mpDrift 14s ease-in-out infinite alternate;}
+#page-view-profile .mp-net{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+#page-view-profile .mp-floor{position:absolute;left:-30%;right:-30%;bottom:0;height:150px;z-index:0;pointer-events:none;background-image:linear-gradient(var(--h-grid) 1px,transparent 1px),linear-gradient(90deg,var(--h-grid) 1px,transparent 1px);background-size:46px 46px;transform:perspective(380px) rotateX(62deg);transform-origin:50% 100%;-webkit-mask-image:linear-gradient(to top,#000 5%,transparent 90%);mask-image:linear-gradient(to top,#000 5%,transparent 90%);animation:mpGrid 7s linear infinite;}
+#page-view-profile.mp-fx .mp-avatar{box-shadow:0 0 0 3px var(--h-edge),0 14px 34px -8px rgba(254,95,0,.5);}
+#page-view-profile.mp-fx .mp-avatar::before{content:"";position:absolute;inset:-7px;border-radius:30px;padding:2px;background:conic-gradient(from 0deg,#FE5F00,var(--h-node),#FF9A56,#FE5F00);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:mpSpin 6s linear infinite;}
+#page-view-profile.mp-fx .mp-avatar button{border-color:var(--h-edge);box-shadow:0 6px 16px rgba(254,95,0,.5);z-index:1;}
+#page-view-profile.mp-fx .mp-who h1{color:var(--h-ink) !important;}
+#page-view-profile.mp-fx .mp-kick{color:var(--h-kick);}
+#page-view-profile.mp-fx .mp-meta{color:var(--h-sub);}
+#page-view-profile.mp-fx .mp-meta span{background:var(--h-pill);border:1px solid var(--h-pline);border-radius:30px;padding:5px 12px;color:var(--h-ink);}
+#page-view-profile.mp-fx .mp-meta svg{opacity:.9;}
+@media(max-width:900px){
+  #page-view-profile.mp-fx .mp-hero{padding-top:14px;}
+}
+@media(max-width:640px){
+  #page-view-profile .mp-floor{height:90px;}
+}
+#page-view-profile .mp-pub{display:none;background:#FFF9F3;padding-bottom:70px;}
+#page-view-profile .mp-pbar{position:sticky;top:var(--mp-hdr,64px);z-index:40;background:#2E1249;color:#fff;}
+#page-view-profile .mp-pbar .in{max-width:1180px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+#page-view-profile .mp-pbar .tag{background:var(--orange);color:#fff;font:800 11px 'Inter',sans-serif;letter-spacing:1px;text-transform:uppercase;border-radius:20px;padding:4px 11px;}
+#page-view-profile .mp-pbar .tx{flex:1;min-width:200px;font-size:13px;color:rgba(255,255,255,.88);}
+#page-view-profile .mp-pbar .tx b{color:#fff;}
+#page-view-profile .mp-pbar .va{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.75);}
+#page-view-profile .mp-pbar .seg{display:inline-flex;border:1.5px solid rgba(255,255,255,.3);border-radius:10px;overflow:hidden;}
+#page-view-profile .mp-pbar .seg button{border:0;background:transparent;color:#fff;padding:6px 12px;font:600 12px 'Inter',sans-serif;cursor:pointer;}
+#page-view-profile .mp-pbar .seg button.on{background:rgba(255,255,255,.22);}
+#page-view-profile .mp-pbar .btn{min-height:38px;padding:0 16px;font-size:13px;}
+#page-view-profile .mp-pbar .btn-ghost{background:transparent;color:#fff !important;border:1.5px solid rgba(255,255,255,.4);}
+#page-view-profile .mp-pubhero{padding-bottom:34px;}
+#page-view-profile .mp-pubhero .mp-id{align-items:center;}
+#page-view-profile .mp-contact{flex:0 0 auto;background:var(--h-pill);border:1px solid var(--h-pline);border-radius:18px;padding:14px 18px;min-width:260px;color:var(--h-ink);}
+#page-view-profile .mp-contact .r{display:flex;align-items:center;gap:10px;font-size:13px;padding:4px 0;}
+#page-view-profile .mp-contact .r svg{flex:0 0 auto;opacity:.85;}
+#page-view-profile .mp-contact .v{font-weight:600;}
+#page-view-profile:not(.viewer-trusted) .mp-contact .v{filter:blur(4px);user-select:none;}
+#page-view-profile .mp-contact .lockn{display:flex;align-items:center;gap:7px;margin-top:8px;padding-top:8px;border-top:1px solid var(--h-pline);font-size:11.5px;color:var(--h-sub);}
+#page-view-profile.viewer-trusted .mp-contact .lockn{display:none;}
+#page-view-profile .mp-pwrap{padding-top:26px;}
+#page-view-profile .mp-pgrid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:22px;align-items:start;}
+#page-view-profile .mp-pgrid .mp-card{margin-bottom:18px;}
+#page-view-profile .mp-facts{display:grid;grid-template-columns:1fr;gap:0;margin:0;}
+#page-view-profile .mp-facts div{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px solid #F5EBDF;font-size:13px;}
+#page-view-profile .mp-facts div:last-child{border-bottom:0;}
+#page-view-profile .mp-facts dt{color:var(--ink-soft);font-weight:600;margin:0;}
+#page-view-profile .mp-facts dd{margin:0;color:var(--ink);font-weight:700;text-align:right;}
+#page-view-profile .mp-pabout{font-size:14.5px;line-height:1.7;color:var(--ink);margin:0;}
+#page-view-profile .mp-psvc{display:grid;grid-template-columns:34px minmax(0,1fr);gap:4px 14px;padding:14px 0;border-bottom:1px solid #F5EBDF;}
+#page-view-profile .mp-psvc:last-child{border-bottom:0;padding-bottom:0;}
+#page-view-profile .mp-psvc:first-child{padding-top:0;}
+#page-view-profile .mp-psvc .n{grid-row:1 / span 2;width:34px;height:34px;border-radius:10px;background:var(--cream-2);color:var(--purple);display:flex;align-items:center;justify-content:center;font:700 13px 'Poppins',sans-serif;}
+#page-view-profile .mp-psvc b{font:700 14.5px 'Poppins',sans-serif;color:var(--purple);}
+#page-view-profile .mp-psvc p{margin:0;font-size:13px;color:var(--ink-soft);line-height:1.6;}
+#page-view-profile .mp-poff{padding:12px 0;border-bottom:1px solid #F5EBDF;font-size:13px;color:var(--ink-soft);line-height:1.6;}
+#page-view-profile .mp-poff:last-child{border-bottom:0;padding-bottom:0;}
+#page-view-profile .mp-poff:first-child{padding-top:0;}
+#page-view-profile .mp-poff b{display:block;font:700 14px 'Poppins',sans-serif;color:var(--purple);}
+#page-view-profile .mp-hidden-note{display:flex;gap:10px;align-items:flex-start;background:#FFF6EC;border:1px dashed #E7C9AB;border-radius:14px;padding:12px 14px;font-size:12.5px;color:var(--ink-soft);margin-bottom:18px;}
+@media(max-width:900px){
+  #page-view-profile .mp-pgrid{grid-template-columns:minmax(0,1fr);}
+  #page-view-profile .mp-contact{width:100%;}
+  #page-view-profile .mp-pbar .in{padding:10px 16px;}
+}
+@media(max-width:640px){
+  #page-view-profile .mp-pbar .in{gap:10px;padding:10px 16px 12px;}
+  #page-view-profile .mp-pbar .tx{flex:1 1 calc(100% - 90px);font-size:12.5px;}
+  #page-view-profile .mp-pbar .va{flex:1 1 100%;justify-content:space-between;}
+  #page-view-profile .mp-pbar .seg{flex:1;}
+  #page-view-profile .mp-pbar .seg button{flex:1;padding:8px 6px;}
+  #page-view-profile .mp-pbar .btn{flex:1 1 100%;}
+  #page-view-profile .mp-pubhero{padding:24px 0 26px;}
+  #page-view-profile .mp-pubhero .mp-id{align-items:flex-start;gap:16px;}
+  #page-view-profile .mp-contact{min-width:0;padding:12px 14px;}
+  #page-view-profile .mp-contact .v{word-break:break-all;}
+  #page-view-profile .mp-pwrap{padding-top:18px;}
+  #page-view-profile .mp-pgrid{gap:0;}
+  #page-view-profile .mp-pgrid .mp-bar{grid-template-columns:minmax(0,1fr) auto;}
+  #page-view-profile .mp-pgrid .mp-bar b{text-align:right;}
+  #page-view-profile .mp-facts div{flex-wrap:wrap;gap:2px 14px;}
+  #page-view-profile .mp-psvc{grid-template-columns:30px minmax(0,1fr);gap:4px 12px;}
+  #page-view-profile .mp-psvc .n{width:30px;height:30px;}
+}
+#page-view-profile .mp-card > .mp-card-h .btn, #page-view-profile .mp-ph .btn{min-height:42px;}
+@media(max-width:640px){
+  #page-view-profile .mp-pubhero .mp-id{gap:12px 16px;}
+}
+#page-view-profile .mp-pub{display:block;}
+#page-view-profile .mp-pubhero{min-height:var(--func-hero-h);display:flex;flex-direction:column;justify-content:center;}
+#page-view-profile .mp-actions .btn-ghost{background:var(--h-pill);color:#fff;border:1.5px solid var(--h-pline);}
+#page-view-profile .mp-actions .btn-ghost:hover{background:rgba(255,255,255,.2);border-color:#fff;}
+#page-view-profile .vp-top{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap;margin-bottom:18px;}
+#page-view-profile .vp-top .tag{background:var(--orange);color:#fff;font:800 11px 'Inter',sans-serif;letter-spacing:1px;text-transform:uppercase;border-radius:20px;padding:4px 11px;}
+#page-view-profile .vp-top .mp-actions{margin-left:auto;}
+#page-view-profile .vp-top .mp-actions .btn{min-height:40px;padding:0 18px;font-size:13px;}
+@media(max-width:640px){#page-view-profile .vp-top .mp-actions{width:100%;margin-left:0;}#page-view-profile .vp-top .mp-actions .btn{width:100%;}}
+#page-view-profile .mp-hero .wrap{width:100%;}
+#page-view-profile .vp-note{display:none;}
+#page-view-profile .vp-note.on{display:flex;}
+
+</style>
+<main>
+<section class="mp-pub" id="vpPub">
+    <div class="mp-hero mp-pubhero">
+        <canvas class="mp-net" id="vpNet" aria-hidden="true"></canvas><div class="mp-floor" aria-hidden="true"></div>
+        <div class="wrap">
+        <div class="vp-top"><span class="tag">Partner profile</span><div class="mp-actions"><button type="button" class="btn btn-ghost" onclick="showStaticPage('directory',event)">&larr; Back to Directory</button></div></div>
+        <div class="mp-id">
+            <div class="mp-avatar" style="margin-right:2px;"><span id="vpInit"></span></div>
+            <div class="mp-who">
+                <div class="mp-kick" id="vpKick">Registered Partner</div>
+                <h1><span id="vpName"></span> <svg class="mp-badge" width="22" height="22" aria-hidden="true"><use id="vpBadge" href="#icon-badge-registered"></use></svg></h1>
+                <div class="mp-meta">
+                    <span><span class="app-emoji-icon">📍</span> <span id="vpLoc"></span></span>
+                    <span><span class="app-emoji-icon">👤</span> Partner ID <b id="vpId"></b></span>
+                    <span><span class="app-emoji-icon">🗓️</span> Since <b id="vpSince"></b></span>
+                    <span><span class="app-emoji-icon">🏢</span> <b id="vpOff">0</b> offices</span>
+                </div>
+            </div>
+            <div class="mp-contact">
+                <div class="r"><span class="app-emoji-icon">✉️</span><span class="v" id="vpMail"></span></div>
+                <div class="r"><span class="app-emoji-icon">📞</span><span class="v" id="vpPhone"></span></div>
+                <div class="r"><span class="app-emoji-icon">🌐</span><span class="v" id="vpUrl"></span></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="wrap mp-pwrap" id="vpBody"></div>
+</section>
+</main>
+</div>
+
+<style>
+.es-fam{--purple:#341552;--purple-soft:#792c4e;--h-net:255,255,255;--h-node:#FF9A56;--h-grid:rgba(255,255,255,.12);--h-pill:rgba(255,255,255,.1);--h-pline:rgba(255,255,255,.26);}
+    .es-fam .wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+    
+    .es-fam .es-hero{background:var(--plum-gradient);color:#fff;padding:38px 0 0;position:relative;overflow:hidden;min-height:var(--func-hero-h);display:flex;flex-direction:column;justify-content:center;}
+    .es-fam .es-hero::before{content:"";position:absolute;bottom:-140px;left:-90px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(254,95,0,.24),transparent 70%);pointer-events:none;}
+    .es-fam .es-hero::after{content:"";position:absolute;top:-120px;right:-80px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);pointer-events:none;animation:esDrift 14s ease-in-out infinite alternate;}
+    @keyframes esDrift{from{transform:translate(0,0);}to{transform:translate(-50px,40px);}}
+    .es-fam .es-net{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+    .es-fam .es-floor{position:absolute;left:-30%;right:-30%;bottom:0;height:150px;z-index:0;pointer-events:none;background-image:linear-gradient(var(--h-grid) 1px,transparent 1px),linear-gradient(90deg,var(--h-grid) 1px,transparent 1px);background-size:46px 46px;transform:perspective(380px) rotateX(62deg);transform-origin:50% 100%;-webkit-mask-image:linear-gradient(to top,#000 5%,transparent 90%);mask-image:linear-gradient(to top,#000 5%,transparent 90%);animation:esGrid 7s linear infinite;}
+    @keyframes esGrid{to{background-position:0 46px,0 0;}}
+    .es-fam .es-hero .wrap{position:relative;z-index:1;width:100%;flex:1;display:flex;flex-direction:column;justify-content:space-between;}
+    .es-fam .es-id{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+    .es-fam .es-badge{position:relative;flex:0 0 auto;width:88px;height:88px;border-radius:24px;background:linear-gradient(135deg,var(--cream-2),#FFDDBB);color:var(--purple);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px #4f1e50,0 14px 34px -8px rgba(254,95,0,.5);}
+    .es-fam .es-badge::before{content:"";position:absolute;inset:-7px;border-radius:30px;padding:2px;background:conic-gradient(from 0deg,#FE5F00,#FF9A56,#FF9A56,#FE5F00);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:esSpin 6s linear infinite;}
+    @keyframes esSpin{to{transform:rotate(360deg);}}
+    .es-fam .es-who{flex:1;min-width:240px;}
+    .es-fam .es-kick{font:700 11.5px 'Inter',sans-serif;letter-spacing:1.1px;text-transform:uppercase;color:#FFB27A;}
+    .es-fam .es-who h1{font:800 30px/1.15 'Poppins',sans-serif;color:#fff !important;margin:6px 0 10px;text-transform:none;}
+    .es-fam .es-meta{display:flex;flex-wrap:wrap;gap:8px 10px;font-size:13px;}
+    .es-fam .es-meta span{display:inline-flex;align-items:center;gap:7px;background:var(--h-pill);border:1px solid var(--h-pline);border-radius:30px;padding:5px 12px;color:#fff;}
+    .es-fam .es-actions{display:flex;gap:10px;flex-wrap:wrap;}
+    .es-fam .es-actions .btn{min-height:44px;padding:0 20px;font-size:14px;}
+    .es-fam .es-actions .btn-ghost{background:var(--h-pill);color:#fff;border:1.5px solid rgba(255,255,255,.35);}
+    .es-fam .es-actions .btn-ghost:hover{background:rgba(255,255,255,.2);border-color:#fff;}
+    .es-fam .es-kpis{display:none;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0 0;}
+    .es-fam .es-kpi{background:var(--h-pill);border:1px solid var(--h-pline);border-radius:16px;padding:12px 16px;color:#fff;min-width:0;}
+    .es-fam .es-kpi .l{font:700 11px 'Inter',sans-serif;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.86);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .es-fam .es-kpi .v{font:800 28px/1.1 'Poppins',sans-serif;margin:4px 0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .es-fam .es-kpi .t{font-size:12px;font-weight:600;color:#6EE7A8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .es-fam .es-kpi.warn .v{color:var(--orange);} .es-fam .es-kpi.warn .t{color:#FFB27A;}
+    .es-fam .es-strength{margin-top:26px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.26);border-bottom:0;border-radius:18px 18px 0 0;padding:16px 22px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+    .es-fam .es-ring{--p:50;flex:0 0 auto;width:54px;height:54px;border-radius:50%;background:conic-gradient(#FE5F00 calc(var(--p)*1%),rgba(255,255,255,.2) 0);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(254,95,0,.45);animation:esPulse 3s ease-in-out infinite;}
+    @keyframes esPulse{0%,100%{box-shadow:0 0 12px rgba(254,95,0,.35);}50%{box-shadow:0 0 28px rgba(254,95,0,.7);}}
+    .es-fam .es-ring b{width:42px;height:42px;border-radius:50%;background:#43194C;display:flex;align-items:center;justify-content:center;font:700 13px 'Poppins',sans-serif;}
+    .es-fam .es-strength .tx{flex:1;min-width:220px;}
+    .es-fam .es-strength .tx b{display:block;font:700 15px 'Poppins',sans-serif;}
+    .es-fam .es-strength .tx span{font-size:12.5px;color:rgba(255,255,255,.86);}
+    .es-fam .es-strength a{color:#FFB27A !important;font-weight:700;border-bottom:1.5px solid rgba(255,178,122,.5);cursor:pointer;}
+    .es-fam .es-sact .btn{min-height:38px;padding:0 16px;font-size:13px;background:var(--orange);color:#fff !important;border:0;}
+    .es-fam .es-sw{position:absolute;right:20px;top:10px;z-index:3;display:flex;align-items:center;gap:8px;font:700 10.5px 'Inter',sans-serif;letter-spacing:.3px;text-transform:uppercase;color:rgba(255,255,255,.86);}
+    .es-fam .es-sw .seg{display:inline-flex;border:1.5px dashed var(--h-pline);border-radius:9px;overflow:hidden;background:var(--h-pill);}
+    .es-fam .es-sw button{border:0;background:transparent;color:#fff;font:700 10.5px 'Inter',sans-serif;padding:4px 10px;cursor:pointer;text-transform:none;letter-spacing:0;}
+    .es-fam .es-sw button.on{background:var(--orange);}
+    
+    .es-fam .es-in input,.es-fam .es-in select,.es-fam .es-in textarea{width:100%;box-sizing:border-box;border:1.5px solid #E7D8C6;border-radius:13px;background:#FFFDFA;padding:10px 13px;font:500 14px 'Inter',sans-serif;color:var(--ink);outline:0;}
+    .es-fam .es-in input:focus,.es-fam .es-in select:focus,.es-fam .es-in textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(42,0,124,.12);}
+    .es-fam .es-in textarea{resize:vertical;min-height:110px;}
+    
+    .es-fam .es-mod{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(27,19,48,.55);}
+    .es-fam .es-mod.open{display:flex;}
+    .es-fam .es-dlg{width:100%;max-width:640px;max-height:calc(100vh - 36px);display:flex;flex-direction:column;background:#fff;border-radius:22px;box-shadow:0 40px 80px -30px rgba(27,19,48,.7);overflow:hidden;}
+    .es-fam .es-dlg.sm{max-width:460px;}
+    .es-fam .es-dh{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid #F5EBDF;}
+    .es-fam .es-dh h3{font:700 17px 'Poppins',sans-serif;color:var(--purple);margin:0;text-transform:none;}
+    .es-fam .es-x{border:0;background:var(--cream-2);width:34px;height:34px;border-radius:10px;font-size:20px;line-height:1;cursor:pointer;color:var(--ink-soft);}
+    .es-fam .es-db{padding:18px 22px;overflow-y:auto;}
+    .es-fam .es-df{display:flex;gap:10px;justify-content:flex-end;padding:14px 22px;border-top:1px solid #F5EBDF;background:#FFFDFA;}
+    .es-fam .es-df .btn{min-height:44px;padding:0 22px;}
+    .es-fam .es-note{display:flex;gap:10px;align-items:flex-start;background:#FFF6EC;border:1px solid #FBDDBF;border-radius:14px;padding:12px 14px;font-size:12.5px;color:var(--ink-soft);margin-bottom:14px;line-height:1.5;}
+    .es-fam .es-note svg{flex:0 0 auto;color:var(--orange);margin-top:1px;}
+    .es-fam .es-err{display:none;margin-top:5px;font-size:12px;font-weight:600;color:#D23C32;}
+    .es-fam .es-thx{text-align:center;padding:26px 10px;}
+    .es-fam .es-thx .ck{width:76px;height:76px;border-radius:50%;background:#E3F7EC;color:#1E8A52;display:inline-flex;align-items:center;justify-content:center;margin-bottom:10px;}
+    .es-fam .es-thx h3{font:800 20px 'Poppins',sans-serif;color:var(--purple);margin:0 0 6px;} .es-fam .es-thx p{color:var(--ink-soft);font-size:14px;margin:0 0 16px;}
+    .es-fam .es-toast{position:fixed;left:50%;top:84px;transform:translateX(-50%);z-index:110;background:#14532D;color:#fff;border-radius:14px;padding:11px 18px;font-size:13.5px;font-weight:600;box-shadow:0 18px 40px -16px rgba(0,0,0,.5);display:none;max-width:calc(100% - 24px);}
+    .es-fam .es-toast.show{display:block;}
+    .es-fam .btn[disabled]{opacity:.5;cursor:not-allowed;box-shadow:none;}
+    @media(max-width:1279px){.es-fam .es-kpis{display:none;}}
+    @media(max-width:1000px){
+        .es-fam .es-sact{display:none;}
+    }
+    @media(max-width:700px){
+        .es-fam .es-hero{padding-top:14px;}
+        .es-fam .es-badge{width:58px;height:58px;border-radius:17px;}
+        .es-fam .es-who h1{font-size:21px;margin:4px 0 8px;}
+        .es-fam .es-meta{gap:6px 8px;} .es-fam .es-meta span{font-size:12px;padding:3px 10px;}
+        .es-fam .es-meta span:nth-child(n+3){display:none;}
+        .es-fam .es-actions .btn{min-height:40px;padding:0 14px;}
+        .es-fam .es-strength{margin-top:14px;padding:10px 14px;gap:12px;}
+        .es-fam .es-strength .tx span{display:none;} .es-fam .es-strength .tx b{font-size:14px;}
+        .es-fam .es-sw{display:none;}
+        .es-fam .es-floor{height:90px;}
+        .es-fam .es-mod{align-items:flex-end;padding:0;}
+        .es-fam .es-dlg{max-width:none;border-radius:22px 22px 0 0;max-height:92vh;}
+        .es-fam .es-df{padding:12px 18px calc(12px + env(safe-area-inset-bottom));} .es-fam .es-df .btn{flex:1;}
+        .es-fam .es-db{padding:16px 18px;}
+    }
+    @media(prefers-reduced-motion:reduce){.es-fam .es-hero::after,.es-fam .es-floor,.es-fam .es-badge::before,.es-fam .es-ring{animation:none;}}
+
+    
+    .es-fam .es-body{background:#FFF9F3;padding:26px 0 90px;}
+    .es-fam .es-view{display:none;} .es-fam .es-view.on{display:block;}
+    .es-fam .es-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+    .es-fam .es-bar h2{font:800 22px 'Poppins',sans-serif;color:var(--purple);margin:0;text-transform:none;}
+    .es-fam .es-bar p{font-size:13.5px;color:var(--ink-soft);margin:2px 0 0;}
+    .es-fam .es-bar .push{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+    .es-fam .es-search{display:flex;gap:8px;}
+    .es-fam .es-search input{width:230px;max-width:100%;}
+    .es-fam .es-in input,.es-fam .es-in select,.es-fam .es-in textarea{width:100%;box-sizing:border-box;border:1.5px solid #E7D8C6;border-radius:13px;background:#FFFDFA;padding:10px 13px;font:500 14px 'Inter',sans-serif;color:var(--ink);outline:0;}
+    .es-fam .es-in input:focus,.es-fam .es-in select:focus,.es-fam .es-in textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(42,0,124,.12);}
+    .es-fam .es-in textarea{resize:vertical;min-height:90px;}
+    .es-fam .es-banner{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:linear-gradient(135deg,#FFF1E4,#FDE7F0);border:1px solid #FBDDBF;border-radius:16px;padding:12px 16px;margin-bottom:14px;}
+    .es-fam .es-banner .ic{flex:0 0 36px;width:36px;height:36px;border-radius:11px;background:#FFE0C7;color:#B84400;display:flex;align-items:center;justify-content:center;}
+    .es-fam .es-banner .tx{flex:1;min-width:220px;font-size:13px;color:var(--ink-soft);} .es-fam .es-banner .tx b{display:block;font:700 14px 'Poppins',sans-serif;color:var(--purple);}
+    .es-fam .es-banner a{font-weight:700;color:var(--purple);cursor:pointer;} .es-fam .es-banner button{border:0;background:transparent;font-size:18px;cursor:pointer;color:var(--ink-soft);}
+    .es-fam .es-relink{display:none;font-size:12.5px;font-weight:700;color:var(--purple);cursor:pointer;margin-top:4px;}
+    .es-fam .es-tabs{display:inline-flex;background:#fff;border:1px solid #F0E4D6;border-radius:30px;padding:4px;margin-bottom:16px;box-shadow:var(--shadow-soft);}
+    .es-fam .es-tab{border:0;background:transparent;border-radius:26px;padding:9px 20px;font:700 13.5px 'Inter',sans-serif;color:var(--ink-soft);cursor:pointer;}
+    .es-fam .es-tab.on{background:linear-gradient(135deg,#4f1e50,#792c4e);color:#fff;box-shadow:0 10px 20px -10px rgba(121,44,78,.7);}
+    .es-fam .es-layout{display:grid;grid-template-columns:268px minmax(0,1fr);gap:24px;align-items:start;}
+    .es-fam .es-rail{position:sticky;top:84px;background:#fff;border:1px solid #F5EBDF;border-radius:20px;box-shadow:var(--shadow-soft);padding:16px;display:grid;gap:14px;}
+    .es-fam .es-rail h4{font:700 15px 'Poppins',sans-serif;color:var(--purple);margin:0;text-transform:none;display:flex;justify-content:space-between;align-items:center;}
+    .es-fam .es-rail h4 a{font:600 12px 'Inter',sans-serif;color:var(--ink-soft);cursor:pointer;}
+    .es-fam .es-rail label.t{display:block;font:700 12px 'Inter',sans-serif;letter-spacing:.4px;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;}
+    .es-fam .es-radios{display:grid;gap:7px;}
+    .es-fam .es-radios label{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--ink);cursor:pointer;}
+    .es-fam .es-radios input{accent-color:var(--purple);width:17px;height:17px;}
+    .es-fam .es-chk{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--ink);cursor:pointer;}
+    .es-fam .es-chk input{accent-color:var(--purple);width:17px;height:17px;}
+    .es-fam .es-rail .btn{width:100%;min-height:44px;}
+    .es-fam .es-two{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+    .es-fam .es-filt{display:none;min-height:40px;padding:0 16px;}
+    .es-fam .es-list{display:grid;gap:14px;}
+    .es-fam .es-ship{background:#fff;border:1px solid #F5EBDF;border-radius:20px;box-shadow:var(--shadow-soft);overflow:hidden;}
+    .es-fam .es-ship.del{opacity:.62;background:#FBF6F2;}
+    .es-fam .es-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:11px 18px;background:var(--cream-2);font-size:12.5px;font-weight:600;color:var(--ink-soft);}
+    .es-fam .es-top b{color:var(--purple);}
+    .es-fam .es-row{display:grid;grid-template-columns:56px minmax(0,1fr) minmax(0,1.15fr) minmax(0,1fr) 120px auto;gap:14px;align-items:center;padding:16px 18px;}
+    .es-fam .es-logo{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#4f1e50,#792c4e);color:#fff;display:flex;align-items:center;justify-content:center;font:700 13px 'Poppins',sans-serif;}
+    .es-fam .es-pt small{display:block;font:700 11px 'Inter',sans-serif;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-soft);}
+    .es-fam .es-pt b{display:block;font:700 14px 'Poppins',sans-serif;color:var(--purple);margin:2px 0;}
+    .es-fam .es-pt span{font-size:12.5px;color:var(--ink-soft);}
+    .es-fam .es-pt.r{text-align:right;}
+    .es-fam .es-tr{text-align:center;min-width:0;}
+    .es-fam .es-tr .t{font:700 12.5px 'Inter',sans-serif;color:var(--ink);}
+    .es-fam .es-line{position:relative;height:4px;border-radius:4px;background:#EFE4D6;margin:10px 4px 8px;}
+    .es-fam .es-line i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:linear-gradient(90deg,#FE5F00,#FF9A56);}
+    .es-fam .es-line em{position:absolute;top:-10px;transform:translateX(-50%);font-style:normal;font-size:18px;line-height:1;}
+    .es-fam .es-tr .via{font-size:11.5px;color:var(--ink-soft);min-height:16px;}
+    .es-fam .es-st{text-align:center;}
+    .es-fam .es-st b{display:inline-block;font:700 12.5px 'Inter',sans-serif;border-radius:20px;padding:5px 13px;background:#F1EAFB;color:#4A2A8A;}
+    .es-fam .es-st b.Pending{background:#FFF0D9;color:#B25E00;} .es-fam .es-st b.Start{background:#E6F0FF;color:#1D5FB8;} .es-fam .es-st b.Interim{background:#F1EAFB;color:#4A2A8A;} .es-fam .es-st b.End{background:#E3F7EC;color:#1E8A52;}
+    .es-fam .es-st small{display:block;font-size:11px;color:var(--ink-soft);margin-top:3px;}
+    .es-fam .es-acts{display:grid;gap:6px;min-width:130px;}
+    .es-fam .es-acts .btn{min-height:36px;padding:0 14px;font-size:12.5px;}
+    .es-fam .es-acts .rm{color:#C0352B;border-color:#F3C9C5;}
+    .es-fam .es-badge-del{display:inline-block;font:800 11px 'Inter',sans-serif;letter-spacing:.8px;background:#FDE5E3;color:#C0352B;border-radius:20px;padding:5px 12px;}
+    .es-fam .es-delinfo{padding:8px 18px 12px;font-size:12.5px;color:#C0352B;}
+    .es-fam .es-sp{display:none;border-top:1px dashed #E7D8C6;background:#FFFCF8;padding:16px 18px 18px;}
+    .es-fam .es-sp.open{display:block;}
+    .es-fam .es-sp-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+    .es-fam .es-sp-h h3{font:700 15px 'Poppins',sans-serif;color:var(--purple);margin:0;text-transform:none;}
+    .es-fam .es-sp-h button{border:0;background:var(--cream-2);width:32px;height:32px;border-radius:10px;font-size:18px;cursor:pointer;color:var(--ink-soft);}
+    .es-fam .es-info{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:12px;}
+    .es-fam .es-info div{background:#fff;border:1px solid #F5EBDF;border-radius:12px;padding:9px 12px;min-width:0;}
+    .es-fam .es-info .k{font:700 10.5px 'Inter',sans-serif;letter-spacing:.5px;text-transform:uppercase;color:var(--ink-soft);}
+    .es-fam .es-info .v{font:700 13px 'Poppins',sans-serif;color:var(--purple);margin-top:2px;overflow-wrap:anywhere;}
+    .es-fam .es-sea{display:none;margin-bottom:12px;}
+    .es-fam .es-form{display:grid;grid-template-columns:2fr 1fr 1fr 2fr;gap:10px;}
+    .es-fam .es-form label,.es-fam .es-f label{display:block;font:600 12.5px 'Inter',sans-serif;color:var(--ink);margin-bottom:5px;}
+    .es-fam .es-f{margin-bottom:12px;} .es-fam .es-f label em{color:#D23C32;font-style:normal;margin-left:3px;}
+    .es-fam .es-f.err .es-in textarea,.es-fam .es-f.err .es-in input,.es-fam .es-f.err .es-in select{border-color:#E0483E;background:#FFF6F5;}
+    .es-fam .es-f.err .es-err{display:block;}
+    .es-fam .es-sp-a{display:flex;justify-content:flex-end;margin:12px 0;}
+    .es-fam .es-sp-a .btn{min-height:42px;padding:0 26px;}
+    .es-fam table.es-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+    .es-fam .es-tbl th{text-align:left;font:700 11px 'Inter',sans-serif;letter-spacing:.5px;text-transform:uppercase;color:var(--ink-soft);padding:8px 10px;border-bottom:1px solid #F0E4D6;white-space:nowrap;}
+    .es-fam .es-tbl td{padding:9px 10px;border-bottom:1px solid #F8EFE4;color:var(--ink);vertical-align:top;}
+    .es-fam .es-tbl .btn{min-height:30px;padding:0 12px;font-size:12px;color:#C0352B;border-color:#F3C9C5;}
+    .es-fam .es-tag{display:inline-block;font:700 11px 'Inter',sans-serif;border-radius:20px;padding:2px 9px;background:#ECECEC;color:#666;}
+    .es-fam .es-sp h5{font:700 13px 'Poppins',sans-serif;color:var(--purple);margin:14px 0 8px;text-transform:none;}
+    .es-fam .es-scroll{overflow-x:auto;}
+    .es-fam .es-prompt{background:#fff;border:1.5px dashed #E7D8C6;border-radius:20px;padding:34px 20px;text-align:center;color:var(--ink-soft);font-size:14px;}
+    .es-fam .es-prompt b{color:var(--purple);}
+    .es-fam .es-foot{margin-top:14px;font-size:12.5px;color:var(--ink-soft);}
+    .es-fam .es-more{display:flex;justify-content:center;}
+    .es-fam .es-crumb{font-size:13px;color:var(--ink-soft);margin-bottom:14px;} .es-fam .es-crumb a{color:var(--purple);font-weight:700;cursor:pointer;}
+    .es-fam .es-card{background:#fff;border:1px solid #F5EBDF;border-radius:20px;box-shadow:var(--shadow-soft);padding:20px;margin-bottom:16px;}
+    .es-fam .es-card h3{font:700 15.5px 'Poppins',sans-serif;color:var(--purple);margin:0 0 14px;text-transform:none;}
+    .es-fam .es-dh{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px;}
+    .es-fam .es-dh h2{font:800 22px 'Poppins',sans-serif;color:var(--purple);margin:0;text-transform:none;flex:1;min-width:200px;}
+    .es-fam .es-dh .mst{display:flex;gap:8px;align-items:center;}
+    .es-fam .es-dh .mst .es-in select{min-width:150px;}
+    .es-fam .es-dban{display:grid;grid-template-columns:auto minmax(0,1.6fr) auto;gap:20px;align-items:center;}
+    .es-fam .es-dban .ico{width:64px;height:64px;border-radius:18px;background:var(--cream-2);display:flex;align-items:center;justify-content:center;font-size:30px;}
+    .es-fam .es-dban h4{font:700 15px 'Poppins',sans-serif;color:var(--purple);margin:0;text-transform:none;}
+    .es-fam .es-dban p{margin:2px 0 0;font-size:13px;color:var(--ink-soft);}
+    .es-fam .es-kv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 18px;}
+    .es-fam .es-kv div{min-width:0;} .es-fam .es-kv .k{font:700 11px 'Inter',sans-serif;letter-spacing:.5px;text-transform:uppercase;color:var(--ink-soft);}
+    .es-fam .es-kv .v{font:600 14px 'Inter',sans-serif;color:var(--ink);margin-top:2px;overflow-wrap:anywhere;}
+    .es-fam .es-dgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .es-fam .es-dgrid .es-card{margin-bottom:0;}
+    .es-fam .es-draft{display:inline-block;font:800 11px 'Inter',sans-serif;letter-spacing:.8px;background:#FFF0D9;color:#B25E00;border-radius:20px;padding:3px 10px;margin-right:8px;}
+    .es-fam .es-file{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+    .es-fam .es-file a{color:var(--purple);font-weight:700;font-size:13px;cursor:pointer;}
+    .es-fam .es-up{display:grid;gap:12px;}
+    .es-fam .es-errrow td{background:#FFF6F5;} .es-fam .es-errtx{color:#C0352B;font-weight:600;font-size:12.5px;}
+    .es-fam .es-okrow{color:#1E8A52;font-weight:700;}
+    .es-fam .es-yn .btn{min-width:90px;}
+    @media(max-width:1180px){.es-fam .es-row{grid-template-columns:56px minmax(0,1fr) minmax(0,1.15fr) minmax(0,1fr);}.es-fam .es-st,.es-fam .es-acts{grid-column:span 2;}.es-fam .es-acts{grid-template-columns:repeat(auto-fit,minmax(110px,1fr));}}
+    @media(max-width:1000px){
+        .es-fam .es-layout{grid-template-columns:minmax(0,1fr);}
+        .es-fam .es-rail{position:static;display:none;} .es-fam .es-rail.open{display:grid;}
+        .es-fam .es-filt{display:inline-flex;}
+        .es-fam .es-info{grid-template-columns:repeat(2,minmax(0,1fr));}
+        .es-fam .es-form{grid-template-columns:1fr 1fr;}
+        .es-fam .es-dgrid{grid-template-columns:1fr;} .es-fam .es-kv{grid-template-columns:repeat(2,minmax(0,1fr));}
+        .es-fam .es-dban{grid-template-columns:auto minmax(0,1fr);} .es-fam .es-dban .route{grid-column:1 / -1;}
+    }
+    @media(max-width:700px){
+        .es-fam .es-row{grid-template-columns:48px minmax(0,1fr) minmax(0,1fr);gap:12px;}
+        .es-fam .es-tr{grid-column:1 / -1;order:5;} .es-fam .es-pt.r{text-align:left;}
+        .es-fam .es-st,.es-fam .es-acts{grid-column:1 / -1;}
+        .es-fam .es-info{grid-template-columns:1fr;} .es-fam .es-form{grid-template-columns:1fr;} .es-fam .es-kv{grid-template-columns:1fr;}
+        .es-fam .es-search{width:100%;} .es-fam .es-search input{flex:1;width:auto;}
+        .es-fam .es-bar .push{margin-left:0;width:100%;}
+        .es-fam .es-dh .mst{width:100%;} .es-fam .es-dh .mst .es-in{flex:1;}
+    }
+
+/* ---- E-SOA family specifics ---- */
+.es-fam .sx-kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin:0 0 22px;}
+.es-fam .sx-kpi{background:#fff;border:1px solid #F5EBDF;border-top:4px solid var(--purple);border-radius:18px;box-shadow:var(--shadow-soft);padding:14px 16px;min-width:0;}
+.es-fam .sx-kpi.pur{border-top-color:#792c4e;} .es-fam .sx-kpi.os{border-top-color:var(--orange);} .es-fam .sx-kpi.od{border-top-color:#C0352B;} .es-fam .sx-kpi.disp{border-top-color:#B84400;}
+.es-fam .sx-kpi .k{font:700 11px 'Inter',sans-serif;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-soft);}
+.es-fam .sx-kpi .v{font:800 22px/1.2 'Poppins',sans-serif;color:var(--purple);margin:5px 0 3px;white-space:nowrap;}
+@media(max-width:700px){ .es-fam .sx-kpi .v{font-size:19px;} }
+.es-fam .sx-kpi .sub{font-size:11.5px;color:var(--ink-soft);}
+.es-fam .sx-kpi.clk{cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;}
+.es-fam .sx-kpi.clk:hover{transform:translateY(-3px);box-shadow:0 20px 40px -22px rgba(42,0,124,.35);}
+.es-fam .sx-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+.es-fam .sx-h3{font:700 17px 'Poppins',sans-serif;color:var(--purple);margin:0;text-transform:none;}
+.es-fam .sx-seg{display:inline-flex;border:1.5px solid #E7D8C6;border-radius:12px;overflow:hidden;background:#fff;}
+.es-fam .sx-seg button{border:0;background:#fff;padding:10px 18px;font:600 13px 'Poppins',sans-serif;color:var(--ink-soft);cursor:pointer;}
+.es-fam .sx-seg button.on{background:var(--cream-2);color:var(--purple);}
+.es-fam .sx-xl{min-height:40px;padding:0 16px;display:inline-flex;align-items:center;gap:7px;}
+.es-fam .sx-drill{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#fff;border:1px solid #F5EBDF;border-radius:14px;padding:10px 14px;margin-bottom:14px;font-size:13.5px;color:var(--ink-soft);}
+.es-fam .sx-drill button{border:1.5px solid #E7D8C6;background:#fff;border-radius:10px;padding:5px 12px;font:700 12.5px 'Inter',sans-serif;color:var(--purple);cursor:pointer;display:inline-flex;align-items:center;gap:6px;}
+.es-fam .sx-drill b{color:var(--purple);}
+.es-fam .sx-pcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;}
+.es-fam .sx-pc{background:#fff;border:1px solid #F5EBDF;border-radius:20px;box-shadow:var(--shadow-soft);padding:18px;display:flex;flex-direction:column;gap:14px;}
+.es-fam .sx-pc .top{display:flex;align-items:center;gap:12px;}
+.es-fam .sx-pc .av{flex:0 0 44px;width:44px;height:44px;border-radius:14px;background:var(--cream-2);color:var(--purple);display:flex;align-items:center;justify-content:center;font:800 14px 'Poppins',sans-serif;}
+.es-fam .sx-pc .top b{display:block;font:700 15px 'Poppins',sans-serif;color:var(--purple);}
+.es-fam .sx-pc .top small{font-size:12px;color:var(--ink-soft);}
+.es-fam .sx-pc .fig{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+.es-fam .sx-pc .fig div{background:#FFF9F3;border-radius:12px;padding:8px 10px;min-width:0;}
+.es-fam .sx-pc .fig span{display:block;font:700 10.5px 'Inter',sans-serif;letter-spacing:.5px;text-transform:uppercase;color:var(--ink-soft);}
+.es-fam .sx-pc .fig b{font:700 13.5px 'Poppins',sans-serif;color:var(--ink);overflow-wrap:anywhere;}
+.es-fam .sx-pc .fig .net b{color:#1E8A52;} .es-fam .sx-pc .fig .net.neg b{color:#C0352B;}
+.es-fam .sx-pc .btn{align-self:flex-start;min-height:40px;padding:0 16px;display:inline-flex;align-items:center;gap:7px;}
+.es-fam .sx-legend{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-size:12.5px;color:var(--ink-soft);margin:0 0 12px;}
+.es-fam .sx-legend b{color:var(--ink);} .es-fam .sx-legend i{flex:0 0 1px;height:14px;background:#E7D8C6;} .es-fam .sx-legend .o{color:var(--purple);} .es-fam .sx-legend .i{color:var(--orange);}
+.es-fam .sx-tcard{padding:0;overflow:hidden;}
+.es-fam .sx-tbl th.n,.es-fam .sx-tbl td.n{text-align:right;white-space:nowrap;}
+.es-fam .sx-tbl td.late{color:#C0352B;font-weight:700;}
+.es-fam .sx-tbl td.ty,.es-fam .sx-tbl td.ac{white-space:nowrap;}
+.es-fam .sx-tbl td.ac button{border:1.5px solid #E7D8C6;background:#fff;border-radius:9px;padding:3px 10px;font:600 12px 'Inter',sans-serif;color:var(--purple);cursor:pointer;margin-right:4px;}
+.es-fam .sx-tbl td.ac button:hover{border-color:var(--orange);color:var(--orange);}
+.es-fam .sx-tbl td.ac button.rm{color:#C0352B;border-color:#F3C9C5;}
+.es-fam .sx-tbl .mu{color:var(--ink-soft);}
+.es-fam .sx-b{display:inline-block;font:700 11px 'Inter',sans-serif;border-radius:20px;padding:2px 10px;white-space:nowrap;}
+.es-fam .sx-b.ok{background:#E3F7EC;color:#1E8A52;} .es-fam .sx-b.warn{background:#FFE9D6;color:#B84400;} .es-fam .sx-b.bad{background:#FDE5E3;color:#C0352B;}
+.es-fam .sx-ti{display:inline-flex;align-items:flex-start;gap:1px;margin-right:4px;}
+.es-fam .sx-ti i{font-style:normal;font-size:11px;font-weight:800;} .es-fam .sx-ti.out i{color:var(--purple);} .es-fam .sx-ti.in i{color:var(--orange);}
+.es-fam .sx-empty{background:#fff;border:1.5px dashed #E7D8C6;border-radius:20px;padding:34px 20px;text-align:center;color:var(--ink-soft);font-size:14px;}
+.es-fam .sx-empty b{display:block;font:700 16px 'Poppins',sans-serif;color:var(--purple);margin-bottom:4px;}
+.es-fam .sx-strips{display:flex;flex-direction:column;gap:10px;}
+.es-fam .sx-strip{background:#fff;border:1px solid #F5EBDF;border-radius:16px;overflow:hidden;}
+.es-fam .sx-strip.bad{border-color:#F3C9C5;}
+.es-fam .sx-strip .sh{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px;cursor:pointer;}
+.es-fam .sx-strip .sh .l{display:flex;align-items:center;gap:8px;font:700 14px 'Poppins',sans-serif;color:var(--purple);}
+.es-fam .sx-strip .tw{display:inline-block;transition:transform .15s ease;color:var(--orange);}
+.es-fam .sx-strip.open .tw{transform:rotate(90deg);}
+.es-fam .sx-strip .sh .r{font-size:13px;color:var(--ink-soft);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.es-fam .sx-strip .hk{font-weight:700;color:var(--ink);}
+.es-fam .sx-strip .sb{display:none;grid-template-columns:repeat(4,minmax(0,1fr)) auto;gap:12px 16px;padding:0 16px 14px;align-items:end;}
+.es-fam .sx-strip.open .sb{display:grid;}
+.es-fam .sx-strip .tk{font:700 10.5px 'Inter',sans-serif;letter-spacing:.5px;text-transform:uppercase;color:var(--ink-soft);}
+.es-fam .sx-strip .tv{font-size:13.5px;font-weight:600;color:var(--ink);margin-top:2px;}
+.es-fam .sx-strip .ac{display:flex;gap:8px;flex-wrap:wrap;}
+.es-fam .sx-strip .sm{min-height:36px;padding:0 14px;font-size:12.5px;}
+.es-fam .sx-strip .rm{color:#C0352B !important;border-color:#F3C9C5 !important;}
+.es-fam .sx-strip .sp{display:none;padding:12px 16px 14px;border-top:1px dashed #E7D8C6;}
+.es-fam .sx-strip.open .sp{display:block;}
+.es-fam .sx-strip .kv{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;font-size:13px;color:var(--ink);}
+.es-fam .sx-strip .kv span{display:block;font:700 10.5px 'Inter',sans-serif;letter-spacing:.5px;text-transform:uppercase;color:var(--ink-soft);}
+.es-fam .sx-errs{background:#FFF6F5;border:1px solid #F3C9C5;border-radius:12px;padding:10px 14px;margin-top:10px;color:#8A2A22;font-size:13px;}
+.es-fam .sx-errs ul{margin:6px 0 0;padding-left:18px;}
+.es-fam .sx-gbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+.es-fam .sx-gbar h3{margin:0;font:700 17px 'Poppins',sans-serif;color:var(--purple);text-transform:none;}
+.es-fam .sx-gbar .cnt{font:600 12px 'Inter',sans-serif;color:var(--ink-soft);background:var(--cream-2);border-radius:20px;padding:2px 10px;margin-left:8px;}
+.es-fam .sx-gbar .acts{display:flex;gap:10px;flex-wrap:wrap;}
+.es-fam .sx-gbar .acts .btn{min-height:42px;padding:0 18px;display:inline-flex;align-items:center;gap:7px;}
+.es-fam .sx-form{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px;}
+.es-fam .sx-form.one{grid-template-columns:1fr;}
+.es-fam .sx-form .f.full{grid-column:1 / -1;}
+.es-fam .sx-form .f label{display:block;font:700 12.5px 'Inter',sans-serif;color:var(--ink);margin-bottom:5px;}
+.es-fam .sx-form .f label em{color:var(--orange);font-style:normal;}
+.es-fam .es-hero .es-actions{justify-content:flex-end;}
+.sx-toast{position:fixed;top:92px;left:50%;transform:translateX(-50%) translateY(-16px);background:#2E1249;color:#fff;padding:11px 20px;border-radius:12px;font:600 13px 'Inter',sans-serif;opacity:0;pointer-events:none;transition:.25s;z-index:1001;box-shadow:0 12px 30px rgba(27,19,48,.35);max-width:90vw;}
+.sx-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+@media(max-width:1100px){ .es-fam .sx-kpis{grid-template-columns:repeat(3,minmax(0,1fr));} }
+@media(max-width:900px){ .es-fam .sx-strip .sb{grid-template-columns:repeat(2,minmax(0,1fr));} .es-fam .sx-strip .ac{grid-column:1 / -1;} }
+@media(max-width:700px){ .es-fam .sx-kpis{grid-template-columns:repeat(2,minmax(0,1fr));} .es-fam .sx-form{grid-template-columns:1fr;} .es-fam .sx-strip .kv{grid-template-columns:1fr;} }
+</style>
+<style>
+/* ---- layout + emoji fixes ---- */
+.es-fam .sx-em{font-style:normal;line-height:1;font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif;}
+.es-fam .es-badge .sx-em{font-size:38px;}
+.es-fam .btn .sx-em{font-size:15px;}
+.es-fam .es-layout{grid-template-columns:300px minmax(0,1fr);}
+.es-fam .es-rail > *{min-width:0;}
+.es-fam .es-rail .es-in{min-width:0;}
+.es-fam .es-rail .es-in input,.es-fam .es-rail .es-in select{min-width:0;max-width:100%;}
+.es-fam .es-rail .es-two{grid-template-columns:minmax(0,1fr);gap:8px;}
+.es-fam .sx-pc .fig{grid-template-columns:repeat(3,minmax(0,1fr));}
+@media(max-width:1000px){ .es-fam .es-layout{grid-template-columns:minmax(0,1fr);} }
+.es-fam .sx-ti i{font-family:'Segoe UI Symbol','Segoe UI',Arial,sans-serif;font-size:12px;}
+/* KPI tiles straddle the bottom edge of the hero: half on the plum, half on the page (the live E-SOA screen's floating card row) */
+#page-esoa .es-hero{padding-bottom:64px;box-sizing:border-box;}
+.es-fam .sx-kpis{margin-top:-84px;position:relative;z-index:5;}
+.es-fam .sx-kpi{box-shadow:0 18px 36px -18px rgba(42,0,124,.45);}
+</style>
+<style>
+/* ---- E-SOA family, faithful rebuild (2026-10-09): old cards + old content in the warm theme ---- */
+.es-fam .sx-strips{display:flex;flex-direction:column;gap:12px;}
+.es-fam .sx-strip{background:#fff;border:1px solid #EADFF2;border-radius:14px;overflow:hidden;box-shadow:0 3px 12px rgba(42,0,124,.05);}
+.es-fam .sx-strip.bad{border-color:#F3C9C5;}
+.es-fam .sx-strip .sh{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#F5F1FB;border-bottom:1px solid #ECE5F6;padding:10px 16px;cursor:pointer;}
+.es-fam .sx-strip .sh:hover{background:#EFE8FA;}
+.es-fam .sx-strip.bad .sh{background:#FFF3F1;border-bottom-color:#F6D6D2;}
+.es-fam .sx-strip .sh .l{display:flex;align-items:center;gap:9px;font:700 14px 'Poppins',sans-serif;color:var(--purple);}
+.es-fam .sx-strip .tw{display:inline-block;transition:transform .15s ease;color:var(--orange);}
+.es-fam .sx-strip.open .tw{transform:rotate(90deg);}
+.es-fam .sx-strip .sh .r{font-size:12.5px;color:var(--ink);font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.es-fam .sx-strip .hk{font-weight:600;color:var(--ink-soft);}
+.es-fam .sx-strip .sb{display:grid;grid-template-columns:repeat(6,minmax(0,1fr)) auto;gap:12px 16px;padding:14px 16px;align-items:start;}
+.es-fam .sx-strip .sb.five{grid-template-columns:repeat(4,minmax(0,1fr)) auto;}
+.es-fam .sx-strip.up .sb{display:none;grid-template-columns:repeat(4,minmax(0,1fr)) auto;}
+.es-fam .sx-strip.up.open .sb{display:grid;}
+.es-fam .sx-strip .tk{font:700 10.5px 'Inter',sans-serif;letter-spacing:.5px;text-transform:uppercase;color:var(--ink-soft);}
+.es-fam .sx-strip .tv{font-size:13.5px;font-weight:600;color:var(--ink);margin-top:3px;overflow-wrap:anywhere;}
+.es-fam .sx-strip .tv.n{font-variant-numeric:tabular-nums;}
+.es-fam .sx-strip .ac{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.es-fam .sx-strip .ac .btn,.es-fam .sx-dp .btn,.es-fam .sx-mk .btn{min-height:36px;padding:0 14px;font-size:12.5px;}
+.es-fam .rm{color:#C0352B !important;border-color:#F3C9C5 !important;}
+.es-fam .sx-strip .sp{display:none;padding:2px 16px 16px;border-top:1px dashed #E3D8F1;}
+.es-fam .sx-strip.open .sp{display:block;}
+.es-fam .prev-body{padding-top:6px;}
+.es-fam .det-tbl{width:100%;border-collapse:collapse;}
+.es-fam .det-tbl td{padding:8px 4px;font-size:13px;border-bottom:1px solid #F1ECF8;vertical-align:middle;overflow-wrap:anywhere;color:var(--ink);}
+.es-fam .det-tbl td.k{width:200px;font-weight:700;color:var(--ink-soft);}
+.es-fam .det-tbl a{color:var(--purple);font-weight:700;text-decoration:underline;cursor:pointer;}
+.es-fam .det-tbl .late{color:#C0352B;font-weight:700;}
+.es-fam .secthead{background:#F5F1FB;border-radius:10px 10px 0 0;min-height:42px;display:flex;align-items:center;padding:0 16px;font:700 13.5px 'Poppins',sans-serif;color:var(--purple);margin-top:16px;}
+.es-fam .gt{width:100%;border-collapse:collapse;background:#fff;}
+.es-fam .gt th{background:#FAF8FD;text-align:left;padding:10px 12px;font:700 11px 'Inter',sans-serif;letter-spacing:.4px;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;}
+.es-fam .gt td{padding:10px 12px;border-bottom:1px solid #F1ECF8;font-size:13px;color:var(--ink);vertical-align:middle;}
+.es-fam .gt td.r,.es-fam .gt th.r{text-align:right;} .es-fam .gt td.c{text-align:center;}
+.es-fam .gt tfoot td{font-weight:800;color:var(--purple);border-bottom:0;}
+.es-fam .erm-empty{text-align:center;color:var(--ink-soft);padding:18px !important;}
+.es-fam .sx-dp{border:1px solid #F1ECF8;border-radius:0 0 10px 10px;padding:14px 16px;font-size:13px;color:var(--ink);display:flex;flex-direction:column;gap:10px;}
+.es-fam .sx-dp .flow{font-size:12.5px;color:var(--ink-soft);} .es-fam .sx-dp .flow .on{color:var(--purple);font-weight:800;}
+.es-fam .sx-dp .hist{border-top:1px dashed #E3DFF0;padding-top:10px;font-size:12.5px;display:flex;flex-direction:column;gap:4px;}
+.es-fam .sx-dp .hist .when{color:var(--ink-soft);}
+.es-fam .sx-dp .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.es-fam .sx-dp .info{font-size:12.5px;color:var(--ink-soft);font-style:italic;}
+.es-fam .sx-mk{display:flex;justify-content:flex-end;margin-top:14px;}
+.es-fam .sx-b.info{background:#EFE8FA;color:#4A2A8A;} .es-fam .sx-b.out{background:#EDE6FA;color:#4A2A8A;} .es-fam .sx-b.mute{background:#EEEAE4;color:#7A6F66;}
+.es-fam .sx-paging{text-align:center;padding:14px 0 4px;font-size:13px;color:var(--ink-soft);display:flex;flex-direction:column;align-items:center;gap:8px;}
+.es-fam .es-dlg.wide{max-width:980px;}
+.es-fam .sx-radios{display:flex;gap:10px;flex-wrap:wrap;}
+.es-fam .sx-radios label{display:inline-flex;align-items:center;gap:8px;border:1.5px solid #E7D8C6;border-radius:12px;padding:8px 14px;background:#FFFDFA;font-size:13.5px;font-weight:600;color:var(--ink);cursor:pointer;}
+.es-fam .sx-radios input{accent-color:var(--purple);}
+.es-fam .sx-sub{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid #F1ECF8;margin:18px 0 12px;padding-bottom:8px;}
+.es-fam .sx-sub h4{margin:0;font:700 14.5px 'Poppins',sans-serif;color:var(--purple);display:flex;align-items:center;gap:8px;text-transform:none;}
+.es-fam .sx-sub .by{font-size:12.5px;color:var(--ink-soft);}
+.es-fam .sx-tip{position:relative;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--orange);color:#fff;font:800 12px 'Inter',sans-serif;cursor:help;}
+.es-fam .sx-tip .tt{display:none;position:absolute;left:0;top:26px;width:340px;max-width:70vw;background:#2E1249;color:#fff;border-radius:12px;padding:10px 12px;font:500 12px/1.5 'Inter',sans-serif;z-index:30;text-align:left;text-transform:none;}
+.es-fam .sx-tip:hover .tt,.es-fam .sx-tip:focus .tt{display:block;}
+.es-fam .sx-form.three{grid-template-columns:repeat(3,minmax(0,1fr));} .es-fam .sx-form.four{grid-template-columns:repeat(4,minmax(0,1fr));}
+.es-fam .es-db > .f{margin-bottom:6px;}
+.es-fam .sx-lk{display:flex;gap:8px;align-items:stretch;} .es-fam .sx-lk .es-in{flex:1;min-width:0;}
+.es-fam .sx-lkb{flex:0 0 44px;border:1.5px solid #E7D8C6;border-radius:13px;background:#fff;cursor:pointer;font-size:16px;}
+.es-fam .sx-lkb:hover{border-color:var(--orange);}
+.es-fam .sx-lkres{display:flex;flex-direction:column;gap:8px;max-height:320px;overflow:auto;}
+.es-fam .sx-lkres .it{display:flex;justify-content:space-between;gap:10px;text-align:left;border:1px solid #F1ECF8;background:#fff;border-radius:12px;padding:10px 14px;cursor:pointer;font-size:13.5px;color:var(--ink);}
+.es-fam .sx-lkres .it:hover{border-color:var(--orange);background:#FFF9F3;} .es-fam .sx-lkres .it span{color:var(--ink-soft);font-size:12.5px;}
+.es-fam .erm-info{background:#F7F3FD;border:1px solid #E6DCF6;border-left:5px solid var(--orange);border-radius:14px;margin-bottom:18px;}
+.es-fam .erm-info .hd{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;cursor:pointer;font:700 15px 'Poppins',sans-serif;color:var(--purple);}
+.es-fam .erm-info .hd i{font-style:normal;transition:transform .15s ease;} .es-fam .erm-info.shut .hd i{transform:rotate(180deg);}
+.es-fam .erm-info .bd{padding:0 18px 16px;} .es-fam .erm-info.shut .bd{display:none;}
+.es-fam .erm-info .bd p{margin:0 0 12px;font-size:13.5px;color:var(--ink);}
+.es-fam .erm-info .steps{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.es-fam .erm-info .st{background:#fff;border:1px solid #EFE7F8;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.55;color:var(--ink);}
+.es-fam .erm-info .st b{color:var(--purple);display:block;margin-bottom:4px;font-size:14px;}
+.es-fam .erm-sec{background:#fff;border:1px solid #F5EBDF;border-radius:20px;box-shadow:var(--shadow-soft);margin-bottom:16px;}
+.es-fam .erm-sec .eh{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 20px;border-bottom:1px solid #F5EBDF;}
+.es-fam .erm-sec .eh .n{width:28px;height:28px;border-radius:50%;background:var(--purple);color:#fff;display:inline-flex;align-items:center;justify-content:center;font:800 13px 'Poppins',sans-serif;}
+.es-fam .erm-sec .eh h4{margin:0;font:700 16px 'Poppins',sans-serif;color:var(--purple);display:flex;align-items:center;gap:8px;text-transform:none;flex:1;}
+.es-fam .erm-sec .eh .by{font-size:12.5px;color:var(--ink-soft);}
+.es-fam .erm-sec .eb{padding:16px 20px;}
+.es-fam .erm-sum{display:flex;align-items:center;gap:30px;flex-wrap:wrap;background:#F7F3FD;border-radius:16px;padding:16px 22px;margin-bottom:16px;}
+.es-fam .erm-sum .stat .k{font:700 11px 'Inter',sans-serif;letter-spacing:.5px;text-transform:uppercase;color:var(--ink);}
+.es-fam .erm-sum .stat .k small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink-soft);}
+.es-fam .erm-sum .stat .v{font:800 24px 'Poppins',sans-serif;}
+.es-fam .v.pos{color:#1E8A52;} .es-fam .v.neg{color:#C0352B;}
+.es-fam .erm-sum .btn{margin-left:auto;min-height:44px;padding:0 20px;}
+.es-fam .erm-total{display:flex;justify-content:space-between;align-items:center;margin-top:12px;background:#F7F3FD;border-radius:12px;padding:12px 18px;font:700 14px 'Poppins',sans-serif;color:var(--purple);}
+.es-fam .erm-total b{font-size:18px;}
+.es-fam .dirtag{font:700 10.5px 'Inter',sans-serif;border-radius:10px;padding:1px 8px;margin-left:6px;}
+.es-fam .dirtag.in{background:#E3F7EC;color:#1E8A52;} .es-fam .dirtag.out{background:#FFE9D6;color:#B84400;}
+.es-fam .es-in.sm input{padding:6px 10px;width:120px;}
+.es-fam .btn[disabled]{opacity:.5;cursor:not-allowed;}
+@media(max-width:1100px){ .es-fam .sx-strip .sb,.es-fam .sx-strip .sb.five,.es-fam .sx-strip.up .sb{grid-template-columns:repeat(3,minmax(0,1fr));} .es-fam .sx-strip .ac{grid-column:1 / -1;} .es-fam .sx-form.four{grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media(max-width:760px){ .es-fam .erm-info .steps{grid-template-columns:1fr;} .es-fam .sx-form.three,.es-fam .sx-form.four{grid-template-columns:1fr;} .es-fam .erm-sum .btn{margin-left:0;width:100%;} }
+@media(max-width:560px){ .es-fam .sx-strip .sb,.es-fam .sx-strip .sb.five,.es-fam .sx-strip.up .sb{grid-template-columns:repeat(2,minmax(0,1fr));} .es-fam .det-tbl td.k{width:120px;} }
+</style>
+<!-- ===================== E-SOA FAMILY (2026-10-09): E-SOA Dashboard, E-Remittances Dashboard, E-Remittance Note, E-Invoice Bulk Upload, E-Remittance Bulk Upload =====================
+     Mockup first for the portal screens ESOADashboard, ESOARemittance, ERemittanceNote, EInvoiceUpload and ERemittanceUpload. Content, fields, labels, actions and rules are
+     those of the live screens; only the colour theme (plum hero, warm cards) is new. Sample data only (Aslam And Company, NET000066). -->
+<div class="static-page es-fam" id="page-esoa" style="display:none;">
+<main>
+<section class="es-hero">
+    <canvas class="es-net" id="sxNet1" aria-hidden="true"></canvas><div class="es-floor" aria-hidden="true"></div>
+    <div class="wrap">
+        <div class="es-id">
+            <div class="es-badge"><span class="sx-em">🧾</span></div>
+            <div class="es-who">
+                <div class="es-kick">E-SOA</div>
+                <h1>E-SOA Dashboard</h1>
+                <div class="es-meta">
+                    <span><span class="sx-em">👤</span> Partner ID <b>NET000066</b></span>
+                    <span><span class="sx-em">🧾</span> Aslam And Company &middot; Trusted Partner</span>
+                </div>
+            </div>
+            <div class="es-actions">
+                <button type="button" class="btn btn-ghost" onclick="showStaticPage('einv-upload',event)"><span class="sx-em">⬆</span> E-Invoice (Bulk)</button>
+                <button type="button" class="btn btn-ghost" onclick="sxOpenManual()"><span class="sx-em">＋</span> E-Invoice (Manual)</button>
+                <button type="button" class="btn btn-primary" onclick="showStaticPage('esoa-rem',event)">Remittance Dashboard <span class="sx-em">→</span></button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="es-body">
+<div class="wrap">
+    <div class="sx-kpis" id="sxKpis"></div>
+    <div class="es-layout">
+        <aside class="es-rail" id="sxRail">
+            <h4>Select Filters <a onclick="sxClear()">Clear</a></h4>
+            <div class="es-radios" id="sxScope">
+                <label><input type="radio" name="sxS" value="OS" checked onchange="sxApply()">Outstanding</label><label><input type="radio" name="sxS" value="SE" onchange="sxApply()">Settled</label></div>
+            <div><label class="t">From</label><div class="es-in"><input type="date" id="sxFrom" value="2026-09-09" aria-label="From date" onchange="sxApply()"></div></div>
+            <div><label class="t">To</label><div class="es-in"><input type="date" id="sxTo" value="2026-10-09" aria-label="To date" onchange="sxApply()"></div></div>
+            <div><label class="t" for="sxType">Transaction Type</label><div class="es-in"><select id="sxType" onchange="sxApply()"><option value="">----Select----</option><option>Invoice</option><option>Credit Note</option><option>Debit Note</option><option>Payment</option><option>Off-Set</option></select></div></div>
+            <div><label class="t" for="sxPartner">Partner</label><div class="es-in"><input id="sxPartner" placeholder="Search" oninput="sxPartnerTyped()" autocomplete="off"></div>
+                <label class="es-chk" style="margin-top:8px;"><input type="checkbox" id="sxAllP" checked onchange="sxAllPartners()"> All</label></div>
+            <label class="es-chk"><input type="checkbox" id="sxDisp" onchange="sxApply()"> Dispute Pending</label>
+            <label class="es-chk"><input type="checkbox" id="sxIn" onchange="sxApply()"> Inward</label>
+            <label class="es-chk"><input type="checkbox" id="sxOut" onchange="sxApply()"> Outward</label>
+            <button type="button" class="btn btn-primary" onclick="sxApply()"><span class="sx-em">🔍</span> Fill Details</button>
+        </aside>
+        <div>
+            <div class="sx-head">
+                <button type="button" class="btn btn-ghost es-filt" onclick="document.getElementById('sxRail').classList.toggle('open')">Filters</button>
+                <h3 class="sx-h3"><span class="sx-em">🧾</span> E-SOA Dashboard</h3>
+                <div class="sx-seg" id="sxMode" role="group" aria-label="View mode"><button type="button" class="on" data-m="summary" onclick="sxSetMode('summary')">Summary (by Partner)</button><button type="button" data-m="txns" onclick="sxSetMode('txns')">All Transactions</button></div>
+                <button type="button" class="btn btn-ghost sx-xl" onclick="sxToast('Export started: the currently visible transactions are downloaded as Excel')"><span class="sx-em">⬇</span> Export</button>
+            </div>
+            <div class="sx-drill" id="sxDrill" style="display:none;"><button type="button" onclick="sxBackToSummary()"><span class="sx-em">←</span> All partners</button><b id="sxDrillName"></b> &mdash; Statement of Account</div>
+            <div id="sxSummary" class="sx-pcards"></div>
+            <div id="sxTxnWrap" style="display:none;">
+                <div class="sx-legend"><b>Legend</b><span><span class="sx-em">🧾</span> Invoice</span><span><span class="sx-em">↩</span> Credit Note</span><span><span class="sx-em">➕</span> Debit Note</span><span><span class="sx-em">💳</span> Remittance</span><span><span class="sx-em">🔀</span> Off-Set</span><i></i><span><b class="o">↗</b> Outward (you billed)</span><span><b class="i">↙</b> Inward (billed to you)</span></div>
+                <div class="sx-strips" id="sxRows"></div>
+                <div class="sx-paging"><div id="sxShown"></div><button type="button" class="btn btn-ghost" id="sxMore" onclick="sxLoadMore()" style="display:none;">Load more</button></div>
+            </div>
+            <div class="sx-empty" id="sxEmpty" style="display:none;"><b>No transactions match these filters</b>Change the date range or clear the filters.</div>
+            <div class="es-foot" id="sxFoot"></div>
+        </div>
+    </div>
+</div>
+</section>
+</main>
+
+<!-- E-Invoice (Manual) -->
+<div class="es-mod" id="sxManualM" role="dialog" aria-modal="true" aria-labelledby="sxManualT">
+    <div class="es-dlg wide">
+        <div class="es-dh"><h3 id="sxManualT"><span class="sx-em">🧾</span> E-Invoice (Manual)</h3><button type="button" class="es-x" onclick="sxClose('sxManualM')" aria-label="Close">&times;</button></div>
+        <div class="es-db">
+            <div class="f full"><label>Transaction Type <em>*</em></label>
+                <div class="sx-radios" id="sxmKindRow">
+                    <label><input type="radio" name="sxmKind" value="Invoice" checked onchange="sxKindChange()"> <span class="sx-em">🧾</span> Invoice</label>
+                    <label><input type="radio" name="sxmKind" value="Credit Note" onchange="sxKindChange()"> <span class="sx-em">↩</span> Credit Note</label>
+                    <label><input type="radio" name="sxmKind" value="Debit Note" onchange="sxKindChange()"> <span class="sx-em">➕</span> Debit Note</label>
+                </div></div>
+            <div class="sx-sub"><h4>Document <span class="sx-tip" tabindex="0">i<span class="tt">NET4LOG <b>auto-generates</b> the SOA Transaction Ref# (e.g. N4L-0000042-2026) when you save &mdash; it&rsquo;s shown in the confirmation and on your SOA. Enter your <b>own</b> document number in <b>Partner Txn Ref#</b> (the Invoice / CN / DN no. from your ERP).</span></span></h4>
+                <span class="by">Issued by you &middot; <b>Aslam And Company</b> (logged-in Transacting Partner)</span></div>
+            <div class="sx-form three">
+                <div class="f"><label for="sxmRef">Partner Txn Ref# <em>*</em></label><div class="es-in"><input id="sxmRef" placeholder="Your Invoice / CN / DN no. (e.g. INV-0102)"></div></div>
+                <div class="f"><label for="sxmCat">Transaction Category</label><div class="es-in"><select id="sxmCat"><option>Freight</option><option>Handling</option><option>Documentation</option><option>Demurrage</option><option>Rate adjustment</option><option>Other</option></select></div></div>
+                <div class="f"><label for="sxmPartner">Issued on Partner (Counterparty) <em>*</em></label><div class="sx-lk"><div class="es-in"><input id="sxmPartner" placeholder="Search network partner&hellip;" autocomplete="off" oninput="document.getElementById('sxmPartnerId').value=''"></div><input type="hidden" id="sxmPartnerId"><button type="button" class="sx-lkb" onclick="sxLookup('partner','sxmPartner','sxmPartnerId')" title="Search Trusted Partner Register">🔍</button></div></div>
+            </div>
+            <div class="sx-form">
+                <div class="f"><label for="sxmDate">Transaction Date <em>*</em></label><div class="es-in"><input type="date" id="sxmDate" value="2026-10-09"></div></div>
+                <div class="f"><label for="sxmDue">Due Date</label><div class="es-in"><input type="date" id="sxmDue"></div></div>
+            </div>
+            <div class="sx-sub"><h4>Shipment Link <span class="sx-tip" tabindex="0">i<span class="tt">Choose <b>Yes</b> if this document relates to a shipment logged on NET4LOG, then pick it &mdash; the amounts are tracked against that shipment on the SOA. Leave <b>No</b> for charges not tied to a shipment.</span></span></h4>
+                <div class="sx-radios"><label><input type="radio" name="sxmShip" value="Yes" onchange="sxShipChange()"> Yes</label><label><input type="radio" name="sxmShip" value="No" checked onchange="sxShipChange()"> No</label></div></div>
+            <div class="sx-form" id="sxmShipWrap" style="display:none;">
+                <div class="f"><label for="sxmShipRef">Shipment Ref</label><div class="sx-lk"><div class="es-in"><input id="sxmShipRef" placeholder="Search shipment&hellip;" readonly></div><button type="button" class="sx-lkb" onclick="sxLookup('ship','sxmShipRef','')" title="Search shipments">🔍</button></div></div>
+                <div class="f"><label for="sxmShipType">Shipment Ref Type</label><div class="es-in"><select id="sxmShipType"><option>NET4LOG Reference</option><option>Partner Reference</option></select></div></div>
+            </div>
+            <div class="sx-sub"><h4>Amount &amp; Currency</h4></div>
+            <div class="sx-form four">
+                <div class="f"><label for="sxmCur">Issuing Currency <em>*</em></label><div class="es-in"><select id="sxmCur" onchange="sxCurChange()"><option>USD</option><option>EUR</option><option>GBP</option><option>SGD</option><option>INR</option><option>AED</option></select></div></div>
+                <div class="f"><label for="sxmAmtI" id="sxmAmtIL">Amount (USD) <em>*</em></label><div class="es-in"><input id="sxmAmtI" inputmode="decimal" placeholder="0.00" style="text-align:right" oninput="sxAmtCalc()"></div></div>
+                <div class="f"><label for="sxmRate">Exchange Rate</label><div class="es-in"><input id="sxmRate" value="1.000000" style="text-align:right" oninput="sxAmtCalc()"></div></div>
+                <div class="f"><label for="sxmAmt">Amount (USD) <em>*</em></label><div class="es-in"><input id="sxmAmt" inputmode="decimal" placeholder="0.00" style="text-align:right"></div></div>
+            </div>
+            <div id="sxmOgSec" style="display:none;">
+                <div class="sx-sub"><h4>Credit / Debit Note Reference <span class="sx-tip" tabindex="0">i<span class="tt">A Credit / Debit Note must point to the <b>original invoice</b> it adjusts. Pick from your invoices issued on the selected partner that are not yet fully set off. The total of all credit notes against an invoice <b>cannot exceed</b> the original invoice amount.</span></span></h4></div>
+                <div class="sx-form"><div class="f"><label for="sxmOg">Original Txn Ref <em>*</em></label><div class="sx-lk"><div class="es-in"><input id="sxmOg" placeholder="Search unsettled invoice&hellip;" readonly></div><button type="button" class="sx-lkb" onclick="sxLookup('og','sxmOg','')" title="Search invoices from this partner not yet set off">🔍</button></div></div></div>
+            </div>
+            <div class="sx-sub"><h4>Description</h4></div>
+            <div class="sx-form one"><div class="f"><label for="sxmDesc">Transaction Description</label><div class="es-in"><textarea id="sxmDesc" placeholder="Narrative / details for this document&hellip;"></textarea></div></div></div>
+            <div class="es-err" id="sxmErr"></div>
+        </div>
+        <div class="es-df" style="justify-content:center;"><button type="button" class="btn btn-primary" style="min-width:150px;" onclick="sxSaveManual()">Save</button></div>
+    </div>
+</div>
+
+<!-- shared lookup (partner / shipment / original invoice / credit note) -->
+<div class="es-mod" id="sxLkM" role="dialog" aria-modal="true" aria-labelledby="sxLkT">
+    <div class="es-dlg sm">
+        <div class="es-dh"><h3 id="sxLkT"><span class="sx-em">🔍</span> Select</h3><button type="button" class="es-x" onclick="sxClose('sxLkM')" aria-label="Close">&times;</button></div>
+        <div class="es-db"><div class="es-in" style="margin-bottom:12px;"><input id="sxLkQ" placeholder="Filter&hellip;" oninput="sxLkRender()" autocomplete="off"></div><div class="sx-lkres" id="sxLkRes"></div></div>
+    </div>
+</div>
+
+<!-- Dispute action (old DisputeActionModal) -->
+<div class="es-mod" id="sxDispM" role="dialog" aria-modal="true" aria-labelledby="sxDispT">
+    <div class="es-dlg sm">
+        <div class="es-dh"><h3 id="sxDispT">Dispute Action</h3><button type="button" class="es-x" onclick="sxClose('sxDispM')" aria-label="Close">&times;</button></div>
+        <div class="es-db">
+            <p id="sxDispSub" style="margin:0 0 12px;font-size:13.5px;color:var(--ink-soft);"></p>
+            <div class="f" id="sxDispCnRow" style="display:none;margin-bottom:12px;"><label>Credit Note Doc ID <em>*</em></label><div class="sx-lk"><div class="es-in"><input id="sxDispCn" placeholder="Select the issued Credit Note&hellip;" readonly></div><button type="button" class="sx-lkb" onclick="sxLookup('cn','sxDispCn','')" title="Search your issued Credit Notes on this partner">🔍</button></div></div>
+            <div class="sx-form"><div class="f"><label for="sxDispDate">Date</label><div class="es-in"><input type="date" id="sxDispDate"></div></div><div class="f"><label for="sxDispTime">Time</label><div class="es-in"><input type="time" id="sxDispTime"></div></div></div>
+            <div class="sx-form one" style="margin-top:12px;"><div class="f"><label for="sxDispNote">Comments <em>*</em></label><div class="es-in"><textarea id="sxDispNote" placeholder="Enter comments / justification for this dispute update..."></textarea></div></div></div>
+            <div class="es-err" id="sxDispErr"></div>
+        </div>
+        <div class="es-df" style="justify-content:center;"><button type="button" class="btn btn-primary" style="min-width:150px;" onclick="sxSubmitDispute()">Confirm</button></div>
+    </div>
+</div>
+
+<!-- Settled details -->
+<div class="es-mod" id="sxSetM" role="dialog" aria-modal="true" aria-labelledby="sxSetT">
+    <div class="es-dlg">
+        <div class="es-dh"><h3 id="sxSetT">Settled Details</h3><button type="button" class="es-x" onclick="sxClose('sxSetM')" aria-label="Close">&times;</button></div>
+        <div class="es-db"><p id="sxSetSub" style="margin:0 0 12px;font-size:13.5px;color:var(--ink-soft);"></p><div class="es-scroll"><table class="gt"><thead><tr><th>Settled by (SOA Txn Ref)</th><th>Type</th><th>Date</th><th class="r">Amount Settled (USD)</th></tr></thead><tbody id="sxSetRows"></tbody></table></div></div>
+        <div class="es-df"><button type="button" class="btn btn-primary" onclick="sxClose('sxSetM')">Close</button></div>
+    </div>
+</div>
+
+<!-- Delete transaction -->
+<div class="es-mod" id="sxDelM" role="dialog" aria-modal="true" aria-labelledby="sxDelT">
+    <div class="es-dlg sm">
+        <div class="es-dh"><h3 id="sxDelT" style="color:#C0352B;">Delete Transaction</h3><button type="button" class="es-x" onclick="sxClose('sxDelM')" aria-label="Close">&times;</button></div>
+        <div class="es-db"><p id="sxDelSub" style="margin:0 0 12px;font-size:13.5px;color:var(--ink-soft);font-weight:600;"></p>
+            <div class="sx-form one"><div class="f"><label for="sxDelNote">Comments (reason for deletion) <em>*</em></label><div class="es-in"><textarea id="sxDelNote" placeholder="Enter the reason for deleting this transaction..."></textarea></div></div></div>
+            <div class="es-err" id="sxDelErr"></div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:8px;">Deletion is non-destructive &mdash; the reason, user and timestamp are recorded in the audit trail.</div></div>
+        <div class="es-df" style="justify-content:center;"><button type="button" class="btn btn-primary" style="background:#C0352B;" onclick="sxConfirmDelete()">Delete</button><button type="button" class="btn btn-ghost" onclick="sxClose('sxDelM')">Cancel</button></div>
+    </div>
+</div>
+</div>
+
+<!-- ===================== E-REMITTANCES DASHBOARD ===================== -->
+<div class="static-page es-fam" id="page-esoa-rem" style="display:none;">
+<main>
+<section class="es-hero">
+    <canvas class="es-net" id="sxNet2" aria-hidden="true"></canvas><div class="es-floor" aria-hidden="true"></div>
+    <div class="wrap">
+        <div class="es-id">
+            <div class="es-badge"><span class="sx-em">💳</span></div>
+            <div class="es-who">
+                <div class="es-kick">E-SOA</div>
+                <h1>E-Remittances Dashboard</h1>
+                <div class="es-meta"><span><span class="sx-em">👤</span> Partner ID <b>NET000066</b></span><span><span class="sx-em">💳</span> Payments and off-sets with your partners</span></div>
+            </div>
+            <div class="es-actions">
+                <button type="button" class="btn btn-ghost" onclick="showStaticPage('esoa',event)"><span class="sx-em">←</span> Back to E-SOA Dashboard</button>
+                <button type="button" class="btn btn-ghost" onclick="showStaticPage('erem-upload',event)"><span class="sx-em">⬆</span> Upload E-Remittance (Excel)</button>
+                <button type="button" class="btn btn-primary" onclick="sxNewNote()"><span class="sx-em">＋</span> New E-Remittance Note (Off-set, Payment)</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="es-body">
+<div class="wrap">
+    <div class="es-layout">
+        <aside class="es-rail" id="sxrRail">
+            <h4>Select Filters <a onclick="sxrClear()">Clear</a></h4>
+            <div><label class="t">Status</label><div class="es-radios" id="sxrStat"><label><input type="radio" name="sxrS" value="Pending" checked onchange="sxrApply()">Pending</label><label><input type="radio" name="sxrS" value="Acknowledged" onchange="sxrApply()">Acknowledged</label></div></div>
+            <div><label class="t">From</label><div class="es-in"><input type="date" id="sxrFrom" value="2026-09-09" aria-label="From date" onchange="sxrApply()"></div></div>
+            <div><label class="t">To</label><div class="es-in"><input type="date" id="sxrTo" value="2026-10-09" aria-label="To date" onchange="sxrApply()"></div></div>
+            <div><label class="t" for="sxrPartner">Partner</label><div class="es-in"><input id="sxrPartner" placeholder="Search" oninput="sxrPartnerTyped()" autocomplete="off"></div>
+                <label class="es-chk" style="margin-top:8px;"><input type="checkbox" id="sxrAllP" checked onchange="sxrAllPartners()"> All</label></div>
+            <button type="button" class="btn btn-primary" onclick="sxrApply()"><span class="sx-em">🔍</span> Fill Details</button>
+        </aside>
+        <div>
+            <div class="sx-head"><button type="button" class="btn btn-ghost es-filt" onclick="document.getElementById('sxrRail').classList.toggle('open')">Filters</button><h3 class="sx-h3"><span class="sx-em">💳</span> E-Remittances</h3><span class="es-foot" id="sxrCount" style="margin:0;"></span></div>
+            <div class="sx-legend"><b>Legend</b><span><span class="sx-em">💳</span> Remittance</span><span><span class="sx-em">🔀</span> Off-Set</span><i></i><span><b class="o">↗</b> Outward (you paid)</span><span><b class="i">↙</b> Inward (paid to you)</span></div>
+            <div class="sx-strips" id="sxrList"></div>
+            <div class="sx-empty" id="sxrEmpty" style="display:none;"><b>No remittances found</b>No remittances found for the selected filters.</div>
+            <div class="sx-paging"><div id="sxrShown"></div></div>
+            <div class="es-foot">Inward remittances/off-sets show <b>Update Acknowledgment</b>; outward show a delete. Acknowledgement is what activates the remittance (draft &rarr; active).</div>
+        </div>
+    </div>
+</div>
+</section>
+</main>
+
+<!-- Update acknowledgment (old E-Remittance Note modal, read-only settlement) -->
+<div class="es-mod" id="sxAckM" role="dialog" aria-modal="true" aria-labelledby="sxAckT">
+    <div class="es-dlg">
+        <div class="es-dh"><h3 id="sxAckT">E-Remittance Note (Off-set, Payment)</h3><button type="button" class="es-x" onclick="sxClose('sxAckM')" aria-label="Close">&times;</button></div>
+        <div class="es-db" id="sxAckBody"></div>
+        <div class="es-df"><button type="button" class="btn btn-ghost" onclick="sxClose('sxAckM')">Cancel</button><button type="button" class="btn btn-primary" onclick="sxSaveAck()">Acknowledge</button></div>
+    </div>
+</div>
+
+<!-- Delete remittance -->
+<div class="es-mod" id="sxRdelM" role="dialog" aria-modal="true" aria-labelledby="sxRdelT">
+    <div class="es-dlg sm">
+        <div class="es-dh"><h3 id="sxRdelT" style="color:#C0352B;">Delete Remittance</h3><button type="button" class="es-x" onclick="sxClose('sxRdelM')" aria-label="Close">&times;</button></div>
+        <div class="es-db"><p id="sxRdelSub" style="margin:0 0 12px;font-size:13.5px;color:var(--ink-soft);font-weight:600;"></p>
+            <div class="sx-form one"><div class="f"><label for="sxRdelNote">Comments (reason for deletion) <em>*</em></label><div class="es-in"><textarea id="sxRdelNote" placeholder="Enter the reason for deleting this remittance..."></textarea></div></div></div>
+            <div class="es-err" id="sxRdelErr"></div></div>
+        <div class="es-df" style="justify-content:center;"><button type="button" class="btn btn-primary" style="background:#C0352B;" onclick="sxConfirmRdel()">Delete</button><button type="button" class="btn btn-ghost" onclick="sxClose('sxRdelM')">Cancel</button></div>
+    </div>
+</div>
+</div>
+
+<!-- ===================== E-REMITTANCE NOTE (Off-Set / Payment) ===================== -->
+<div class="static-page es-fam" id="page-erem-note" style="display:none;">
+<main>
+<section class="es-hero">
+    <canvas class="es-net" id="sxNet5" aria-hidden="true"></canvas><div class="es-floor" aria-hidden="true"></div>
+    <div class="wrap">
+        <div class="es-id">
+            <div class="es-badge"><span class="sx-em">💳</span></div>
+            <div class="es-who">
+                <div class="es-kick">E-SOA</div>
+                <h1>E-Remittance Note (Off-Set / Payment)</h1>
+                <div class="es-meta"><span><span class="sx-em">👤</span> Partner ID <b>NET000066</b></span><span><span class="sx-em">💳</span> Record how you and a partner settle what you owe each other</span></div>
+            </div>
+            <div class="es-actions"><button type="button" class="btn btn-ghost" onclick="showStaticPage('esoa-rem',event)"><span class="sx-em">←</span> Back to E-Remittances Dashboard</button></div>
+        </div>
+    </div>
+</section>
+<section class="es-body">
+<div class="wrap tk-wrap">
+    <div class="es-crumb"><a onclick="showStaticPage('esoa-rem')">E-Remittances Dashboard</a> &rsaquo; <b>E-Remittance Note</b></div>
+    <div class="erm-info" id="ermInfo">
+        <div class="hd" onclick="document.getElementById('ermInfo').classList.toggle('shut')"><span><span class="sx-em">💡</span> How to use E-Remittance &mdash; best practice</span><i>⌃</i></div>
+        <div class="bd">
+            <p>E-Remittance reconciles you and a partner owe each other and records how it is settled &mdash; by mutual off-set and/or by payment. Work one partner at a time; the panel below shows your Due From / Due To / Net Due for the selected payee.</p>
+            <div class="steps">
+                <div class="st"><b>1. Off-set first.</b> Off-set all undisputed inward and outward invoices against each other, less the credit notes &mdash; use <span class="sx-em">⚡</span> Auto Off-Set (FIFO) to net them oldest-first. This clears the matched dues; you may be left with a part-due (still receivable from, or payable to, the partner) on one side.</div>
+                <div class="st"><b>2. Then settle by payment.</b> If you still owe the partner after off-setting, make the payment through your bank, then come back and record it here as an e-remittance of type Payment (<span class="sx-em">⚡</span> Add all Dues as Paid helps you load the open items). Disputed invoices are excluded &mdash; resolve the dispute first, then off-set or pay.</div>
+            </div>
+        </div>
+    </div>
+    <div class="erm-sec">
+        <div class="eh"><span class="n">1</span><h4>Document <span class="sx-tip" tabindex="0">i<span class="tt">NET4LOG <b>auto-generates</b> the SOA Transaction Ref# when you save. Enter your own journal / payment number in <b>Payer Partner Txn Ref#</b>.</span></span></h4><span class="by">Created by you &middot; Aslam And Company (logged-in Remitting Partner)</span></div>
+        <div class="eb"><div class="sx-form four">
+            <div class="f"><label for="ermType">Remittance Type <em>*</em></label><div class="es-in"><select id="ermType" onchange="ermTypeChange()"><option>Off-Set</option><option>Payment</option></select></div></div>
+            <div class="f"><label for="ermRef">Payer Partner Txn Ref# <em>*</em></label><div class="es-in"><input id="ermRef" placeholder="Your journal / payment no. (e.g. PAY-0091)"></div></div>
+            <div class="f"><label for="ermDate">Transaction Date <em>*</em></label><div class="es-in"><input type="date" id="ermDate" value="2026-10-09"></div></div>
+            <div class="f"><label for="ermPartner">Payee Partner (Counterparty) <em>*</em></label><div class="sx-lk"><div class="es-in"><input id="ermPartner" placeholder="Search partner..." autocomplete="off" oninput="ermPartnerTyped()" onblur="ermPartnerBlur()"></div><input type="hidden" id="ermPartnerId"><button type="button" class="sx-lkb" onclick="sxLookup('payee','ermPartner','ermPartnerId')" title="Look up partner">🔍</button></div></div>
+        </div></div>
+    </div>
+    <div class="erm-sum">
+        <div class="stat"><div class="k">Total Due From <small>(payee owes you)</small></div><div class="v pos" id="ermFrom">0.000</div></div>
+        <div class="stat"><div class="k">Total Due To <small>(you owe payee)</small></div><div class="v neg" id="ermTo">0.000</div></div>
+        <div class="stat"><div class="k">Net Due</div><div class="v pos" id="ermNet">0.000</div></div>
+        <button type="button" class="btn btn-primary" id="ermAuto" onclick="ermAuto()"><span class="sx-em">⚡</span> Auto Off-Set (FIFO)</button>
+    </div>
+    <div class="erm-sec">
+        <div class="eh"><span class="n">2</span><h4>Settlement Details <span class="sx-tip" tabindex="0">i<span class="tt">Add the outstanding transactions this remittance settles. For <b>Off-Set</b>, add both an Outgoing (you owe) and an Incoming (owed to you) item so the two totals balance.</span></span></h4><button type="button" class="btn btn-primary sm" onclick="ermAdd()"><span class="sx-em">＋</span> ADD</button></div>
+        <div class="eb">
+            <div class="es-scroll"><table class="gt" id="ermTbl"><thead><tr><th>Txn Ref</th><th>Type</th><th>Date</th><th class="r">Balance Due</th><th class="r">Settled</th><th class="r">O/S Report</th><th></th></tr></thead><tbody id="ermBody"></tbody><tfoot><tr><td colspan="7" id="ermBal" style="text-align:right;font-weight:700;padding:10px;"></td></tr></tfoot></table></div>
+            <div class="erm-total" id="ermTotal" style="display:none;"><span>Total Remittance Amount (USD)</span><b id="ermTotVal">0.00</b></div>
+        </div>
+    </div>
+    <div class="erm-sec">
+        <div class="eh"><h4>Bank &amp; Notes</h4></div>
+        <div class="eb"><div class="sx-form">
+            <div class="f"><label for="ermBank">Remittance Bank Details</label><div class="es-in"><textarea id="ermBank" placeholder="Bank transfer reference / details (for Payment)..."></textarea></div></div>
+            <div class="f"><label for="ermDesc">Transaction Description</label><div class="es-in"><textarea id="ermDesc" placeholder="Purpose / notes for this remittance..."></textarea></div></div>
+        </div></div>
+    </div>
+    <div style="text-align:center;"><button type="button" class="btn btn-primary" id="ermSave" style="min-width:200px;" onclick="ermSave()">Save Remittance</button></div>
+</div>
+</section>
+</main>
+
+<!-- Settlement Details - Outstanding Invoices -->
+<div class="es-mod" id="ermAddM" role="dialog" aria-modal="true" aria-labelledby="ermAddT">
+    <div class="es-dlg wide">
+        <div class="es-dh"><h3 id="ermAddT">Settlement Details &mdash; Outstanding Invoices</h3><button type="button" class="es-x" onclick="sxClose('ermAddM')" aria-label="Close">&times;</button></div>
+        <div class="es-db"><div class="es-scroll"><table class="gt"><thead><tr><th>Txn Ref</th><th>Type</th><th>Due Date</th><th class="r">Outstanding (USD)</th><th></th></tr></thead><tbody id="ermAddRows"></tbody></table></div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:10px;">Selecting an invoice adds it straight to Settlement Details with a suggested settle amount (auto set-off). For <b>Off-Set</b>, add both an Outgoing and an Incoming item so the two totals balance.</div></div>
+    </div>
+</div>
+
+<!-- error popup (the live screen's validation list) -->
+<div class="es-mod" id="ermErrM" role="alertdialog" aria-modal="true" aria-labelledby="ermErrT">
+    <div class="es-dlg sm">
+        <div class="es-db" style="text-align:center;padding:26px 24px 8px;"><div style="font-size:34px;color:#C0352B;">⚠</div><h3 id="ermErrT" style="font:800 20px 'Poppins',sans-serif;color:#C0352B;margin:6px 0 10px;text-transform:none;">Error:</h3><ul id="ermErrList" style="text-align:left;margin:0 0 6px;padding-left:22px;font-size:13.5px;color:var(--ink);"></ul></div>
+        <div class="es-df" style="justify-content:center;"><button type="button" class="btn btn-primary" onclick="sxClose('ermErrM')">Dismiss</button></div>
+    </div>
+</div>
+
+<!-- post-save popup -->
+<div class="es-mod" id="ermOkM" role="dialog" aria-modal="true" aria-labelledby="ermOkT">
+    <div class="es-dlg sm">
+        <div class="es-db" style="text-align:center;padding:26px 24px 8px;"><div style="font-size:34px;color:#1E8A52;">✔</div><h3 id="ermOkT" style="font:800 20px 'Poppins',sans-serif;color:#1E8A52;margin:6px 0 6px;text-transform:none;">Success</h3><p id="ermOkMsg" style="margin:0 0 6px;font-size:14px;color:var(--ink);">Remittance saved successfully.</p></div>
+        <div class="es-df" style="justify-content:center;"><button type="button" class="btn btn-primary" onclick="ermEmail()"><span class="sx-em">✉</span> Email Advice to Partner</button><button type="button" class="btn btn-ghost" onclick="ermSkip()">Skip</button></div>
+    </div>
+</div>
+</div>
+
+<!-- ===================== E-INVOICE BULK UPLOAD ===================== -->
+<div class="static-page es-fam" id="page-einv-upload" style="display:none;">
+<main>
+<section class="es-hero">
+    <canvas class="es-net" id="sxNet3" aria-hidden="true"></canvas><div class="es-floor" aria-hidden="true"></div>
+    <div class="wrap">
+        <div class="es-id">
+            <div class="es-badge"><span class="sx-em">⬆</span></div>
+            <div class="es-who">
+                <div class="es-kick">E-SOA</div>
+                <h1>E-Invoice &mdash; Bulk Upload</h1>
+                <div class="es-meta"><span><span class="sx-em">🧾</span> Import many invoices from one Excel file</span></div>
+            </div>
+            <div class="es-actions"><button type="button" class="btn btn-ghost" onclick="showStaticPage('esoa',event)"><span class="sx-em">←</span> Back to E-SOA Dashboard</button></div>
+        </div>
+    </div>
+</section>
+<section class="es-body">
+<div class="wrap">
+    <div class="es-crumb"><a onclick="showStaticPage('esoa')">E-SOA Dashboard</a> &rsaquo; <b>Bulk Upload</b></div>
+    <div class="es-card">
+        <div class="es-up">
+            <div class="es-file"><button type="button" class="btn btn-ghost" onclick="sxPick('inv')"><span class="sx-em">📁</span> Choose File</button><span id="sxiFile" style="font-size:13px;color:var(--ink-soft);">No file chosen</span><a onclick="sxToast('Sample file download starts here: E-InvoiceDocument.xlsx')">Sample File Download</a><button type="button" class="btn btn-primary" id="sxiImport" onclick="sxImport('inv')" disabled style="min-height:42px;">Import</button></div>
+        </div>
+    </div>
+    <div class="es-card">
+        <div class="sx-gbar"><h3><span class="sx-em">🧾</span> E-Invoices <span class="cnt" id="sxiCount">0 rows</span></h3>
+            <div class="acts" id="sxiActs" style="display:none;"><button type="button" class="btn btn-ghost" onclick="sxAskClear('inv')">Clear</button><button type="button" class="btn btn-primary" id="sxiSave" onclick="sxSaveUp('inv')">Save &amp; Process</button></div></div>
+        <div class="sx-strips" id="sxiList"></div>
+        <div class="es-foot" style="margin:14px 0 0;">Click a strip to preview the <b>draft</b> invoice inline &mdash; details and upload errors. <b>Save &amp; Process</b> is disabled while any row has errors.</div>
+    </div>
+</div>
+</section>
+</main>
+</div>
+
+<!-- ===================== E-REMITTANCE BULK UPLOAD ===================== -->
+<div class="static-page es-fam" id="page-erem-upload" style="display:none;">
+<main>
+<section class="es-hero">
+    <canvas class="es-net" id="sxNet4" aria-hidden="true"></canvas><div class="es-floor" aria-hidden="true"></div>
+    <div class="wrap">
+        <div class="es-id">
+            <div class="es-badge"><span class="sx-em">⬆</span></div>
+            <div class="es-who">
+                <div class="es-kick">E-SOA</div>
+                <h1>E-Remittance &mdash; Bulk Upload</h1>
+                <div class="es-meta"><span><span class="sx-em">💳</span> Import many remittances from one Excel file</span></div>
+            </div>
+            <div class="es-actions"><button type="button" class="btn btn-ghost" onclick="showStaticPage('esoa-rem',event)"><span class="sx-em">←</span> Back to E-Remittances Dashboard</button></div>
+        </div>
+    </div>
+</section>
+<section class="es-body">
+<div class="wrap">
+    <div class="es-crumb"><a onclick="showStaticPage('esoa-rem')">E-Remittances Dashboard</a> &rsaquo; <b>Bulk Upload</b></div>
+    <div class="es-card">
+        <div class="es-up">
+            <div class="es-file"><button type="button" class="btn btn-ghost" onclick="sxPick('rem')"><span class="sx-em">📁</span> Choose File</button><span id="sxuFile" style="font-size:13px;color:var(--ink-soft);">No file chosen</span><a onclick="sxToast('Sample file download starts here: E-RemittanceDocument.xlsx')">Sample File Download</a><button type="button" class="btn btn-primary" id="sxuImport" onclick="sxImport('rem')" disabled style="min-height:42px;">Import</button></div>
+        </div>
+    </div>
+    <div class="es-card">
+        <div class="sx-gbar"><h3><span class="sx-em">💳</span> E-Remittances <span class="cnt" id="sxuCount">0 rows</span></h3>
+            <div class="acts" id="sxuActs" style="display:none;"><button type="button" class="btn btn-ghost" onclick="sxToast('Download started: the staged rows as Excel')">Download Excel</button><button type="button" class="btn btn-ghost" onclick="sxAskClear('rem')">Clear</button><button type="button" class="btn btn-primary" id="sxuSave" onclick="sxSaveUp('rem')">Save &amp; Process</button></div></div>
+        <div class="sx-strips" id="sxuList"></div>
+        <div class="es-foot" style="margin:14px 0 0;">The remittance workbook has two sheets &mdash; <b>E-RemittanceDocument</b> (one row per remittance) and <b>E-RemittanceSettledDocument</b> (the settled lines). Click a strip to preview its settled lines and any upload errors. <b>Save &amp; Process</b> is disabled while any row has errors.</div>
+    </div>
+</div>
+</section>
+</main>
+</div>
+
+<!-- clear staged upload -->
+<div class="es-fam"><div class="es-mod" id="sxClearM" role="dialog" aria-modal="true" aria-labelledby="sxClearT">
+    <div class="es-dlg sm">
+        <div class="es-dh"><h3 id="sxClearT">Clear the staged rows?</h3><button type="button" class="es-x" onclick="sxClose('sxClearM')" aria-label="Close">&times;</button></div>
+        <div class="es-db"><p style="margin:0;font-size:13.5px;color:var(--ink-soft);">All imported rows are removed from this page. Nothing has been saved yet.</p></div>
+        <div class="es-df"><button type="button" class="btn btn-ghost" onclick="sxClose('sxClearM')">Cancel</button><button type="button" class="btn btn-primary" onclick="sxConfirmClear()">Yes, clear</button></div>
+    </div>
+</div></div>
+<div class="sx-toast" id="sxToast" role="status" aria-live="polite"></div>
+
+
+<script>
+/* E-SOA family (2026-10-09): client-side demo over sample data. Content, fields, labels and rules follow the live screens
+   (ESOADashboard, ESOARemittance, ERemittanceNote, EInvoiceUpload, ERemittanceUpload); only the colour theme is new. */
+(function(){
+    var TODAY = '2026-10-09', PAGE = 20;
+    var P = {
+        p41: {n: 'Pacific Freight Solutions', id: 'NET000041'},
+        p78: {n: 'Meridian Logistics Group', id: 'NET000078'},
+        p80: {n: 'Global Logistics LLC', id: 'NET000080'},
+        p90: {n: 'Atlas Cargo Services', id: 'NET000090'},
+        p95: {n: 'Harbour Line Agencies', id: 'NET000095'}
+    };
+    var SHIPS = ['ESH-10091', 'ESH-10072', 'ESH-10068', 'ESH-10095', 'ESH-10049', 'ESH-10099', 'ESH-10031', 'ESH-10101'];
+    var RATES = {USD: 1, EUR: 1.08, GBP: 1.27, SGD: 0.75, INR: 0.012, AED: 0.272};
+    var ICON = {'Invoice': '🧾', 'Credit Note': '↩', 'Debit Note': '➕', 'Remittance': '💳', 'Off-Set': '🔀'};
+    var seq = 430, remSeq = 72, uid = 100;
+    var TX = [
+        {id: 1, d: '2026-10-02', ref: 'N4L-0000412-2026', p: 'p41', tref: 'INV-2026-0188', ship: 'ESH-10091', amt: 12450, set: 0, due: '2026-11-01', st: 'Outstanding', dir: 'Outward', kind: 'Invoice'},
+        {id: 2, d: '2026-09-28', ref: 'N4L-0000409-2026', p: 'p41', tref: 'INV-2026-0176', ship: 'ESH-10072', amt: 8300, set: 3000, due: '2026-10-05', st: 'Outstanding', dir: 'Outward', kind: 'Invoice',
+            disp: {status: 'Disputed', hist: [{dt: '2026-10-06 10:15', by: 'Pacific Freight Solutions', act: 'Raised', note: 'The agreed rate was USD 7,900, not 8,300.'}]}},
+        {id: 3, d: '2026-09-24', ref: 'N4L-0000401-2026', p: 'p78', tref: 'CN-2026-0031', ship: 'ESH-10068', amt: 950, set: 0, due: '2026-10-24', st: 'Outstanding', dir: 'Outward', kind: 'Credit Note', og: 'INV-2026-0151'},
+        {id: 4, d: '2026-10-05', ref: 'N4L-0000415-2026', p: 'p78', tref: 'INV-M-77120', ship: 'ESH-10095', amt: 5600, set: 0, due: '2026-11-04', st: 'Outstanding', dir: 'Inward', kind: 'Invoice'},
+        {id: 5, d: '2026-09-18', ref: 'N4L-0000395-2026', p: 'p78', tref: 'INV-M-76940', ship: 'ESH-10049', amt: 4100, set: 0, due: '2026-10-03', st: 'Outstanding', dir: 'Inward', kind: 'Invoice',
+            disp: {status: 'Disputed', hist: [{dt: '2026-10-01 14:20', by: 'Aslam And Company', act: 'Raised', note: 'Billed twice for ESH-10049.'}]}},
+        {id: 6, d: '2026-10-07', ref: 'N4L-0000418-2026', p: 'p80', tref: 'INV-2026-0192', ship: 'ESH-10099', amt: 2780, set: 0, due: '2026-11-06', st: 'Draft', dir: 'Outward', kind: 'Invoice'},
+        {id: 7, d: '2026-09-10', ref: 'N4L-0000380-2026', p: 'p80', tref: 'DN-2026-0012', ship: 'ESH-10031', amt: 640, set: 0, due: '2026-10-10', st: 'Outstanding', dir: 'Outward', kind: 'Debit Note', og: 'INV-2026-0151'},
+        {id: 8, d: '2026-09-12', ref: 'N4L-0000371-2026', p: 'p41', tref: 'INV-2026-0151', ship: 'ESH-10012', amt: 6200, set: 6200, due: '2026-10-05', st: 'Settled', dir: 'Outward', kind: 'Invoice'},
+        {id: 9, d: '2026-09-12', ref: 'N4L-0000383-2026', p: 'p80', tref: 'INV-G-5521', ship: 'ESH-10036', amt: 3300, set: 3300, due: '2026-10-12', st: 'Settled', dir: 'Inward', kind: 'Invoice'},
+        {id: 10, d: '2026-10-03', ref: 'N4L-0000413-2026', p: 'p41', tref: 'PAY-9921', ship: '-', amt: 3000, set: 0, due: '', st: 'Pending', dir: 'Outward', kind: 'Remittance', rem: true},
+        {id: 11, d: '2026-09-20', ref: 'N4L-0000390-2026', p: 'p78', tref: 'M-PAY-3188', ship: '-', amt: 2500, set: 0, due: '', st: 'Acknowledged', dir: 'Inward', kind: 'Remittance', rem: true},
+        {id: 12, d: '2026-09-15', ref: 'N4L-0000398-2026', p: 'p41', tref: 'INV-P-4410', ship: 'ESH-10060', amt: 4800, set: 0, due: '2026-10-15', st: 'Outstanding', dir: 'Inward', kind: 'Invoice'}
+    ];
+    var RM = [
+        {ref: 'N4L-0000413-2026', p: 'p41', date: '2026-10-03', ptref: 'PAY-9921', dir: 'Outward', kind: 'Remittance', st: 'Pending', lines: [['INV-2026-0176', 'Invoice', 3000]], bank: 'HSBC Singapore - A/C 1234-5678 - TT ref 88231', desc: 'Part payment for INV-2026-0176'},
+        {ref: 'N4L-0000416-2026', p: 'p78', date: '2026-10-06', ptref: 'M-PAY-3301', dir: 'Inward', kind: 'Remittance', st: 'Pending', lines: [['INV-2026-0188', 'Invoice', 4000]], bank: 'Meridian Bank Mumbai - TT ref 55120', desc: 'Payment against INV-2026-0188'},
+        {ref: 'N4L-0000410-2026', p: 'p80', date: '2026-09-30', ptref: 'OFF-0045', dir: 'Outward', kind: 'Off-Set', st: 'Pending', lines: [['INV-G-5521', 'Invoice', 3300], ['DN-2026-0012', 'Debit Note', 3300]], bank: '-', desc: 'Off-set of INV-G-5521 against DN-2026-0012'},
+        {ref: 'N4L-0000390-2026', p: 'p78', date: '2026-09-20', ptref: 'M-PAY-3188', dir: 'Inward', kind: 'Remittance', st: 'Acknowledged', lines: [['INV-2026-0151', 'Invoice', 2500]], bank: 'Meridian Bank Mumbai - TT ref 54001', desc: 'Payment against INV-2026-0151'},
+        {ref: 'N4L-0000375-2026', p: 'p41', date: '2026-09-12', ptref: 'PAY-9870', dir: 'Outward', kind: 'Remittance', st: 'Acknowledged', lines: [['INV-2026-0151', 'Invoice', 3700]], bank: 'HSBC Singapore - TT ref 86600', desc: 'Balance payment'}
+    ];
+    var state = {mode: 'summary', drill: '', over: false, shown: PAGE, pend: null, act: '', lk: null, rshown: PAGE};
+    var up = {inv: [], rem: []};
+    var note = {lines: [], type: 'Off-Set'}, clearKind = '';
+
+    function $(id){ return document.getElementById(id); }
+    function esc(t){ return String(t == null ? '' : t).replace(/[&<>"]/g, function(c){ return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; }); }
+    var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    function fd(iso){ if(!iso) return 'N/A'; var a = iso.split('-'); return a[2] + '-' + MON[parseInt(a[1], 10) - 1] + '-' + a[0]; }
+    function fm(n){ var v = Math.abs(n).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}); return n < 0 ? '(' + v + ')' : v; }
+    function fm3(n){ return Number(n).toFixed(3); }
+    function sign(t){ return t.kind === 'Credit Note' ? -1 : 1; }
+    function os(t){ return t.rem ? 0 : t.amt - t.set; }
+    function overdue(t){ return !t.rem && os(t) > 0 && t.due && t.due < TODAY; }
+    function role(t){ return t.dir === 'Outward' ? 'invoicing' : 'receiving'; }
+    function activeDisp(t){ return t.disp && (t.disp.status === 'Disputed' || t.disp.status === 'Pending NET4LOG'); }
+    function badge(st){ var c = {Outstanding: 'info', Settled: 'ok', Acknowledged: 'ok', Draft: 'warn', Pending: 'warn'}[st] || 'warn'; return '<span class="sx-b ' + c + '">' + esc(st) + '</span>'; }
+    function dpill(d){
+        if(!d) return '<span class="mu">&mdash;</span>';
+        var c = {'Disputed': 'bad', 'CN Issued': 'out', 'Pending NET4LOG': 'warn', 'Resolved': 'ok', 'Withdrawn': 'mute'}[d.status] || 'bad';
+        return '<span class="sx-b ' + c + '">' + esc(d.status) + '</span>';
+    }
+    function tico(dir, kind){ return '<span class="sx-ti ' + (dir === 'Outward' ? 'out' : 'in') + '" title="' + dir + ' ' + kind + '"><span class="sx-em">' + ICON[kind] + '</span><i>' + (dir === 'Outward' ? '↗' : '↙') + '</i></span>'; }
+    function toast(m){ var t = $('sxToast'); t.textContent = m; t.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+    window.sxToast = toast;
+    window.sxOpen = function(id){ var e = $(id); if(e) e.classList.add('open'); };
+    window.sxClose = function(id){ var e = $(id); if(e) e.classList.remove('open'); };
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') document.querySelectorAll('.es-fam .es-mod.open').forEach(function(m){ m.classList.remove('open'); }); });
+    function err(id, msg){ var e = $(id); e.innerHTML = msg; e.style.display = msg ? 'block' : 'none'; }
+    function pad7(n){ return ('0000000' + n).slice(-7); }
+    window.sxTog = function(el){ el.closest('.sx-strip').classList.toggle('open'); };
+
+    function detTbl(rows){ return '<div class="prev-body"><table class="det-tbl">' + rows.map(function(r){ return '<tr><td class="k">' + r[0] + '</td><td>' + r[1] + '</td></tr>'; }).join('') + '</table></div>'; }
+    function settledAgainst(lines){
+        var total = lines.reduce(function(a, l){ return a + l[2]; }, 0);
+        return '<div class="secthead">Settled Against</div><div class="es-scroll"><table class="gt"><thead><tr><th>SOA Txn Ref</th><th>Type</th><th class="r">Amount Settled (USD)</th></tr></thead><tbody>' +
+            lines.map(function(l){ return '<tr><td>' + esc(l[0]) + '</td><td>' + esc(l[1]) + '</td><td class="r">' + fm(l[2]) + '</td></tr>'; }).join('') +
+            '</tbody><tfoot><tr><td colspan="2">Total settled</td><td class="r">' + fm(total) + '</td></tr></tfoot></table></div>';
+    }
+
+    /* ======================= E-SOA dashboard ======================= */
+    function kpis(){
+        var sales = 0, pur = 0, due = 0, od = 0, dis = 0;
+        TX.forEach(function(t){
+            if(t.kind === 'Invoice'){ if(t.dir === 'Outward') sales += t.amt; else pur += t.amt; }
+            var o = os(t) * sign(t), dsg = t.dir === 'Outward' ? 1 : -1;
+            if(!t.rem && t.st !== 'Draft'){ due += dsg * o; }
+            if(overdue(t)) od += dsg * o;
+            if(activeDisp(t)) dis += dsg * o;
+        });
+        var tiles = [['sales', 'YTD Sales', sales, 'Invoices raised (outward)', ''], ['pur', 'YTD Purchase', pur, 'Invoices received (inward)', ''], ['os', 'Total Outstanding', due, 'Net receivable &middot; click to filter', 'outstanding'],
+            ['od', 'Overdue Outstanding', od, 'Past due date &middot; click to filter', 'overdue'], ['disp', 'Net Dispute', dis, 'Inward&harr;outward disputed', '']];
+        $('sxKpis').innerHTML = tiles.map(function(x){
+            return '<div class="sx-kpi ' + x[0] + (x[4] ? ' clk' : '') + '"' + (x[4] ? ' onclick="sxKpi(\'' + x[4] + '\')" tabindex="0" role="button"' : '') + '><div class="k">' + x[1] + '</div><div class="v">' + fm(x[2]) + '</div><div class="sub">' + x[3] + '</div></div>';
+        }).join('');
+    }
+    window.sxKpi = function(w){
+        document.querySelector('input[name=sxS][value=OS]').checked = true;
+        state.over = (w === 'overdue'); $('sxFrom').value = '2026-01-01';
+        sxSetMode('txns'); toast(w === 'overdue' ? 'Showing overdue items' : 'Showing outstanding items');
+    };
+    window.sxPartnerTyped = function(){ $('sxAllP').checked = !$('sxPartner').value.trim(); render(); };
+    window.sxAllPartners = function(){ if($('sxAllP').checked) $('sxPartner').value = ''; render(); };
+    function filtered(){
+        var scope = document.querySelector('input[name=sxS]:checked').value;
+        var f = $('sxFrom').value, to = $('sxTo').value, ty = $('sxType').value, q = $('sxPartner').value.trim().toLowerCase();
+        var inW = $('sxIn').checked, outW = $('sxOut').checked, dp = $('sxDisp').checked;
+        return TX.filter(function(t){
+            var o = os(t);
+            if(scope === 'OS'){ if(!(o > 0 || (t.rem && t.st === 'Pending'))) return false; }
+            else { if(!((!t.rem && o === 0 && t.set > 0) || (t.rem && t.st === 'Acknowledged'))) return false; }
+            if(f && t.d < f) return false; if(to && t.d > to) return false;
+            if(ty){ var k = ty === 'Payment' ? 'Remittance' : ty; if(t.kind !== k) return false; }
+            if(!$('sxAllP').checked && q && (P[t.p].n + ' ' + P[t.p].id).toLowerCase().indexOf(q) < 0) return false;
+            if(dp && !activeDisp(t)) return false;
+            if(inW !== outW && ((inW && t.dir !== 'Inward') || (outW && t.dir !== 'Outward'))) return false;
+            if(state.over && !overdue(t)) return false;
+            if(state.drill && t.p !== state.drill) return false;
+            return true;
+        });
+    }
+    function disputePanel(t){
+        if(t.rem) return '';
+        var rl = role(t), d = t.disp, st = d ? d.status : null;
+        var roleTxt = rl === 'invoicing' ? 'You are the <b>Invoicing party</b> (you issued this invoice).' : 'You are the <b>Receiving party</b> (invoiced by the counterparty).';
+        function b(lbl, act){ return '<button type="button" class="btn btn-ghost" onclick="sxDispAct(' + t.id + ',\'' + act + '\')">' + lbl + '</button>'; }
+        function inf(m){ return '<span class="info">' + m + '</span>'; }
+        var btns = '';
+        if(!st) btns = rl === 'receiving' && t.st === 'Outstanding' ? b('Raise Dispute', 'raise') : inf('No active dispute. The receiving party may raise one within 72h of the invoice.');
+        else if(st === 'Disputed') btns = rl === 'invoicing' ? b('Accept &amp; Issue Credit Note', 'accept_cn') + b('Escalate to Judiciary', 'escalate') + inf('Respond within 72h.') : b('Withdraw Dispute', 'withdraw');
+        else if(st === 'CN Issued') btns = rl === 'receiving' ? b('Withdraw Dispute', 'withdraw') : inf('Credit Note issued (full/part) &mdash; awaiting the receiving party to withdraw.');
+        else if(st === 'Pending NET4LOG') btns = rl === 'invoicing' ? b('Mark Resolved by Judiciary', 'resolve') : inf('Escalated to the NET4LOG Judiciary Committee &mdash; awaiting their response.');
+        else if(st === 'Resolved') btns = rl === 'receiving' ? b('Withdraw Dispute', 'withdraw') : inf('Resolved by the Judiciary Committee &mdash; awaiting the receiving party to withdraw.');
+        else if(st === 'Withdrawn') btns = inf('Dispute withdrawn and closed.');
+        var seqS = ['Disputed', 'CN Issued / Pending NET4LOG', 'Resolved', 'Withdrawn'];
+        var step = seqS.map(function(s){
+            var on = (st === 'Disputed' && s === 'Disputed') || ((st === 'CN Issued' || st === 'Pending NET4LOG') && s.indexOf('CN Issued') === 0) || (st === 'Resolved' && s === 'Resolved') || (st === 'Withdrawn' && s === 'Withdrawn');
+            return '<span' + (on ? ' class="on"' : '') + '>' + s + '</span>';
+        }).join(' &rarr; ');
+        var hist = d && d.hist && d.hist.length ? '<div class="hist"><b>History</b>' + d.hist.map(function(h){ return '<div><span class="when">' + h.dt + '</span> <b>' + esc(h.act) + '</b> by ' + esc(h.by) + (h.note ? ' &mdash; ' + esc(h.note) : '') + '</div>'; }).join('') + '</div>' : '';
+        return '<div class="secthead">Dispute Management</div><div class="sx-dp"><div class="role">' + roleTxt + '</div><div class="flow">' + step + '</div>' + hist + '<div class="row">' + btns + '</div></div>';
+    }
+    function txStrip(t){
+        var o = os(t) * sign(t), a = t.amt * sign(t);
+        var del = t.dir === 'Outward' && !t.rem && (t.kind === 'Credit Note' || t.st !== 'Settled');
+        var rows = [['SOA Txn Ref', esc(t.ref)], ['Transacting Partner', esc(P[t.p].n)], ['Partner Txn Ref', esc(t.tref)], ['Transaction Date', fd(t.d)], ['Shipment Ref', esc(t.ship === '-' ? 'N/A' : t.ship)],
+            ['Transaction Type', tico(t.dir, t.kind) + ' ' + esc(t.dir + ' ' + t.kind)]];
+        if(t.og) rows.push(['Against Document', esc(t.og)]);
+        rows.push(['Amount (USD)', fm(a)], ['Settled Amount', t.set > 0 ? '<a onclick="sxSettled(' + t.id + ')">' + fm(t.set) + '</a>' : fm(0)], ['Outstanding (USD)', fm(o)],
+            ['Due Date', t.due ? '<span' + (overdue(t) ? ' class="late"' : '') + '>' + fd(t.due) + '</span>' : 'N/A'], ['Status', badge(t.st) + (t.disp ? ' ' + dpill(t.disp) : '')]);
+        var mk = (!t.rem && t.dir === 'Inward' && t.st === 'Outstanding' && !activeDisp(t)) ? '<div class="sx-mk"><button type="button" class="btn btn-primary" onclick="sxMakeRem(' + t.id + ')">Make Remittance</button></div>' : '';
+        return '<div class="sx-strip' + (activeDisp(t) ? ' bad' : '') + '"><div class="sh" onclick="sxTog(this)"><span class="l"><span class="tw">&#9656;</span>' + tico(t.dir, t.kind) + '<b>' + esc(t.ref) + '</b></span><span class="r"><span class="hk">Partner Ref :</span> ' + esc(t.tref) + '</span></div>' +
+            '<div class="sb"><div class="tb"><div class="tk">Transacting partner</div><div class="tv">' + esc(P[t.p].n) + '</div></div><div class="tb"><div class="tk">Date</div><div class="tv">' + fd(t.d) + '</div></div>' +
+            '<div class="tb"><div class="tk">Amount (USD)</div><div class="tv n">' + fm(a) + '</div></div><div class="tb"><div class="tk">O/S amount</div><div class="tv n">' + fm(o) + '</div></div>' +
+            '<div class="tb"><div class="tk">Status</div><div class="tv">' + badge(t.st) + '</div></div><div class="tb"><div class="tk">Dispute</div><div class="tv">' + dpill(t.disp) + '</div></div>' +
+            '<div class="ac"><button type="button" class="btn btn-ghost" onclick="sxTog(this)">Preview</button>' + (del ? '<button type="button" class="btn btn-ghost rm" onclick="sxDelAsk(' + t.id + ')">Delete</button>' : '') + '</div></div>' +
+            '<div class="sp">' + detTbl(rows) + mk + disputePanel(t) + '</div></div>';
+    }
+    function render(){
+        kpis();
+        var rows = filtered(), scope = document.querySelector('input[name=sxS]:checked').value;
+        var sum = $('sxSummary'), tw = $('sxTxnWrap');
+        $('sxDrill').style.display = state.drill ? '' : 'none';
+        if(state.drill) $('sxDrillName').textContent = P[state.drill].n;
+        sum.style.display = state.mode === 'summary' ? '' : 'none';
+        tw.style.display = state.mode === 'txns' ? '' : 'none';
+        $('sxEmpty').style.display = rows.length ? 'none' : '';
+        if(!rows.length){ sum.style.display = 'none'; tw.style.display = 'none'; }
+        document.querySelectorAll('#sxMode button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-m') === state.mode); });
+        var by = {};
+        rows.forEach(function(t){
+            var a = by[t.p] || (by[t.p] = {from: 0, to: 0});
+            if(!t.rem){ var v = (scope === 'OS' ? os(t) : t.set) * sign(t); if(t.dir === 'Outward') a.from += v; else a.to += v; }
+        });
+        sum.innerHTML = Object.keys(by).map(function(k){
+            var a = by[k], net = a.from - a.to;
+            return '<div class="sx-pc"><div class="top"><span class="av">' + esc(P[k].n.split(' ').slice(0, 2).map(function(w){ return w[0]; }).join('')) + '</span><div><b>' + esc(P[k].n) + '</b><small>Partner ID ' + P[k].id + '</small></div></div>' +
+                '<div class="fig"><div><span>' + (scope === 'OS' ? 'Due from' : 'Received') + '</span><b>' + fm(a.from) + '</b></div><div><span>' + (scope === 'OS' ? 'Due to' : 'Paid') + '</span><b>' + fm(a.to) + '</b></div><div class="net ' + (net < 0 ? 'neg' : '') + '"><span>Net</span><b>' + fm(net) + '</b></div></div>' +
+                '<button type="button" class="btn btn-ghost" onclick="sxDrillTo(\'' + k + '\')">View SOA <span class="sx-em">→</span></button></div>';
+        }).join('');
+        var part = rows.slice(0, state.shown);
+        $('sxRows').innerHTML = part.map(txStrip).join('');
+        $('sxShown').innerHTML = 'Showing <b>' + part.length + '</b> of <b>' + rows.length + '</b>';
+        $('sxMore').style.display = rows.length > part.length ? '' : 'none';
+        $('sxFoot').innerHTML = state.mode === 'summary'
+            ? '<b>Summary by partner</b> &mdash; your Due From / Due To / Net with each network partner. Click <b>View SOA</b> to drill into the full statement.'
+            : (state.drill ? '<b>Statement of account</b> with ' + esc(P[state.drill].n) + '.' : (state.over ? 'Overdue items only. ' : '') + 'Click a strip to preview the full detail and manage disputes.');
+    }
+    window.sxApply = function(){ state.shown = PAGE; render(); };
+    window.sxLoadMore = function(){ state.shown += PAGE; render(); };
+    window.sxClear = function(){
+        document.querySelector('input[name=sxS][value=OS]').checked = true;
+        $('sxFrom').value = '2026-09-09'; $('sxTo').value = TODAY; $('sxType').value = ''; $('sxPartner').value = ''; $('sxAllP').checked = true;
+        ['sxDisp', 'sxIn', 'sxOut'].forEach(function(i){ $(i).checked = false; });
+        state.drill = ''; state.over = false; state.shown = PAGE; render();
+    };
+    window.sxSetMode = function(m){ state.mode = m; if(m === 'summary'){ state.drill = ''; state.over = false; } render(); };
+    window.sxDrillTo = function(k){ state.drill = k; state.mode = 'txns'; state.shown = PAGE; render(); window.scrollTo({top: 0, behavior: 'smooth'}); };
+    window.sxBackToSummary = function(){ state.drill = ''; state.mode = 'summary'; render(); };
+    function find(id){ return TX.filter(function(t){ return t.id === id; })[0]; }
+
+    /* ---- dispute action modal (old DisputeActionModal) ---- */
+    var DTITLE = {raise: 'Raise Dispute', accept_cn: 'Accept & Issue Credit Note', escalate: 'Escalate to Judiciary', withdraw: 'Withdraw Dispute', resolve: 'Mark Resolved by Judiciary'};
+    var DNEXT = {raise: 'Disputed', accept_cn: 'CN Issued', escalate: 'Pending NET4LOG', withdraw: 'Withdrawn', resolve: 'Resolved'};
+    window.sxDispAct = function(id, act){
+        var t = find(id); state.pend = id; state.act = act;
+        $('sxDispT').textContent = DTITLE[act];
+        $('sxDispSub').textContent = t.tref + ' - ' + P[t.p].n + ' - USD ' + fm(t.amt);
+        $('sxDispCnRow').style.display = act === 'accept_cn' ? '' : 'none'; $('sxDispCn').value = '';
+        $('sxDispDate').value = TODAY; $('sxDispTime').value = '10:30'; $('sxDispNote').value = ''; err('sxDispErr', ''); sxOpen('sxDispM');
+    };
+    window.sxSubmitDispute = function(){
+        var t = find(state.pend), m = [];
+        if(state.act === 'accept_cn' && !$('sxDispCn').value) m.push('Select the issued Credit Note.');
+        if(!$('sxDispNote').value.trim()) m.push('Enter comments / justification for this dispute update.');
+        if(m.length){ err('sxDispErr', m.join('<br>')); return; }
+        t.disp = t.disp || {status: '', hist: []};
+        t.disp.status = DNEXT[state.act];
+        t.disp.hist.push({dt: $('sxDispDate').value + ' ' + $('sxDispTime').value, by: role(t) === 'invoicing' ? 'Aslam And Company' : 'Aslam And Company', act: DTITLE[state.act].replace('&amp;', '&'), note: $('sxDispNote').value.trim()});
+        sxClose('sxDispM'); toast('Dispute updated: ' + DNEXT[state.act] + '.'); render();
+    };
+    window.sxSettled = function(id){
+        var t = find(id);
+        $('sxSetSub').textContent = t.tref + ' - ' + P[t.p].n + ' - settled USD ' + fm(t.set) + ' of ' + fm(t.amt);
+        $('sxSetRows').innerHTML = '<tr><td>' + (t.dir === 'Outward' ? 'PAY-9921' : 'M-PAY-3188') + '</td><td>' + (t.dir === 'Outward' ? 'Outward' : 'Inward') + ' Remittance</td><td>' + fd('2026-10-03') + '</td><td class="r">' + fm(t.set) + '</td></tr>';
+        sxOpen('sxSetM');
+    };
+    window.sxDelAsk = function(id){ var t = find(id); state.pend = id; $('sxDelSub').textContent = t.ref + ' - ' + t.tref + ' - ' + P[t.p].n; $('sxDelNote').value = ''; err('sxDelErr', ''); sxOpen('sxDelM'); };
+    window.sxConfirmDelete = function(){
+        if(!$('sxDelNote').value.trim()){ err('sxDelErr', 'Enter the reason for deleting this transaction.'); return; }
+        TX = TX.filter(function(t){ return t.id !== state.pend; }); sxClose('sxDelM'); toast('Transaction deleted.'); render();
+    };
+    window.sxMakeRem = function(id){ var t = find(id); showStaticPage('erem-note'); ermReset(); $('ermPartner').value = P[t.p].n + ' (' + P[t.p].id + ')'; $('ermPartnerId').value = t.p; ermPosition(); };
+
+    /* ---- lookups ---- */
+    window.sxLookup = function(kind, inputId, hiddenId){
+        var items = [], title = 'Select';
+        if(kind === 'partner' || kind === 'payee'){ title = kind === 'payee' ? 'Select Payee Partner (Counterparty)' : 'Select Transacting Partner'; items = Object.keys(P).map(function(k){ return {v: k, t: P[k].n, s: P[k].id}; }); }
+        else if(kind === 'ship'){ title = 'Select Shipment'; items = SHIPS.map(function(x){ return {v: x, t: x, s: 'NET4LOG shipment'}; }); }
+        else if(kind === 'og'){
+            title = 'Select Original Invoice'; var pk = $('sxmPartnerId').value;
+            if(!pk){ err('sxmErr', 'Select the Issued on Partner first.'); return; }
+            items = TX.filter(function(t){ return t.p === pk && t.dir === 'Outward' && t.kind === 'Invoice' && !t.rem && os(t) > 0; }).map(function(t){ return {v: t.tref, t: t.tref, s: 'USD ' + fm(os(t)) + ' not yet set off'}; });
+        } else if(kind === 'cn'){
+            title = 'Select Credit Note'; var tp = find(state.pend).p;
+            items = TX.filter(function(t){ return t.p === tp && t.kind === 'Credit Note'; }).map(function(t){ return {v: t.tref, t: t.tref, s: 'USD ' + fm(t.amt)}; });
+        }
+        state.lk = {kind: kind, input: inputId, hidden: hiddenId, items: items};
+        $('sxLkT').innerHTML = '<span class="sx-em">🔍</span> ' + title; $('sxLkQ').value = ''; sxLkRender(); sxOpen('sxLkM');
+    };
+    window.sxLkRender = function(){
+        var q = $('sxLkQ').value.trim().toLowerCase(), l = state.lk;
+        var rows = l.items.filter(function(x){ return !q || (x.t + ' ' + x.s).toLowerCase().indexOf(q) >= 0; });
+        $('sxLkRes').innerHTML = rows.length ? rows.map(function(x, i){ return '<button type="button" class="it" onclick="sxLkPick(' + l.items.indexOf(x) + ')"><b>' + esc(x.t) + '</b><span>' + esc(x.s) + '</span></button>'; }).join('') : '<div class="sx-empty"><b>Nothing to select</b>No matching records.</div>';
+    };
+    window.sxLkPick = function(i){
+        var l = state.lk, x = l.items[i]; $(l.input).value = (l.kind === 'partner' || l.kind === 'payee') ? x.t + ' (' + x.s + ')' : x.t;
+        if(l.hidden) $(l.hidden).value = x.v; sxClose('sxLkM');
+        if(l.kind === 'payee'){ ermPosition(); }
+    };
+
+    /* ---- E-Invoice (Manual) ---- */
+    window.sxOpenManual = function(){
+        ['sxmRef', 'sxmPartner', 'sxmPartnerId', 'sxmAmtI', 'sxmAmt', 'sxmDesc', 'sxmOg', 'sxmShipRef', 'sxmDue'].forEach(function(i){ $(i).value = ''; });
+        $('sxmDate').value = TODAY; $('sxmCur').value = 'USD'; $('sxmRate').value = '1.000000'; $('sxmCat').value = 'Freight';
+        document.querySelector('input[name=sxmKind][value=Invoice]').checked = true; document.querySelector('input[name=sxmShip][value=No]').checked = true;
+        sxKindChange(); sxShipChange(); sxCurChange(); err('sxmErr', ''); sxOpen('sxManualM');
+    };
+    window.sxKindChange = function(){ var k = document.querySelector('input[name=sxmKind]:checked').value; $('sxmOgSec').style.display = k === 'Invoice' ? 'none' : ''; };
+    window.sxShipChange = function(){ $('sxmShipWrap').style.display = document.querySelector('input[name=sxmShip]:checked').value === 'Yes' ? '' : 'none'; };
+    window.sxCurChange = function(){
+        var c = $('sxmCur').value; $('sxmAmtIL').innerHTML = 'Amount (' + c + ') <em>*</em>';
+        $('sxmRate').value = (RATES[c] || 1).toFixed(6); $('sxmRate').readOnly = c === 'USD'; sxAmtCalc();
+    };
+    window.sxAmtCalc = function(){ var a = parseFloat($('sxmAmtI').value.replace(/,/g, '')), r = parseFloat($('sxmRate').value); $('sxmAmt').value = (a > 0 && r > 0) ? (a * r).toFixed(2) : ''; };
+    window.sxSaveManual = function(){
+        var kind = document.querySelector('input[name=sxmKind]:checked').value, pk = $('sxmPartnerId').value, ref = $('sxmRef').value.trim(), usd = parseFloat($('sxmAmt').value.replace(/,/g, '')), d1 = $('sxmDate').value, d2 = $('sxmDue').value, og = $('sxmOg').value, m = [];
+        if(!ref) m.push('Partner Txn Ref# not entered');
+        if(!pk) m.push('Issued on Partner (Counterparty) not selected - choose it from the list');
+        if(!d1) m.push('Transaction Date not entered');
+        if(d1 && d2 && d2 < d1) m.push('Due Date cannot be before the Transaction Date');
+        if(!(usd > 0)) m.push('Amount (USD) not entered');
+        if(kind !== 'Invoice' && !og) m.push('Original Txn Ref not selected (a Credit / Debit Note must point to the invoice it adjusts)');
+        if(kind === 'Credit Note' && og){
+            var inv = TX.filter(function(t){ return t.tref === og && t.p === pk; })[0];
+            if(inv && usd > inv.amt) m.push('The credit note total cannot exceed the original invoice amount (USD ' + fm(inv.amt) + ')');
+        }
+        if(m.length){ err('sxmErr', '<b>Please correct:</b><br>' + m.map(function(x){ return '&bull; ' + esc(x); }).join('<br>')); return; }
+        var soa = 'N4L-' + pad7(++seq) + '-2026';
+        TX.unshift({id: ++uid, d: d1, ref: soa, p: pk, tref: ref, ship: document.querySelector('input[name=sxmShip]:checked').value === 'Yes' && $('sxmShipRef').value ? $('sxmShipRef').value : '-', amt: usd, set: 0, due: d2, st: 'Draft', dir: 'Outward', kind: kind, og: kind === 'Invoice' ? '' : og});
+        err('sxmErr', ''); sxClose('sxManualM'); toast('E-Invoice saved. SOA Transaction Ref# ' + soa + ' generated.');
+        state.mode = 'txns'; state.drill = ''; state.over = false; state.shown = PAGE; render();
+    };
+
+    /* ======================= E-Remittances dashboard ======================= */
+    window.sxrPartnerTyped = function(){ $('sxrAllP').checked = !$('sxrPartner').value.trim(); rrender(); };
+    window.sxrAllPartners = function(){ if($('sxrAllP').checked) $('sxrPartner').value = ''; rrender(); };
+    function rfilter(){
+        var st = document.querySelector('input[name=sxrS]:checked').value, f = $('sxrFrom').value, to = $('sxrTo').value, q = $('sxrPartner').value.trim().toLowerCase();
+        return RM.filter(function(r){
+            if(r.st !== st) return false; if(f && r.date < f) return false; if(to && r.date > to) return false;
+            if(!$('sxrAllP').checked && q && (P[r.p].n + ' ' + P[r.p].id).toLowerCase().indexOf(q) < 0) return false;
+            return true;
+        });
+    }
+    function rrender(){
+        var rows = rfilter();
+        $('sxrCount').textContent = rows.length + ' remittance' + (rows.length === 1 ? '' : 's');
+        $('sxrEmpty').style.display = rows.length ? 'none' : '';
+        $('sxrShown').innerHTML = rows.length ? 'Showing <b>' + rows.length + '</b> of <b>' + rows.length + '</b>' : '';
+        $('sxrList').innerHTML = rows.map(function(r){
+            var inward = r.dir === 'Inward';
+            var act = '<button type="button" class="btn btn-ghost" onclick="sxTog(this)">Preview</button>' +
+                (inward ? (r.st === 'Pending' ? '<button type="button" class="btn btn-primary" onclick="sxAck(\'' + r.ref + '\')">Update Acknowledgment</button>' : '')
+                    : (r.st === 'Pending' ? '<button type="button" class="btn btn-ghost rm" onclick="sxRdel(\'' + r.ref + '\')">Delete</button>' : ''));
+            var det = detTbl([['SOA Txn Ref', esc(r.ref)], ['Transacting Partner', esc(P[r.p].n)], ['Payer Txn Ref', esc(r.ptref)], ['Date', fd(r.date)],
+                ['Remittance Type', tico(r.dir, r.kind) + ' ' + esc(r.dir + ' ' + r.kind)], ['Bank Details', esc(r.bank === '-' ? '—' : r.bank)], ['Status', badge(r.st)]]);
+            return '<div class="sx-strip"><div class="sh" onclick="sxTog(this)"><span class="l"><span class="tw">&#9656;</span>' + tico(r.dir, r.kind) + '<b>' + esc(r.ref) + '</b></span><span class="r"><span class="hk">Partner :</span> ' + esc(P[r.p].n) + '</span></div>' +
+                '<div class="sb five"><div class="tb"><div class="tk">Date</div><div class="tv">' + fd(r.date) + '</div></div><div class="tb"><div class="tk">Payer Txn Ref</div><div class="tv">' + esc(r.ptref) + '</div></div><div class="tb"><div class="tk">Type</div><div class="tv">' + esc(r.dir + ' ' + r.kind) + '</div></div><div class="tb"><div class="tk">Status</div><div class="tv">' + badge(r.st) + '</div></div><div class="ac">' + act + '</div></div>' +
+                '<div class="sp">' + det + settledAgainst(r.lines) + '</div></div>';
+        }).join('');
+    }
+    window.sxrApply = rrender;
+    window.sxrClear = function(){ document.querySelector('input[name=sxrS][value=Pending]').checked = true; $('sxrFrom').value = '2026-09-09'; $('sxrTo').value = TODAY; $('sxrPartner').value = ''; $('sxrAllP').checked = true; rrender(); };
+    function rfind(ref){ return RM.filter(function(r){ return r.ref === ref; })[0]; }
+    window.sxAck = function(ref){
+        state.pend = ref; var r = rfind(ref);
+        $('sxAckBody').innerHTML = detTbl([['Remittance Type', tico(r.dir, r.kind) + ' ' + esc(r.dir + ' ' + r.kind)], ['Payer Partner Txn Ref#', esc(r.ptref)], ['Transaction Date', fd(r.date)], ['Payer Partner (Counterparty)', esc(P[r.p].n)], ['Bank Details', esc(r.bank === '-' ? '—' : r.bank)], ['Transaction Description', esc(r.desc)]]) + settledAgainst(r.lines) +
+            '<p style="font-size:12.5px;color:var(--ink-soft);margin:12px 0 0;">Acknowledging confirms you agree with the settlement above and activates the remittance (draft &rarr; active).</p>';
+        sxOpen('sxAckM');
+    };
+    window.sxSaveAck = function(){
+        var r = rfind(state.pend); r.st = 'Acknowledged';
+        TX.forEach(function(t){ if(t.ref === r.ref) t.st = 'Acknowledged'; });
+        sxClose('sxAckM'); toast('Remittance acknowledged. It is now active.'); rrender(); render();
+    };
+    window.sxRdel = function(ref){ state.pend = ref; var r = rfind(ref); $('sxRdelSub').textContent = r.ref + ' - ' + P[r.p].n; $('sxRdelNote').value = ''; err('sxRdelErr', ''); sxOpen('sxRdelM'); };
+    window.sxConfirmRdel = function(){
+        if(!$('sxRdelNote').value.trim()){ err('sxRdelErr', 'Enter the reason for deleting this remittance.'); return; }
+        RM = RM.filter(function(r){ return r.ref !== state.pend; }); TX = TX.filter(function(t){ return t.ref !== state.pend; }); sxClose('sxRdelM'); toast('Remittance deleted.'); rrender(); render();
+    };
+    window.sxNewNote = function(){ showStaticPage('erem-note'); ermReset(); };
+
+    /* ======================= E-Remittance Note page ======================= */
+    function ermErrors(list){ $('ermErrList').innerHTML = list.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join(''); sxOpen('ermErrM'); }
+    function items(pk){
+        return TX.filter(function(t){ return t.p === pk && !t.rem && t.st === 'Outstanding' && os(t) > 0 && !activeDisp(t); }).map(function(t){
+            return {id: t.id, ref: t.tref, type: t.kind, date: t.d, bal: os(t), dir: t.dir === 'Outward' ? 'Incoming' : 'Outgoing', cn: t.kind === 'Credit Note'};
+        });
+    }
+    function ermPosition(){
+        var pk = $('ermPartnerId').value, from = 0, to = 0;
+        if(pk){ items(pk).forEach(function(i){ var v = i.cn ? -i.bal : i.bal; if(i.dir === 'Incoming') from += v; else to += v; }); }
+        $('ermFrom').textContent = fm3(from); $('ermTo').textContent = fm3(to); var net = from - to;
+        $('ermNet').textContent = fm3(net); $('ermNet').className = 'v ' + (net < 0 ? 'neg' : 'pos');
+    }
+    window.ermReset = function(){
+        note.lines = []; $('ermType').value = 'Off-Set'; ['ermRef', 'ermPartner', 'ermPartnerId', 'ermBank', 'ermDesc'].forEach(function(i){ $(i).value = ''; }); $('ermDate').value = TODAY;
+        ermPosition(); ermTypeChange(); ermRender();
+    };
+    window.ermTypeChange = function(){
+        note.type = $('ermType').value; var off = note.type === 'Off-Set';
+        $('ermAuto').innerHTML = '<span class="sx-em">⚡</span> ' + (off ? 'Auto Off-Set (FIFO)' : 'Add all Dues as Paid'); ermRender();
+    };
+    window.ermPartnerTyped = function(){ $('ermPartnerId').value = ''; ermPosition(); };
+    window.ermPartnerBlur = function(){
+        if($('ermPartner').value.trim() && !$('ermPartnerId').value){ ermErrors(['Please select the partner from the list or clear the field.']); $('ermPartner').value = ''; }
+    };
+    function needPayee(){ if(!$('ermPartnerId').value){ ermErrors(['Please select a Payee Partner first !!']); return false; } return true; }
+    function addLine(i, amt){ if(note.lines.some(function(l){ return l.id === i.id; })) return; note.lines.push({id: i.id, ref: i.ref, type: i.type, date: i.date, bal: i.bal, settled: amt, dir: i.dir}); }
+    window.ermAuto = function(){
+        if(!needPayee()) return;
+        var all = items($('ermPartnerId').value);
+        if(note.type === 'Payment'){
+            var out = all.filter(function(i){ return i.dir === 'Outgoing' && !i.cn; });
+            if(!out.length){ ermErrors(['No outstanding items available to auto off-set for this partner.']); return; }
+            note.lines = []; out.forEach(function(i){ addLine(i, i.bal); }); ermRender(); return;
+        }
+        var inc = all.filter(function(i){ return i.dir === 'Incoming'; }).sort(function(a, b){ return a.date < b.date ? -1 : 1; });
+        var outg = all.filter(function(i){ return i.dir === 'Outgoing'; }).sort(function(a, b){ return a.date < b.date ? -1 : 1; });
+        var tIn = inc.reduce(function(a, i){ return a + (i.cn ? -i.bal : i.bal); }, 0), tOut = outg.reduce(function(a, i){ return a + (i.cn ? -i.bal : i.bal); }, 0), m = Math.min(tIn, tOut);
+        if(!(m > 0)){ ermErrors(['No outstanding items available to auto off-set for this partner.']); return; }
+        note.lines = [];
+        [inc, outg].forEach(function(side){ var left = m; side.forEach(function(i){ if(left <= 0 || i.cn) return; var s = Math.min(i.bal, left); addLine(i, s); left -= s; }); });
+        ermRender();
+    };
+    window.ermAdd = function(){
+        if(!needPayee()) return;
+        var all = items($('ermPartnerId').value).filter(function(i){ return !note.lines.some(function(l){ return l.id === i.id; }) && (note.type === 'Off-Set' || i.dir === 'Outgoing'); });
+        $('ermAddRows').innerHTML = all.length ? all.map(function(i){ return '<tr><td>' + esc(i.ref) + '</td><td>' + esc(i.type) + ' (' + i.dir + ')</td><td>' + fd(TX.filter(function(t){ return t.id === i.id; })[0].due) + '</td><td class="r">' + fm(i.bal) + '</td><td class="r"><button type="button" class="btn btn-primary sm" onclick="ermPick(' + i.id + ')">Select</button></td></tr>'; }).join('') : '<tr><td colspan="5" class="erm-empty">No outstanding items available for this partner.</td></tr>';
+        sxOpen('ermAddM');
+    };
+    window.ermPick = function(id){
+        var i = items($('ermPartnerId').value).filter(function(x){ return x.id === id; })[0]; addLine(i, i.bal); sxClose('ermAddM'); ermRender();
+    };
+    window.ermRemove = function(id){ note.lines = note.lines.filter(function(l){ return l.id !== id; }); ermRender(); };
+    function ermRender(){
+        var off = note.type === 'Off-Set', inT = 0, outT = 0, grand = 0;
+        $('ermBody').innerHTML = note.lines.length ? note.lines.map(function(l){
+            if(l.dir === 'Incoming') inT += l.settled; else outT += l.settled; grand += l.settled;
+            return '<tr><td>' + esc(l.ref) + '</td><td>' + esc(l.type) + ' <span class="dirtag ' + (l.dir === 'Incoming' ? 'in' : 'out') + '">' + l.dir + '</span></td><td>' + fd(l.date) + '</td><td class="r">' + fm(l.bal) + '</td><td class="r"><div class="es-in sm"><input readonly value="' + l.settled.toFixed(2) + '" style="text-align:right" aria-label="Settled"></div></td><td class="r">' + fm(l.bal - l.settled) + '</td><td class="c"><button type="button" class="btn btn-ghost sm rm" onclick="ermRemove(' + l.id + ')" title="Remove">🗑</button></td></tr>';
+        }).join('') : '<tr><td colspan="7" class="erm-empty">No settlement lines &mdash; click ADD to pick outstanding invoices.</td></tr>';
+        $('ermTotVal').textContent = grand.toFixed(2); $('ermTotal').style.display = off ? 'none' : 'flex';
+        var save = $('ermSave');
+        if(!off){ $('ermBal').innerHTML = ''; save.disabled = false; return; }
+        var diff = Math.abs(inT - outT);
+        if(diff < 0.01){ $('ermBal').innerHTML = 'Outgoing total: <b>' + outT.toFixed(2) + '</b> &nbsp;|&nbsp; Incoming total: <b>' + inT.toFixed(2) + '</b> &nbsp;&mdash;&nbsp; <span style="color:#1E8A52;">Balanced &#10003;</span>'; save.disabled = false; }
+        else { $('ermBal').innerHTML = 'Outgoing total: <b>' + outT.toFixed(2) + '</b> &nbsp;|&nbsp; Incoming total: <b>' + inT.toFixed(2) + '</b> &nbsp;&mdash;&nbsp; <span style="color:#C0352B;">Not balanced (difference ' + diff.toFixed(2) + ') &mdash; an Off-Set must net to zero</span>'; save.disabled = true; }
+    }
+    var lastSaved = null;
+    window.ermSave = function(){
+        var m = [];
+        if(!note.lines.length) m.push('No settlement data present');
+        if(!$('ermPartnerId').value) m.push('Payee Partner (Counterparty) not selected');
+        if(!$('ermRef').value.trim()) m.push('Partner Transaction Reference not entered');
+        if(note.type === 'Payment' && !$('ermBank').value.trim()) m.push('Bank Details not entered');
+        if(m.length){ ermErrors(m); return; }
+        var total = note.lines.reduce(function(a, l){ return a + l.settled; }, 0), soa = 'N4L-' + pad7(++seq) + '-2026', kind = note.type === 'Payment' ? 'Remittance' : 'Off-Set';
+        RM.unshift({ref: soa, p: $('ermPartnerId').value, date: $('ermDate').value, ptref: $('ermRef').value.trim(), dir: 'Outward', kind: kind, st: 'Pending', lines: note.lines.map(function(l){ return [l.ref, l.type, l.settled]; }), bank: $('ermBank').value.trim() || '-', desc: $('ermDesc').value.trim() || '-'});
+        TX.unshift({id: ++uid, d: $('ermDate').value, ref: soa, p: $('ermPartnerId').value, tref: $('ermRef').value.trim(), ship: '-', amt: total, set: 0, due: '', st: 'Pending', dir: 'Outward', kind: kind, rem: true});
+        lastSaved = RM[0]; $('ermOkMsg').innerHTML = 'Remittance saved successfully.<br><small>SOA Transaction Ref# <b>' + soa + '</b></small>'; sxOpen('ermOkM'); rrender(); render();
+    };
+    window.ermEmail = function(){ toast('Remittance advice emailed to ' + P[lastSaved.p].n + '.'); ermSkip(); };
+    window.ermSkip = function(){ sxClose('ermOkM'); document.querySelector('input[name=sxrS][value=Pending]').checked = true; rrender(); showStaticPage('esoa-rem'); };
+
+    /* ======================= bulk uploads ======================= */
+    var SAMPLE = {
+        inv: [
+            {no: 'INV-2026-0201', kind: 'Invoice', partner: 'Pacific Freight Solutions', pid: 'NET000041', key: 'p41', date: '2026-10-08', due: '2026-11-07', ship: 'ESH-10101', amt: 4200, err: []},
+            {no: 'INV-2026-0202', kind: 'Invoice', partner: 'Meridian Logistics Group', pid: 'NET000078', key: 'p78', date: '2026-10-08', due: '2026-11-07', ship: 'ESH-10102', amt: 1850, err: []},
+            {no: 'INV-2026-0203', kind: 'Invoice', partner: 'Global Logistics LLC', pid: 'NET000080', key: 'p80', date: '2026-10-08', due: '2026-11-07', ship: 'ESH-10103', amt: 960, err: []},
+            {no: 'INV-2026-0204', kind: 'Invoice', partner: 'Unknown Cargo Ltd', pid: 'NET000999', key: '', date: '2026-10-08', due: '2026-11-07', ship: 'ESH-10104', amt: 2300, err: ['Partner ID NET000999 was not found in your network.']},
+            {no: 'INV-2026-0205', kind: 'Invoice', partner: 'Pacific Freight Solutions', pid: 'NET000041', key: 'p41', date: '2026-10-08', due: '2026-10-01', ship: 'ESH-10105', amt: 700, err: ['The due date is before the invoice date.']}
+        ],
+        rem: [
+            {no: 'PAY-9931', kind: 'Remittance', partner: 'Pacific Freight Solutions', pid: 'NET000041', key: 'p41', date: '2026-10-08', amt: 4200, bank: 'HSBC Singapore - TT ref 90112', desc: 'Payment against INV-2026-0188', lines: [['INV-2026-0188', 'Invoice', 4200]], err: []},
+            {no: 'PAY-9932', kind: 'Remittance', partner: 'Global Logistics LLC', pid: 'NET000080', key: 'p80', date: '2026-10-08', amt: 640, bank: 'DBS Singapore - TT ref 90113', desc: 'Payment against DN-2026-0012', lines: [['DN-2026-0012', 'Debit Note', 640]], err: []},
+            {no: 'OFF-0046', kind: 'Off-Set', partner: 'Meridian Logistics Group', pid: 'NET000078', key: 'p78', date: '2026-10-08', amt: 9000, bank: '-', desc: 'Off-set', lines: [['INV-M-77120', 'Invoice', 9000]], err: ['The settled amount (9,000.00) is more than INV-M-77120 outstanding (5,600.00).']}
+        ]
+    };
+    var IDS = {inv: {file: 'sxiFile', imp: 'sxiImport', cnt: 'sxiCount', acts: 'sxiActs', list: 'sxiList', save: 'sxiSave'}, rem: {file: 'sxuFile', imp: 'sxuImport', cnt: 'sxuCount', acts: 'sxuActs', list: 'sxuList', save: 'sxuSave'}};
+    window.sxPick = function(k){ var i = IDS[k]; $(i.file).textContent = k === 'inv' ? 'E-InvoiceDocument.xlsx' : 'E-RemittanceDocument.xlsx'; $(i.imp).disabled = false; toast('File selected. Press Import to read it.'); };
+    window.sxImport = function(k){ up[k] = JSON.parse(JSON.stringify(SAMPLE[k])); $(IDS[k].imp).disabled = true; urender(k); toast(up[k].length + ' rows imported.'); };
+    function urender(k){
+        var i = IDS[k], rows = up[k], bad = rows.filter(function(r){ return r.err.length; }).length;
+        $(i.cnt).textContent = rows.length + ' rows' + (bad ? ' - ' + bad + ' with errors' : '');
+        $(i.acts).style.display = rows.length ? '' : 'none';
+        $(i.save).disabled = bad > 0; $(i.save).title = bad ? 'Fix or remove the rows with errors first' : '';
+        if(!rows.length){ $(i.list).innerHTML = '<div class="sx-empty"><b>Please upload a file</b>The grid is empty until you import a workbook.</div>'; return; }
+        $(i.list).innerHTML = rows.map(function(r, n){
+            var blocks = k === 'inv'
+                ? '<div class="tb"><div class="tk">Invoice date</div><div class="tv">' + fd(r.date) + '</div></div><div class="tb"><div class="tk">Due date</div><div class="tv">' + fd(r.due) + '</div></div><div class="tb"><div class="tk">Shipment ref</div><div class="tv">' + esc(r.ship) + '</div></div><div class="tb"><div class="tk">Amount (USD)</div><div class="tv n">' + fm(r.amt) + '</div></div>'
+                : '<div class="tb"><div class="tk">Date</div><div class="tv">' + fd(r.date) + '</div></div><div class="tb"><div class="tk">Type</div><div class="tv">' + esc(r.kind) + '</div></div><div class="tb"><div class="tk">Total (USD)</div><div class="tv n">' + fm(r.amt) + '</div></div><div class="tb"><div class="tk">Settled lines</div><div class="tv">' + r.lines.length + '</div></div>';
+            var det = k === 'inv' ? detTbl([['Invoice no.', esc(r.no)], ['Transacting Partner', esc(r.partner) + ' (' + r.pid + ')'], ['Invoice date', fd(r.date)], ['Due date', fd(r.due)], ['Shipment ref', esc(r.ship)], ['Amount (USD)', fm(r.amt)]])
+                : detTbl([['Payer Txn Ref', esc(r.no)], ['Transacting Partner', esc(r.partner) + ' (' + r.pid + ')'], ['Date', fd(r.date)], ['Remittance Type', esc(r.kind)], ['Bank Details', esc(r.bank === '-' ? '—' : r.bank)], ['Description', esc(r.desc)]]) + settledAgainst(r.lines);
+            var errs = r.err.length ? '<div class="sx-errs"><b>Upload errors</b><ul>' + r.err.map(function(e){ return '<li>' + esc(e) + '</li>'; }).join('') + '</ul></div>' : '';
+            return '<div class="sx-strip up' + (r.err.length ? ' bad open' : '') + '"><div class="sh" onclick="sxTog(this)"><span class="l"><span class="tw">&#9656;</span>' + tico('Outward', r.kind) + '<b>' + esc(r.no) + '</b></span><span class="r"><span class="hk">Partner :</span> ' + esc(r.partner) + ' ' + (r.err.length ? '<span class="sx-b bad">Error</span>' : '<span class="sx-b ok">Ready</span>') + '</span></div>' +
+                '<div class="sb">' + blocks + '<div class="ac"><button type="button" class="btn btn-ghost rm" onclick="event.stopPropagation();sxRemoveRow(\'' + k + '\',' + n + ')">Remove row</button></div></div><div class="sp">' + det + errs + '</div></div>';
+        }).join('');
+    }
+    window.sxRemoveRow = function(k, n){ up[k].splice(n, 1); urender(k); };
+    window.sxAskClear = function(k){ clearKind = k; sxOpen('sxClearM'); };
+    window.sxConfirmClear = function(){ var k = clearKind; up[k] = []; $(IDS[k].file).textContent = 'No file chosen'; $(IDS[k].imp).disabled = true; urender(k); sxClose('sxClearM'); toast('Staged rows cleared.'); };
+    window.sxSaveUp = function(k){
+        var rows = up[k]; if(!rows.length || rows.some(function(r){ return r.err.length; })) return;
+        if(k === 'inv'){
+            rows.forEach(function(r){ TX.unshift({id: ++uid, d: r.date, ref: 'N4L-' + pad7(++seq) + '-2026', p: r.key, tref: r.no, ship: r.ship, amt: r.amt, set: 0, due: r.due, st: 'Draft', dir: 'Outward', kind: 'Invoice'}); });
+            toast(rows.length + ' invoices saved as drafts.'); up[k] = []; urender(k); state.mode = 'txns'; state.drill = ''; state.over = false; state.shown = PAGE; render(); showStaticPage('esoa');
+        } else {
+            rows.forEach(function(r){ var soa = 'N4L-' + pad7(++seq) + '-2026'; RM.unshift({ref: soa, p: r.key, date: r.date, ptref: r.no, dir: 'Outward', kind: r.kind, st: 'Pending', lines: r.lines, bank: r.bank, desc: r.desc}); });
+            toast(rows.length + ' remittances saved. Your partners can now acknowledge them.'); up[k] = []; urender(k); rrender(); showStaticPage('esoa-rem');
+        }
+    };
+
+    render(); rrender(); urender('inv'); urender('rem'); ermReset();
+    window.addEventListener('load', function(){
+        if(window.n4lHeroNet){ n4lHeroNet('page-esoa', 'sxNet1'); n4lHeroNet('page-esoa-rem', 'sxNet2'); n4lHeroNet('page-einv-upload', 'sxNet3'); n4lHeroNet('page-erem-upload', 'sxNet4'); n4lHeroNet('page-erem-note', 'sxNet5'); }
+    });
+})();
+
+</script>
 
 <!-- ===================== HELP CENTRE ===================== -->
 <script>
@@ -7871,8 +9344,8 @@ window.n4lHeroNet = function(pageId, canvasId){
                 </div>
                 <div class="dash-subnav" id="nav-nd">
                     <a href="#" onclick="closeSidebar();showStaticPage('eshipments',event)">E-Shipments</a>
-                    <a href="#">E-SOA</a>
-                    <a href="#">E-Leads</a>
+                    <a href="#" onclick="closeSidebar();showStaticPage('esoa',event)">E-SOA</a>
+                    <!-- E-Leads is hidden until it is published (portal feature flag "ELeads"): &lt;a href="#"&gt;E-Leads&lt;/a&gt; -->
                 </div>
             </div>
         </nav>
@@ -8961,7 +10434,7 @@ window.n4lHeroNet = function(pageId, canvasId){
             '<div class="dir2-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>' + esc(p.c) + ', ' + esc(p.k) + '</div></div></div>' +
             '<div class="dir2-meta">Partner ID <b>' + esc(p.id) + '</b><br>Since <b>' + p.y + '</b></div>' +
             '<div class="dir2-cgroup"><div class="dir2-chips' + lock + '"' + lockTitle + '>' + chips + '</div><div class="dir2-chips loc' + lock + '"' + lockTitle + '>' + lchips + '</div></div>' +
-            '<button type="button" class="dir2-go">View profile <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>' +
+            '<button type="button" class="dir2-go" onclick="dir2View(\'' + esc(p.id) + '\')">View profile <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>' +
             '</div>';
     }
     function render(){
@@ -8997,7 +10470,7 @@ window.n4lHeroNet = function(pageId, canvasId){
     function note(){
         document.getElementById('dir2Note').innerHTML = st.viewer === 'trusted'
             ? 'You are a <b>Trusted Partner</b> &mdash; unlimited profile views, with Services and Service Location filters unlocked.'
-            : 'Free profile views used: <b>3</b> / 10 &mdash; Trusted Partners get unlimited access. Services offered and locations are visible to Trusted Partners only.';
+            : 'Free profile views used: <b>' + used + '</b> / ' + FREE_LIMIT + ' &mdash; Trusted Partners get unlimited access. Services offered and locations are visible to Trusted Partners only.';
     }
     window.dir2SetViewer = function(v){
         st.viewer = v; st.shown = st.step;
@@ -9017,6 +10490,90 @@ window.n4lHeroNet = function(pageId, canvasId){
         var sel = document.getElementById('dir2Svc');
         Object.keys(seen).sort().forEach(function(x){ var o = document.createElement('option'); o.value = x; o.textContent = x; sel.appendChild(o); });
     })();
+
+    /* ---- View profile (Partner Profile page: #page-view-profile) ---- */
+    var FREE_LIMIT = 10, used = 3, opened = {};
+    function slug(n){ return n.toLowerCase().replace(/[^a-z0-9]+/g, '').slice(0, 18); }
+    var SVC = {
+        'Freight Forwarding': 'Air, ocean and road freight forwarding with door-to-door handling and shipment visibility.',
+        'Customs Clearance': 'Import and export customs brokerage, documentation and compliance support.',
+        'Warehousing': 'Bonded and general warehousing, pick-and-pack and distribution.',
+        'Project Cargo': 'Heavy-lift and out-of-gauge cargo planning, surveys and escorted movement.',
+        'Trucking': 'Full-load and part-load road haulage across the region.',
+        'NVOCC': 'Consolidation and non-vessel-operating carrier services on major trade lanes.',
+        'Sea Freight': 'FCL and LCL sea freight with weekly consolidated sailings.',
+        'Air Freight': 'Priority and economy air freight with scheduled and charter options.',
+        'Consolidation': 'Weekly LCL and air consolidation with groupage handling at origin and destination.',
+        'Ship Agency': 'Port agency, vessel husbandry and husbandry support for visiting ships.'
+    };
+    function cut(t){ return t; }
+    function profileOf(p){
+        var s = slug(p.n), city = p.c, since = p.y;
+        var offices = [{n: 'Head office &middot; ' + esc(city), a: 'Level 12, Harbour Business Centre, ' + esc(city) + ', ' + esc(p.k)}];
+        if(p.l.length > 1) offices.push({n: esc(p.l[1]) + ' branch', a: 'Port Area Office, ' + esc(p.l[1])});
+        return {
+            about: p.n + ' is a ' + (p.t === 'trusted' ? 'verified' : 'registered') + ' logistics company based in ' + city + ', ' + p.k + '. Since ' + since + ' the team has handled ' + p.s.join(', ').toLowerCase() + ' for shippers and forwarders across the region, working with Net4Log partners on shared shipments and local handling.',
+            services: p.s.map(function(x){ return {n: x, d: SVC[x] || 'Specialised ' + x.toLowerCase() + ' services for network partners.'}; }),
+            offices: offices,
+            locs: p.l,
+            clients: ['Global Retail Co.', 'Northwind Traders', 'Apex Manufacturing', 'BlueWave Exports'],
+            facts: [['Company type', 'Private limited'], ['Country of registration', p.k], ['Year of incorporation', String(since)], ['Employees', String(40 + (s.length * 13) % 160)], ['Authorised capital', 'USD ' + (250000 + (s.length * 37000) % 900000).toLocaleString('en-US')], ['Offices', String(offices.length)]],
+            people: [['A. Raman', 'Shareholder 60%'], ['S. Iyer', 'Shareholder 40%'], ['A. Raman', 'Managing Director']],
+            vol: [['Ocean freight (FCL)', 'Asia - Middle East', 4200, 'TEU'], ['Air freight', 'Intra-Asia', 1800, 'kg']],
+            groups: [[p.n.split(' ')[0] + ' Holdings', p.k]],
+            social: ['LinkedIn'],
+            mail: 'info@' + s + '.com', phone: '+65 6123 4567', url: 'www.' + s + '.com'
+        };
+    }
+    function card(ic, title, inner, sub){ return '<div class="mp-card"><div class="mp-card-h"><span class="ic"><span class="app-emoji-icon">' + ic + '</span></span><div><h3>' + title + '</h3>' + (sub ? '<small>' + sub + '</small>' : '') + '</div></div>' + inner + '</div>'; }
+    function fmtN(n){ return Number(n).toLocaleString('en-US'); }
+    function vpBuild(p){
+        var d = profileOf(p), h = '<div class="mp-pgrid"><div>';
+        h += card('🏢', 'About us', '<p class="mp-pabout">' + esc(d.about) + '</p>');
+        h += card('🛠️', 'Services', d.services.map(function(x, i){ return '<div class="mp-psvc"><span class="n">' + (i + 1) + '</span><b>' + esc(x.n) + '</b><p>' + esc(x.d) + '</p></div>'; }).join(''));
+        h += card('📍', 'Offices &amp; service locations', d.offices.map(function(o){ return '<div class="mp-poff"><b>' + o.n + '</b>' + o.a + '</div>'; }).join('') +
+            '<div class="mp-chips" style="margin-top:14px;">' + d.locs.map(function(l){ return '<span style="padding:7px 14px;"><span class="app-emoji-icon">📍</span> ' + esc(l) + '</span>'; }).join('') + '</div>');
+        h += card('🤝', 'Key clients', '<div class="mp-chips">' + d.clients.map(function(c){ return '<span style="padding:7px 14px;">' + esc(c) + '</span>'; }).join('') + '</div>');
+        h += '</div><div>';
+        h += card('🏛️', 'Corporate information', '<dl class="mp-facts">' + d.facts.map(function(f){ return '<div><dt>' + f[0] + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('') + '</dl>');
+        h += card('💼', 'Shareholders &amp; directors', '<dl class="mp-facts">' + d.people.map(function(x){ return '<div><dt>' + esc(x[0]) + '</dt><dd>' + esc(x[1]) + '</dd></div>'; }).join('') + '</dl>');
+        h += card('📦', 'Business volume', '<div class="mp-bars">' + d.vol.map(function(r){
+            var lo = Math.max(0, Math.round(r[2] * 0.85 / 100) * 100), hi = Math.round(r[2] * 1.15 / 100) * 100;
+            return '<div class="mp-bar" style="grid-template-columns:minmax(0,1fr) auto;"><span>' + esc(r[0]) + '<br><small style="color:var(--ink-soft);">' + esc(r[1]) + '</small></span><b style="font-size:12px;">' + fmtN(lo) + ' - ' + fmtN(hi) + ' ' + esc(r[3]) + '</b></div>';
+        }).join('') + '</div>', 'Shown as approximate ranges');
+        h += card('🔗', 'Group companies &amp; social', '<dl class="mp-facts">' + d.groups.map(function(g){ return '<div><dt>' + esc(g[0]) + '</dt><dd>' + esc(g[1]) + '</dd></div>'; }).join('') + d.social.map(function(x){ return '<div><dt>' + esc(x) + '</dt><dd><a href="#" onclick="return false;">Visit</a></dd></div>'; }).join('') + '</dl>');
+        h += '</div></div>';
+        document.getElementById('vpBody').innerHTML = h;
+        var set = function(id, t){ document.getElementById(id).textContent = t; };
+        set('vpName', p.n); set('vpInit', initials(p.n)); set('vpLoc', p.c + ', ' + p.k); set('vpId', p.id); set('vpSince', String(p.y));
+        set('vpOff', String(d.offices.length)); set('vpKick', p.t === 'trusted' ? 'Trusted Partner' : 'Registered Partner');
+        set('vpMail', d.mail); set('vpPhone', d.phone); set('vpUrl', d.url);
+        document.getElementById('vpBadge').setAttribute('href', BADGE[p.t]);
+        var pg = document.getElementById('page-view-profile');
+        var trusted = st.viewer === 'trusted';
+        pg.classList.add('viewer-trusted'); /* contact details are shown to anyone who passed the access check (a Registered viewer spent a free view) */
+    }
+    function flash(msg){
+        var el = document.getElementById('dir2Note');
+        el.innerHTML = msg; el.classList.add('warn');
+        clearTimeout(flash.t); flash.t = setTimeout(function(){ el.classList.remove('warn'); note(); }, 6000);
+        el.scrollIntoView({block: 'center', behavior: 'smooth'});
+    }
+    window.dir2View = function(id){
+        var p = DATA.filter(function(x){ return x.id === id; })[0]; if(!p) return;
+        if(st.viewer !== 'trusted'){
+            /* same rules as the portal: Registered viewers cannot open Trusted profiles; 10 free distinct Registered profiles; a repeat view is free */
+            if(p.t === 'trusted'){ flash('This profile isn&rsquo;t open to your partner tier. <b>Become a Trusted Partner</b> for unlimited access.'); return; }
+            if(!opened[id]){
+                if(used >= FREE_LIMIT){ flash('You&rsquo;ve reached your free profile view limit. <b>Become a Trusted Partner</b> for unlimited access.'); return; }
+                opened[id] = 1; used++; note();
+            }
+        }
+        vpBuild(p);
+        showStaticPage('view-profile');
+    };
+
+    if(window.n4lHeroNet) n4lHeroNet('page-view-profile', 'vpNet');
     note();
     render();
 })();
