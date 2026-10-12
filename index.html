@@ -530,7 +530,7 @@
 
     html{scroll-behavior:smooth;}
     :focus-visible{outline:3px solid var(--purple-soft);outline-offset:3px;border-radius:6px;}
-    @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important;}}
+    @media(prefers-reduced-motion:reduce){*:not(.tpx-hero.motion-on):not(.tpx-hero.motion-on *){animation:none!important;transition:none!important;scroll-behavior:auto!important;}}
     .n4l-public-page{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;}
     .n4l-public-page p{line-height:1.65;}
 
@@ -801,6 +801,30 @@ body.n4l-logged .guest-only{display:none !important;}
 .n4l-public-page .pw-steps .feature p strong{color:var(--purple);font-weight:600;}
 .n4l-public-page .pw-n{width:44px;height:44px;border-radius:50%;background:var(--purple);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:800;font-size:18px;margin:0 auto 14px;}
 .n4l-public-page .pw-steps .feature:last-child .pw-n{background:var(--orange);}
+/* How to become a Registered Partner (2026-10-12): supplied "Registered Partner Steps Final" design -- left-aligned step cards, hover lift, orange final step */
+.n4l-public-page .pw-reg-sec .sec-head h2{font-weight:800;font-size:clamp(26px,4vw,34px);line-height:1.2;letter-spacing:-.5px;}
+.n4l-public-page .pw-lead.pw-lead-reg{max-width:760px;font-size:15px;line-height:1.6;margin-bottom:40px;}
+.n4l-public-page .pw-lead.pw-lead-reg a{color:var(--purple);font-weight:600;text-decoration:none;}
+.n4l-public-page .pw-lead.pw-lead-reg a:hover,.n4l-public-page .pw-lead.pw-lead-reg a:focus-visible{color:#D24F00;text-decoration:underline;}
+.n4l-public-page .pw-steps.pw-reg{gap:22px;margin-top:0;align-items:stretch;}
+.n4l-public-page .pw-steps.pw-reg .feature{display:flex;flex-direction:column;align-items:flex-start;gap:12px;text-align:left;padding:24px;border:1px solid #F2DFCF;border-radius:16px;}
+.n4l-public-page .pw-steps.pw-reg .feature:hover{box-shadow:0 14px 30px rgba(210,79,0,.12);transform:translateY(-3px);}
+.n4l-public-page .pw-steps.pw-reg .pw-n{margin:0 0 4px;flex-shrink:0;}
+.n4l-public-page .pw-steps.pw-reg .feature p{margin:0;font-size:14.5px;line-height:1.6;}
+.n4l-public-page .pw-steps.pw-reg .feature p strong{font-weight:700;}
+.n4l-public-page .pw-steps.pw-reg .feature:last-child .pw-n{background:#D24F00;}
+/* How to become a Trusted Partner (2026-10-12): supplied "trusted-partner-process" design -- same step cards as the Registered steps, plus a title per step */
+.n4l-public-page .pw-steps.pw-tp{margin-top:24px;}
+.n4l-public-page .pw-steps.pw-reg .feature h3.pw-t{margin:0;min-height:2.6em;font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;line-height:1.3;color:var(--purple);}
+.n4l-public-page .pw-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+@media (max-width:520px){.n4l-public-page .pw-steps.pw-reg .feature h3.pw-t{min-height:0;}}
+/* step cards responsive columns (2026-10-12): 5 -> 2 -> 1, as in the supplied designs */
+@media (max-width:900px){.n4l-public-page .feature-grid.grid-cols-5.pw-steps.pw-reg{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media (max-width:560px){.n4l-public-page .feature-grid.grid-cols-5.pw-steps.pw-reg{grid-template-columns:minmax(0,1fr);}}
+
+
+@media (prefers-reduced-motion:reduce){.n4l-public-page .pw-steps.pw-reg .feature:hover{transform:none;}}
+
 .n4l-public-page .pw-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
 .n4l-public-page .pw-chips a{display:inline-flex;align-items:center;background:var(--cream);border:1px solid #F6E2D2;color:var(--purple);font-weight:600;font-size:14px;padding:9px 16px;border-radius:30px;transition:color .15s ease,border-color .15s ease;}
 .n4l-public-page .pw-chips a:hover{color:var(--orange);border-color:#F2C9A6;}
@@ -2186,7 +2210,7 @@ html body .modal-header .modal-title{ margin-left: 0 !important; margin-right: 0
 @keyframes tpxtrain{from{transform:translateX(-420px)}to{transform:translateX(640px)}}@keyframes tpxtruck{from{transform:translateX(640px)}to{transform:translateX(-260px)}}
 @keyframes tpxroad{to{stroke-dashoffset:-48}}@keyframes tpxspin{to{transform:rotate(360deg)}}
 @media(max-width:900px){.TPContainer .tpx-hero{padding:20px 16px 16px;}.TPContainer .tpx-top{grid-template-columns:1fr;}.TPContainer #n4lHeroFigure{font-size:48px;}.TPContainer .tpx-lane{grid-template-columns:1fr 84px;row-gap:6px;}.TPContainer .tpx-lane .ln{grid-column:1/-1;order:3;margin-top:10px;}.TPContainer .tpx-lane .rt{grid-column:1/-1;order:2;}}
-@media(prefers-reduced-motion:reduce){.TPContainer .tpx-hero *{animation:none !important;transition:none !important;}}
+@media(prefers-reduced-motion:reduce){.TPContainer .tpx-hero:not(.motion-on) *{animation:none !important;transition:none !important;}}
 
 /* ===== Live touches for the rest of the Trusted Partner dashboard (2026-10-12): KPI count-up + all-clear, chart grow-in, aging slide-in, value bars, trading-partner cards ===== */
 @property --tpxa{syntax:'<angle>';initial-value:0deg;inherits:false;}
@@ -2250,6 +2274,43 @@ html body .modal-header .modal-title{ margin-left: 0 !important; margin-right: 0
 .TPContainer .sx-em{font-family:'App Emoji','Noto Color Emoji',sans-serif;font-style:normal;}
 .TPContainer .n4l-kpi-tile::before{font-style:normal;line-height:1;}
 @media(max-width:700px){.TPContainer .tpx-mock{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch}.TPContainer .tpx-mock>*{flex:0 0 auto}}
+
+/* ===== Weather layer (2026-10-12): Rain and Thunderstorm over any hero scene ===== */
+.TPContainer .tpx-wx{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden;opacity:0;transition:opacity .8s;}
+.TPContainer .tpx-hero.wx-rain .tpx-wx,.TPContainer .tpx-hero.wx-storm .tpx-wx{opacity:1;}
+.TPContainer .tpx-wx i{position:absolute;top:-8%;width:2px;border-radius:2px;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(214,228,255,.9));transform:skewX(-12deg);animation:tpxrain linear infinite;}
+.TPContainer .tpx-wx .wxc{position:absolute;left:0;top:0;width:200%;height:46%;animation:tpxwv 60s linear infinite;opacity:.55;}
+.TPContainer .tpx-wx .flash{position:absolute;inset:0;background:#fff;opacity:0;}
+.TPContainer .tpx-hero.wx-storm .tpx-wx .flash{animation:tpxflash 7s linear infinite;}
+.TPContainer .tpx-wx .bolt{position:absolute;top:6%;width:70px;height:46%;opacity:0;filter:drop-shadow(0 0 10px #FFF3B0);}
+.TPContainer .tpx-hero.wx-storm .tpx-wx .bolt{animation:tpxflash 7s linear infinite;}
+.TPContainer .tpx-hero.wx-storm .tpx-wx .bolt.b2{animation-delay:-3.4s;}
+.TPContainer .tpx-hero.wx-storm .tpx-wx .flash.f2{animation-delay:-3.4s;}
+.TPContainer .tpx-hero.wx-rain{--sky1:#9AA6BA;--sky2:#D3D0DB;--kick:#33466b;--sea1:#6C8FAE;--sea2:#3E5F80;--stars:0;--gr1:#8A7D78;--gr2:#6F6460;--hill:#B9C2D0;--hill2:#A3AEC0;}
+.TPContainer .tpx-hero.wx-storm{--sky1:#171a2e;--sky2:#3a3f5e;--tx:#fff;--tx2:rgba(255,255,255,.88);--kick:#BFD0FF;--big:#fff;--chip:rgba(255,255,255,.12);--chipb:rgba(255,255,255,.28);--chipt:#fff;--sea1:#2f4a78;--sea2:#16243f;--stars:0;--gr1:#2a2540;--gr2:#1c1830;--hill:#2b2f4a;--hill2:#212540;--ln:rgba(255,255,255,.3);}
+.TPContainer .tpx-hero.wx-rain .tpx-lanes,.TPContainer .tpx-hero.wx-rain .tpx-tick,.TPContainer .tpx-hero.wx-rain .tpx-chips>div{background:rgba(255,255,255,.88);}
+@keyframes tpxrain{from{top:-8%}to{top:104%}}
+@keyframes tpxflash{0%,91%,100%{opacity:0}92%{opacity:.75}93%{opacity:.05}94.5%{opacity:.9}96.5%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.TPContainer .tpx-hero:not(.motion-on) .tpx-wx i,.TPContainer .tpx-hero:not(.motion-on) .tpx-wx .flash,.TPContainer .tpx-hero:not(.motion-on) .tpx-wx .bolt{animation:none !important;}}
+
+/* ===== Lighthouse scene v2 (2026-10-12): rotating light, rolling waves, sailing ship, plane crossing the sky ===== */
+.TPContainer .lhbeam{transform-origin:451px 94px;animation:tpxlhspin 6s ease-in-out infinite;}
+.TPContainer .lhglow{transform-origin:451px 94px;animation:tpxlhglow 3s ease-in-out infinite;}
+.TPContainer .lhsail{animation:tpxlhsail 16s ease-in-out infinite;}
+.TPContainer .wm1{animation:tpxwm 9s linear infinite;}
+.TPContainer .wm2{animation:tpxwm 6s linear infinite reverse;}
+.TPContainer .flyby{animation:tpxflyby 26s linear infinite;}
+@keyframes tpxlhspin{0%,100%{transform:scaleX(1)}50%{transform:scaleX(-1)}}
+@keyframes tpxlhglow{0%,100%{transform:scale(.8);opacity:.6}50%{transform:scale(1.35);opacity:1}}
+@keyframes tpxlhsail{0%,100%{transform:translateX(0)}50%{transform:translateX(70px)}}
+@keyframes tpxwm{to{transform:translateX(-560px)}}
+@keyframes tpxflyby{0%{transform:translate(-150px,30px)}100%{transform:translate(700px,2px)}}
+@media(prefers-reduced-motion:reduce){.TPContainer .tpx-hero:not(.motion-on) .lhbeam,.TPContainer .tpx-hero:not(.motion-on) .lhglow,.TPContainer .tpx-hero:not(.motion-on) .lhsail,.TPContainer .tpx-hero:not(.motion-on) .wm1,.TPContainer .tpx-hero:not(.motion-on) .wm2,.TPContainer .tpx-hero:not(.motion-on) .flyby{animation:none !important;}}
+
+/* scene layering (2026-10-12): the wave strips are clipped to their own box and the text column always sits above the illustration */
+.TPContainer .tpx-scene svg svg{overflow:hidden;}
+.TPContainer .tpx-scene{z-index:1;}
+.TPContainer .tpx-col{position:relative;z-index:2;}
 </style>
 <style>
 /* Mockup helper: "viewing as" switch on both logged-in homes (Registered Partner home <-> Trusted Partner home), same pattern as Marketplace / My Profile */
@@ -3929,11 +3990,11 @@ html body .modal-header .modal-title{ margin-left: 0 !important; margin-right: 0
         </div>
     </section>
 
-    <section class="section alt">
+    <section class="section alt pw-reg-sec">
         <div class="wrap">
             <div class="sec-head"><h2>How to become a <span>Registered Partner</span></h2></div>
-            <p class="pw-lead">Joining Net4Log is free and takes just a few minutes. Follow the five simple steps below to join our global community of logisticians. <a href="#" class="guest-only" onclick="openRegistration(event)"><strong>Register Now on Net4Log!</strong></a></p>
-            <div class="feature-grid grid-cols-5 pw-steps">
+            <p class="pw-lead pw-lead-reg">Joining Net4Log is free and takes just a few minutes. Follow the five simple steps below to join our global community of logisticians. <a href="#" class="guest-only" onclick="openRegistration(event)"><strong>Register Now on Net4Log!</strong></a></p>
+            <div class="feature-grid grid-cols-5 pw-steps pw-reg">
                 <article class="feature"><span class="pw-n">1</span><p>Open <strong>www.net4log.com</strong> on your preferred web browser &amp; click on <strong>‘Join Now’</strong></p></article>
                 <article class="feature"><span class="pw-n">2</span><p>Enter your company details, then add your Admin Contact (with a Login ID) &amp; Billing Contact</p></article>
                 <article class="feature"><span class="pw-n">3</span><p>Review your details, read the Registered Partner Agreement, tick the box &amp; click <strong>‘Submit registration’</strong></p></article>
@@ -3951,12 +4012,12 @@ html body .modal-header .modal-title{ margin-left: 0 !important; margin-right: 0
                 <article class="feature"><h3>Application Process</h3><p>Submission: The application is submitted online through the Net4Log Portal. Applicants are required to provide detailed information about their organization, including their operational history, services offered, and client portfolio.</p></article>
                 <article class="feature"><h3>Adjudication Process</h3><p>The application undergoes a thorough adjudication process, where it is reviewed based on predefined criteria set by the Partner Engagement Committee. This includes assessing the applicant's reputation, financial stability, operational capabilities, and compliance with industry regulations.</p></article>
             </div>
-            <div class="feature-grid grid-cols-5 pw-steps">
-                <article class="feature"><span class="pw-n">1</span><p>Complete ‘My Profile’</p></article>
-                <article class="feature"><span class="pw-n">2</span><p>Click ‘Become Trusted Partner’ to submit your application</p></article>
-                <article class="feature"><span class="pw-n">3</span><p>You can choose to make online payment or bank transfer</p></article>
-                <article class="feature"><span class="pw-n">4</span><p>Your application will be processed by Net4Log team</p></article>
-                <article class="feature"><span class="pw-n">5</span><p>Congratulations, you’re a Trusted Partner!!</p></article>
+            <div class="feature-grid grid-cols-5 pw-steps pw-reg pw-tp">
+                <article class="feature"><span class="pw-n">1</span><h3 class="pw-t"><span class="pw-sr">Step 1: </span>Complete your profile</h3><p>Add at least one entry to every section of <strong>‘My Profile’</strong> and upload all <strong>mandatory documents</strong>.</p></article>
+                <article class="feature"><span class="pw-n">2</span><h3 class="pw-t"><span class="pw-sr">Step 2: </span>Start your application</h3><p>Click <strong>‘Become Trusted Partner’</strong> to open your application and check every requirement is met.</p></article>
+                <article class="feature"><span class="pw-n">3</span><h3 class="pw-t"><span class="pw-sr">Step 3: </span>Pay and submit</h3><p>Choose <strong>card payment</strong> or <strong>bank transfer</strong>, tick the box to accept the terms &amp; click <strong>‘Submit application’</strong>.</p></article>
+                <article class="feature"><span class="pw-n">4</span><h3 class="pw-t"><span class="pw-sr">Step 4: </span>Committee review</h3><p>The Net4Log network committee reviews your application once payment is confirmed. Track it in <strong>‘Service Request’</strong>.</p></article>
+                <article class="feature"><span class="pw-n">5</span><h3 class="pw-t"><span class="pw-sr">Step 5: </span>You’re a Trusted Partner!</h3><p>Your <strong>Trusted Partner badge</strong> appears on your profile and in the directory.</p></article>
             </div>
         </div>
     </section>
@@ -6535,6 +6596,7 @@ window.n4lHeroNet = function(pageId, canvasId){
     <div class="n4l-theme-toggle" id="n4lThemeToggle" style="display:none"></div>
     <div class="tpx-hero t-day" id="n4lHero">
         <div class="tpx-stars" id="tpxStars"></div>
+        <div class="tpx-wx" id="tpxWx"></div>
         <div class="tpx-ctrl"><div class="n4l-filter-row" style="display:flex;align-items:center;gap:8px;padding:14px 0 0;flex-wrap:wrap;">
         <button type="button" class="n4l-range-btn" data-range="7d" style="height:34px;border:1px solid #BFBFBF;background:#fff;color:#52514e;font-weight:700;font-size:12px;padding:0 13px;border-radius:8px;">Last 7 days</button>
         <button type="button" class="n4l-range-btn" data-range="30d" style="height:34px;border:1px solid #BFBFBF;background:#fff;color:#52514e;font-weight:700;font-size:12px;padding:0 13px;border-radius:8px;">Last 30 days</button>
@@ -6542,7 +6604,7 @@ window.n4lHeroNet = function(pageId, canvasId){
         <button type="button" class="n4l-range-btn" data-range="custom" style="height:34px;border:1px solid #BFBFBF;background:#fff;color:#52514e;font-weight:700;font-size:12px;padding:0 13px;border-radius:8px;">Custom&hellip;</button>
         <div id="n4lCustomRange" style="display:none;align-items:center;gap:6px;font-size:11.5px;"><input type="date" id="n4lCustomFrom" value="2026-01-01" style="height:34px;border:1px solid #BFBFBF;border-radius:7px;padding:0 8px;"><span>to</span><input type="date" id="n4lCustomTo" value="2026-10-12" style="height:34px;border:1px solid #BFBFBF;border-radius:7px;padding:0 8px;"><button type="button" id="n4lCustomApply" style="height:34px;border:1px solid #2A007C;background:#2A007C;color:#fff;font-weight:700;font-size:11.5px;padding:0 11px;border-radius:7px;">Apply</button></div>
     </div>
-    <div class="tpx-mock"><span>Mockup &middot; scene:</span><button type="button" data-s="ship">Ship</button><button type="button" data-s="port" class="on">Port crane</button><button type="button" data-s="globe">Globe</button><button type="button" data-s="road">Road and rail</button><button type="button" data-s="air">Airport</button><button type="button" data-s="ware">Warehouse</button><button type="button" data-s="hub">Network hub</button><button type="button" data-s="city">City delivery</button><button type="button" data-s="rail">Rail yard</button><button type="button" data-s="sort">Sorting hub</button><button type="button" data-s="wind">Wind power</button><button type="button" data-s="light">Lighthouse</button><span style="margin-left:10px">sky:</span><button type="button" data-t="t-morning">Morning</button><button type="button" data-t="t-day">Day</button><button type="button" data-t="t-evening">Evening</button><button type="button" data-t="t-night">Night</button></div>
+    <div class="tpx-mock"><span>Mockup &middot; scene:</span><button type="button" data-s="ship">Ship</button><button type="button" data-s="port" class="on">Port crane</button><button type="button" data-s="globe">Globe</button><button type="button" data-s="road">Road and rail</button><button type="button" data-s="air">Airport</button><button type="button" data-s="ware">Warehouse</button><button type="button" data-s="hub">Network hub</button><button type="button" data-s="city">City delivery</button><button type="button" data-s="rail">Rail yard</button><button type="button" data-s="sort">Sorting hub</button><button type="button" data-s="wind">Wind power</button><button type="button" data-s="light">Lighthouse</button><span style="margin-left:10px">sky:</span><button type="button" data-t="t-morning">Morning</button><button type="button" data-t="t-day">Day</button><button type="button" data-t="t-evening">Evening</button><button type="button" data-t="t-night">Night</button><span style="margin-left:10px">weather:</span><button type="button" data-w="clear" class="on">Clear</button><button type="button" data-w="rain">Rain</button><button type="button" data-w="storm">Thunderstorm</button><span style="margin-left:10px">motion:</span><button type="button" data-m="on" class="on">On</button><button type="button" data-m="off">Off</button></div>
     </div>
         <div class="tpx-top">
             <div class="tpx-col">
@@ -11806,14 +11868,23 @@ window.n4lHeroNet = function(pageId, canvasId){
   +'<g fill="#fff" stroke="#BFB3CF" stroke-width="1"><g class="blades" style="transform-origin:278px 88px"><path d="M278 88L274 28L282 28zM278 88L330 118L326 124zM278 88L226 118L230 124z"/></g><g class="blades" style="transform-origin:406px 122px;animation-duration:9s"><path d="M406 122L403 76L409 76zM406 122L446 144L443 149zM406 122L366 144L369 149z"/></g><g class="blades" style="transform-origin:494px 147px;animation-duration:5s"><path d="M494 147L492 112L496 112zM494 147L524 164L522 168zM494 147L464 164L466 168z"/></g></g>'
   +'<g fill="#2a0a45"><circle cx="278" cy="88" r="5"/><circle cx="406" cy="122" r="4"/><circle cx="494" cy="147" r="3"/></g>'
   +'<g class="truck" style="animation-duration:12s"><rect x="-60" y="212" width="76" height="26" rx="4" fill="#2FA36B"/><rect x="18" y="218" width="26" height="20" rx="4" fill="#4a1745"/><circle cx="-34" cy="225" r="7" fill="#fff" fill-opacity=".9"/><path d="M-37 228c0-6 4-9 9-10-1 6-3 9-9 10z" fill="#1E8A52"/><circle class="wheel" cx="-44" cy="240" r="7" fill="#1d0833"/><circle class="wheel" cx="30" cy="240" r="7" fill="#1d0833"/></g></svg>';
- var LIGHT='<svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><g class="cl2"><use href="#ill-cloud" x="40" y="20" width="110" height="40" opacity=".8"/></g>'
-  +'<polygon class="beam" points="450,84 100,36 100,132" fill="#FFF1C9"/>'
-  +'<path d="M0 214Q70 196 140 214T280 214T420 214T560 214V270H0z" fill="var(--sea1)"/>'
+
+ function wvPath(base,amp,per,len){var d='M0 '+base,x=0;while(x<len){d+=' Q'+(x+per/4)+' '+(base-amp)+' '+(x+per/2)+' '+base+' T'+(x+per)+' '+base;x+=per}return d+' V90 H0z'}
+ var LIGHT='<svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><defs>'
+  +'<linearGradient id="lhgL" gradientUnits="userSpaceOnUse" x1="451" y1="0" x2="110" y2="0"><stop offset="0" stop-color="#FFF6CF" stop-opacity=".95"/><stop offset="1" stop-color="#FFF6CF" stop-opacity="0"/></linearGradient>'
+  +'<linearGradient id="lhgR" gradientUnits="userSpaceOnUse" x1="451" y1="0" x2="800" y2="0"><stop offset="0" stop-color="#FFF6CF" stop-opacity=".95"/><stop offset="1" stop-color="#FFF6CF" stop-opacity="0"/></linearGradient>'
+  +'<radialGradient id="lhrg"><stop offset="0" stop-color="#FFF3B0"/><stop offset="1" stop-color="#FFF3B0" stop-opacity="0"/></radialGradient>'
+  +'<linearGradient id="lhtrail" gradientUnits="userSpaceOnUse" x1="-78" y1="0" x2="-4" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".85"/></linearGradient></defs>'
+  +'<g class="cl2"><use href="#ill-cloud" x="40" y="20" width="110" height="40" opacity=".8"/></g>'
+  +'<g class="flyby"><path class="dash" d="M-110 22H-6" stroke="#FE5F00" stroke-width="2.6" stroke-linecap="round" fill="none"/><path d="M4 8L-6 -8H10L22 8z" fill="#5B2A91"/><rect x="0" y="6" width="72" height="24" rx="12" fill="#fff" stroke="#4a1745" stroke-width="2.6"/><rect x="52" y="11" width="11" height="7" rx="3" fill="#CFE3F5" stroke="#4a1745" stroke-width="1.4"/><circle cx="34" cy="18" r="2.4" fill="#4a1745"/><circle cx="24" cy="18" r="2.4" fill="#4a1745"/><circle cx="44" cy="18" r="2.4" fill="#4a1745"/><path d="M24 28l16 16h12L46 28z" fill="#5B2A91"/></g>'
+  +'<circle class="lhsun" cx="430" cy="74" r="46" fill="#FFE9B8" opacity=".42"/><circle cx="430" cy="74" r="28" fill="#FFE9B8" opacity=".6"/>'
+  +'<g class="lhbeam"><polygon points="451,94 110,56 110,132" fill="url(#lhgL)"/><polygon points="451,94 800,56 800,132" fill="url(#lhgR)"/></g>'
+  +'<svg x="0" y="198" width="560" height="72" viewBox="0 0 560 72" preserveAspectRatio="none"><g class="wm1"><path d="'+wvPath(14,9,140,1120)+'" fill="var(--sea1)"/></g></svg>'
   +'<path d="M370 214Q400 196 430 200L520 200Q540 204 560 214V240H370z" fill="#5a4a6a"/>'
   +'<path d="M430 200L440 100H462L472 200z" fill="#fff"/><path d="M433 176L436 150H466L469 176z" fill="#E5484D"/><path d="M438 126L440 100H462L463 126z" fill="#E5484D"/>'
-  +'<rect x="436" y="86" width="30" height="16" rx="2" fill="#2a0a45"/><circle cx="451" cy="94" r="6" fill="#FFE08A"><animate attributeName="opacity" values="1;.5;1" dur="2s" repeatCount="indefinite"/></circle><path d="M434 86h34l-17-18z" fill="#E5484D"/>'
-  +'<g class="ship"><use href="#ill-ship" x="20" y="128" width="230" height="90"/></g>'
-  +'<path d="M0 232Q90 214 180 232T360 232T560 230V270H0z" fill="var(--sea2)"/></svg>';
+  +'<rect x="436" y="86" width="30" height="16" rx="2" fill="#2a0a45"/><circle class="lhglow" cx="451" cy="94" r="22" fill="url(#lhrg)"/><circle cx="451" cy="94" r="6" fill="#FFE98A"/><path d="M434 86h34l-17-18z" fill="#E5484D"/>'
+  +'<g class="lhsail"><g class="ship"><use href="#ill-ship" x="10" y="128" width="230" height="90"/></g></g>'
+  +'<svg x="0" y="214" width="560" height="56" viewBox="0 0 560 56" preserveAspectRatio="none"><g class="wm2"><path d="'+wvPath(12,7,100,1120)+'" fill="var(--sea2)"/></g></svg></svg>';
  var SC={ship:SHIP,port:PORT,globe:GLOBE,road:ROAD,air:AIR,ware:WARE,hub:HUB,city:CITY,rail:RAIL,sort:SORT,wind:WIND,light:LIGHT};
 
 
@@ -11824,7 +11895,7 @@ window.n4lHeroNet = function(pageId, canvasId){
  (function(){var st=$('tpxStars'),i,r=11;function R(){r=(r*9301+49297)%233280;return r/233280}for(i=0;i<46;i++){var e=document.createElement('i');e.style.left=(R()*100)+'%';e.style.top=(R()*62)+'%';e.style.animationDelay=(R()*3)+'s';st.appendChild(e)}})();
  /* time of day */
  var GR={'t-morning':'Good morning','t-day':'Good afternoon','t-evening':'Good evening','t-night':'Good evening'};
- function setT(t){var ns=hero.classList.contains('noSea');hero.className='tpx-hero '+t+(ns?' noSea':'');$('tpxGreet').textContent=GR[t]+', Captain Aslam';
+ function setT(t){var ns=hero.classList.contains('noSea'),mo=hero.classList.contains('motion-on'),wxc=hero.classList.contains('wx-rain')?' wx-rain':(hero.classList.contains('wx-storm')?' wx-storm':'');hero.className='tpx-hero '+t+(ns?' noSea':'')+(mo?' motion-on':'')+wxc;$('tpxGreet').textContent=GR[t]+', Captain Aslam';
   [].forEach.call(document.querySelectorAll('.tpx-mock button[data-t]'),function(b){b.classList.toggle('on',b.getAttribute('data-t')===t)})}
  [].forEach.call(document.querySelectorAll('.tpx-mock button[data-t]'),function(b){b.onclick=function(){setT(b.getAttribute('data-t'))}});
  /* count-up figure */
@@ -11888,6 +11959,32 @@ window.n4lHeroNet = function(pageId, canvasId){
  var hero=document.getElementById('n4lHero');if(!hero)return;
  wrap(hero);
  new MutationObserver(function(ms){ms.forEach(function(m){[].forEach.call(m.addedNodes,function(x){if(x.nodeType===1)wrap(x);else if(x.nodeType===3&&x.parentNode&&x.parentNode.nodeType===1)wrap(x.parentNode)})})}).observe(hero,{childList:true,subtree:true});
+})();
+</script>
+<script>
+/* Weather layer (mockup): rain / thunderstorm over any scene. In the portal this would be driven by the partner's city weather, not buttons. */
+(function(){
+ var hero=document.getElementById('n4lHero'),wx=document.getElementById('tpxWx');if(!hero||!wx)return;
+ var BOLT='<svg class="bolt" style="left:__L__%" viewBox="0 0 70 160" aria-hidden="true"><polygon points="42,0 14,78 34,78 22,160 58,64 38,64 52,0" fill="#FFF8CC"/></svg>';
+ var CL='<svg class="wxc" viewBox="0 0 1200 140" preserveAspectRatio="none" aria-hidden="true"><g fill="#4b5170"><ellipse cx="120" cy="40" rx="150" ry="44"/><ellipse cx="300" cy="62" rx="170" ry="48"/><ellipse cx="520" cy="36" rx="160" ry="46"/><ellipse cx="760" cy="58" rx="180" ry="50"/><ellipse cx="980" cy="38" rx="150" ry="44"/><ellipse cx="1140" cy="60" rx="140" ry="44"/></g></svg>';
+ function setW(w){hero.classList.remove('wx-rain','wx-storm');wx.innerHTML='';
+  [].forEach.call(document.querySelectorAll('.tpx-mock button[data-w]'),function(b){b.classList.toggle('on',b.getAttribute('data-w')===w)});
+  if(w==='clear')return;
+  var n=w==='storm'?150:90,h='',i,r=7;function R(){r=(r*9301+49297)%233280;return r/233280}
+  for(i=0;i<n;i++){var dur=(w==='storm'?.45:.7)+R()*(w==='storm'?.35:.5);h+='<i style="left:'+(R()*104-2).toFixed(1)+'%;height:'+(14+R()*16).toFixed(0)+'px;animation-duration:'+dur.toFixed(2)+'s;animation-delay:-'+(R()*dur*2).toFixed(2)+'s;opacity:'+(.35+R()*.5).toFixed(2)+'"></i>'}
+  wx.innerHTML=(w==='storm'?CL:'')+h+(w==='storm'?'<div class="flash"></div><div class="flash f2"></div>'+BOLT.replace('__L__','68')+BOLT.replace('__L__','24').replace('class="bolt"','class="bolt b2"'):'');
+  hero.classList.add(w==='storm'?'wx-storm':'wx-rain')}
+ [].forEach.call(document.querySelectorAll('.tpx-mock button[data-w]'),function(b){b.onclick=function(){setW(b.getAttribute('data-w'))}});
+})();
+</script>
+<script>
+/* Motion switch (mockup): defaults to ON so the animation can be reviewed even when the OS asks for reduced motion. In the portal the OS setting is honoured. */
+(function(){
+ var hero=document.getElementById('n4lHero');if(!hero)return;
+ function setM(on){hero.classList.toggle('motion-on',on);[].forEach.call(document.querySelectorAll('.tpx-mock button[data-m]'),function(b){b.classList.toggle('on',(b.getAttribute('data-m')==='on')===on)})}
+ [].forEach.call(document.querySelectorAll('.tpx-mock button[data-m]'),function(b){b.onclick=function(){setM(b.getAttribute('data-m')==='on')}});
+ setM(true);
+ var _c=hero.className;new MutationObserver(function(){if(hero.className.indexOf('motion-on')<0&&hero.__want!==false){}}).observe(hero,{attributes:true,attributeFilter:['class']});
 })();
 </script>
 <script>
