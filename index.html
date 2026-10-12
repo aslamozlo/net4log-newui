@@ -2036,84 +2036,220 @@ html body .modal-header .modal-title{ margin-left: 0 !important; margin-right: 0
 @media (prefers-reduced-motion:reduce){.mp-page .mp-faq .mp-chev svg,.mp-page .mp-faq details{transition:none}}
 </style>
 <style>
-/* ===== Trusted Partner Home (2026-10-12): warm V2 version of CustomerHome's TP dashboard. Plum hero (shared .es-fam hero), cream body, rounded cards,
-   pill range selector, CSS-only charts. ===== */
-#page-tp-home{--tc-bg:#FFF9F3;--tc-card:#fff;--tc-line:#F5EBDF;--tc-ink:#2B2140;--tc-soft:#5B5470;--tc-chip:#FFF4E8;--tc-track:#F3EAE0;}
-#page-tp-home .es-hero{padding-bottom:78px;}
-#page-tp-home .tph-range{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:22px;}
-#page-tp-home .tph-seg{display:inline-flex;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.26);border-radius:30px;padding:3px;overflow-x:auto;max-width:100%;}
-#page-tp-home .tph-seg button{border:0;background:transparent;color:#fff;font:700 13px 'Inter',sans-serif;padding:8px 16px;border-radius:26px;cursor:pointer;white-space:nowrap;}
-#page-tp-home .tph-seg button.on{background:var(--orange);box-shadow:0 8px 18px -8px rgba(254,95,0,.8);}
-#page-tp-home .tph-custom{display:none;align-items:center;gap:8px;color:#fff;font:600 13px 'Inter',sans-serif;flex-wrap:wrap;}
-#page-tp-home .tph-custom.show{display:flex;}
-#page-tp-home .tph-custom input{height:38px;border-radius:12px;border:1.5px solid rgba(255,255,255,.4);background:rgba(255,255,255,.95);padding:0 12px;font:600 13px 'Inter',sans-serif;color:#2B2140;width:150px;}
-#page-tp-home .tph-custom .btn{min-height:38px;padding:0 18px;font-size:13px;}
-#page-tp-home .tph-body{background:var(--tc-bg);padding:0 0 90px;color:var(--tc-ink);}
-#page-tp-home .tph-body .wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
-#page-tp-home .tph-top{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:18px;margin-top:-58px;position:relative;z-index:2;}
-#page-tp-home .tph-card{background:var(--tc-card);border:1px solid var(--tc-line);border-radius:20px;box-shadow:var(--shadow-soft);padding:20px 22px;min-width:0;}
-#page-tp-home .tph-fig .ey{font:700 11.5px 'Inter',sans-serif;letter-spacing:.9px;text-transform:uppercase;color:var(--orange-text);}
-#page-tp-home .tph-fig .big{font:800 44px/1.1 'Poppins',sans-serif;color:var(--purple);margin:8px 0 2px;}
-#page-tp-home .tph-fig .big small{font-size:18px;font-weight:700;color:var(--tc-soft);margin-left:4px;}
-#page-tp-home .tph-fig .sub{font-size:13.5px;color:var(--tc-soft);}
-#page-tp-home .tph-chips{display:flex;flex-direction:column;gap:8px;margin-top:16px;}
-#page-tp-home .tph-chip{display:flex;align-items:center;gap:10px;border-radius:14px;padding:9px 13px;font:600 13px 'Inter',sans-serif;}
-#page-tp-home .tph-chip.od{background:#FFF0D9;color:#B25E00;}
-#page-tp-home .tph-chip.ok{background:#E3F7EC;color:#1E8A52;}
-#page-tp-home .tph-chip.dp{background:#FDE5E3;color:#C0352B;}
-#page-tp-home .tph-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
-#page-tp-home .tph-kpi{background:var(--tc-card);border:1px solid var(--tc-line);border-top:4px solid var(--purple);border-radius:18px;box-shadow:var(--shadow-soft);padding:14px 16px;min-width:0;}
-#page-tp-home .tph-kpi.k2{border-top-color:#3B82D6;} #page-tp-home .tph-kpi.k3{border-top-color:#B26A00;} #page-tp-home .tph-kpi.k4{border-top-color:var(--purple);} #page-tp-home .tph-kpi.k5{border-top-color:#D54848;} #page-tp-home .tph-kpi.k6{border-top-color:var(--orange);}
-#page-tp-home .tph-kpi .l{font:700 11px 'Inter',sans-serif;letter-spacing:.5px;text-transform:uppercase;color:var(--tc-soft);}
-#page-tp-home .tph-kpi .v{font:800 26px/1.1 'Poppins',sans-serif;color:var(--tc-ink);margin:6px 0 2px;overflow-wrap:anywhere;}
-#page-tp-home .tph-kpi .t{font-size:12px;color:var(--tc-soft);}
-#page-tp-home .tph-kpi .t.bad{color:#C0352B;} #page-tp-home .tph-kpi .t.good{color:#1E8A52;}
-#page-tp-home .tph-sec{margin-top:34px;}
-#page-tp-home .tph-sh{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
-#page-tp-home .tph-sh h2{font:800 22px 'Poppins',sans-serif;color:var(--purple);margin:0;text-transform:none;}
-#page-tp-home .tph-sh .rl{font-size:12.5px;color:var(--tc-soft);}
-#page-tp-home .tph-sh a{margin-left:auto;font:700 13px 'Inter',sans-serif;color:var(--orange-text);cursor:pointer;}
-#page-tp-home .tph-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
-#page-tp-home .tph-card h3{font:700 15.5px 'Poppins',sans-serif;color:var(--purple);margin:0 0 14px;text-transform:none;}
-#page-tp-home .tph-bar{display:grid;grid-template-columns:96px minmax(0,1fr) 54px;align-items:center;gap:12px;margin:11px 0;font-size:13px;color:var(--tc-ink);}
-#page-tp-home .tph-bar .nm{display:flex;align-items:center;gap:7px;font-weight:600;white-space:nowrap;}
-#page-tp-home .tph-bar .tr{height:12px;border-radius:8px;background:var(--tc-track);overflow:hidden;}
-#page-tp-home .tph-bar .tr i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,var(--purple),#792c4e);transition:width .4s ease;}
-#page-tp-home .tph-bar .tr i.o{background:linear-gradient(90deg,#FE5F00,#FF9A56);} #page-tp-home .tph-bar .tr i.r{background:linear-gradient(90deg,#C0352B,#E8756C);} #page-tp-home .tph-bar .tr i.g{background:linear-gradient(90deg,#1E8A52,#5CCB92);}
-#page-tp-home .tph-bar .n{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;}
-#page-tp-home .tph-bar.amt{grid-template-columns:96px minmax(0,1fr) 96px;}
-#page-tp-home .tph-donutwrap{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
-#page-tp-home .tph-donut{--p1:25;--p2:50;--p3:75;width:150px;height:150px;border-radius:50%;flex:0 0 auto;position:relative;background:conic-gradient(var(--c1) 0 calc(var(--p1)*1%),var(--c2) 0 calc(var(--p2)*1%),var(--c3) 0 calc(var(--p3)*1%),var(--c4) 0);}
-#page-tp-home .tph-donut::after{content:"";position:absolute;inset:26px;border-radius:50%;background:var(--tc-card);}
-#page-tp-home .tph-donut b{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1;font:800 20px 'Poppins',sans-serif;color:var(--tc-ink);}
-#page-tp-home .tph-donut b small{font:600 11px 'Inter',sans-serif;color:var(--tc-soft);}
-#page-tp-home .tph-legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:9px;}
-#page-tp-home .tph-legend div{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--tc-ink);}
-#page-tp-home .tph-legend i{width:11px;height:11px;border-radius:50%;flex:0 0 auto;}
-#page-tp-home .tph-legend span{margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums;}
-#page-tp-home .tph-rank{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;}
-#page-tp-home .tph-rank li{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--tc-line);font-size:13.5px;}
-#page-tp-home .tph-rank li:last-child{border-bottom:0;}
-#page-tp-home .tph-rank .rk{width:26px;height:26px;border-radius:50%;background:var(--tc-chip);color:var(--orange-text);font:800 12px 'Poppins',sans-serif;display:flex;align-items:center;justify-content:center;}
-#page-tp-home .tph-rank li:nth-child(-n+3) .rk{background:var(--orange);color:#fff;}
-#page-tp-home .tph-rank .pn{min-width:0;} #page-tp-home .tph-rank .pn b{display:block;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;} #page-tp-home .tph-rank .pn small{color:var(--tc-soft);font-size:11.5px;}
-#page-tp-home .tph-rank .am{font-weight:800;font-variant-numeric:tabular-nums;}
-#page-tp-home .tph-more{margin-top:10px;background:transparent;border:1.5px solid var(--tc-line);border-radius:30px;padding:8px 16px;font:700 12.5px 'Inter',sans-serif;color:var(--tc-ink);cursor:pointer;}
-#page-tp-home .tph-tp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
-#page-tp-home .tph-pc{background:var(--tc-card);border:1px solid var(--tc-line);border-radius:18px;box-shadow:var(--shadow-soft);padding:16px 18px;display:flex;flex-direction:column;gap:12px;min-width:0;}
-#page-tp-home .tph-pc .hd{display:flex;align-items:center;gap:12px;}
-#page-tp-home .tph-pc .av{width:42px;height:42px;border-radius:13px;background:var(--tc-chip);color:var(--orange-text);font:800 14px 'Poppins',sans-serif;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
-#page-tp-home .tph-pc .hd b{display:block;font:700 14.5px 'Poppins',sans-serif;color:var(--tc-ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;} #page-tp-home .tph-pc .hd small{color:var(--tc-soft);font-size:11.5px;}
-#page-tp-home .tph-pc .st{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
-#page-tp-home .tph-pc .st div{background:var(--tc-chip);border-radius:12px;padding:8px 10px;} #page-tp-home .tph-pc .st small{display:block;font:700 10px 'Inter',sans-serif;letter-spacing:.4px;text-transform:uppercase;color:var(--tc-soft);} #page-tp-home .tph-pc .st b{font:800 15px 'Poppins',sans-serif;color:var(--tc-ink);}
-#page-tp-home .tph-pc .st b.pos{color:#1E8A52;} #page-tp-home .tph-pc .st b.neg{color:#C0352B;}
-#page-tp-home .tph-pc .btn{min-height:38px;font-size:12.5px;padding:0 14px;align-self:flex-start;}
-@media(max-width:1000px){#page-tp-home .tph-top{grid-template-columns:1fr;} #page-tp-home .tph-tp{grid-template-columns:repeat(2,minmax(0,1fr));}}
-@media(max-width:760px){
-  #page-tp-home .tph-two{grid-template-columns:1fr;} #page-tp-home .tph-kpis{grid-template-columns:repeat(2,minmax(0,1fr));} #page-tp-home .tph-tp{grid-template-columns:1fr;}
-  #page-tp-home .tph-fig .big{font-size:34px;} #page-tp-home .tph-bar{grid-template-columns:84px minmax(0,1fr) 46px;} #page-tp-home .tph-bar.amt{grid-template-columns:84px minmax(0,1fr) 84px;}
-  #page-tp-home .es-hero{padding-bottom:70px;}
+/* ===== Trusted Partner dashboard restyle (2026-10-12) -- warm V2 look on the existing markup/ids (baseline kept: same sections, same data).
+   Keyed on .TPContainer / .n4l-* so it only touches this dashboard; !important only where the markup carries inline styles. ===== */
+.innerBody{background:#FFF8F1;padding-bottom:64px;}
+.TPContainer{max-width:1240px;margin:0 auto;padding-left:24px;padding-right:24px;}
+.TPContainer .n4l-filter-row{gap:10px !important;padding:26px 0 0 !important;}
+.TPContainer .n4l-range-btn{height:40px !important;padding:0 20px !important;border:1.5px solid #F0DFCF !important;border-radius:30px !important;background:#fff !important;color:#5B5470 !important;font:700 13px Inter,sans-serif !important;box-shadow:0 8px 18px -14px rgba(42,0,124,.35);transition:border-color .15s,color .15s,transform .15s;}
+.TPContainer .n4l-range-btn:hover{border-color:#FE5F00 !important;color:#B84400 !important;transform:translateY(-1px);}
+.TPContainer .n4l-range-btn.active{background:#FE5F00 !important;border-color:#FE5F00 !important;color:#fff !important;box-shadow:0 12px 22px -12px rgba(254,95,0,.85);}
+.TPContainer #n4lCustomRange input{height:40px !important;border:1.5px solid #F0DFCF !important;border-radius:14px !important;padding:0 14px !important;font:600 13px Inter,sans-serif !important;color:#2B2140 !important;background:#fff !important;}
+.TPContainer #n4lCustomApply{height:40px !important;padding:0 20px !important;border-radius:30px !important;background:#2A007C !important;border-color:#2A007C !important;font:700 13px Inter,sans-serif !important;}
+/* hero banner */
+/* KPI tiles */
+.TPContainer .n4l-kpi-row{gap:16px !important;margin-top:22px !important;}
+.TPContainer .n4l-kpi-tile{position:relative;padding:18px 18px 16px !important;border:1px solid #F3E6D8 !important;border-radius:22px !important;background:#fff !important;box-shadow:0 14px 30px -22px rgba(42,0,124,.35);transition:transform .18s ease,box-shadow .18s ease;}
+.TPContainer .n4l-kpi-tile:hover{transform:translateY(-3px);box-shadow:0 20px 34px -20px rgba(42,0,124,.36);}
+.TPContainer .n4l-kpi-tile::after{content:"";position:absolute;right:-28px;top:-28px;width:96px;height:96px;border-radius:50%;background:var(--kc,#F1EAFB);opacity:.55;pointer-events:none;}
+.TPContainer .n4l-kpi-tile::before{content:var(--ke,"");order:-1;position:relative;z-index:1;width:40px;height:40px;border-radius:13px;background:var(--kc,#F1EAFB);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px;}
+.TPContainer .n4l-kpi-tile>*{position:relative;z-index:1;}
+.TPContainer .n4l-kpi-tile:nth-child(1){--kc:#FFE8D4;--ke:"\1F6A2";}
+.TPContainer .n4l-kpi-tile:nth-child(2){--kc:#DCEBFB;--ke:"\1F69B";}
+.TPContainer .n4l-kpi-tile:nth-child(3){--kc:#FFF0D1;--ke:"\23F3";}
+.TPContainer .n4l-kpi-tile:nth-child(4){--kc:#E9E0FA;--ke:"\1F9FE";}
+.TPContainer .n4l-kpi-tile:nth-child(5){--kc:#FADFDC;--ke:"\23F1";}
+.TPContainer .n4l-kpi-tile:nth-child(6){--kc:#E3F7EC;--ke:"\2696\FE0F";}
+.TPContainer .n4l-kpi-tile>p:first-of-type{font:700 11px Inter,sans-serif !important;letter-spacing:.5px;text-transform:uppercase;color:#5B5470 !important;}
+.TPContainer .n4l-kpi-tile h4{font:800 28px/1.1 Poppins,sans-serif !important;margin:6px 0 0 !important;}
+.TPContainer .n4l-kpi-tile>p:last-of-type{font-size:12px !important;margin-top:6px !important;}
+/* section headers */
+.TPContainer .TP-BarChart{margin-top:44px !important;}
+.TPContainer .TP-BarChart .innerHeader{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.TPContainer .TP-BarChart .innerHeader>img,.TPContainer .TP-BarChart .innerHeader>span:first-child:not(.n4l-badge){width:44px !important;height:44px !important;box-sizing:border-box;padding:9px;border-radius:14px;background:#FFF0E2;display:flex;align-items:center;justify-content:center;font-size:22px !important;flex-shrink:0;}
+.TPContainer .TP-BarChart .innerHeader>img.n4l-section-icon{background:#2A007C;filter:none !important;}
+.TPContainer .TP-BarChart .innerHeader h2{font:800 26px Poppins,sans-serif !important;color:#2A007C !important;margin:0 !important;}
+.TPContainer .TP-BarChart .innerHeader h2 strong{color:#2A007C !important;font-weight:800;}
+.TPContainer .TP-BarChart .innerHeader span.n4l-badge{margin-left:0 !important;padding:5px 13px !important;border-radius:30px !important;font:700 12px Inter,sans-serif !important;background:#FFF0E2 !important;color:#B84400 !important;}
+/* chart / list cards */
+.TPContainer .TP-BarChartContainer{display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:18px !important;}
+.TPContainer .BarChartBox{width:auto !important;max-width:none !important;height:auto !important;margin:0 !important;padding:22px 26px !important;border:1px solid #F3E6D8 !important;border-radius:24px !important;background:#fff !important;box-shadow:0 14px 30px -22px rgba(42,0,124,.35) !important;}
+.TPContainer #n4lTradingPartnersSection .BarChartBox{grid-column:1/-1;}
+.TPContainer .BarCharHeader{padding-bottom:14px;margin-bottom:6px;border-bottom:1px solid #F6ECE1;display:flex;align-items:center;}
+.TPContainer .chartsubHead{font:700 17px Poppins,sans-serif !important;color:#2A007C !important;}
+.TPContainer #n4lAgingBars>div>div:last-child,.TPContainer #n4lAgingBars [style*="border-radius"]{border-radius:10px;}
+.TPContainer #n4lAgingBars [style*="height:10px"],.TPContainer #n4lAgingBars [style*="height: 10px"]{height:14px !important;}
+/* partner lists */
+.TPContainer .BarChartBox.TopSellersBuyers{height:auto !important;}
+.TPContainer .TheaderSellerBuyer{background:#FFF3E6 !important;border-radius:14px;padding:10px 16px !important;margin-top:8px;}
+.TPContainer .TheaderSellerBuyer p{font:700 11.5px Inter,sans-serif !important;letter-spacing:.6px;text-transform:uppercase;color:#7A3200 !important;margin:0;}
+.TPContainer .PartnersDatails{counter-reset:rk;padding:4px 0;}
+.TPContainer .TopSellersBuyers .PartnersList{display:grid !important;grid-template-columns:30px minmax(0,1fr) auto;align-items:center;gap:12px;padding:11px 8px !important;border-radius:14px;transition:background .15s;}
+.TPContainer .TopSellersBuyers .PartnersList:hover{background:#FFFBF6;}
+.TPContainer .TopSellersBuyers .PartnersList::before{counter-increment:rk;content:counter(rk);width:28px;height:28px;border-radius:50%;background:#FFF3E6;color:#B84400;font:800 12px Poppins,sans-serif;display:flex;align-items:center;justify-content:center;}
+.TPContainer .TopSellersBuyers .PartnersList:nth-child(1)::before{background:linear-gradient(135deg,#FFE29A,#F2B01E);color:#6B4500;}
+.TPContainer .TopSellersBuyers .PartnersList:nth-child(2)::before{background:linear-gradient(135deg,#F1F1F4,#BFC3CE);color:#444A59;}
+.TPContainer .TopSellersBuyers .PartnersList:nth-child(3)::before{background:linear-gradient(135deg,#FFD2B0,#D98A4E);color:#6B3510;}
+.TPContainer .TopSellersBuyers .LogoName>div:first-child{background:linear-gradient(135deg,#FFE6CF,#FFC9A0) !important;color:#8A3A00 !important;border-radius:12px !important;width:38px !important;height:38px !important;}
+.TPContainer .PartnersList .Name{font-weight:600;color:#2B2140;}
+.TPContainer .P-values{font:800 14.5px Poppins,sans-serif;font-variant-numeric:tabular-nums;color:#2A007C;}
+.TPContainer #n4lTradingPartners .PartnersList{border-radius:14px;transition:background .15s;}
+.TPContainer #n4lTradingPartners .PartnersList:hover{background:#FFFBF6;}
+@media (max-width:900px){.TPContainer .TP-BarChartContainer{grid-template-columns:1fr;}.TPContainer .n4l-hero-card{padding:26px 22px !important;}.TPContainer #n4lHeroFigure{font-size:38px !important;}.TPContainer .n4l-hero-card::after{font-size:96px;right:16px;}.TPContainer{padding-left:16px;padding-right:16px;}}
+@media (prefers-reduced-motion:reduce){.TPContainer .n4l-kpi-tile,.TPContainer .n4l-range-btn{transition:none;}}
+@media (max-width:1100px){.TPContainer .n4l-kpi-row{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}}
+@media (max-width:640px){.TPContainer .n4l-kpi-row{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}.TPContainer #n4lHeroFigure{font-size:34px !important;}}
+
+
+/* mockup-only base: the portal's main.css / CustomerHome.css supply these there; Chart.js canvases are drawn here as CSS */
+#page-tp-home{background:#FFF8F1;color:#2B2140;font-family:Inter,sans-serif;}
+#page-tp-home .innerBody{padding-top:0;position:relative;}
+#page-tp-home .hm-sw{position:absolute;right:24px;top:10px;z-index:5;}
+#page-tp-home h2,#page-tp-home h4,#page-tp-home p{margin:0;}
+#page-tp-home .n4l-kpi-row{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));}
+#page-tp-home .n4l-kpi-tile{display:flex;flex-direction:column;align-items:flex-start;overflow:hidden;}
+#page-tp-home .n4l-filter-row{display:flex;align-items:center;flex-wrap:wrap;}
+#page-tp-home .n4l-range-btn{cursor:pointer;}
+#page-tp-home .BarCharHeader{justify-content:space-between;}
+#page-tp-home .tpm-cols{display:flex;align-items:flex-end;gap:7px;height:190px;padding:8px 2px 0;border-bottom:1.5px solid #F3E6D8;}
+#page-tp-home .tpm-cols i{flex:1;min-width:0;border-radius:7px 7px 2px 2px;background:linear-gradient(180deg,#4b8fe6,#2a6fd0);}
+#page-tp-home .tpm-cols i.s{background:linear-gradient(180deg,#5aa0f0,#2a7bd9);}
+#page-tp-home .tpm-lbl{display:flex;gap:7px;padding-top:6px;font-size:11px;color:#898781;}#page-tp-home .tpm-lbl span{flex:1;text-align:center;}
+#page-tp-home .tpm-donutrow{display:flex;align-items:center;gap:22px;padding:10px 4px;flex-wrap:wrap;}
+#page-tp-home .tpm-donut{position:relative;width:150px;height:150px;border-radius:50%;flex:0 0 auto;}
+#page-tp-home .tpm-donut::after{content:"";position:absolute;inset:26px;border-radius:50%;background:#fff;}
+#page-tp-home .tpm-donut b{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;font:800 20px Poppins,sans-serif;}#page-tp-home .tpm-donut b small{font:700 9px Inter,sans-serif;color:#898781;letter-spacing:.3px;}
+#page-tp-home .tpm-leg{flex:1;min-width:180px;display:flex;flex-direction:column;gap:10px;}#page-tp-home .tpm-leg div{display:flex;align-items:center;gap:9px;font-size:13.5px;}#page-tp-home .tpm-leg i{width:11px;height:11px;border-radius:3px;flex:0 0 auto;}#page-tp-home .tpm-leg span{margin-left:auto;font-weight:700;}#page-tp-home .tpm-leg em{font-style:normal;color:#898781;font-weight:600;margin-left:6px;}
+#page-tp-home .tpm-ag{margin-bottom:14px;}#page-tp-home .tpm-ag .t{display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:6px;}#page-tp-home .tpm-ag .tr{height:14px;border-radius:10px;background:#EEEAE6;overflow:hidden;}#page-tp-home .tpm-ag .tr i{display:block;height:100%;border-radius:10px;}
+#page-tp-home .TheaderSellerBuyer{display:flex;justify-content:space-between;}
+#page-tp-home .PartnersList{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #F6ECE1;}
+#page-tp-home .PartnersList:last-child{border-bottom:0;}
+#page-tp-home .LogoName{display:flex;align-items:center;gap:11px;min-width:0;}
+#page-tp-home .LogoName>div:first-child{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0;}
+#page-tp-home .tpm-tp{display:flex;align-items:center;gap:14px;padding:14px 8px;border-bottom:1px solid #F6ECE1;}
+#page-tp-home .tpm-tp .av{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;flex-shrink:0;}
+#page-tp-home .tpm-tp .tg{font:800 10px Inter,sans-serif;border-radius:8px;padding:3px 9px;letter-spacing:.4px;}
+#page-tp-home .tpm-tp .r{margin-left:auto;text-align:right;font-weight:700;}
+@media(max-width:900px){#page-tp-home .n4l-kpi-row{grid-template-columns:repeat(2,minmax(0,1fr));}#page-tp-home .hm-sw{position:static;margin:10px 16px 0;display:inline-flex;}}
+
+/* ===== Live Trusted Partner hero (2026-10-12): illustrated warm hero, time-of-day sky, animated scenes, live ticker, multi-shipment lanes ===== */
+.TPContainer .tpx-hero{--sky1:#FFF1E2;--sky2:#FFDDBF;--tx:#2a0a45;--tx2:#5B5470;--kick:#B34700;--big:#2A007C;--chip:#fff;--chipb:#F3E0CC;--chipt:#2B2140;--sea1:#6EC0E8;--sea2:#3E9ACB;--stars:0;--gr1:#C98A66;--gr2:#A8704F;--hill:#F3C9A5;--hill2:#E9B58C;--ln:rgba(120,100,140,.25);
+ position:relative;overflow:hidden;margin:0 calc(50% - 50vw);width:100vw;max-width:100vw;border-radius:0 0 44px 44px;padding:24px max(24px,calc((100vw - 1240px)/2 + 24px)) 22px;background:linear-gradient(180deg,var(--sky1),var(--sky2));color:var(--tx);box-shadow:0 30px 54px -30px rgba(42,0,124,.5);transition:background 1s;}
+.TPContainer .tpx-hero.t-day{--sky1:#DDEFFF;--sky2:#FFE9D2;--kick:#1F5FA8;--gr1:#B9906E;--gr2:#9A7656;--hill:#CFE3F5;--hill2:#B7D3EE;}
+.TPContainer .tpx-hero.t-evening{--sky1:#7a2c4e;--sky2:#FFB27A;--tx:#fff;--tx2:rgba(255,255,255,.9);--kick:#FFD9A8;--big:#fff;--chip:rgba(255,255,255,.18);--chipb:rgba(255,255,255,.38);--chipt:#fff;--sea1:#B65A7A;--sea2:#5a1d57;--gr1:#4a1745;--gr2:#33103a;--hill:#9c466a;--hill2:#7a2c4e;--ln:rgba(255,255,255,.3);}
+.TPContainer .tpx-hero.t-night{--sky1:#12052a;--sky2:#3a1050;--tx:#fff;--tx2:rgba(255,255,255,.86);--kick:#FFC58E;--big:#fff;--chip:rgba(255,255,255,.12);--chipb:rgba(255,255,255,.3);--chipt:#fff;--sea1:#3a1d66;--sea2:#1a0a38;--stars:1;--gr1:#1a0a38;--gr2:#10062a;--hill:#2a1250;--hill2:#1d0c3d;--ln:rgba(255,255,255,.3);}
+.TPContainer .tpx-stars{position:absolute;inset:0;opacity:var(--stars);transition:opacity 1s;pointer-events:none;}
+.TPContainer .tpx-stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;animation:tpxtw 3s ease-in-out infinite;}
+.TPContainer .tpx-top{position:relative;z-index:3;display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:end;}
+.TPContainer .tpx-col{padding-bottom:8px;max-width:620px;}
+.TPContainer .tpx-kick{font:700 12px Inter,sans-serif;letter-spacing:1px;text-transform:uppercase;color:var(--kick);}
+.TPContainer .tpx-live{display:inline-flex;gap:7px;align-items:center;background:var(--chip);border:1px solid var(--chipb);color:var(--chipt);border-radius:30px;padding:5px 12px;font:800 11px Inter,sans-serif;letter-spacing:.6px;text-transform:uppercase;margin-left:10px;vertical-align:middle;}
+.TPContainer .tpx-live i{width:8px;height:8px;border-radius:50%;background:#E5484D;animation:tpxpl 1.6s infinite;}
+.TPContainer .tpx-greet{font:700 26px Poppins,sans-serif;margin:10px 0 0;color:var(--tx);}
+.TPContainer #n4lHeroFigure{font:800 70px/1 Poppins,sans-serif;color:var(--big);margin:14px 0 8px;display:block;}
+.TPContainer #n4lHeroFigure small{font-size:22px;font-weight:600;opacity:.75;margin-left:10px;}
+.TPContainer .tpx-tick{margin-top:16px;display:flex;align-items:center;gap:12px;background:var(--chip);border:1px solid var(--chipb);border-radius:16px;padding:10px 16px;max-width:560px;color:var(--chipt);font-size:13.5px;min-height:46px;backdrop-filter:blur(4px);}
+.TPContainer .tpx-tick .m{font-size:20px;}.TPContainer .tpx-tick .tx{flex:1;min-width:0;transition:opacity .35s,transform .35s;}.TPContainer .tpx-tick .tx.out{opacity:0;transform:translateY(-6px);}
+.TPContainer .tpx-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.TPContainer .tpx-chips>div{background:var(--chip);border:1px solid var(--chipb);color:var(--chipt);border-radius:30px;padding:9px 16px;font:700 13px Inter,sans-serif;box-shadow:0 10px 20px -14px rgba(42,0,124,.5);}
+.TPContainer .tpx-chips>div.od.nudge{animation:tpxnudge 3.4s ease-in-out infinite;}
+.TPContainer .tpx-scene{position:relative;align-self:end;}
+.TPContainer .tpx-scene svg{width:100%;height:auto;display:block;overflow:visible;}
+.TPContainer .tpx-sea{position:absolute;left:0;right:0;bottom:0;height:150px;z-index:2;overflow:hidden;pointer-events:none;}
+.TPContainer .tpx-sea .wv{position:absolute;left:0;bottom:0;width:200%;height:96px;}.TPContainer .tpx-sea .wv.a{animation:tpxwv 14s linear infinite;}.TPContainer .tpx-sea .wv.b{animation:tpxwv 22s linear infinite reverse;opacity:.7;bottom:-14px;}
+.TPContainer .tpx-hero.noSea .tpx-sea{display:none;}
+.TPContainer .ship{animation:tpxbob 4.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center;}
+.TPContainer .cl1{animation:tpxdr 38s linear infinite alternate;}.TPContainer .cl2{animation:tpxdr 52s linear infinite alternate-reverse;}
+.TPContainer .fl{animation:tpxfl 16s ease-in-out infinite;transform-box:fill-box;}
+.TPContainer .dash{stroke-dasharray:4 7;animation:tpxda 2.4s linear infinite;}
+.TPContainer .trolley{animation:tpxtrolley 9s ease-in-out infinite;}.TPContainer .hangc{animation:tpxhang 9s ease-in-out infinite;}
+.TPContainer .train{animation:tpxtrain 15s linear infinite;}.TPContainer .truck{animation:tpxtruck 11s linear infinite;}.TPContainer .roadline{animation:tpxroad 1s linear infinite;}
+.TPContainer .wheel{animation:tpxspin .8s linear infinite;transform-box:fill-box;transform-origin:center;}
+.TPContainer .tpx-lanes{position:relative;z-index:4;margin-top:22px;background:var(--chip);border:1px solid var(--chipb);color:var(--chipt);border-radius:20px;padding:10px 18px 12px;backdrop-filter:blur(6px);}
+.TPContainer .tpx-lanes .hd{display:flex;justify-content:space-between;align-items:center;font:800 11px Inter,sans-serif;letter-spacing:.6px;text-transform:uppercase;padding:4px 0 6px;}
+.TPContainer .tpx-lanes .hd a{color:inherit;text-decoration:underline;cursor:pointer;font-weight:700;letter-spacing:0;text-transform:none;font-size:12.5px;}
+.TPContainer .tpx-lane{display:grid;grid-template-columns:150px 190px minmax(0,1fr) 84px;gap:14px;align-items:center;padding:8px 0;border-top:1px solid var(--ln);font-size:12.5px;}
+.TPContainer .tpx-lane b{font-weight:700;white-space:nowrap;}.TPContainer .tpx-lane .rt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.85;}
+.TPContainer .tpx-lane .ln{position:relative;height:6px;border-radius:4px;background:var(--ln);}
+.TPContainer .tpx-lane .ln i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:4px;background:linear-gradient(90deg,#FE5F00,#FF9A56);transition:width 2.2s cubic-bezier(.2,.8,.2,1);}
+.TPContainer .tpx-lane .ln em{position:absolute;left:0;top:-12px;font-style:normal;font-size:18px;transform:translateX(-50%);transition:left 2.2s cubic-bezier(.2,.8,.2,1);}
+.TPContainer .tpx-lane .eta{text-align:right;font-weight:700;white-space:nowrap;}
+.TPContainer .tpx-mock{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:14px;font:600 12px Inter,sans-serif;color:#5B5470;}
+.TPContainer .tpx-mock button{border:1.5px solid #F0DFCF;background:#fff;border-radius:30px;padding:6px 13px;font:700 12px Inter,sans-serif;color:#5B5470;cursor:pointer;}
+.TPContainer .tpx-mock button.on{background:#FE5F00;border-color:#FE5F00;color:#fff;}
+@keyframes tpxtw{50%{opacity:.25}}@keyframes tpxpl{0%{box-shadow:0 0 0 0 rgba(229,72,77,.6)}70%{box-shadow:0 0 0 9px rgba(229,72,77,0)}100%{box-shadow:0 0 0 0 rgba(229,72,77,0)}}
+@keyframes tpxnudge{0%,88%,100%{transform:none}92%{transform:translateX(-3px)}96%{transform:translateX(3px)}}
+@keyframes tpxbob{0%,100%{transform:translateY(0) rotate(-.4deg)}50%{transform:translateY(5px) rotate(.5deg)}}
+@keyframes tpxdr{to{transform:translateX(90px)}}@keyframes tpxfl{0%{transform:translate(-40px,60px);opacity:0}8%{opacity:1}55%{transform:translate(170px,0)}100%{transform:translate(230px,-6px);opacity:0}}
+@keyframes tpxda{to{stroke-dashoffset:-22}}@keyframes tpxwv{to{transform:translateX(-50%)}}
+@keyframes tpxtrolley{0%,100%{transform:translateX(0)}50%{transform:translateX(120px)}}@keyframes tpxhang{0%,100%{transform:translateY(0)}35%,65%{transform:translateY(34px)}}
+@keyframes tpxtrain{from{transform:translateX(-420px)}to{transform:translateX(640px)}}@keyframes tpxtruck{from{transform:translateX(640px)}to{transform:translateX(-260px)}}
+@keyframes tpxroad{to{stroke-dashoffset:-48}}@keyframes tpxspin{to{transform:rotate(360deg)}}
+@media(max-width:900px){.TPContainer .tpx-hero{padding:20px 16px 16px;}.TPContainer .tpx-top{grid-template-columns:1fr;}.TPContainer #n4lHeroFigure{font-size:48px;}.TPContainer .tpx-lane{grid-template-columns:1fr 84px;row-gap:6px;}.TPContainer .tpx-lane .ln{grid-column:1/-1;order:3;margin-top:10px;}.TPContainer .tpx-lane .rt{grid-column:1/-1;order:2;}}
+@media(prefers-reduced-motion:reduce){.TPContainer .tpx-hero *{animation:none !important;transition:none !important;}}
+
+/* ===== Live touches for the rest of the Trusted Partner dashboard (2026-10-12): KPI count-up + all-clear, chart grow-in, aging slide-in, value bars, trading-partner cards ===== */
+@property --tpxa{syntax:'<angle>';initial-value:0deg;inherits:false;}
+#page-tp-home .n4l-kpi-tile.clear{background:linear-gradient(180deg,#F5FCF8,#fff) !important;}
+#page-tp-home .n4l-kpi-tile.clear h4{color:#1E8A52 !important;font-size:22px !important;}
+#page-tp-home .tpm-cols i{transform-origin:bottom;transform:scaleY(0);transition:transform .9s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0)*60ms);}
+#page-tp-home .tpx-in .tpm-cols i{transform:scaleY(1);}
+#page-tp-home .tpm-donut::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent var(--tpxa),#fff 0);transition:--tpxa 1.3s ease;pointer-events:none;}
+#page-tp-home .tpx-in .tpm-donut::before{--tpxa:360deg;}
+#page-tp-home .tpm-ag .tr i{transform-origin:left;transform:scaleX(0);transition:transform 1s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0)*120ms);}
+#page-tp-home .tpx-in .tpm-ag .tr i{transform:scaleX(1);}
+#page-tp-home .tpm-ag .tr i.pulse{animation:tpxbar 2.4s ease-in-out 1.4s infinite;}
+@keyframes tpxbar{0%,100%{opacity:1}50%{opacity:.6}}
+#page-tp-home .nmw{flex:1;min-width:0;}
+#page-tp-home .nmw .Name{display:flex;align-items:center;flex-wrap:wrap;}
+#page-tp-home .you{font:800 10px Inter,sans-serif;letter-spacing:.5px;background:#2A007C;color:#fff;border-radius:20px;padding:2px 8px;margin-left:8px;}
+#page-tp-home .vb{height:5px;border-radius:4px;background:#F4EBE1;margin-top:6px;overflow:hidden;}
+#page-tp-home .vb i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,#FE5F00,#FF9A56);transition:width 1s cubic-bezier(.2,.8,.2,1) .2s;}
+#page-tp-home .tpx-in .vb i{width:var(--w);}
+#page-tp-home #n4lTradingPartners .tpm-tp{border-radius:16px;transition:transform .15s,background .15s,box-shadow .15s;}
+#page-tp-home #n4lTradingPartners .tpm-tp:hover{background:#FFFBF6;transform:translateY(-2px);box-shadow:0 12px 24px -18px rgba(42,0,124,.4);}
+#page-tp-home .tpm-tp .soa{display:inline-block;margin-top:6px;font:800 12.5px Inter,sans-serif;color:#B84400;cursor:pointer;}
+@media(max-width:640px){
+ #page-tp-home #n4lTradingPartners .tpm-tp{flex-wrap:wrap;border:1px solid #F3E6D8;border-radius:20px;padding:14px;margin:0 0 12px;box-shadow:0 10px 22px -18px rgba(42,0,124,.4);}
+ #page-tp-home #n4lTradingPartners .tpm-tp .r{width:100%;margin-left:0;text-align:left;background:#FFF3E6;border-radius:12px;padding:10px 12px;}
+ #page-tp-home #n4lTradingPartners .tpm-tp small{width:100%;order:5;}
 }
+@media(prefers-reduced-motion:reduce){#page-tp-home .tpm-cols i,#page-tp-home .tpm-ag .tr i{transform:none !important;transition:none !important;}#page-tp-home .vb i{width:var(--w);transition:none;}#page-tp-home .tpm-donut::before{display:none;}#page-tp-home .tpm-ag .tr i.pulse{animation:none;}}
+
+/* ===== More hero scenes (2026-10-12): Airport, Warehouse, Network hub, City last-mile ===== */
+.TPContainer .takeoff{animation:tpxtakeoff 9s ease-in infinite;}
+.TPContainer .door{transform-box:fill-box;transform-origin:top;animation:tpxdoor 7s ease-in-out infinite;}
+.TPContainer .fork{animation:tpxfork 8s ease-in-out infinite;}
+.TPContainer .drone{animation:tpxdrone 7s ease-in-out infinite;}
+.TPContainer .rotor{transform-box:fill-box;transform-origin:center;animation:tpxrotor .25s linear infinite;}
+.TPContainer .pulse-ring{transform-box:fill-box;transform-origin:center;animation:tpxring 2.6s ease-out infinite;}
+@keyframes tpxtakeoff{0%{transform:translate(-80px,0) rotate(0)}55%{transform:translate(260px,0) rotate(0)}100%{transform:translate(660px,-150px) rotate(-13deg)}}
+@keyframes tpxdoor{0%,100%{transform:scaleY(1)}40%,70%{transform:scaleY(.25)}}
+@keyframes tpxfork{0%,100%{transform:translateX(0)}50%{transform:translateX(150px)}}
+@keyframes tpxdrone{0%,100%{transform:translate(-50px,6px)}50%{transform:translate(60px,-10px)}}
+@keyframes tpxrotor{50%{transform:scaleX(.35)}}
+@keyframes tpxring{0%{transform:scale(.6);opacity:.8}100%{transform:scale(2.2);opacity:0}}
+
+/* full-bleed hero: range filter + mockup controls live inside it */
+#page-tp-home{overflow-x:clip;}
+.TPContainer .tpx-ctrl{position:relative;z-index:4;margin-bottom:10px;}
+.TPContainer .tpx-hero .n4l-filter-row{padding:0 0 4px !important;}
+.TPContainer .tpx-hero .tpx-mock{color:var(--tx2);margin-top:12px;}
+
+/* ===== Scenes set 3 (2026-10-12): Rail yard, Sorting hub, Wind power, Lighthouse ===== */
+.TPContainer .belt{animation:tpxbelt 7s linear infinite;}
+.TPContainer .blades{animation:tpxspin 7s linear infinite;}
+.TPContainer .beam{transform-origin:450px 84px;animation:tpxbeam 7s ease-in-out infinite;}
+.TPContainer .sig{animation:tpxsig 3s steps(1) infinite;}
+@keyframes tpxbelt{from{transform:translateX(-80px)}to{transform:translateX(470px)}}
+@keyframes tpxbeam{0%,100%{transform:scaleX(1);opacity:.55}50%{transform:scaleX(-1);opacity:.55}25%,75%{opacity:.15}}
+@keyframes tpxsig{0%{fill:#E5484D}50%{fill:#2FA36B}}
+
+/* ===== Repo emoji baseline (2026-10-12): every emoji in the live hero / KPI / section blocks uses the same Noto art as the rest of the V2 pages ===== */
+.TPContainer .n4l-kpi-tile::before,.TPContainer .tpx-lane .ln em,.TPContainer .tpx-tick .m,.TPContainer .TP-BarChart .innerHeader>span:first-child{font-family:'App Emoji','Noto Color Emoji',sans-serif;}
+.TPContainer .sx-em{font-family:'App Emoji','Noto Color Emoji',sans-serif;font-style:normal;}
+.TPContainer .n4l-kpi-tile::before{font-style:normal;line-height:1;}
+@media(max-width:700px){.TPContainer .tpx-mock{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch}.TPContainer .tpx-mock>*{flex:0 0 auto}}
 </style>
 <style>
 /* Mockup helper: "viewing as" switch on both logged-in homes (Registered Partner home <-> Trusted Partner home), same pattern as Marketplace / My Profile */
@@ -6393,91 +6529,77 @@ window.n4lHeroNet = function(pageId, canvasId){
 
 <div class="static-page es-fam" id="page-tp-home" style="display:none;">
 <main>
-<section class="es-hero">
-    <canvas class="es-net" id="tphNet" aria-hidden="true"></canvas><div class="es-floor" aria-hidden="true"></div>
-    <div class="hm-sw"><span>Mockup &middot; viewing as</span><span class="seg"><button type="button" onclick="homeView('reg')">Registered Partner</button><button type="button" class="on" onclick="homeView('tp')">Trusted Partner</button></span></div>
-    <div class="wrap">
-        <div class="es-id">
-            <div class="es-badge"><span class="sx-em">&#129309;</span></div>
-            <div class="es-who">
-                <div class="es-kick">Trusted Partner</div>
-                <h1>Hello, Captain Aslam</h1>
-                <div class="es-meta"><span><span class="sx-em">&#128100;</span> Partner ID <b>NET000066</b></span><span><span class="sx-em">&#127970;</span> Aslam And Company &middot; Trusted Partner</span></div>
-            </div>
-        </div>
-        <div class="tph-range">
-            <div class="tph-seg" id="tphSeg" role="group" aria-label="Date range">
-                <button type="button" data-r="7d" onclick="tphRange('7d')">Last 7 days</button>
-                <button type="button" data-r="30d" onclick="tphRange('30d')">Last 30 days</button>
-                <button type="button" data-r="ytd" class="on" onclick="tphRange('ytd')">Year to date</button>
-                <button type="button" data-r="custom" onclick="tphRange('custom')">Custom&hellip;</button>
-            </div>
-            <div class="tph-custom" id="tphCustom"><span>From</span><input type="date" id="tphFrom" value="2026-09-01"><span>to</span><input type="date" id="tphTo" value="2026-10-12"><button type="button" class="btn btn-primary" onclick="tphRange('custom',true)">Apply</button></div>
-        </div>
+<section class="innerBody">
+<div class="hm-sw light"><span>Mockup &middot; viewing as</span><span class="seg"><button type="button" onclick="homeView('reg')">Registered Partner</button><button type="button" class="on" onclick="homeView('tp')">Trusted Partner</button></span></div>
+<div class="TPContainer container">
+    <div class="n4l-theme-toggle" id="n4lThemeToggle" style="display:none"></div>
+    <div class="tpx-hero t-day" id="n4lHero">
+        <div class="tpx-stars" id="tpxStars"></div>
+        <div class="tpx-ctrl"><div class="n4l-filter-row" style="display:flex;align-items:center;gap:8px;padding:14px 0 0;flex-wrap:wrap;">
+        <button type="button" class="n4l-range-btn" data-range="7d" style="height:34px;border:1px solid #BFBFBF;background:#fff;color:#52514e;font-weight:700;font-size:12px;padding:0 13px;border-radius:8px;">Last 7 days</button>
+        <button type="button" class="n4l-range-btn" data-range="30d" style="height:34px;border:1px solid #BFBFBF;background:#fff;color:#52514e;font-weight:700;font-size:12px;padding:0 13px;border-radius:8px;">Last 30 days</button>
+        <button type="button" class="n4l-range-btn active" data-range="ytd" style="height:34px;border:1px solid #2A007C;background:#2A007C;color:#fff;font-weight:700;font-size:12px;padding:0 13px;border-radius:8px;">Year to date</button>
+        <button type="button" class="n4l-range-btn" data-range="custom" style="height:34px;border:1px solid #BFBFBF;background:#fff;color:#52514e;font-weight:700;font-size:12px;padding:0 13px;border-radius:8px;">Custom&hellip;</button>
+        <div id="n4lCustomRange" style="display:none;align-items:center;gap:6px;font-size:11.5px;"><input type="date" id="n4lCustomFrom" value="2026-01-01" style="height:34px;border:1px solid #BFBFBF;border-radius:7px;padding:0 8px;"><span>to</span><input type="date" id="n4lCustomTo" value="2026-10-12" style="height:34px;border:1px solid #BFBFBF;border-radius:7px;padding:0 8px;"><button type="button" id="n4lCustomApply" style="height:34px;border:1px solid #2A007C;background:#2A007C;color:#fff;font-weight:700;font-size:11.5px;padding:0 11px;border-radius:7px;">Apply</button></div>
     </div>
-</section>
-
-<section class="tph-body">
-<div class="wrap">
-    <div class="tph-top">
-        <div class="tph-card tph-fig">
-            <div class="ey" id="tphEy">Year to date &middot; active records only</div>
-            <div class="big"><span id="tphBig">47,530.00</span><small>USD</small></div>
-            <div class="sub" id="tphSub">Invoiced in range &mdash; sales 29,730.00 &middot; purchases 17,800.00</div>
-            <div class="tph-chips">
-                <div class="tph-chip od"><span class="sx-em">&#9201;</span><span id="tphChipOd">1 invoice overdue &middot; 1,200.00</span></div>
-                <div class="tph-chip ok"><span class="sx-em">&#9989;</span><span id="tphChipOk">22,400.00 settled</span></div>
-                <div class="tph-chip dp"><span class="sx-em">&#9878;&#65039;</span><span id="tphChipDp">1 active dispute &middot; 1,200.00</span></div>
-            </div>
-        </div>
-        <div class="tph-kpis">
-            <div class="tph-kpi k1"><div class="l">Shipments (in range)</div><div class="v" id="tphK1">142</div><div class="t" id="tphK1t">across 4 modes</div></div>
-            <div class="tph-kpi k2"><div class="l">In transit (in range)</div><div class="v" id="tphK2">18</div><div class="t" id="tphK2t">interim status</div></div>
-            <div class="tph-kpi k3"><div class="l">Booked / pending</div><div class="v" id="tphK3">6</div><div class="t" id="tphK3t">need a master status</div></div>
-            <div class="tph-kpi k4"><div class="l">Outstanding</div><div class="v">2,940.00</div><div class="t">all-time, USD</div></div>
-            <div class="tph-kpi k5"><div class="l">Overdue</div><div class="v">1,200.00</div><div class="t bad">1 invoice past due</div></div>
-            <div class="tph-kpi k6"><div class="l">Disputes</div><div class="v">1</div><div class="t good">1,200.00 under review</div></div>
-        </div>
+    <div class="tpx-mock"><span>Mockup &middot; scene:</span><button type="button" data-s="ship">Ship</button><button type="button" data-s="port" class="on">Port crane</button><button type="button" data-s="globe">Globe</button><button type="button" data-s="road">Road and rail</button><button type="button" data-s="air">Airport</button><button type="button" data-s="ware">Warehouse</button><button type="button" data-s="hub">Network hub</button><button type="button" data-s="city">City delivery</button><button type="button" data-s="rail">Rail yard</button><button type="button" data-s="sort">Sorting hub</button><button type="button" data-s="wind">Wind power</button><button type="button" data-s="light">Lighthouse</button><span style="margin-left:10px">sky:</span><button type="button" data-t="t-morning">Morning</button><button type="button" data-t="t-day">Day</button><button type="button" data-t="t-evening">Evening</button><button type="button" data-t="t-night">Night</button></div>
     </div>
-
-    <div class="tph-sec">
-        <div class="tph-sh"><h2>E-Shipments</h2><span class="rl" id="tphRl1">Year to date</span><a onclick="showStaticPage('eshipments',event)">Open E-Shipments &rarr;</a></div>
-        <div class="tph-two">
-            <div class="tph-card"><h3>Shipment volume by mode</h3><div id="tphModes"></div></div>
-            <div class="tph-card"><h3>Status mix</h3>
-                <div class="tph-donutwrap">
-                    <div class="tph-donut" id="tphDonut1"><b><span id="tphDonut1T">142</span><small>shipments</small></b></div>
-                    <div class="tph-legend" id="tphLegend1"></div>
+        <div class="tpx-top">
+            <div class="tpx-col">
+                <div class="tpx-kick"><span id="n4lHeroEyebrow">Year to date &middot; active records only</span><span class="tpx-live"><i></i>Live</span></div>
+                <h2 class="tpx-greet" id="tpxGreet">Hello, Captain Aslam</h2>
+                <div id="n4lHeroFigure">&nbsp;</div>
+                <div id="n4lHeroSub">&nbsp;</div>
+                <div class="tpx-tick"><span class="m" id="tpxTm">&#128674;</span><div class="tx" id="tpxTx">&nbsp;</div></div>
+                <div class="tpx-chips">
+                    <div class="od" id="n4lHeroOverdueChip">&nbsp;</div>
+                    <div id="n4lHeroSettledChip">&nbsp;</div>
+                    <div id="n4lHeroDisputeChip">&nbsp;</div>
                 </div>
             </div>
+            <div class="tpx-scene" id="tpxScene"></div>
         </div>
+        <div class="tpx-lanes" id="tpxLanes"></div>
+        <div class="tpx-sea" id="tpxSea"><svg class="wv a" viewBox="0 0 2400 96" preserveAspectRatio="none"><path fill="var(--sea1)" d="M0 30Q150 0 300 30T600 30T900 30T1200 30T1500 30T1800 30T2100 30T2400 30V96H0z"/></svg><svg class="wv b" viewBox="0 0 2400 96" preserveAspectRatio="none"><path fill="var(--sea2)" d="M0 44Q150 70 300 44T600 44T900 44T1200 44T1500 44T1800 44T2100 44T2400 44V96H0z"/></svg></div>
+    </div>
+    <div class="n4l-kpi-row" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:16px;">
+<div class="n4l-kpi-tile" style="min-width:0;box-sizing:border-box;border:1px solid #e7e7ee;border-radius:12px;background:#fff;display:flex;flex-direction:column;align-items:flex-start;padding:13px 14px;overflow:hidden;"><p style="margin:0;font-size:10.5px;color:#52514e;font-weight:700;">Shipments (in range)</p><h4 style="margin:2px 0 0;font-size:20px;color:#0b0b0b;"><span>25</span></h4><p style="margin:5px 0 0;font-size:10.5px;color:#898781;">17 Sea &middot; 4 Air &middot; 4 Land</p></div><div class="n4l-kpi-tile" style="min-width:0;box-sizing:border-box;border:1px solid #e7e7ee;border-radius:12px;background:#fff;display:flex;flex-direction:column;align-items:flex-start;padding:13px 14px;overflow:hidden;"><p style="margin:0;font-size:10.5px;color:#52514e;font-weight:700;">In transit (in range)</p><h4 style="margin:2px 0 0;font-size:20px;color:#0b0b0b;"><span>1</span></h4><p style="margin:5px 0 0;font-size:10.5px;color:#898781;">4% of total</p></div><div class="n4l-kpi-tile" style="min-width:0;box-sizing:border-box;border:1px solid #e7e7ee;border-radius:12px;background:#fff;display:flex;flex-direction:column;align-items:flex-start;padding:13px 14px;overflow:hidden;"><p style="margin:0;font-size:10.5px;color:#52514e;font-weight:700;">Booked / pending</p><h4 style="margin:2px 0 0;font-size:20px;color:#0b0b0b;"><span>22</span></h4><p style="margin:5px 0 0;font-size:10.5px;color:#898781;">88% of total</p></div><div class="n4l-kpi-tile" style="min-width:0;box-sizing:border-box;border:1px solid #e7e7ee;border-radius:12px;background:#fff;display:flex;flex-direction:column;align-items:flex-start;padding:13px 14px;overflow:hidden;"><p style="margin:0;font-size:10.5px;color:#52514e;font-weight:700;">Outstanding</p><h4 style="margin:2px 0 0;font-size:20px;color:#0b0b0b;"><span>$220.90</span></h4><p style="margin:5px 0 0;font-size:10.5px;color:#898781;">all-time</p></div><div class="n4l-kpi-tile" style="min-width:0;box-sizing:border-box;border:1px solid #e7e7ee;border-radius:12px;background:#fff;display:flex;flex-direction:column;align-items:flex-start;padding:13px 14px;overflow:hidden;"><p style="margin:0;font-size:10.5px;color:#52514e;font-weight:700;">Overdue</p><h4 style="margin:2px 0 0;font-size:20px;color:#0b0b0b;"><span>$220.90</span></h4><p style="margin:5px 0 0;font-size:10.5px;color:#c0392b;">2 invoices</p></div><div class="n4l-kpi-tile" style="min-width:0;box-sizing:border-box;border:1px solid #e7e7ee;border-radius:12px;background:#fff;display:flex;flex-direction:column;align-items:flex-start;padding:13px 14px;overflow:hidden;"><p style="margin:0;font-size:10.5px;color:#52514e;font-weight:700;">Disputes</p><h4 style="margin:2px 0 0;font-size:20px;color:#0b0b0b;"><span>0</span></h4><p style="margin:5px 0 0;font-size:10.5px;color:#2a8;">3 withdrawn</p></div>
     </div>
 
-    <div class="tph-sec">
-        <div class="tph-sh"><h2>E-SOA</h2><span class="rl">Receivables &middot; all-time</span><a onclick="showStaticPage('esoa',event)">Open E-SOA &rarr;</a></div>
-        <div class="tph-two">
-            <div class="tph-card"><h3>Outstanding by age</h3><div id="tphAging"></div></div>
-            <div class="tph-card"><h3>Settlement position</h3>
-                <div class="tph-donutwrap">
-                    <div class="tph-donut" id="tphDonut2"><b><span id="tphDonut2T">26.5k</span><small>USD total</small></b></div>
-                    <div class="tph-legend" id="tphLegend2"></div>
-                </div>
-            </div>
+    <section class="TP-BarChart mt-5"><div class="innerHeader"><span style="font-size:22px;line-height:1;">&#128674;</span><h2 class="TPartner m-0"><strong>E-Shipments</strong></h2><span class="n4l-badge">scoped to filter above</span></div>
+        <div class="TP-BarChartContainer mt-3">
+            <div class="BarChartBox"><div class="BarCharHeader"><p class="m-0 chartsubHead">Shipments by day &amp; mode</p><span style="font-size:11px;color:#898781;">1 Jan 2026 &ndash; 12 Oct 2026</span></div><div class="tpm-cols"><i style="height:9.1%"></i><i style="height:0.0%"></i><i style="height:0.0%"></i><i style="height:18.2%"></i><i style="height:45.5%"></i><i style="height:27.3%"></i><i style="height:0.0%"></i><i style="height:0.0%"></i><i style="height:100.0%"></i><i style="height:9.1%"></i><i style="height:18.2%"></i><i style="height:0.0%"></i></div><div class="tpm-lbl"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span></span><span></span></div></div>
+            <div class="BarChartBox"><div class="BarCharHeader"><p class="m-0 chartsubHead">Status mix</p></div>
+                <div class="tpm-donutrow"><div class="tpm-donut" style="background:conic-gradient(#34c785 0.00% 8.00%,#2a6fd0 8.00% 12.00%,#F0A500 12.00% 100.00%)"><b>25<small>TOTAL</small></b></div>
+                <div class="tpm-leg"><div><i style="background:#34c785"></i>Delivered<span>2<em>&middot; 8%</em></span></div><div><i style="background:#2a6fd0"></i>In transit<span>1<em>&middot; 4%</em></span></div><div><i style="background:#F0A500"></i>Booked / pending<span>22<em>&middot; 88%</em></span></div></div></div></div>
         </div>
-    </div>
+    </section>
 
-    <div class="tph-sec">
-        <div class="tph-sh"><h2>Top partners</h2><span class="rl">Across the whole Net4Log network &middot; by invoiced value &middot; year to date</span></div>
-        <div class="tph-two">
-            <div class="tph-card"><h3>Top sellers <small style="font:600 12px 'Inter';color:var(--tc-soft)">(network-wide)</small></h3><ol class="tph-rank" id="tphSellers"></ol><button type="button" class="tph-more" onclick="tphMore('tphSellers',this)">Show all 10</button></div>
-            <div class="tph-card"><h3>Top buyers <small style="font:600 12px 'Inter';color:var(--tc-soft)">(network-wide)</small></h3><ol class="tph-rank" id="tphBuyers"></ol><button type="button" class="tph-more" onclick="tphMore('tphBuyers',this)">Show all 10</button></div>
+    <section class="TP-BarChart mt-5"><div class="innerHeader"><span style="font-size:22px;line-height:1;">&#129534;</span><h2 class="TPartner m-0"><strong>E-SOA</strong></h2><span class="n4l-badge">all-time</span></div>
+        <div class="TP-BarChartContainer mt-3">
+            <div class="BarChartBox"><div class="BarCharHeader"><p class="m-0 chartsubHead">Outstanding aging</p></div><div style="padding:14px 4px 4px;"><div class="tpm-ag"><div class="t"><span style="color:#0CA30C">Current (not yet due)</span><span>$0.00</span></div><div class="tr"><i style="width:0.0%;background:#0CA30C"></i></div></div><div class="tpm-ag"><div class="t"><span style="color:#FAB219">1-30 days overdue</span><span>$220.90</span></div><div class="tr"><i style="width:100.0%;background:#FAB219"></i></div></div><div class="tpm-ag"><div class="t"><span style="color:#EC835A">31-60 days overdue</span><span>$0.00</span></div><div class="tr"><i style="width:0.0%;background:#EC835A"></i></div></div><div class="tpm-ag"><div class="t"><span style="color:#D03B3B">60+ days overdue</span><span>$0.00</span></div><div class="tr"><i style="width:0.0%;background:#D03B3B"></i></div></div></div></div>
+            <div class="BarChartBox"><div class="BarCharHeader"><p class="m-0 chartsubHead">Settlement status</p></div>
+                <div class="tpm-donutrow"><div class="tpm-donut" style="background:conic-gradient(#0CA30C 0.00% 99.86%,#2a6fd0 99.86% 99.86%,#d03b3b 99.86% 100.00%)"><b style="font-size:15px">$163,175.85<small>TOTAL</small></b></div>
+                <div class="tpm-leg"><div><i style="background:#0CA30C"></i>Settled<span>$162,954.95<em>&middot; 100%</em></span></div><div><i style="background:#2a6fd0"></i>Not yet due<span>$0.00<em>&middot; 0%</em></span></div><div><i style="background:#d03b3b"></i>Overdue<span>$220.90<em>&middot; 0%</em></span></div></div></div></div>
         </div>
-    </div>
+    </section>
 
-    <div class="tph-sec">
-        <div class="tph-sh"><h2>Trading partners</h2><span class="rl">Your most active counterparties</span></div>
-        <div class="tph-tp" id="tphPartners"></div>
-    </div>
+    <section class="TP-BarChart mt-5"><div class="innerHeader"><span style="font-size:22px;line-height:1;">&#11088;</span><h2 class="TPartner m-0"><strong>Top Partners</strong></h2><span class="n4l-badge">platform-wide, all partners</span></div>
+        <div class="TP-BarChartContainer mt-3">
+            <div class="BarChartBox TopSellersBuyers"><div class="BarCharHeader"><p class="m-0 chartsubHead">Top 10 Sellers</p></div><div class="TheaderSellerBuyer"><p>Partners</p><p>Values</p></div><div class="PartnersDatails"><div class="PartnersList"><div class="LogoName"><div style="width:34px;height:34px;border-radius:9px;background:#2A007C;color:#fff;">AA</div><div class="Name">Aslam And Company</div></div><div class="P-values">127,383.60</div></div><div class="PartnersList"><div class="LogoName"><div style="width:34px;height:34px;border-radius:9px;background:#2A007C;color:#fff;">P</div><div class="Name">Praj</div></div><div class="P-values">37,292.25</div></div></div></div>
+            <div class="BarChartBox TopSellersBuyers"><div class="BarCharHeader"><p class="m-0 chartsubHead">Top 10 Buyers</p></div><div class="TheaderSellerBuyer"><p>Partners</p><p>Values</p></div><div class="PartnersDatails"><div class="PartnersList"><div class="LogoName"><div style="width:34px;height:34px;border-radius:9px;background:#2A007C;color:#fff;">P</div><div class="Name">Praj</div></div><div class="P-values">127,283.60</div></div><div class="PartnersList"><div class="LogoName"><div style="width:34px;height:34px;border-radius:9px;background:#2A007C;color:#fff;">AA</div><div class="Name">Aslam And Company</div></div><div class="P-values">37,292.25</div></div></div></div>
+        </div>
+    </section>
+
+    <section class="TP-BarChart mt-5" id="n4lTradingPartnersSection"><div class="innerHeader"><span style="font-size:22px;line-height:1;">&#129309;</span><h2 class="TPartner m-0"><strong>Trading Partners</strong></h2><span class="n4l-badge">this account only</span></div>
+        <div class="TP-BarChartContainer mt-3"><div class="BarChartBox" style="flex:1 1 100%;"><div class="BarCharHeader"><p class="m-0 chartsubHead">Every real party on this account's invoices &amp; shipments</p><span style="font-size:11px;color:#898781;">all-time</span></div>
+            <div class="TheaderSellerBuyer"><p>Partners</p><p>Invoices / Shipments</p></div>
+            <div class="PartnersDatails" id="n4lTradingPartners">
+                <div class="tpm-tp"><span class="av" style="background:#2A007C">P</span><b>Praj</b><span class="tg" style="background:#EDDEFF;color:#5b3fa0">NETWORK</span><small style="color:#898781">Partner ID NET000065</small><div class="r">$164,575.85 &middot; 18 invoices<br>9 shipments</div></div>
+                <div class="tpm-tp"><span class="av" style="background:#999">NW</span><b>New Wind1</b><span class="tg" style="background:#eee;color:#777">NON-NETWORK</span><small style="color:#898781">No Partner ID on file</small><div class="r">12 shipments</div></div>
+                <div class="tpm-tp"><span class="av" style="background:#999">NW</span><b>New Wind2</b><span class="tg" style="background:#eee;color:#777">NON-NETWORK</span><small style="color:#898781">No Partner ID on file</small><div class="r">4 shipments</div></div>
+            </div></div></div>
+    </section>
 </div>
 </section>
 </main>
@@ -11606,55 +11728,166 @@ window.n4lHeroNet = function(pageId, canvasId){
 
 </script>
 <script>
-/* Trusted Partner Home: sample data + range / list behaviour (mockup only) */
+/* Trusted Partner dashboard mockup: range buttons toggle only (sample data) */
+(function(){var b=document.querySelectorAll('#page-tp-home .n4l-range-btn');[].forEach.call(b,function(x){x.addEventListener('click',function(){[].forEach.call(b,function(y){y.classList.remove('active');y.style.background='#fff';y.style.color='#52514e';y.style.borderColor='#BFBFBF';});x.classList.add('active');x.style.background='#2A007C';x.style.color='#fff';x.style.borderColor='#2A007C';var c=document.getElementById('n4lCustomRange');if(c)c.style.display=x.getAttribute('data-range')==='custom'?'flex':'none';});});})();
+</script>
+<script>
+/* Live Trusted Partner hero (mockup): time-of-day sky, animated scenes, live ticker, multi-shipment lanes, count-up. Sample data. */
 (function(){
-  var YTD={ship:142,transit:18,booked:6,modes:{Air:31,Sea:78,Land:24,Rail:9},status:{Pending:6,Start:22,Interim:18,End:96},sales:29730,purch:17800,settled:22400,odN:1,odAmt:1200,dpN:1,dpAmt:1200,out:2940};
-  var LBL={'7d':'Last 7 days','30d':'Last 30 days','ytd':'Year to date','custom':'Custom range'};
-  var SCALE={'7d':.035,'30d':.13,'ytd':1};
-  var AGING=[['Current',1740,'g'],['1\u201330 days',0,'o'],['31\u201360 days',1200,'r'],['61\u201390 days',0,'r'],['90+ days',0,'r']];
-  var MODEICON={Air:'\u2708\uFE0F',Sea:'\uD83D\uDEA2',Land:'\uD83D\uDE9A',Rail:'\uD83D\uDE86'};
-  var STC={Pending:'#F2A33A',Start:'#3B82D6',Interim:'#7C55C9',End:'#2FA36B'};
-  var SELL=[['Horizon Global Forwarding','NET000012',482300],['Trans-Oceanic Logistics Ltd','NET000027',431850],['Meridian Logistics Group','NET000078',398420],['Pacific Freight Solutions','NET000041',366190],['Eurolink Cargo GmbH','NET000033',341770],['Sino Gateway Shipping','NET000019',318260],['Atlantic Bridge Freight','NET000058',296540],['Harbour Line Shipping','NET000052',274110],['Southern Cross Logistics','NET000071',251980],['Gulf transport llc','NET000076',233640]];
-  var BUY=[['Trans-Oceanic Logistics Ltd','NET000027',512400],['Horizon Global Forwarding','NET000012',467930],['Sino Gateway Shipping','NET000019',420150],['Eurolink Cargo GmbH','NET000033',389670],['Global Logistics LLC','NET000080',352810],['Atlantic Bridge Freight','NET000058',327440],['Pacific Freight Solutions','NET000041',301920],['Southern Cross Logistics','NET000071',279360],['Oriental Cargo Services','NET000093',256080],['Nordic Sea Logistics','NET000101',238750]];
-  var PART=[['Pacific Freight Solutions','NET000041',38,24,'12,950.00',1],['Meridian Logistics Group','NET000078',27,19,'(10,650.00)',-1],['Global Logistics LLC','NET000080',21,15,'2,780.00',1],['Gulf transport llc','NET000076',17,11,'1,420.00',1],['Harbour Line Shipping','NET000052',14,9,'(860.00)',-1],['Oriental Cargo Services','NET000093',9,6,'540.00',1]];
-  var $=function(id){return document.getElementById(id);};
-  function fmt(n){return n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
-  function ini(n){return n.split(' ').slice(0,2).map(function(w){return w[0];}).join('').toUpperCase();}
-  function rank(id,rows,max){ var h=''; rows.forEach(function(r,i){ h+='<li'+(i>=5?' class="x" style="display:none"':'')+'><span class="rk">'+(i+1)+'</span><span class="pn"><b>'+r[0]+'</b><small>Partner ID '+r[1]+'</small></span><span class="am">'+fmt(r[2])+'</span></li>'; }); $(id).innerHTML=h; }
-  function donut(id,vals,cols){ var tot=vals.reduce(function(a,b){return a+b;},0)||1, acc=0, d=$(id), i; for(i=0;i<3;i++){ acc=(i<vals.length)?acc+vals[i]/tot*100:100; d.style.setProperty('--p'+(i+1),acc.toFixed(2)); } for(i=0;i<4;i++){ d.style.setProperty('--c'+(i+1),cols[Math.min(i,cols.length-1)]); } }   /* a donut with fewer than 4 segments repeats its last colour */
-  function legend(id,items){ $(id).innerHTML=items.map(function(it){return '<div><i style="background:'+it[1]+'"></i>'+it[0]+'<span>'+it[2]+'</span></div>';}).join(''); }
-  function render(key,days){
-    var f=SCALE[key]; if(key==='custom') f=Math.max(.01,Math.min(1,days/365));
-    var s=function(n){return Math.round(n*f);};
-    var ship=s(YTD.ship), tr=s(YTD.transit), bk=s(YTD.booked), sales=YTD.sales*f, pur=YTD.purch*f, settled=YTD.settled*f;
-    $('tphEy').innerHTML=(key==='custom'?'Custom range \u00b7 '+days+' days':LBL[key])+' \u00b7 active records only';
-    $('tphBig').textContent=fmt(sales+pur); $('tphSub').innerHTML='Invoiced in range \u2014 sales '+fmt(sales)+' \u00b7 purchases '+fmt(pur);
-    $('tphChipOd').textContent=YTD.odN+' invoice overdue \u00b7 '+fmt(YTD.odAmt); $('tphChipOk').textContent=fmt(settled)+' settled'; $('tphChipDp').textContent=YTD.dpN+' active dispute \u00b7 '+fmt(YTD.dpAmt);
-    $('tphK1').textContent=ship; $('tphK2').textContent=tr; $('tphK3').textContent=bk;
-    var rl=key==='custom'?days+' days':LBL[key]; $('tphRl1').textContent=rl;
-    var modes=YTD.modes, mx=1; Object.keys(modes).forEach(function(k){ mx=Math.max(mx,s(modes[k])); });
-    $('tphModes').innerHTML=Object.keys(modes).map(function(k){ var v=s(modes[k]); return '<div class="tph-bar"><span class="nm">'+MODEICON[k]+' '+k+'</span><span class="tr"><i class="'+(k==='Sea'?'':'o')+'" style="width:'+(v/mx*100)+'%"></i></span><span class="n">'+v+'</span></div>'; }).join('');
-    var st=YTD.status, sv=Object.keys(st).map(function(k){return s(st[k]);}), tot=sv.reduce(function(a,b){return a+b;},0);
-    donut('tphDonut1',sv,Object.keys(st).map(function(k){return STC[k];})); $('tphDonut1T').textContent=tot;
-    legend('tphLegend1',Object.keys(st).map(function(k,i){return [k,STC[k],sv[i]];}));
-  }
-  function static_(){
-    var mx=1; AGING.forEach(function(a){mx=Math.max(mx,a[1]);});
-    $('tphAging').innerHTML=AGING.map(function(a){ return '<div class="tph-bar amt"><span class="nm">'+a[0]+'</span><span class="tr"><i class="'+a[2]+'" style="width:'+(a[1]/mx*100)+'%"></i></span><span class="n">'+fmt(a[1])+'</span></div>'; }).join('');
-    var set=22400,out=YTD.out,dis=YTD.dpAmt; donut('tphDonut2',[set,out-dis,dis],['#2FA36B','#7C55C9','#E8756C']);
-    $('tphDonut2T').textContent=((set+out)/1000).toFixed(1)+'k';
-    legend('tphLegend2',[['Settled','#2FA36B',fmt(set)],['Outstanding','#7C55C9',fmt(out-dis)],['Disputed','#E8756C',fmt(dis)]]);
-    rank('tphSellers',SELL); rank('tphBuyers',BUY);
-    $('tphPartners').innerHTML=PART.map(function(p){ return '<div class="tph-pc"><div class="hd"><span class="av">'+ini(p[0])+'</span><div style="min-width:0"><b>'+p[0]+'</b><small>Partner ID '+p[1]+'</small></div></div><div class="st"><div><small>Shipments</small><b>'+p[2]+'</b></div><div><small>Invoices</small><b>'+p[3]+'</b></div><div><small>Net</small><b class="'+(p[5]>0?'pos':'neg')+'">'+p[4]+'</b></div></div><button type="button" class="btn btn-ghost" onclick="showStaticPage(\'esoa\',event)">View SOA &rarr;</button></div>'; }).join('');
-  }
-  window.tphRange=function(k,apply){
-    var seg=$('tphSeg'); [].forEach.call(seg.children,function(b){ b.classList.toggle('on',b.getAttribute('data-r')===k); });
-    $('tphCustom').classList.toggle('show',k==='custom');
-    if(k==='custom'){ var a=new Date($('tphFrom').value), b=new Date($('tphTo').value); var d=Math.round((b-a)/86400000)+1; if(isNaN(d)||d<1) d=30; render('custom',d); } else render(k);
-  };
-  window.tphMore=function(id,btn){ var open=btn.getAttribute('data-o')==='1'; [].forEach.call($(id).querySelectorAll('li.x'),function(li){ li.style.display=open?'none':''; }); btn.setAttribute('data-o',open?'0':'1'); btn.textContent=open?'Show all 10':'Show top 5'; };
-  static_(); render('ytd');
-  if(window.n4lHeroNet) n4lHeroNet('page-tp-home','tphNet');
+ var hero=document.getElementById('n4lHero'); if(!hero) return;
+ function $(i){return document.getElementById(i)}
+ var T_NAMES=['t-morning','t-day','t-evening','t-night'];
+
+ var SHIP='<svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">\n  <circle class="sun" id="sunh" cx="480" cy="64" r="44" fill="var(--sunh)" opacity=".4"/><circle id="sunc" cx="480" cy="64" r="30" fill="var(--sunc)"/>\n  <g class="cl1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="cl2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g>\n  <path class="dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/>\n  <g class="fl"><g transform="rotate(-48 163 38)"><use href="#ill-plane" x="128" y="3" width="70" height="70"/></g></g>\n  <g class="ship"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g></svg>';
+ function stackRects(x,y,cols,rows,w,h,pal,seed){var o='',c,r,k=seed;for(r=0;r<rows;r++)for(c=0;c<cols;c++){k=(k*7+3)%pal.length;var X=x+c*(w+2),Y=y-(r+1)*(h+2);o+='<rect x="'+X+'" y="'+Y+'" width="'+w+'" height="'+h+'" rx="2" fill="'+pal[k]+'"/><path d="M'+(X+6)+' '+(Y+3)+'v'+(h-6)+'M'+(X+13)+' '+(Y+3)+'v'+(h-6)+'M'+(X+20)+' '+(Y+3)+'v'+(h-6)+'" stroke="rgba(255,255,255,.28)" stroke-width="1.4"/>'}return o}
+ var PAL=['#E8541B','#4a1745','#FF9A56','#2FA36B','#7C55C9','#F2A33A'];
+ var PORT='<svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><g class="cl1"><use href="#ill-cloud" x="300" y="14" width="120" height="44" opacity=".85"/></g><g class="cl2"><use href="#ill-cloud" x="40" y="70" width="96" height="36" opacity=".7"/></g>'
+  +'<rect y="236" width="560" height="34" fill="var(--gr1)"/><rect y="236" width="560" height="5" fill="var(--gr2)"/>'
+  +stackRects(40,236,3,3,36,26,PAL,1)+stackRects(172,236,2,2,36,26,PAL,4)
+  +'<g fill="#FE5F00"><rect x="326" y="96" width="9" height="140"/><rect x="438" y="96" width="9" height="140"/><rect x="250" y="84" width="290" height="12" rx="3"/><path d="M318 96l23-34 23 34zM430 96l23-34 23 34z"/></g><g stroke="#E8541B" stroke-width="2.4"><path d="M335 120h103M335 150h103"/></g>'
+  +'<g class="trolley"><rect x="272" y="96" width="30" height="10" rx="2" fill="#4a1745"/><g class="hangc"><path d="M287 106v40" stroke="#4a1745" stroke-width="2.4"/><rect x="268" y="146" width="38" height="26" rx="2" fill="#7C55C9"/><path d="M276 150v18M284 150v18M292 150v18M300 150v18" stroke="rgba(255,255,255,.3)" stroke-width="1.4"/></g></g>'
+  +stackRects(466,236,1,2,36,26,PAL,2)
+  +'<g class="truck" style="animation-duration:13s"><rect x="-40" y="212" width="70" height="26" rx="3" fill="#2FA36B"/><rect x="30" y="218" width="26" height="20" rx="3" fill="#4a1745"/><circle class="wheel" cx="-24" cy="240" r="7" fill="#2a0a45"/><circle class="wheel" cx="40" cy="240" r="7" fill="#2a0a45"/></g></svg>';
+ var GLOBE='<svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><defs><radialGradient id="gg" cx="35%" cy="30%"><stop offset="0" stop-color="#7a2c4e"/><stop offset="1" stop-color="#2a0a45"/></radialGradient><clipPath id="gc"><circle r="104"/></clipPath></defs>'
+  +'<g class="cl1"><use href="#ill-cloud" x="40" y="20" width="110" height="40" opacity=".8"/></g>'
+  +'<g transform="translate(380 138)"><circle r="118" fill="#fff" opacity=".35"/><circle r="104" fill="url(#gg)"/><g clip-path="url(#gc)" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="1.4"><ellipse rx="104" ry="104"><animate attributeName="rx" values="104;2;104" dur="9s" repeatCount="indefinite"/></ellipse><ellipse rx="70" ry="104"><animate attributeName="rx" values="70;104;2;70" dur="9s" repeatCount="indefinite"/></ellipse><ellipse rx="34" ry="104"><animate attributeName="rx" values="34;70;104;2;34" dur="9s" repeatCount="indefinite"/></ellipse><path d="M-104 -52Q0 -66 104 -52M-104 0H104M-104 52Q0 66 104 52"/>'
+  +'<g fill="#FFB27A" fill-opacity=".45" stroke="none"><path d="M-70 -40q20-24 48-14t10 28q-18 14-34 6t-24-20z"/><path d="M10 -20q26-10 44 6t6 36q-22 22-40 4t-10-46z"/><path d="M-40 34q16-8 30 4t-6 28q-18 6-26-8t2-24z"/></g></g>'
+  +'<g fill="none" stroke="#FFC58E" stroke-width="2" stroke-dasharray="4 7"><path class="dash" d="M-62 -26Q-6 -96 56 -44"/><path class="dash" d="M-62 -26Q-30 44 30 40"/><path class="dash" d="M56 -44Q80 0 30 40"/></g>'
+  +'<g fill="#FE5F00"><circle cx="-62" cy="-26" r="6"/><circle cx="56" cy="-44" r="5"><animate attributeName="r" values="5;9;5" dur="2.4s" repeatCount="indefinite"/></circle><circle cx="30" cy="40" r="5"><animate attributeName="r" values="5;9;5" dur="3s" repeatCount="indefinite"/></circle></g>'
+  +'<ellipse rx="160" ry="38" fill="none" stroke="#E8541B" stroke-opacity=".55" stroke-dasharray="3 7" transform="rotate(-22)"/><circle r="6" fill="#FE5F00"><animateMotion dur="9s" repeatCount="indefinite" path="M-160 0A160 38 0 1 1 160 0A160 38 0 1 1 -160 0"/></circle></g></svg>';
+ var ROAD='<svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><g class="cl1"><use href="#ill-cloud" x="320" y="12" width="120" height="44" opacity=".85"/></g>'
+  +'<path d="M0 190Q120 130 250 176T560 150V270H0z" fill="var(--hill2)"/><path d="M0 214Q160 160 320 204T560 184V270H0z" fill="var(--hill)"/>'
+  +'<path d="M0 176H560" stroke="#5a4a6a" stroke-width="3" fill="none"/><path d="M0 182H560" stroke="#8a7a9a" stroke-width="2" stroke-dasharray="3 9"/>'
+  +'<g class="train"><rect x="0" y="148" width="64" height="28" rx="6" fill="#4a1745"/><rect x="46" y="140" width="18" height="14" rx="3" fill="#FFD9A8"/><rect x="70" y="152" width="58" height="24" rx="2" fill="#FE5F00"/><rect x="132" y="152" width="58" height="24" rx="2" fill="#2FA36B"/><rect x="194" y="152" width="58" height="24" rx="2" fill="#7C55C9"/><rect x="256" y="152" width="58" height="24" rx="2" fill="#F2A33A"/><g fill="#2a0a45"><circle cx="14" cy="180" r="5"/><circle cx="50" cy="180" r="5"/><circle cx="90" cy="180" r="5"/><circle cx="170" cy="180" r="5"/><circle cx="270" cy="180" r="5"/></g></g>'
+  +'<rect y="226" width="560" height="44" fill="#3a2f4d"/><path class="roadline" d="M0 248H560" stroke="#fff" stroke-width="3" stroke-dasharray="24 24"/>'
+  +'<g class="truck"><rect x="-70" y="206" width="84" height="32" rx="3" fill="#FE5F00"/><path d="M-62 214v16M-50 214v16M-38 214v16M-26 214v16M-14 214v16M-2 214v16" stroke="rgba(255,255,255,.3)" stroke-width="1.4"/><rect x="16" y="214" width="30" height="24" rx="4" fill="#4a1745"/><rect x="34" y="219" width="10" height="8" rx="1" fill="#CFE3F5"/><circle class="wheel" cx="-52" cy="240" r="8" fill="#1d0833"/><circle class="wheel" cx="-24" cy="240" r="8" fill="#1d0833"/><circle class="wheel" cx="32" cy="240" r="8" fill="#1d0833"/></g></svg>';
+ 
+ var AIR='<svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><g class="cl1"><use href="#ill-cloud" x="300" y="16" width="120" height="44" opacity=".85"/></g><g class="cl2"><use href="#ill-cloud" x="30" y="80" width="96" height="36" opacity=".7"/></g>'
+  +'<rect y="236" width="560" height="34" fill="var(--gr1)"/><rect y="222" width="560" height="16" fill="#4a3f5c"/><path class="roadline" d="M0 230H560" stroke="#fff" stroke-width="3" stroke-dasharray="26 22"/>'
+  +'<rect x="150" y="176" width="190" height="48" rx="4" fill="#FF9A56"/><rect x="150" y="168" width="190" height="10" rx="3" fill="#7a2c4e"/><g fill="#CFE3F5"><rect x="164" y="190" width="22" height="16" rx="2"/><rect x="196" y="190" width="22" height="16" rx="2"/><rect x="228" y="190" width="22" height="16" rx="2"/><rect x="260" y="190" width="22" height="16" rx="2"/><rect x="292" y="190" width="22" height="16" rx="2"/></g>'
+  +'<rect x="72" y="100" width="14" height="124" fill="#7a2c4e"/><rect x="52" y="76" width="54" height="28" rx="5" fill="#4a1745"/><rect x="58" y="83" width="42" height="12" rx="2" fill="#CFE3F5"/><path d="M79 76V56" stroke="#4a1745" stroke-width="3"/><circle cx="79" cy="54" r="4" fill="#FE5F00"><animate attributeName="opacity" values="1;.2;1" dur="1.6s" repeatCount="indefinite"/></circle>'
+  +stackRects(380,236,2,2,36,24,PAL,3)
+  +'<g class="takeoff"><use href="#ill-plane" x="0" y="148" width="78" height="78"/></g></svg>';
+ var WARE='<svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><g class="cl1"><use href="#ill-cloud" x="330" y="14" width="120" height="44" opacity=".85"/></g>'
+  +'<rect y="236" width="560" height="34" fill="var(--gr1)"/><rect y="236" width="560" height="5" fill="var(--gr2)"/>'
+  +'<rect x="40" y="112" width="330" height="124" fill="#FFF3E6"/><path d="M30 112l22-30h286l22 30z" fill="#7a2c4e"/><rect x="40" y="112" width="330" height="10" fill="#E8541B"/>'
+  +'<g fill="#4a1745"><rect class="door" x="64" y="146" width="56" height="90" rx="2"/><rect class="door" x="136" y="146" width="56" height="90" rx="2" style="animation-delay:1.6s"/><rect class="door" x="208" y="146" width="56" height="90" rx="2" style="animation-delay:3.2s"/><rect class="door" x="280" y="146" width="56" height="90" rx="2" style="animation-delay:4.8s"/></g>'
+  +'<g stroke="rgba(255,255,255,.35)" stroke-width="2"><path d="M70 156h44M70 168h44M70 180h44"/></g>'
+  +'<g class="fork"><rect x="60" y="214" width="34" height="14" rx="3" fill="#FE5F00"/><rect x="82" y="196" width="6" height="32" fill="#4a1745"/><rect x="92" y="222" width="26" height="4" fill="#4a1745"/><rect x="98" y="206" width="22" height="16" rx="2" fill="#F2A33A"/><circle class="wheel" cx="68" cy="230" r="6" fill="#1d0833"/><circle class="wheel" cx="88" cy="230" r="5" fill="#1d0833"/></g>'
+  +'<rect x="400" y="190" width="130" height="40" rx="3" fill="#2FA36B"/><path d="M410 196v28M424 196v28M438 196v28M452 196v28M466 196v28M480 196v28" stroke="rgba(255,255,255,.3)" stroke-width="1.6"/><rect x="520" y="200" width="30" height="30" rx="4" fill="#4a1745"/><circle class="wheel" cx="424" cy="232" r="7" fill="#1d0833"/><circle class="wheel" cx="520" cy="232" r="7" fill="#1d0833"/></svg>';
+ var HUB='<svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><defs><pattern id="hdots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#4a1745" fill-opacity=".22"/></pattern></defs><rect x="40" y="10" width="500" height="250" rx="26" fill="url(#hdots)"/>'
+  +'<g fill="none" stroke="#E8541B" stroke-width="2" stroke-dasharray="4 7"><path id="hp1" class="dash" d="M300 140Q250 60 150 70"/><path id="hp2" class="dash" d="M300 140Q240 220 130 200"/><path id="hp3" class="dash" d="M300 140Q380 50 470 60"/><path id="hp4" class="dash" d="M300 140Q400 230 490 190"/><path id="hp5" class="dash" d="M300 140Q320 70 330 30"/></g>'
+  +'<g fill="#FE5F00"><circle r="5"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0s"><mpath href="#hp1"/></animateMotion></circle><circle r="5"><animateMotion dur="3.8s" repeatCount="indefinite" begin="-1s"><mpath href="#hp2"/></animateMotion></circle><circle r="5"><animateMotion dur="3.4s" repeatCount="indefinite" begin="-2s"><mpath href="#hp3"/></animateMotion></circle><circle r="5"><animateMotion dur="4s" repeatCount="indefinite" begin="-.5s"><mpath href="#hp4"/></animateMotion></circle><circle r="5"><animateMotion dur="2.8s" repeatCount="indefinite" begin="-1.5s"><mpath href="#hp5"/></animateMotion></circle></g>'
+  +'<circle class="pulse-ring" cx="300" cy="140" r="34" fill="#FE5F00" fill-opacity=".35"/><circle cx="300" cy="140" r="34" fill="#FE5F00"/><text x="300" y="146" text-anchor="middle" font-family="Poppins" font-weight="800" font-size="15" fill="#fff">YOU</text>'
+  +'<g font-family="Poppins" font-weight="700" font-size="12" text-anchor="middle"><circle cx="150" cy="70" r="24" fill="#fff" stroke="#E8541B" stroke-width="2"/><text x="150" y="75" fill="#4a1745">PF</text><circle cx="130" cy="200" r="24" fill="#fff" stroke="#E8541B" stroke-width="2"/><text x="130" y="205" fill="#4a1745">GL</text><circle cx="470" cy="60" r="24" fill="#fff" stroke="#E8541B" stroke-width="2"/><text x="470" y="65" fill="#4a1745">ML</text><circle cx="490" cy="190" r="24" fill="#fff" stroke="#E8541B" stroke-width="2"/><text x="490" y="195" fill="#4a1745">GT</text><circle cx="330" cy="30" r="18" fill="#fff" stroke="#E8541B" stroke-width="2"/><text x="330" y="34" fill="#4a1745" font-size="10">HL</text></g></svg>';
+ var CITY='<svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><g class="cl1"><use href="#ill-cloud" x="300" y="10" width="120" height="44" opacity=".85"/></g>'
+  +'<g fill="var(--hill2)"><rect x="20" y="130" width="60" height="106"/><rect x="150" y="110" width="52" height="126"/><rect x="300" y="140" width="64" height="96"/><rect x="450" y="120" width="56" height="116"/></g><g fill="var(--hill)"><rect x="80" y="90" width="64" height="146"/><rect x="206" y="70" width="86" height="166"/><rect x="368" y="100" width="76" height="136"/><rect x="506" y="140" width="40" height="96"/></g>'
+  +'<g fill="#FFF3E6" fill-opacity=".8"><rect x="92" y="104" width="10" height="10"/><rect x="112" y="104" width="10" height="10"/><rect x="92" y="130" width="10" height="10"/><rect x="112" y="130" width="10" height="10"/><rect x="220" y="86" width="10" height="10"/><rect x="244" y="86" width="10" height="10"/><rect x="268" y="86" width="10" height="10"/><rect x="220" y="116" width="10" height="10"/><rect x="268" y="116" width="10" height="10"/><rect x="382" y="116" width="10" height="10"/><rect x="408" y="116" width="10" height="10"/></g>'
+  +'<rect y="236" width="560" height="34" fill="#3a2f4d"/><path class="roadline" d="M0 252H560" stroke="#fff" stroke-width="3" stroke-dasharray="24 24"/>'
+  +'<g class="truck" style="animation-duration:9s"><rect x="-60" y="214" width="62" height="24" rx="4" fill="#FE5F00"/><rect x="0" y="220" width="22" height="18" rx="4" fill="#4a1745"/><rect x="-52" y="220" width="40" height="8" rx="2" fill="rgba(255,255,255,.35)"/><circle class="wheel" cx="-42" cy="240" r="7" fill="#1d0833"/><circle class="wheel" cx="12" cy="240" r="7" fill="#1d0833"/></g>'
+  +'<g class="drone"><g transform="translate(400 70)"><ellipse cx="0" cy="0" rx="14" ry="6" fill="#4a1745"/><g class="rotor"><path d="M-26 -8h20M6 -8h20" stroke="#2a0a45" stroke-width="3" stroke-linecap="round"/></g><path d="M0 6v20" stroke="#4a1745" stroke-width="1.6"/><rect x="-9" y="26" width="18" height="14" rx="2" fill="#F2A33A"/><path d="M-9 33h18" stroke="rgba(255,255,255,.5)"/></g></g></svg>';
+ 
+ var RAIL='<svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><g class="cl1"><use href="#ill-cloud" x="320" y="12" width="120" height="44" opacity=".85"/></g>'
+  +'<path d="M0 170Q140 120 280 160T560 140V270H0z" fill="var(--hill2)"/><rect y="226" width="560" height="44" fill="var(--gr1)"/>'
+  +'<g stroke="#5a4a6a" stroke-width="3"><path d="M0 176H560M0 238H560"/></g><path d="M0 182H560M0 244H560" stroke="#8a7a9a" stroke-width="2" stroke-dasharray="3 9"/>'
+  +'<g class="train"><rect x="0" y="146" width="64" height="30" rx="6" fill="#4a1745"/><rect x="46" y="138" width="18" height="14" rx="3" fill="#FFD9A8"/><rect x="70" y="150" width="58" height="26" rx="2" fill="#FE5F00"/><rect x="132" y="150" width="58" height="26" rx="2" fill="#2FA36B"/><rect x="194" y="150" width="58" height="26" rx="2" fill="#7C55C9"/><rect x="256" y="150" width="58" height="26" rx="2" fill="#F2A33A"/><rect x="318" y="150" width="58" height="26" rx="2" fill="#E8541B"/><g fill="#2a0a45"><circle cx="14" cy="180" r="5"/><circle cx="50" cy="180" r="5"/><circle cx="90" cy="180" r="5"/><circle cx="170" cy="180" r="5"/><circle cx="270" cy="180" r="5"/><circle cx="350" cy="180" r="5"/></g></g>'
+  +'<g class="truck" style="animation-duration:19s"><rect x="-10" y="208" width="60" height="30" rx="6" fill="#7C55C9"/><rect x="32" y="200" width="18" height="14" rx="3" fill="#FFD9A8"/><rect x="54" y="212" width="52" height="26" rx="2" fill="#2FA36B"/><rect x="110" y="212" width="52" height="26" rx="2" fill="#F2A33A"/><g fill="#2a0a45"><circle cx="6" cy="242" r="5"/><circle cx="40" cy="242" r="5"/><circle cx="78" cy="242" r="5"/><circle cx="140" cy="242" r="5"/></g></g>'
+  +'<g><rect x="470" y="96" width="6" height="80" fill="#5a4a6a"/><rect x="460" y="88" width="26" height="20" rx="4" fill="#2a0a45"/><circle class="sig" cx="473" cy="98" r="5" fill="#E5484D"/></g></svg>';
+ var SORT='<svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><rect x="30" y="40" width="500" height="200" rx="14" fill="#FFF3E6" stroke="#E8541B" stroke-width="3"/><rect x="30" y="40" width="500" height="26" rx="12" fill="#7a2c4e"/><text x="280" y="58" text-anchor="middle" font-family="Poppins" font-weight="800" font-size="13" letter-spacing="3" fill="#FFD9A8">SORTING HUB</text>'
+  +'<clipPath id="sc"><rect x="40" y="70" width="480" height="160"/></clipPath><g clip-path="url(#sc)">'
+  +'<rect x="40" y="108" width="480" height="12" fill="#4a3f5c"/><rect x="40" y="160" width="480" height="12" fill="#4a3f5c"/><rect x="40" y="212" width="480" height="12" fill="#4a3f5c"/>'
+  +'<g class="belt"><rect x="0" y="84" width="34" height="24" rx="3" fill="#FE5F00"/><rect x="150" y="90" width="28" height="18" rx="3" fill="#2FA36B"/><rect x="300" y="82" width="38" height="26" rx="3" fill="#7C55C9"/></g>'
+  +'<g class="belt" style="animation-duration:9s;animation-delay:-3s"><rect x="40" y="136" width="30" height="24" rx="3" fill="#F2A33A"/><rect x="200" y="130" width="40" height="30" rx="3" fill="#E8541B"/><rect x="360" y="138" width="26" height="22" rx="3" fill="#4a1745"/></g>'
+  +'<g class="belt" style="animation-duration:6s;animation-delay:-1s"><rect x="10" y="190" width="36" height="22" rx="3" fill="#7C55C9"/><rect x="170" y="184" width="30" height="28" rx="3" fill="#FE5F00"/><rect x="330" y="192" width="40" height="20" rx="3" fill="#2FA36B"/></g></g>'
+  +'<g fill="#2a0a45"><circle cx="48" cy="114" r="6"/><circle cx="512" cy="114" r="6"/><circle cx="48" cy="166" r="6"/><circle cx="512" cy="166" r="6"/><circle cx="48" cy="218" r="6"/><circle cx="512" cy="218" r="6"/></g></svg>';
+ var WIND='<svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><g class="cl1"><use href="#ill-cloud" x="40" y="18" width="110" height="40" opacity=".85"/></g>'
+  +'<path d="M0 190Q150 140 300 186T560 160V270H0z" fill="var(--hill2)"/><path d="M0 220Q180 180 340 214T560 200V270H0z" fill="var(--hill)"/><rect y="236" width="560" height="34" fill="#3a2f4d"/><path class="roadline" d="M0 252H560" stroke="#fff" stroke-width="3" stroke-dasharray="24 24"/>'
+  +'<g fill="#fff" stroke="#BFB3CF" stroke-width="1"><path d="M270 190l5-100h6l5 100z"/><path d="M400 200l4-76h5l4 76z"/><path d="M490 205l3-56h4l3 56z"/></g>'
+  +'<g fill="#fff" stroke="#BFB3CF" stroke-width="1"><g class="blades" style="transform-origin:278px 88px"><path d="M278 88L274 28L282 28zM278 88L330 118L326 124zM278 88L226 118L230 124z"/></g><g class="blades" style="transform-origin:406px 122px;animation-duration:9s"><path d="M406 122L403 76L409 76zM406 122L446 144L443 149zM406 122L366 144L369 149z"/></g><g class="blades" style="transform-origin:494px 147px;animation-duration:5s"><path d="M494 147L492 112L496 112zM494 147L524 164L522 168zM494 147L464 164L466 168z"/></g></g>'
+  +'<g fill="#2a0a45"><circle cx="278" cy="88" r="5"/><circle cx="406" cy="122" r="4"/><circle cx="494" cy="147" r="3"/></g>'
+  +'<g class="truck" style="animation-duration:12s"><rect x="-60" y="212" width="76" height="26" rx="4" fill="#2FA36B"/><rect x="18" y="218" width="26" height="20" rx="4" fill="#4a1745"/><circle cx="-34" cy="225" r="7" fill="#fff" fill-opacity=".9"/><path d="M-37 228c0-6 4-9 9-10-1 6-3 9-9 10z" fill="#1E8A52"/><circle class="wheel" cx="-44" cy="240" r="7" fill="#1d0833"/><circle class="wheel" cx="30" cy="240" r="7" fill="#1d0833"/></g></svg>';
+ var LIGHT='<svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><g class="cl2"><use href="#ill-cloud" x="40" y="20" width="110" height="40" opacity=".8"/></g>'
+  +'<polygon class="beam" points="450,84 100,36 100,132" fill="#FFF1C9"/>'
+  +'<path d="M0 214Q70 196 140 214T280 214T420 214T560 214V270H0z" fill="var(--sea1)"/>'
+  +'<path d="M370 214Q400 196 430 200L520 200Q540 204 560 214V240H370z" fill="#5a4a6a"/>'
+  +'<path d="M430 200L440 100H462L472 200z" fill="#fff"/><path d="M433 176L436 150H466L469 176z" fill="#E5484D"/><path d="M438 126L440 100H462L463 126z" fill="#E5484D"/>'
+  +'<rect x="436" y="86" width="30" height="16" rx="2" fill="#2a0a45"/><circle cx="451" cy="94" r="6" fill="#FFE08A"><animate attributeName="opacity" values="1;.5;1" dur="2s" repeatCount="indefinite"/></circle><path d="M434 86h34l-17-18z" fill="#E5484D"/>'
+  +'<g class="ship"><use href="#ill-ship" x="20" y="128" width="230" height="90"/></g>'
+  +'<path d="M0 232Q90 214 180 232T360 232T560 230V270H0z" fill="var(--sea2)"/></svg>';
+ var SC={ship:SHIP,port:PORT,globe:GLOBE,road:ROAD,air:AIR,ware:WARE,hub:HUB,city:CITY,rail:RAIL,sort:SORT,wind:WIND,light:LIGHT};
+
+
+ function setS(k){$('tpxScene').innerHTML=SC[k];hero.classList.toggle('noSea',k!=='ship');[].forEach.call(document.querySelectorAll('.tpx-mock button[data-s]'),function(b){b.classList.toggle('on',b.getAttribute('data-s')===k)});}
+ [].forEach.call(document.querySelectorAll('.tpx-mock button[data-s]'),function(b){b.onclick=function(){setS(b.getAttribute('data-s'))}});
+
+ /* stars */
+ (function(){var st=$('tpxStars'),i,r=11;function R(){r=(r*9301+49297)%233280;return r/233280}for(i=0;i<46;i++){var e=document.createElement('i');e.style.left=(R()*100)+'%';e.style.top=(R()*62)+'%';e.style.animationDelay=(R()*3)+'s';st.appendChild(e)}})();
+ /* time of day */
+ var GR={'t-morning':'Good morning','t-day':'Good afternoon','t-evening':'Good evening','t-night':'Good evening'};
+ function setT(t){var ns=hero.classList.contains('noSea');hero.className='tpx-hero '+t+(ns?' noSea':'');$('tpxGreet').textContent=GR[t]+', Captain Aslam';
+  [].forEach.call(document.querySelectorAll('.tpx-mock button[data-t]'),function(b){b.classList.toggle('on',b.getAttribute('data-t')===t)})}
+ [].forEach.call(document.querySelectorAll('.tpx-mock button[data-t]'),function(b){b.onclick=function(){setT(b.getAttribute('data-t'))}});
+ /* count-up figure */
+ var figState={to:25,word:'shipments'};
+ function fig(to,word){figState.to=to;figState.word=word;var el=$('n4lHeroFigure'),t0=null;function f(ts){if(t0===null)t0=ts;var p=Math.min(1,(ts-t0)/900),e=1-Math.pow(1-p,3);el.innerHTML=Math.round(to*e)+'<small>'+word+'</small>';if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f);setTimeout(function(){el.innerHTML=to+'<small>'+word+'</small>'},1100)}
+ /* lanes */
+ var LN=[['🚢','SEA-2026-04418','Jebel Ali → Rotterdam',62,'ETA 18 Oct'],['✈️','AIR-2026-01977','Dubai → Frankfurt',85,'ETA 13 Oct'],['🚚','LND-2026-00812','Riyadh → Dammam',28,'ETA 15 Oct']];
+ function lanes(){var h='<div class="hd"><span>Latest active shipments</span><a>View all 23 \u2192</a></div>';LN.forEach(function(l){h+='<div class="tpx-lane"><b>'+l[1]+'</b><span class="rt">'+l[2]+'</span><div class="ln"><i></i><em>'+l[0]+'</em></div><span class="eta">'+l[4]+'</span></div>'});$('tpxLanes').innerHTML=h;
+  setTimeout(function(){[].forEach.call($('tpxLanes').querySelectorAll('.tpx-lane'),function(row,i){row.querySelector('i').style.width=LN[i][3]+'%';row.querySelector('em').style.left=LN[i][3]+'%'})},80)}
+ /* ticker */
+ var TK=[['\u23F3','<b>22 shipments</b> booked / pending <small style="opacity:.7">88% of total</small>'],['\uD83D\uDEA2','<b>1 shipment</b> in transit <small style="opacity:.7">4% of total</small>'],['\u2705','<b>2 shipments</b> delivered <small style="opacity:.7">8% of total</small>'],['\u2696\uFE0F','<b>3 disputes</b> withdrawn, none active']],k=0;
+ function tk(){$('tpxTx').innerHTML=TK[k][1];$('tpxTm').textContent=TK[k][0]}tk();
+ setInterval(function(){var tx=$('tpxTx');tx.classList.add('out');setTimeout(function(){k=(k+1)%TK.length;tk();tx.classList.remove('out')},350)},4200);
+ /* range buttons (mockup): figure + label */
+ var RNG={'7d':[2,'Last 7 days'],'30d':[7,'Last 30 days'],'ytd':[25,'Year to date'],'custom':[12,'Custom range']};
+ [].forEach.call(document.querySelectorAll('#page-tp-home .n4l-range-btn'),function(b){b.addEventListener('click',function(){var r=RNG[b.getAttribute('data-range')];if(!r)return;$('n4lHeroEyebrow').textContent=r[1]+' \u00B7 active records only';fig(r[0],r[0]===1?'shipment':'shipments')})});
+ /* init */
+ setS('port');var h=new Date().getHours();setT(h<11?'t-morning':h<17?'t-day':h<20?'t-evening':'t-night');
+ $('n4lHeroSub').innerHTML='17 Sea \u00B7 4 Air \u00B7 4 Land \u00B7 0 Rail \u2014 $220.90 outstanding across 2 open invoices, 0 active disputes.';
+ $('n4lHeroOverdueChip').innerHTML='\u23F1\uFE0F 2 invoices overdue \u2014 $220.90';$('n4lHeroSettledChip').innerHTML='\u2705 $162,954.95 settled to date';$('n4lHeroDisputeChip').innerHTML='\u2705 0 active disputes (3 withdrawn)';
+ fig(25,'shipments');lanes();
+})();
+</script>
+<script>
+/* Live touches (mockup): KPI count-up / all-clear, chart grow-in, aging slide-in, value bars + YOU chip, View SOA, currency format. Plays once when a section scrolls into view. */
+(function(){
+ var P=document.getElementById('page-tp-home'); if(!P) return;
+ function fmt(n,dec,pre){return pre+n.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec})}
+ var tiles=[].slice.call(P.querySelectorAll('.n4l-kpi-tile'));
+ tiles.forEach(function(t){var sp=t.querySelector('h4 span'),m=sp.textContent.trim().match(/^(\$?)([\d,]+(?:\.(\d+))?)$/);if(m)t._k={pre:m[1],dec:m[3]?m[3].length:0,to:parseFloat(m[2].replace(/,/g,''))}});
+ var dt=tiles[5];if(dt&&dt._k&&dt._k.to===0){dt.classList.add('clear');dt.querySelector('h4 span').textContent='All clear';dt._k=null}
+ tiles.forEach(function(t){if(t._k)t.querySelector('h4 span').textContent=fmt(0,t._k.dec,t._k.pre)});
+ function count(list){list.forEach(function(t){if(!t._k)return;var sp=t.querySelector('h4 span'),k=t._k,t0=null;function f(ts){if(t0===null)t0=ts;var p=Math.min(1,(ts-t0)/900),e=1-Math.pow(1-p,3);sp.textContent=fmt(k.to*e,k.dec,k.pre);if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f);setTimeout(function(){sp.textContent=fmt(k.to,k.dec,k.pre)},1100)})}
+ /* range change: re-count the three in-range tiles and re-grow the shipment chart */
+ var RK={'7d':[2,0,1],'30d':[7,1,4],'ytd':[25,1,22],'custom':[12,1,9]};
+ [].forEach.call(P.querySelectorAll('.n4l-range-btn'),function(b){b.addEventListener('click',function(){var r=RK[b.getAttribute('data-range')];if(!r)return;for(var i=0;i<3;i++)tiles[i]._k.to=r[i];count(tiles.slice(0,3));var s=P.querySelector('.TP-BarChart');if(s){s.classList.remove('tpx-in');setTimeout(function(){s.classList.add('tpx-in')},60)}})});
+ /* stagger indexes */
+ [].forEach.call(P.querySelectorAll('.tpm-cols'),function(c){[].forEach.call(c.children,function(i,n){i.style.setProperty('--i',n)})});
+ [].forEach.call(P.querySelectorAll('.tpm-ag'),function(a,n){var i=a.querySelector('.tr i');i.style.setProperty('--i',n);var bg=(i.style.background||'').toLowerCase();if(parseFloat(i.style.width)>0&&bg.indexOf('0ca30c')<0&&bg.indexOf('rgb(12, 163, 12)')<0)i.classList.add('pulse')});
+ /* top partners: currency, value bars, YOU chip */
+ [].forEach.call(P.querySelectorAll('.TopSellersBuyers'),function(box){var rows=[].slice.call(box.querySelectorAll('.PartnersList')),mx=0;rows.forEach(function(r){var pv=r.querySelector('.P-values'),v=parseFloat(pv.textContent.replace(/[^0-9.]/g,''));r._v=v;mx=Math.max(mx,v);if(pv.textContent.trim().charAt(0)!=='$')pv.textContent='$'+pv.textContent.trim()});
+  rows.forEach(function(r){var nm=r.querySelector('.Name'),w=document.createElement('div');w.className='nmw';nm.parentNode.insertBefore(w,nm);w.appendChild(nm);if(nm.textContent.trim()==='Aslam And Company'){var y=document.createElement('span');y.className='you';y.textContent='YOU';nm.appendChild(y)}var vb=document.createElement('div');vb.className='vb';vb.innerHTML='<i style="--w:'+(r._v/mx*100).toFixed(1)+'%"></i>';w.appendChild(vb)})});
+ /* trading partners: direct action on network partners */
+ [].forEach.call(P.querySelectorAll('#n4lTradingPartners .tpm-tp'),function(row){var tg=row.querySelector('.tg');if(tg&&tg.textContent.trim()==='NETWORK'){var r=row.querySelector('.r'),a=document.createElement('a');a.className='soa';a.textContent='View SOA \u2192';a.onclick=function(){if(window.showStaticPage)showStaticPage('esoa')};r.appendChild(document.createElement('br'));r.appendChild(a)}});
+ /* play once when each block scrolls into view */
+ function show(el){el.classList.add('tpx-in');if(el.classList.contains('n4l-kpi-row'))count(tiles)}
+ var els=[].slice.call(P.querySelectorAll('.n4l-kpi-row,.TP-BarChart'));
+ function chk(){els.forEach(function(el){if(el._s)return;var r=el.getBoundingClientRect();if(r.top<innerHeight*.9&&r.bottom>40)show(el)})}window.addEventListener('scroll',chk,{passive:true});window.addEventListener('resize',chk);setTimeout(chk,300);setTimeout(chk,1200);
+})();
+</script>
+<script>
+/* Mockup only: wrap emoji inside the live hero text in .sx-em (the portal does this globally with AppEmoji.js) */
+(function(){
+ var RE=/(?:\p{Emoji_Presentation}|\p{Extended_Pictographic}\uFE0F|[\u2708\u2696\u23F1])\uFE0F?/gu;
+ var HAS=/[\u2190-\u{1FFFF}]/u;
+ function wrap(root){var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),n,list=[];
+  while(n=w.nextNode()){if(!n.nodeValue||!HAS.test(n.nodeValue))continue;var p=n.parentNode;if(p.closest&&p.closest('svg,script,style,.sx-em,.tpx-mock'))continue;list.push(n)}
+  list.forEach(function(n){var t=n.nodeValue,last=0,m,f=document.createDocumentFragment(),hit=false;RE.lastIndex=0;
+   while((m=RE.exec(t))!==null){hit=true;if(m.index>last)f.appendChild(document.createTextNode(t.slice(last,m.index)));var s=document.createElement('span');s.className='sx-em';s.textContent=m[0];f.appendChild(s);last=m.index+m[0].length}
+   if(!hit)return;if(last<t.length)f.appendChild(document.createTextNode(t.slice(last)));n.parentNode.replaceChild(f,n)})}
+ var hero=document.getElementById('n4lHero');if(!hero)return;
+ wrap(hero);
+ new MutationObserver(function(ms){ms.forEach(function(m){[].forEach.call(m.addedNodes,function(x){if(x.nodeType===1)wrap(x);else if(x.nodeType===3&&x.parentNode&&x.parentNode.nodeType===1)wrap(x.parentNode)})})}).observe(hero,{childList:true,subtree:true});
 })();
 </script>
 <script>
