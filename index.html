@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
 <style>
     :root{
         --purple:#2A007C;
@@ -797,6 +798,7 @@ body.n4l-logged .guest-only{display:none !important;}
 .n4l-public-page .pw-steps{margin-top:24px;}
 .n4l-public-page .pw-steps .feature{text-align:center;padding:24px 18px;}
 .n4l-public-page .pw-steps .feature p{font-size:14.5px;color:var(--ink-soft);}
+.n4l-public-page .pw-steps .feature p strong{color:var(--purple);font-weight:600;}
 .n4l-public-page .pw-n{width:44px;height:44px;border-radius:50%;background:var(--purple);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:800;font-size:18px;margin:0 auto 14px;}
 .n4l-public-page .pw-steps .feature:last-child .pw-n{background:var(--orange);}
 .n4l-public-page .pw-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
@@ -1630,6 +1632,408 @@ body.n4l-logged .guest-only{display:none !important;}
     .n4l-ftr .ftr-bottom a{text-decoration:underline;}
     @media(max-width:900px){.n4l-ftr .ftr-in{padding:28px 24px 14px;}.n4l-ftr .ftr-group + .ftr-group{padding-left:0;border-left:0;}}
     @media(max-width:600px){.n4l-ftr .ftr-in{padding:26px 16px 12px;}.n4l-ftr .ftr-sub{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px;}.n4l-ftr .ftr-offices{grid-template-columns:minmax(0,1fr);}.n4l-ftr .ftr-top{flex-direction:column;align-items:flex-start;}}
+</style>
+<style>
+/* One emoji look for every visitor: same class as the portal's EmojiBaseline.css (.app-emoji-icon), Noto Color Emoji font. */
+.app-emoji-icon{font-family:'Noto Color Emoji','Inter',sans-serif;font-size:1.2em;font-style:normal;}
+.sx-em{font-family:'Noto Color Emoji','Inter',sans-serif;}
+</style>
+<style>
+/* ===== One date picker for every date field: the house calendar (daterangepicker 1.3.21, DD-MMM-YYYY), warm theme. Same as the portal's AppDatePicker.js + WarmTheme.css ===== */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+/*!
+ * Stylesheet for the Date Range Picker, for use with Bootstrap 3.x
+ *
+ * Copyright 2013 Dan Grossman ( http://www.dangrossman.info )
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Built for http://www.improvely.com
+ */
+.daterangepicker.dropdown-menu {
+  max-width: none;
+}
+.daterangepicker.opensleft .ranges,
+.daterangepicker.opensleft .calendar {
+  float: left;
+  margin: 4px;
+}
+.daterangepicker.opensright .ranges,
+.daterangepicker.opensright .calendar {
+  float: right;
+  margin: 4px;
+}
+.daterangepicker .ranges {
+  width: 160px;
+  text-align: left;
+}
+.daterangepicker .ranges .range_inputs {
+  border-top: 1px solid #ececec;
+  padding-top: 10px;
+}
+.daterangepicker .ranges .range_inputs > div {
+  float: left;
+}
+.daterangepicker .ranges .range_inputs > div:nth-child(2) {
+  padding-left: 11px;
+}
+.daterangepicker .calendar {
+  display: none;
+  max-width: 270px;
+}
+.daterangepicker .calendar th,
+.daterangepicker .calendar td {
+  white-space: nowrap;
+  text-align: center;
+  min-width: 30px;
+}
+.daterangepicker .ranges label {
+  color: #333;
+  display: block;
+  font-size: 11px;
+  font-weight: normal;
+  height: 20px;
+  line-height: 20px;
+  margin-bottom: 2px;
+  text-shadow: #fff 1px 1px 0px;
+  text-transform: uppercase;
+  width: 74px;
+}
+.daterangepicker .ranges input {
+  font-size: 11px;
+}
+.daterangepicker .ranges .input-mini {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  color: #555;
+  display: block;
+  font-size: 11px;
+  height: 30px;
+  line-height: 30px;
+  vertical-align: middle;
+  margin: 0 0 10px 0;
+  padding: 0 6px;
+  width: 74px;
+}
+.daterangepicker .ranges ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.daterangepicker .ranges li {
+  font-size: 13px;
+  color: #555555;
+  padding: 3px 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+.daterangepicker .ranges li.active,
+.daterangepicker .ranges li:hover {
+  background: #4d7496;
+  color: #fff;
+}
+.daterangepicker .calendar-date {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+}
+.daterangepicker .calendar-time {
+  text-align: center;
+  margin: 8px auto 0 auto;
+  line-height: 30px;
+}
+.daterangepicker {
+  position: absolute;
+  background: #fff;
+  top: 100px;
+  left: 20px;
+  padding: 4px;
+  margin-top: 0px;
+  z-index:2000;
+}
+.daterangepicker.opensleft:before {
+  position: absolute;
+  top: -7px;
+  right: 9px;
+  display: inline-block;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ccc;
+  border-left: 7px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  content: '';
+}
+.daterangepicker.opensleft:after {
+  position: absolute;
+  top: -6px;
+  right: 10px;
+  display: inline-block;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #fff;
+  border-left: 6px solid transparent;
+  content: '';
+}
+.daterangepicker.opensright:before {
+  position: absolute;
+  top: -7px;
+  left: 9px;
+  display: inline-block;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ccc;
+  border-left: 7px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  content: '';
+}
+.daterangepicker.opensright:after {
+  position: absolute;
+  top: -6px;
+  left: 10px;
+  display: inline-block;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #fff;
+  border-left: 6px solid transparent;
+  content: '';
+}
+.daterangepicker table {
+  width: 100%;
+  margin: 0;
+}
+.daterangepicker td,
+.daterangepicker th {
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.daterangepicker td.off {
+  color: #999;
+}
+.daterangepicker td.disabled {
+  color: #999;
+}
+.daterangepicker td.available:hover,
+.daterangepicker th.available:hover {
+  background: #ebebeb;
+}
+.daterangepicker td.in-range {
+  background: #ebf4f8;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.daterangepicker td.active,
+.daterangepicker td.active:hover {
+  background-color: #4d7496;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.daterangepicker td.week,
+.daterangepicker th.week {
+  font-size: 80%;
+  color: #ccc;
+}
+.daterangepicker select.monthselect,
+.daterangepicker select.yearselect {
+  font-size: 12px;
+  padding: 1px;
+  height: auto;
+  margin: 0;
+  cursor: default;
+}
+.daterangepicker select.monthselect {
+  margin-right: 2%;
+  width: 56%;
+}
+.daterangepicker select.yearselect {
+  width: 40%;
+}
+.daterangepicker select.hourselect,
+.daterangepicker select.minuteselect,
+.daterangepicker select.ampmselect {
+  width: 50px;
+  margin-bottom: 0;
+}
+
+th.prev.available {
+background-color: #4d7496;
+color:#fff;
+}
+
+th.month {
+background-color: #4d7496;
+color:#fff;
+}
+
+th.next.available {
+background-color: #4d7496;
+color:#fff;
+}
+.daterangepicker.dropdown-menu{display:none;position:absolute;top:100%;left:0;z-index:1000;float:left;min-width:160px;margin:2px 0 0;padding:5px 0;list-style:none;text-align:left;background-color:#fff;background-clip:padding-box;}
+.daterangepicker .calendar thead tr:first-child th.prev i::before{content:"\2190";font-style:normal;font-family:'Inter',sans-serif;}
+.daterangepicker .calendar thead tr:first-child th.next i::before{content:"\2192";font-style:normal;font-family:'Inter',sans-serif;}
+.daterangepicker .calendar .table-condensed{border-collapse:separate;}
+.daterangepicker .ranges,.daterangepicker .daterangepicker_start_input,.daterangepicker .daterangepicker_end_input,.daterangepicker .calendar.right{display:none;}
+/* ===== Date picker (calendar plugin) -- one look for every date field (2026-10-12) =====
+   The house daterangepicker (single date, DD-MMM-YYYY) in the warm theme: plum header, orange selected day, compact cells.
+   Several pages style bare table/td/th (padding, nowrap, big text), which blew the calendar cells up -- the cell rules below reset that. */
+.daterangepicker{font-family:'Inter',sans-serif !important;border:1px solid #F0E4D6 !important;border-radius:16px !important;box-shadow:0 22px 44px -18px rgba(27,19,48,.45) !important;padding:6px !important;z-index:3000 !important;}
+.daterangepicker .calendar{margin:0 !important;max-width:none !important;}
+.daterangepicker .calendar-date{border:0 !important;background:#fff !important;padding:4px !important;}
+.daterangepicker .calendar table{width:auto !important;margin:0 !important;border-collapse:separate !important;border-spacing:0 2px !important;background:transparent !important;}
+.daterangepicker .calendar th,.daterangepicker .calendar td{box-sizing:border-box !important;width:34px !important;min-width:34px !important;max-width:34px !important;height:32px !important;padding:0 !important;font:500 13px 'Inter',sans-serif !important;line-height:32px !important;vertical-align:middle !important;text-align:center !important;white-space:nowrap !important;border:0 !important;border-radius:8px !important;background:transparent !important;color:#2B2140 !important;}
+.daterangepicker .calendar thead tr:first-child th{background:#4f1e50 !important;color:#fff !important;height:38px !important;border-radius:0 !important;vertical-align:middle !important;}
+.daterangepicker .calendar thead tr:first-child th:first-child{border-radius:10px 0 0 10px !important;}
+.daterangepicker .calendar thead tr:first-child th:last-child{border-radius:0 10px 10px 0 !important;}
+.daterangepicker .calendar thead tr:first-child th.month{width:auto !important;max-width:none !important;}
+.daterangepicker .calendar thead tr:first-child th.prev,.daterangepicker .calendar thead tr:first-child th.next{cursor:pointer;}
+.daterangepicker .calendar thead tr:first-child th i{color:#fff !important;line-height:38px !important;vertical-align:middle !important;}
+.daterangepicker .calendar thead tr:first-child th.available:hover{background:#FE5F00 !important;}
+.daterangepicker .calendar thead tr:nth-child(2) th{height:28px !important;font:700 11.5px 'Inter',sans-serif !important;line-height:28px !important;color:#5B5470 !important;text-transform:uppercase;}
+.daterangepicker .calendar td.available{cursor:pointer;}
+.daterangepicker .calendar td.available:hover{background:#FFEFE0 !important;color:#2A007C !important;}
+.daterangepicker .calendar td.off,.daterangepicker .calendar td.off.available{color:#B9B1C9 !important;}
+.daterangepicker .calendar td.active,.daterangepicker .calendar td.active:hover{background:#FE5F00 !important;color:#fff !important;font-weight:700 !important;}
+.daterangepicker .calendar td.disabled{color:#D9D3E6 !important;cursor:not-allowed;text-decoration:line-through;}
+.daterangepicker select.monthselect,.daterangepicker select.yearselect{vertical-align:middle !important;height:26px !important;width:auto !important;min-width:0 !important;margin:0 2px !important;padding:0 4px !important;border:0 !important;border-radius:8px !important;font:600 12px 'Inter',sans-serif !important;color:#2A007C !important;background:#fff !important;}
+.daterangepicker .calendar th.month{padding:0 !important;}
+.app-date-ui{cursor:pointer;}
+@media (max-width: 480px){ .daterangepicker{max-width:calc(100vw - 16px);} }
+
+</style>
+<style>
+/* ===== Modal headers: one default look for every dialog (2026-10-12) =====
+   The E-Invoice (Manual) header is the default: plum gradient, white Poppins title, plain white close. Covers Bootstrap modals (.modal-header) and the
+   custom dialogs (.es-dh E-Shipments, .mk-dh Marketplace, .mp-dlg-h My Profile, .rg-dlg-h Registration). Red danger headers (.modalheaderred,
+   .soa-delete-mhead) stay red on purpose. */
+.modal-header:not(.modalheaderred):not(.soa-delete-mhead),
+.es-dh, .mk-dh, .mp-dlg-h, .rg-dlg-h{
+    background: linear-gradient(105deg, #341552 0%, #4f1e50 55%, #792c4e 100%) !important;
+    border-bottom: 0 !important;
+    border-top-left-radius: inherit; border-top-right-radius: inherit;
+}
+.modal-header:not(.modalheaderred):not(.soa-delete-mhead) .modal-title,
+.modal-header:not(.modalheaderred):not(.soa-delete-mhead) h1, .modal-header:not(.modalheaderred):not(.soa-delete-mhead) h2,
+.modal-header:not(.modalheaderred):not(.soa-delete-mhead) h3, .modal-header:not(.modalheaderred):not(.soa-delete-mhead) h4,
+.modal-header:not(.modalheaderred):not(.soa-delete-mhead) h5, .modal-header:not(.modalheaderred):not(.soa-delete-mhead) h6,
+.es-dh h3, .mk-dh h3, .mp-dlg-h h3, .rg-dlg-h h3{
+    color: #fff !important; font-family: 'Poppins', sans-serif; font-weight: 700; text-transform: none;
+}
+.modal-header:not(.modalheaderred):not(.soa-delete-mhead) .close,
+.es-x, .mk-x, .mp-dlg-x, .rg-dlg-x{
+    color: #fff !important; background: transparent !important; opacity: .9; text-shadow: none; transition: color .15s, opacity .15s;
+}
+.modal-header:not(.modalheaderred):not(.soa-delete-mhead) .close:hover,
+.es-x:hover, .mk-x:hover, .mp-dlg-x:hover, .rg-dlg-x:hover{ background: transparent !important; color: #FFB27A !important; opacity: 1; }   /* hover colours the X only, no box */
+
+/* One fixed header height for every dialog, red danger headers included (2026-10-12): the same bar on every screen whatever the title or the page's own padding. */
+:root{ --n4l-modal-head-h: 54px; }
+.modal-header, .es-dh, .mk-dh, .mp-dlg-h, .rg-dlg-h{
+    box-sizing: border-box !important; height: var(--n4l-modal-head-h) !important; min-height: var(--n4l-modal-head-h) !important;
+    padding-top: 0 !important; padding-bottom: 0 !important;
+    display: flex !important; align-items: center !important; justify-content: space-between !important; flex-wrap: nowrap !important;
+}
+.modal-header > .row{ flex: 1 1 auto; width: 100%; margin: 0; }
+.modal-header .modal-title, .modal-header h1, .modal-header h2, .modal-header h3, .modal-header h4, .modal-header h5, .modal-header h6,
+.es-dh h3, .mk-dh h3, .mp-dlg-h h3, .rg-dlg-h h3{
+    margin: 0 !important; font-size: 17px !important; line-height: 1.25 !important;
+    min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.modal-header .close, .es-x, .mk-x, .mp-dlg-x, .rg-dlg-x{
+    float: none !important; margin: 0 !important; padding: 0 !important; flex: 0 0 34px; width: 34px; height: 34px;
+    display: flex !important; align-items: center; justify-content: center; font-size: 24px; line-height: 1; border-radius: 8px;
+}
+
+/* Same inset for every dialog (2026-10-12): header, body and footer all use 22px each side, so the icon / first letter of the title lines up with the form labels
+   below it and the close button lines up with the right edge of the fields. No leftover coloured left border or inner row/column padding. */
+html body .modal-header, html body .es-dh, html body .mk-dh, html body .mp-dlg-h, html body .rg-dlg-h{
+    padding-left: 22px !important; padding-right: 22px !important; border-left: 0 !important;
+}
+html body .modal-body:not(.p-0){ padding-left: 22px; padding-right: 22px; }
+html body .modal-footer{ padding-left: 22px; padding-right: 22px; }
+html body .modal-header > .row{ margin: 0 !important; width: 100%; }
+html body .modal-header > .row > [class*="col-"]{ padding-left: 0 !important; padding-right: 0 !important; }
+html body .modal-header .modal-title{ margin-left: 0 !important; margin-right: 0 !important; padding: 0 !important; }
+</style>
+<style>
+/* ===== Services - Partner Marketplace page body (2026-10-12): intro, six feature cards, benefits + banner, FAQ. Scoped to .mp-page; the hero above it is the shared illustrated hero. ===== */
+.mp-page{font-family:var(--body);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;}
+.mp-page h1,.mp-page h2,.mp-page h3{text-transform:none;letter-spacing:normal;font-style:normal;}
+.mp-page details>summary{outline-offset:-3px;}
+.mp-page{
+  --purple:#2A007C;
+  --orange:#FE5F00;
+  --orange-text:#B84400;
+  --ink:#2B2140;
+  --ink-soft:#5B5470;
+  --cream:#FFEFE2;
+  --cream-soft:#FFF8F1;
+  --line:#F0E4D6;
+  --line-warm:#F3D9C4;
+  --head:'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --body:'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  
+}
+.mp-page, .mp-page *{box-sizing:border-box}
+.mp-page h1,.mp-page h2,.mp-page h3,.mp-page p,.mp-page ul{margin:0}
+.mp-page .mp-wrap{max-width:1100px;margin:0 auto}
+.mp-page .mp-kicker{display:block;font:700 14px/1.2 var(--body);letter-spacing:.8px;text-transform:uppercase;color:var(--orange-text);margin-bottom:12px}
+.mp-page .mp-sec-head{display:flex;flex-direction:column;align-items:center;text-align:center}
+.mp-page .mp-sec-head h2{font:800 34px/1.2 var(--head);color:var(--purple)}
+.mp-page .mp-sec-head h2 span,.mp-page .mp-intro h1 span{color:var(--orange)}
+/* Intro */
+.mp-page .mp-intro{padding:72px 24px 56px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.mp-page .mp-intro h1{max-width:760px;font:800 38px/1.2 var(--head);color:var(--purple)}
+.mp-page .mp-intro p{margin-top:22px;max-width:840px;font-size:16px;line-height:1.7;color:var(--ink-soft)}
+/* Feature cards */
+.mp-page .mp-features{background:var(--cream);padding:64px 24px}
+.mp-page .mp-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.mp-page .mp-card{background:#FFFFFF;border:1px solid var(--line);border-radius:16px;padding:28px 26px;display:flex;flex-direction:column;gap:10px}
+.mp-page .mp-card h3{font:700 18px/1.35 var(--head);color:var(--purple)}
+.mp-page .mp-card p{font-size:14.5px;line-height:1.65;color:var(--ink-soft)}
+/* Benefits */
+.mp-page .mp-benefits{padding:72px 24px}
+.mp-page .mp-benefits .mp-wrap{display:flex;flex-direction:column;gap:28px}
+.mp-page .mp-ben-list{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px;border-top:1px solid var(--line)}
+.mp-page .mp-ben-list li{display:flex;gap:14px;padding:20px 0;border-bottom:1px solid var(--line)}
+.mp-page .mp-ben-list .mp-dot{flex:none;width:10px;height:10px;margin-top:8px;border-radius:50%;background:var(--orange)}
+.mp-page .mp-ben-list h3{font:700 17px/1.35 var(--head);color:var(--purple);margin-bottom:6px}
+.mp-page .mp-ben-list p{font-size:15px;line-height:1.6;color:var(--ink-soft)}
+.mp-page .mp-banner{padding:28px 32px;background:#FFE4CF;background:linear-gradient(105deg, #FFD3B4 0%, #FFE4CF 50%, #E5DAFC 100%);border:1px solid #F3DCD0;border-radius:24px}
+.mp-page .mp-banner p{font-size:16px;line-height:1.6;color:var(--ink)}
+.mp-page .mp-banner strong{color:var(--purple)}
+/* FAQ */
+.mp-page .mp-faq{background:var(--cream);padding:72px 24px 88px}
+.mp-page .mp-faq .mp-wrap{max-width:860px;display:flex;flex-direction:column;gap:14px}
+.mp-page .mp-faq .mp-sec-head{margin-bottom:22px}
+.mp-page .mp-faq details{background:#FFFFFF;border:1px solid #FBE1CC;border-radius:14px;overflow:hidden;transition:border-color .2s ease,box-shadow .2s ease}
+.mp-page .mp-faq details[open]{background:#FFFFFF;border-color:#F2C9A6;box-shadow:0 10px 26px -14px rgba(42,0,124,.18)}
+.mp-page .mp-faq summary{list-style:none;display:flex;align-items:center;gap:16px;min-height:56px;padding:16px 22px;cursor:pointer}
+.mp-page .mp-faq summary::-webkit-details-marker{display:none}
+.mp-page .mp-faq summary:focus-visible{outline:3px solid #FF9A56;outline-offset:-3px}
+.mp-page .mp-faq .mp-num{font:700 12px/1 var(--body);color:var(--orange-text)}
+.mp-page .mp-faq .mp-q{flex:1;font:700 15px/1.4 var(--head);color:var(--purple)}
+.mp-page .mp-faq .mp-chev{width:28px;height:28px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mp-page .mp-faq .mp-chev svg{transform:rotate(180deg);transition:transform .2s ease}
+.mp-page .mp-faq details[open] .mp-chev svg{transform:none}
+.mp-page .mp-faq .mp-a{padding:0 22px 20px 58px;font-size:14.5px;line-height:1.65;color:var(--ink-soft)}
+@media (max-width:900px){.mp-page .mp-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.mp-page .mp-ben-list{grid-template-columns:1fr}}
+@media (max-width:620px){.mp-page .mp-card-grid{grid-template-columns:1fr}
+.mp-page .mp-intro h1{font-size:30px}
+.mp-page .mp-sec-head h2{font-size:28px}
+.mp-page .mp-faq .mp-a{padding-left:22px}}
+@media (prefers-reduced-motion:reduce){.mp-page .mp-faq .mp-chev svg,.mp-page .mp-faq details{transition:none}}
 </style>
 </head>
 <body>
@@ -3363,8 +3767,8 @@ body.n4l-logged .guest-only{display:none !important;}
                 <details class="faq" open><summary><span class="q-num">01</span><span class="q">What is Net4Log Partner World?</span><span class="chev" aria-hidden="true"></span></summary><p>Partner World is where logistics companies find and connect with partners worldwide. It has three parts: the Directory, My Profile, and the Trusted Partner Application.</p></details>
                 <details class="faq"><summary><span class="q-num">02</span><span class="q">What is the Directory?</span><span class="chev" aria-hidden="true"></span></summary><p>The Directory lists all Net4Log members. Each listing shows the company name, address, joining date, Partner ID, and a shield showing their membership type: R for Registered Partner, T for Trusted Partner Standard, and TP for Trusted Partner Premium.</p></details>
                 <details class="faq"><summary><span class="q-num">03</span><span class="q">What is My Profile?</span><span class="chev" aria-hidden="true"></span></summary><p>My Profile is where you add and manage your company details. This information appears in the Directory and is used for Trusted Partner verification.</p></details>
-                <details class="faq"><summary><span class="q-num">04</span><span class="q">What is the Trusted Partner Application?</span><span class="chev" aria-hidden="true"></span></summary><p>It’s how a Registered Partner upgrades to Trusted Partner. Complete My Profile, upload the required documents, and pay the subscription fee. Net4Log verifies your details within 7 working days.</p></details>
-                <details class="faq"><summary><span class="q-num">05</span><span class="q">What is the difference between Registered and Trusted Partners?</span><span class="chev" aria-hidden="true"></span></summary><p>Registered Partners (R) join for free and can view 10 full profiles per month. Trusted Partners pay a subscription fee, pass KYC verification, and get unlimited profile views, access to partners’ services and locations, and advanced search filters. Trusted Partners can choose Standard (T) or Premium (TP), with Premium offering additional benefits.</p></details>
+                <details class="faq"><summary><span class="q-num">04</span><span class="q">What is the Trusted Partner Application?</span><span class="chev" aria-hidden="true"></span></summary><p>It’s how a Registered Partner upgrades to Trusted Partner. Complete My Profile, upload the required documents, and pay the subscription fee. Net4Log verifies your details within 3 working days.</p></details>
+                <details class="faq"><summary><span class="q-num">05</span><span class="q">What is the difference between Registered and Trusted Partners?</span><span class="chev" aria-hidden="true"></span></summary><p>Registered Partners (R) join for free and can view 10 full profiles per month. Trusted Partners pay a subscription fee, pass KYC verification, and get unlimited profile views, access to partners’ services and locations, and advanced search filters. Trusted Partners can choose Standard (T) or Premium (TP), with Premium offering [additional benefits].</p></details>
                 <details class="faq"><summary><span class="q-num">06</span><span class="q">How do view credits work?</span><span class="chev" aria-hidden="true"></span></summary><p>Registered Partners get 10 credits per month. One credit is used each time you open a new company’s profile, and viewing the same company again that month is free. Credits reset on the 1st of each month. Trusted Partners, both Standard and Premium, have unlimited views and don’t need credits.</p></details>
             </div>
         </div>
@@ -3381,56 +3785,115 @@ body.n4l-logged .guest-only{display:none !important;}
 </div>
 <div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><g class="ill-birds" fill="none" stroke="#E8541B" stroke-linecap="round" stroke-linejoin="round"><path d="M18 58 q6-8 12 0 q6-8 12 0" stroke-width="2"/><path d="M56 40 q5-6 10 0 q5-6 10 0" stroke-width="1.8"/><path d="M44 76 q4-5 8 0 q4-5 8 0" stroke-width="1.6"/></g><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(-48 163 38)"><use href="#ill-plane" x="128" y="3" width="70" height="70"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
 </section>
+    <div class="mp-page">
+<!-- 1. Introduction -->
+<section class="mp-intro" aria-labelledby="mp-title">
+  <span class="mp-kicker">Partner Marketplace</span>
+  <h1 id="mp-title">Showcase your offers and <span>connect with other partners</span></h1>
+  <p>The Net4Log Marketplace offers a trusted platform for partners to share their rates and events with the entire network. Partners can publish special rates, spot rates, and special events, each reviewed by Net4Log before it goes live. Simple filters help others find relevant posts, and the More Details button on every post takes interested partners to the poster's own web portal.</p>
+</section>
 
-    <section class="section">
-        <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
-            <p style="font-size:16px;color:var(--ink-soft);">The Net4Log Marketplace offers a valuable platform for partners to showcase their unique offerings, connect with other partners, and promote their products and services. Partners can create targeted listings, while an intuitive search engine helps others find the right solutions. Built-in communication tools facilitate lead generation and collaboration, while success stories and reviews help build trust.</p>
-        </div>
-    </section>
+<!-- 2. Feature cards -->
+<section class="mp-features" aria-label="Marketplace features">
+  <div class="mp-wrap mp-card-grid">
 
-    <section class="section alt">
-        <div class="wrap">
-            <div class="feature-grid">
-                <article class="feature"><h3>Targeted Listings</h3><p>Partners can create detailed listings highlighting their specialized products, services, and competitive advantages, targeting specific partner segments within the network.</p></article>
-                <article class="feature"><h3>Search and Filter Functionality</h3><p>An intuitive search and filter system empowers partners to easily find solutions that meet their specific requirements within the Net4Log ecosystem.</p></article>
-                <article class="feature"><h3>Lead Generation and Communication Tools</h3><p>Contact forms, quotation requests, and secure messaging allow partners to directly connect and initiate business conversations.</p></article>
-                <article class="feature"><h3>Success Stories and Reviews</h3><p>Success stories and partner testimonials build trust and credibility, with a review system to gather feedback and enhance reputation within the network.</p></article>
-                <article class="feature"><h3>Analytics and Reporting</h3><p>Insights and analytics help partners track listing performance, identify trends, and optimize their marketing strategies within the platform.</p></article>
-            </div>
-        </div>
-    </section>
+    <article class="mp-card">
+      <h3>Three Ways to Post</h3>
+      <p>Share a special rate on a route, a spot rate for immediate shipments, or a special event you're organising or attending. Choosing the right post type helps other partners quickly see what your post is about.</p>
+    </article>
 
-    <section class="section">
-        <div class="wrap" style="max-width:820px;">
-            <h2 style="font-size:22px;color:var(--purple);text-align:center;margin-bottom:18px;">Benefits of Partner Marketplace</h2>
-            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;">
-                <li style="font-size:14.5px;color:var(--ink-soft);"><b style="color:var(--ink);">Increased Visibility</b> &mdash; showcase offerings to a wider audience of potential collaborators within the Net4Log network.</li>
-                <li style="font-size:14.5px;color:var(--ink-soft);"><b style="color:var(--ink);">Targeted Marketing</b> &mdash; tailor listings to reach specific partner segments, increasing the potential for relevant leads.</li>
-                <li style="font-size:14.5px;color:var(--ink-soft);"><b style="color:var(--ink);">Streamlined Communication</b> &mdash; built-in tools let partners connect and discuss collaborations directly within the platform.</li>
-                <li style="font-size:14.5px;color:var(--ink-soft);"><b style="color:var(--ink);">Enhanced Reputation</b> &mdash; success stories, testimonials, and positive reviews strengthen a partner's reputation.</li>
-                <li style="font-size:14.5px;color:var(--ink-soft);"><b style="color:var(--ink);">Data-Driven Decisions</b> &mdash; analytics and reporting tools offer insights to optimize marketplace presence and strategy.</li>
-            </ul>
-        </div>
-    </section>
+    <article class="mp-card">
+      <h3>Reviewed Before Publishing</h3>
+      <p>Every post is checked by the Net4Log back office within 2 working days before other partners can see it. If a post isn't approved, we tell you why so you can correct it and submit again.</p>
+    </article>
 
-    <section class="section">
-        <div class="wrap" style="text-align:center;max-width:820px;margin-left:auto;margin-right:auto;">
-            <p style="font-size:17px;line-height:1.7;color:var(--ink-soft);"><strong style="color:var(--purple);">Net4Log Marketplace</strong> fosters a dynamic environment where Partners can unlock new business opportunities, strengthen relationships, and contribute to the overall growth of the Net4Log ecosystem.</p>
-        </div>
-    </section>
+    <article class="mp-card">
+      <h3>Find Relevant Offers</h3>
+      <p>Filter the Marketplace by post type, by partner, or by time range, from the last 24 hours to the last 30 days, to find the rates and events that matter to your business.</p>
+    </article>
 
-    <section class="section alt">
-        <div class="wrap">
-            <div class="sec-head"><span class="kicker">FAQ</span><h2>Frequently asked <span>questions</span></h2></div>
-            <div class="faq-list">
-                <details class="faq" open><summary><span class="q-num">01</span><span class="q">What is the Net4Log Partner Marketplace?</span><span class="chev" aria-hidden="true"></span></summary><p>A unique feature where network partners can showcase their products and services, connect with other logistics professionals, and generate business leads within the Net4Log ecosystem.</p></details>
-                <details class="faq"><summary><span class="q-num">02</span><span class="q">How does the Partner Marketplace help freight forwarders find solutions?</span><span class="chev" aria-hidden="true"></span></summary><p>An intuitive search and filter system allows partners to quickly find the right solutions and service providers based on specific logistics needs.</p></details>
-                <details class="faq"><summary><span class="q-num">03</span><span class="q">What tools support collaboration in the Partner Marketplace?</span><span class="chev" aria-hidden="true"></span></summary><p>Built-in communication features like contact forms, quotation requests, and secure messaging help partners connect and generate quality leads.</p></details>
-                <details class="faq"><summary><span class="q-num">04</span><span class="q">Can partners build credibility with the Marketplace?</span><span class="chev" aria-hidden="true"></span></summary><p>Yes, partners can leverage success stories and customer reviews to build trust and enhance their reputation among other logistics businesses.</p></details>
-                <details class="faq"><summary><span class="q-num">05</span><span class="q">What analytics features are available in the Marketplace?</span><span class="chev" aria-hidden="true"></span></summary><p>Insights and analytics help partners track listing performance, understand trends, and optimize their marketing strategies on the platform.</p></details>
-            </div>
-        </div>
-    </section>
+    <article class="mp-card">
+      <h3>Follow Up Directly</h3>
+      <p>Each post has a More Details button that takes partners to the poster's own web portal. Enquiries and deals then happen directly between partners, with no middleman.</p>
+    </article>
+
+    <article class="mp-card">
+      <h3>Posts That Stand Out</h3>
+      <p>Add a cover image, a short announcement of up to 250 characters, and attachments such as rate sheets, sailing schedules, or event brochures (up to 25 MB in total) to give partners everything they need.</p>
+    </article>
+
+    <article class="mp-card">
+      <h3>Track Every Post</h3>
+      <p>See all your posts in one place under My Posts, from pending to approved, rejected, or expired. Approved posts stay live for up to 30 days from the date Net4Log approves them. Registered Partners publish 4 approved posts a month, and Trusted Partners post without limit.</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- 3. Benefits -->
+<section class="mp-benefits" aria-labelledby="ben-title">
+  <div class="mp-wrap">
+    <div class="mp-sec-head">
+      <span class="mp-kicker">Why use it</span>
+      <h2 id="ben-title">Benefits of <span>Partner Marketplace</span></h2>
+    </div>
+
+    <ul class="mp-ben-list">
+      <li><span class="mp-dot" aria-hidden="true"></span><div><h3>Increased Visibility</h3><p>Every approved post is shown to partners across the whole Net4Log network, putting your rates and events in front of logistics professionals worldwide.</p></div></li>
+      <li><span class="mp-dot" aria-hidden="true"></span><div><h3>Trusted Content</h3><p>Every post is reviewed by Net4Log before it goes live, so partners can browse rates and events with confidence.</p></div></li>
+      <li><span class="mp-dot" aria-hidden="true"></span><div><h3>Direct Connections</h3><p>The More Details button takes interested partners straight to your own web portal, so enquiries come to you directly, with no middleman.</p></div></li>
+      <li><span class="mp-dot" aria-hidden="true"></span><div><h3>Easy to Find</h3><p>Partners can filter posts by type, partner, and time range, helping your offer reach the people looking for it.</p></div></li>
+      <li><span class="mp-dot" aria-hidden="true"></span><div><h3>Rates and Events in One Place</h3><p>Publish special rates for planned business and spot rates for immediate shipments, and promote the events you're organising or attending.</p></div></li>
+      <li><span class="mp-dot" aria-hidden="true"></span><div><h3>Posting for Every Member</h3><p>Registered Partners publish 4 approved posts a month and Trusted Partners post without limit. Your allowance is only used once a post is approved.</p></div></li>
+    </ul>
+
+    <div class="mp-banner">
+      <p><strong>Net4Log Marketplace</strong> helps partners share opportunities, discover new services, and build business relationships across a trusted global network.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. FAQ -->
+<section class="mp-faq" aria-labelledby="faq-title">
+  <div class="mp-wrap">
+    <div class="mp-sec-head">
+      <span class="mp-kicker">FAQ</span>
+      <h2 id="faq-title">Frequently asked <span>questions</span></h2>
+    </div>
+
+    <details open>
+      <summary><span class="mp-num">01</span><span class="mp-q">What is the Net4Log Marketplace?</span><span class="mp-chev"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2A007C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg></span></summary>
+      <p class="mp-a">It's the network's noticeboard, where partners publish special rates, spot rates, and special events for every Net4Log partner to see.</p>
+    </details>
+
+    <details open>
+      <summary><span class="mp-num">02</span><span class="mp-q">Who can post, and how often?</span><span class="mp-chev"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2A007C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg></span></summary>
+      <p class="mp-a">Both Registered Partners and Trusted Partners can post. Registered Partners can publish 4 approved posts each calendar month, with the allowance restored on the 1st. Trusted Partners can post without limit.</p>
+    </details>
+
+    <details open>
+      <summary><span class="mp-num">03</span><span class="mp-q">Is every post checked before it goes live?</span><span class="mp-chev"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2A007C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg></span></summary>
+      <p class="mp-a">Yes. The Net4Log back office reviews every new post within 2 working days. If a post isn't approved, we tell you why, and you can correct it and submit again. A post only counts towards your monthly allowance once it's approved.</p>
+    </details>
+
+    <details open>
+      <summary><span class="mp-num">04</span><span class="mp-q">How do I follow up on a post I'm interested in?</span><span class="mp-chev"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2A007C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg></span></summary>
+      <p class="mp-a">Click More Details on the post. It takes you to the poster's own web portal, where you can contact them directly. Enquiries, bookings, and payments are arranged between the two partners.</p>
+    </details>
+
+    <details open>
+      <summary><span class="mp-num">05</span><span class="mp-q">What can I include in a post?</span><span class="mp-chev"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2A007C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg></span></summary>
+      <p class="mp-a">A subject, an announcement of up to 250 characters, a cover image, and a link to your company's web portal. You can also attach rate sheets, schedules, or event brochures as PDF, PowerPoint, Excel, or image files, up to 25 MB in total.</p>
+    </details>
+
+    <details open>
+      <summary><span class="mp-num">06</span><span class="mp-q">How long does a post stay visible?</span><span class="mp-chev"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2A007C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg></span></summary>
+      <p class="mp-a">An approved post is visible to other partners for a maximum of 30 days from the date Net4Log approves it. You can see where each of your posts stands, whether pending, approved, rejected, or expired, under My Posts.</p>
+    </details>
+
+  </div>
+</section>
+</div>
     </main>
 </div>
 
@@ -4725,7 +5188,7 @@ body.n4l-logged .guest-only{display:none !important;}
 </style>
 <style>
 /* ---- layout + emoji fixes ---- */
-.es-fam .sx-em{font-style:normal;line-height:1;font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif;}
+.es-fam .sx-em{font-style:normal;line-height:1;font-family:'Noto Color Emoji','Inter',sans-serif;}
 .es-fam .es-badge .sx-em{font-size:38px;}
 .es-fam .btn .sx-em{font-size:15px;}
 /* ---- mobile polish: stacked full-width hero actions, KPI orphan, amount wrap ---- */
@@ -5774,6 +6237,30 @@ window.n4lHeroNet = function(pageId, canvasId){
     <section class="section">
         <div class="wrap" style="max-width:820px;text-align:center;">
             <p style="font-size:16px;color:var(--ink-soft);">Feel free to email us at <a href="https://mail.google.com/mail/?view=cm&amp;to=support@net4log.com" target="_blank" rel="noopener" style="color:var(--purple);font-weight:700;">support@net4log.com</a> for any queries and issues. This email is driven by the JBM help-desk manager</p>
+        </div>
+    </section>
+    </main>
+</div>
+
+<div class="static-page" id="page-coming-soon" style="display:none;">
+    <main>
+    <section class="ill-hero mid">
+<div class="ill-wrap"><span class="ill-pill"><i></i>Coming soon</span>
+<h1 class="ill-h1">Your next big experience is <em>coming soon</em></h1>
+<p class="ill-sub">We are putting the finishing touches on this page. Meanwhile, explore what is already live on Net4Log.</p>
+<div class="ill-cta"><a class="btn btn-primary" href="#" onclick="closeStaticPage(event)">Back to home</a><a class="btn btn-ghost" href="#" onclick="showStaticPage('contact-us',event)">Talk to us</a></div>
+</div>
+<div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><g class="ill-birds" fill="none" stroke="#E8541B" stroke-linecap="round" stroke-linejoin="round"><path d="M18 58 q6-8 12 0 q6-8 12 0" stroke-width="2"/><path d="M56 40 q5-6 10 0 q5-6 10 0" stroke-width="1.8"/><path d="M44 76 q4-5 8 0 q4-5 8 0" stroke-width="1.6"/></g><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(-48 163 38)"><use href="#ill-plane" x="128" y="3" width="70" height="70"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
+</section>
+
+    <section class="section">
+        <div class="wrap">
+            <div class="sec-head"><span class="kicker">While you wait</span><h2>Explore what is <span>live now</span></h2></div>
+            <div class="feature-grid">
+<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('partner-world',event)" onkeydown="if(event.key==='Enter')showStaticPage('partner-world',event)"><span class="f-ic"><svg width="26" height="26" aria-hidden="true"><use href="#n4l-partnerworld"></use></svg></span><h3>Partner World</h3></article>
+<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('digital-connect',event)" onkeydown="if(event.key==='Enter')showStaticPage('digital-connect',event)"><span class="f-ic"><svg width="26" height="26" aria-hidden="true"><use href="#n4l-digitalconnect"></use></svg></span><h3>Digital Connect</h3></article>
+<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('net4log-services',event)" onkeydown="if(event.key==='Enter')showStaticPage('net4log-services',event)"><span class="f-ic"><svg width="26" height="26" aria-hidden="true"><use href="#n4l-valueadds"></use></svg></span><h3>Net4Log Services</h3></article>
+            </div>
         </div>
     </section>
     </main>
@@ -7036,7 +7523,7 @@ window.n4lHeroNet = function(pageId, canvasId){
                     <span><svg width="14" height="14"><use href="#mk-store"></use></svg> <i class="co">Gulf transport llc &middot; </i><b id="mkMetaType">Registered Partner</b></span>
                 </div>
             </div>
-            <div class="mk-actions"><button type="button" class="btn btn-ghost" onclick="mkMine()"><svg width="16" height="16"><use href="#mk-list"></use></svg> My posts</button><button type="button" class="btn btn-primary" onclick="mkOpenCreate()"><svg width="16" height="16"><use href="#mk-plus"></use></svg> Create post</button></div>
+            <div class="mk-actions"><button type="button" class="btn btn-ghost" onclick="mkMine()"><svg width="16" height="16"><use href="#mk-list"></use></svg> My posts</button><button type="button" class="btn btn-primary" id="mkHeroCreate" onclick="mkOpenCreate()"><svg width="16" height="16"><use href="#mk-plus"></use></svg> Create post</button></div>
         </div>
         <div class="mk-kpis" aria-label="Marketplace at a glance">
             <div class="mk-kpi"><div class="l">Live posts</div><div class="v" id="mkK1">0</div><div class="t">approved and active</div></div>
@@ -7047,7 +7534,6 @@ window.n4lHeroNet = function(pageId, canvasId){
         <div class="mk-strength">
             <div class="mk-ring" id="mkRing"><b id="mkRingTx">2/4</b></div>
             <div class="tx"><b id="mkHead"></b><span id="mkSub"></span></div>
-            <div class="mk-sact"><button type="button" class="btn" id="mkHeroCreate" onclick="mkOpenCreate()">Create post</button></div>
         </div>
     </div>
 </section>
@@ -7079,7 +7565,6 @@ window.n4lHeroNet = function(pageId, canvasId){
                     <label><input type="radio" name="mkSt" value="Pending for Approval" onchange="mkApply()">Pending for approval</label>
                     <label><input type="radio" name="mkSt" value="Approved" onchange="mkApply()">Approved</label></div></div>
                 <button type="button" class="btn btn-ghost mk-feedonly" onclick="mkMine()">My posts</button>
-                <button type="button" class="btn btn-primary" onclick="mkOpenCreate()"><svg width="15" height="15"><use href="#mk-plus"></use></svg> Create new post</button>
             </aside>
             <div class="mk-feed" id="mkFeed"></div>
         </div>
@@ -10221,6 +10706,17 @@ window.n4lHeroNet = function(pageId, canvasId){
             if(panel) panel.classList.remove('open');
             if(btn) btn.setAttribute('aria-expanded', 'false');
         }
+        // Widening the window past the phone/tablet breakpoint closes any open mobile menu panel (it stayed open across the whole page otherwise)
+        (function(){
+            var mq = window.matchMedia('(min-width: 1021px)');
+            function closeOnDesktop(){
+                if(!mq.matches) return;
+                document.querySelectorAll('.mobile-nav-panel.open').forEach(function(p){ closeMobileNav(p.id); });
+                document.querySelectorAll('.mobile-nav-group.open').forEach(function(g){ g.classList.remove('open'); });
+            }
+            window.addEventListener('resize', closeOnDesktop);
+            if(mq.addEventListener){ mq.addEventListener('change', closeOnDesktop); } else if(mq.addListener){ mq.addListener(closeOnDesktop); }
+        })();
         function togglePublicSubnav(e, el){
             e.stopPropagation();
             var group = el.closest('.mobile-nav-group');
@@ -10642,6 +11138,247 @@ window.n4lHeroNet = function(pageId, canvasId){
     form.reset(); sent.hidden=true; form.hidden=false;
   });
 })();
+</script>
+<script>
+/* Review helper: index.html#<page> opens that static page directly (e.g. index.html#coming-soon, #partner-world, #contact-us) */
+(function(){
+    function openFromHash(){
+        var slug = (location.hash || '').replace(/^#\/?/, '');
+        if(!slug || !document.getElementById('page-' + slug) || typeof showStaticPage !== 'function') return;
+        try{ showStaticPage(slug); }catch(e){}
+    }
+    window.addEventListener('hashchange', openFromHash);
+    if(document.readyState === 'complete') openFromHash(); else window.addEventListener('load', openFromHash);
+})();
+</script>
+<script>
+/* AppEmoji.js -- one emoji look for every visitor (2026-10-12).
+   Colour emoji come from the visitor's own OS font (Segoe UI Emoji, Apple Color Emoji, ...), which draw the same character with different art.
+   EmojiBaseline.css defines the self-hosted Noto Color Emoji font and the .app-emoji-icon class that uses it.
+   This script wraps every real pictograph -- in the page markup AND in anything a script adds later -- in <span class="app-emoji-icon">,
+   so the same Noto art shows everywhere. Characters are never changed, only wrapped.
+   Left alone on purpose (they are coloured TEXT glyphs, not emoji): warning triangle, check marks, crosses, arrows, bullets, stars.
+   Skipped containers: script, style, textarea, select/option, input, svg, and anything already inside an emoji-baselined element. */
+(function () {
+    if (window.__appEmojiOn) return; window.__appEmojiOn = true;
+    var RE;
+    try {
+        // Emoji_Presentation chars, any pictograph with the emoji variation selector, plus a curated set of text-form pictographs
+        RE = new RegExp('(?:\\p{Emoji_Presentation}|\\p{Extended_Pictographic}\\uFE0F|[\\u2708\\u2709\\u2696\\u2B06\\u2B07\\u2600\\u23F1\\u2699\\u270F])\\uFE0F?', 'gu');
+    } catch (e) { return; }   // very old browser: leave the page as it is
+    var KEEP_AS_TEXT = { 0x26A0: 1, 0x2713: 1, 0x2714: 1, 0x2715: 1, 0x2716: 1, 0x2611: 1, 0x2610: 1, 0x2612: 1, 0x2605: 1, 0x2606: 1, 0x25B6: 1, 0x25C0: 1 };
+    var SKIP = 'script,style,textarea,select,option,input,svg,noscript,[contenteditable="true"],.no-app-emoji,.app-emoji-icon,.modeEmoji,.soa-tico,.tico,.sx-em,.n4l-social-emoji-select';
+    var FAST = new RegExp(RE.source, 'u');
+
+    function wrapText(node) {
+        var txt = node.nodeValue;
+        if (!txt || !FAST.test(txt)) return;
+        var p = node.parentNode;
+        if (!p || (p.closest && p.closest(SKIP))) return;
+        var frag = document.createDocumentFragment(), last = 0, m, hit = false;
+        RE.lastIndex = 0;
+        while ((m = RE.exec(txt)) !== null) {
+            if (KEEP_AS_TEXT[m[0].codePointAt(0)]) continue;
+            hit = true;
+            if (m.index > last) frag.appendChild(document.createTextNode(txt.slice(last, m.index)));
+            var s = document.createElement('span'); s.className = 'app-emoji-icon'; s.textContent = m[0];
+            frag.appendChild(s); last = m.index + m[0].length;
+        }
+        if (!hit) return;
+        if (last < txt.length) frag.appendChild(document.createTextNode(txt.slice(last)));
+        p.replaceChild(frag, node);
+    }
+    function walk(root) {
+        if (!root) return;
+        if (root.nodeType === 3) { wrapText(root); return; }
+        if (root.nodeType !== 1 || (root.matches && root.matches(SKIP)) || (root.closest && root.closest(SKIP))) return;
+        var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), list = [], n;
+        while ((n = w.nextNode())) list.push(n);
+        for (var i = 0; i < list.length; i++) wrapText(list[i]);
+    }
+
+    var queue = [], scheduled = false;
+    function flush() {
+        scheduled = false; var q = queue; queue = [];
+        for (var i = 0; i < q.length; i++) { try { walk(q[i]); } catch (e) { } }
+    }
+    function enqueue(n) { queue.push(n); if (!scheduled) { scheduled = true; (window.requestAnimationFrame || setTimeout)(flush); } }
+
+    function start() {
+        walk(document.body);
+        new MutationObserver(function (muts) {
+            for (var i = 0; i < muts.length; i++) {
+                var m = muts[i];
+                if (m.type === 'characterData') { enqueue(m.target); continue; }
+                for (var j = 0; j < m.addedNodes.length; j++) enqueue(m.addedNodes[j]);
+            }
+        }).observe(document.body, { childList: true, subtree: true, characterData: true });
+    }
+    window.AppEmoji = { wrap: walk };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/1.3.21/daterangepicker.js"></script>
+<script>jQuery.noConflict();</script>
+<script>
+/* AppDatePicker.js -- one date picker for every V2 screen (2026-10-12).
+   Every <input type="date"> is shown as the house calendar (daterangepicker, single date, DD-MMM-YYYY, e.g. 12-Oct-2026), the same one the E-SOA screens use.
+   BRIDGE, so no existing page code has to change: the original date input stays in the page, hidden, and keeps holding the value as yyyy-MM-dd,
+   exactly as before. Code that reads or writes it (.value, .val(), change listeners, inline onchange, FormData) keeps working:
+     - picking or typing a date in the visible box   -> the hidden input gets the ISO value and receives input + change events
+     - code setting the hidden input's value          -> the visible box shows it as DD-MMM-YYYY and the calendar moves to that day
+     - disabled / required / label / focus() / dynamically added inputs are forwarded or picked up automatically.
+   Opt out with data-no-app-date on the input or any parent. Needs jQuery, moment and daterangepicker (loaded by the layout); does nothing without them. */
+(function (window, document) {
+    'use strict';
+    var $ = window.jQuery, moment = window.moment;
+    if (!$ || !moment || !$.fn || !$.fn.daterangepicker || window.__appDateOn) return;
+    window.__appDateOn = true;
+
+    var FMT = 'DD-MMM-YYYY', ISO = 'YYYY-MM-DD';
+    var nativeValue = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
+
+    /* Year list: the plugin lists 50 years back and 5 ahead (56 rows). A list that tall makes the browser open it UPWARD over the page, so every
+       calendar (the ones made here and the E-SOA ones) gets a compact window: 10 years back, 5 ahead, always including the year being shown.
+       A field that needs older dates (e.g. year of incorporation) sets data-app-date-back="100" (and data-app-date-ahead if needed). */
+    var DEF_BACK = 10, DEF_AHEAD = 5;
+    function compactYears(dp, el) {
+        if (!dp || dp.__compactYears) return;
+        dp.__compactYears = true;
+        var back = parseInt($(el).attr('data-app-date-back'), 10) || DEF_BACK, ahead = parseInt($(el).attr('data-app-date-ahead'), 10) || DEF_AHEAD;
+        dp.renderDropdowns = function (selected, minDate, maxDate) {
+            var cm = selected.month(), cy = selected.year(), now = moment().year();
+            var maxY = (maxDate && maxDate.year()) || Math.max(now + ahead, cy);
+            var minY = (minDate && minDate.year()) || Math.min(now - back, cy);
+            var inMin = !!minDate && cy === minY, inMax = !!maxDate && cy === maxY, m, y, html = '<select class="monthselect">';
+            for (m = 0; m < 12; m++) {
+                if ((!inMin || m >= minDate.month()) && (!inMax || m <= maxDate.month()))
+                    html += "<option value='" + m + "'" + (m === cm ? " selected='selected'" : '') + '>' + this.locale.monthNames[m] + '</option>';
+            }
+            html += '</select><select class="yearselect">';
+            for (y = minY; y <= maxY; y++) html += '<option value="' + y + '"' + (y === cy ? ' selected="selected"' : '') + '>' + y + '</option>';
+            return html + '</select>';
+        };
+        try { dp.updateCalendars(); } catch (e) { }
+    }
+    (function () {
+        var orig = $.fn.daterangepicker;
+        if (orig.__appWrapped) return;
+        var wrapped = function () {
+            var r = orig.apply(this, arguments);
+            this.each(function () { compactYears($(this).data('daterangepicker'), this); });
+            return r;
+        };
+        $.extend(wrapped, orig); wrapped.__appWrapped = true; $.fn.daterangepicker = wrapped;
+    })();
+    function sweepExisting() { $(':input').each(function () { var d = $(this).data('daterangepicker'); if (d) compactYears(d, this); }); }
+
+    function toIso(v) {
+        if (!v) return '';
+        var m = moment(v, ISO, true);
+        if (!m.isValid()) m = moment(v, [FMT, 'D-MMM-YYYY'], true);
+        return m.isValid() ? m.format(ISO) : '';
+    }
+    function toShow(v) { var i = toIso(v); return i ? moment(i, ISO, true).format(FMT) : ''; }
+    function fire(el, type) { var e; try { e = new Event(type, { bubbles: true }); } catch (x) { e = document.createEvent('Event'); e.initEvent(type, true, false); } el.dispatchEvent(e); }
+
+    function upgrade(el) {
+        if (!el || el.__appDate || el.type !== 'date' || (el.closest && el.closest('[data-no-app-date]'))) return;
+        el.__appDate = true;
+        var iso = toIso(nativeValue.get.call(el));
+        var ui = document.createElement('input');
+        ui.type = 'text';
+        ui.className = (el.className ? el.className + ' ' : '') + 'app-date-ui';
+        ui.setAttribute('autocomplete', 'off');
+        ui.setAttribute('placeholder', 'dd-MMM-yyyy');
+        ui.setAttribute('inputmode', 'none');   // phones: open the calendar, not the on-screen keyboard (desktop typing still works)
+        if (el.style.cssText) ui.style.cssText = el.style.cssText;
+        ['aria-label', 'title', 'tabindex', 'data-app-date-back', 'data-app-date-ahead'].forEach(function (a) { if (el.hasAttribute(a)) ui.setAttribute(a, el.getAttribute(a)); });
+        if (el.id) ui.id = el.id + '_ui';
+        if (el.required) ui.required = true;
+        ui.disabled = el.disabled;
+        el.parentNode.insertBefore(ui, el.nextSibling);
+
+        // Plugin first, with the real input untouched: if it cannot start, the browser's own date field simply stays.
+        // The page may load more than one moment.js; hand the plugin plain DD-MMM-YYYY text (never a moment object) so it uses its own.
+        try {
+            var opts = { singleDatePicker: true, showDropdowns: true, format: FMT, autoApply: true };
+            if (iso) opts.startDate = toShow(iso);
+            $(ui).daterangepicker(opts, function () { });
+        } catch (err) {
+            if (window.console && console.error) console.error('AppDatePicker: calendar could not start, native date field kept', err);
+            if (ui.parentNode) ui.parentNode.removeChild(ui);
+            return;
+        }
+        ui.value = toShow(iso);   // the plugin may pre-fill today; show exactly what the real input holds
+
+        // the original stays in the page (code keeps using it) but is hidden; 'required' moves to the visible box so validation can still focus it
+        el.removeAttribute('required');
+        el.style.display = 'none';
+        el.setAttribute('aria-hidden', 'true'); el.tabIndex = -1;
+        if (el.id) {
+            var labels = document.querySelectorAll('label[for="' + el.id.replace(/"/g, '\\"') + '"]');
+            for (var i = 0; i < labels.length; i++) labels[i].setAttribute('for', ui.id);
+        }
+
+        var syncing = false;
+        function showFromEl() {
+            syncing = true;
+            try {
+                var v = nativeValue.get.call(el), disp = toShow(v);
+                if (ui.value !== disp) ui.value = disp;
+                var dp = $(ui).data('daterangepicker');
+                if (dp && disp) { dp.setStartDate(disp); dp.setEndDate(disp); ui.value = disp; }
+            } catch (e) { }
+            syncing = false;
+        }
+        function setEl(newIso) {
+            if (nativeValue.get.call(el) === newIso) return;
+            nativeValue.set.call(el, newIso);
+            fire(el, 'input'); fire(el, 'change');
+        }
+        // visible box -> hidden input
+        $(ui).on('change apply.daterangepicker', function () {
+            if (syncing) return;
+            var txt = $.trim(ui.value);
+            if (!txt) { setEl(''); return; }
+            var m = moment(txt, [FMT, 'D-MMM-YYYY'], true);
+            if (m.isValid()) { setEl(m.format(ISO)); } else { showFromEl(); }   // not a date: put back the last good value
+        });
+        // code writing the hidden input -> visible box
+        Object.defineProperty(el, 'value', {
+            configurable: true, enumerable: true,
+            get: function () { return nativeValue.get.call(el); },
+            set: function (v) { nativeValue.set.call(el, toIso(v)); showFromEl(); }
+        });
+        el.focus = function () { ui.focus(); };
+        if (el.form && !el.form.__appDateReset) { el.form.__appDateReset = true; el.form.addEventListener('reset', function () { setTimeout(function () { var f = el.form.querySelectorAll('input[type="date"]'); for (var k = 0; k < f.length; k++) if (f[k].__appDateRefresh) f[k].__appDateRefresh(); }, 0); }); }
+        el.__appDateRefresh = function () { showFromEl(); };
+        new MutationObserver(function () { ui.disabled = el.disabled; }).observe(el, { attributes: true, attributeFilter: ['disabled'] });
+        showFromEl();
+    }
+
+    function safeUpgrade(el) { try { upgrade(el); } catch (err) { if (window.console && console.error) console.error('AppDatePicker: field skipped', err); } }
+    function scan(root) {
+        if (!root || root.nodeType !== 1) return;
+        if (root.matches && root.matches('input[type="date"]')) safeUpgrade(root);
+        var list = root.querySelectorAll ? root.querySelectorAll('input[type="date"]') : [];
+        for (var i = 0; i < list.length; i++) safeUpgrade(list[i]);
+    }
+    function start() {
+        scan(document.body);
+        sweepExisting(); window.addEventListener('load', sweepExisting);
+        new MutationObserver(function (muts) {
+            for (var i = 0; i < muts.length; i++) for (var j = 0; j < muts[i].addedNodes.length; j++) scan(muts[i].addedNodes[j]);
+        }).observe(document.body, { childList: true, subtree: true });
+    }
+    window.AppDatePicker = { upgrade: upgrade, scan: scan };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})(window, document);
+
 </script>
 </body>
 </html>
