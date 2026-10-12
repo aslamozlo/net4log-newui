@@ -2035,6 +2035,129 @@ html body .modal-header .modal-title{ margin-left: 0 !important; margin-right: 0
 .mp-page .mp-faq .mp-a{padding-left:22px}}
 @media (prefers-reduced-motion:reduce){.mp-page .mp-faq .mp-chev svg,.mp-page .mp-faq details{transition:none}}
 </style>
+<style>
+/* ===== Trusted Partner Home (2026-10-12): warm V2 version of CustomerHome's TP dashboard. Plum hero (shared .es-fam hero), cream body, rounded cards,
+   pill range selector, CSS-only charts. ===== */
+#page-tp-home{--tc-bg:#FFF9F3;--tc-card:#fff;--tc-line:#F5EBDF;--tc-ink:#2B2140;--tc-soft:#5B5470;--tc-chip:#FFF4E8;--tc-track:#F3EAE0;}
+#page-tp-home .es-hero{padding-bottom:78px;}
+#page-tp-home .tph-range{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:22px;}
+#page-tp-home .tph-seg{display:inline-flex;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.26);border-radius:30px;padding:3px;overflow-x:auto;max-width:100%;}
+#page-tp-home .tph-seg button{border:0;background:transparent;color:#fff;font:700 13px 'Inter',sans-serif;padding:8px 16px;border-radius:26px;cursor:pointer;white-space:nowrap;}
+#page-tp-home .tph-seg button.on{background:var(--orange);box-shadow:0 8px 18px -8px rgba(254,95,0,.8);}
+#page-tp-home .tph-custom{display:none;align-items:center;gap:8px;color:#fff;font:600 13px 'Inter',sans-serif;flex-wrap:wrap;}
+#page-tp-home .tph-custom.show{display:flex;}
+#page-tp-home .tph-custom input{height:38px;border-radius:12px;border:1.5px solid rgba(255,255,255,.4);background:rgba(255,255,255,.95);padding:0 12px;font:600 13px 'Inter',sans-serif;color:#2B2140;width:150px;}
+#page-tp-home .tph-custom .btn{min-height:38px;padding:0 18px;font-size:13px;}
+#page-tp-home .tph-body{background:var(--tc-bg);padding:0 0 90px;color:var(--tc-ink);}
+#page-tp-home .tph-body .wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+#page-tp-home .tph-top{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:18px;margin-top:-58px;position:relative;z-index:2;}
+#page-tp-home .tph-card{background:var(--tc-card);border:1px solid var(--tc-line);border-radius:20px;box-shadow:var(--shadow-soft);padding:20px 22px;min-width:0;}
+#page-tp-home .tph-fig .ey{font:700 11.5px 'Inter',sans-serif;letter-spacing:.9px;text-transform:uppercase;color:var(--orange-text);}
+#page-tp-home .tph-fig .big{font:800 44px/1.1 'Poppins',sans-serif;color:var(--purple);margin:8px 0 2px;}
+#page-tp-home .tph-fig .big small{font-size:18px;font-weight:700;color:var(--tc-soft);margin-left:4px;}
+#page-tp-home .tph-fig .sub{font-size:13.5px;color:var(--tc-soft);}
+#page-tp-home .tph-chips{display:flex;flex-direction:column;gap:8px;margin-top:16px;}
+#page-tp-home .tph-chip{display:flex;align-items:center;gap:10px;border-radius:14px;padding:9px 13px;font:600 13px 'Inter',sans-serif;}
+#page-tp-home .tph-chip.od{background:#FFF0D9;color:#B25E00;}
+#page-tp-home .tph-chip.ok{background:#E3F7EC;color:#1E8A52;}
+#page-tp-home .tph-chip.dp{background:#FDE5E3;color:#C0352B;}
+#page-tp-home .tph-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+#page-tp-home .tph-kpi{background:var(--tc-card);border:1px solid var(--tc-line);border-top:4px solid var(--purple);border-radius:18px;box-shadow:var(--shadow-soft);padding:14px 16px;min-width:0;}
+#page-tp-home .tph-kpi.k2{border-top-color:#3B82D6;} #page-tp-home .tph-kpi.k3{border-top-color:#B26A00;} #page-tp-home .tph-kpi.k4{border-top-color:var(--purple);} #page-tp-home .tph-kpi.k5{border-top-color:#D54848;} #page-tp-home .tph-kpi.k6{border-top-color:var(--orange);}
+#page-tp-home .tph-kpi .l{font:700 11px 'Inter',sans-serif;letter-spacing:.5px;text-transform:uppercase;color:var(--tc-soft);}
+#page-tp-home .tph-kpi .v{font:800 26px/1.1 'Poppins',sans-serif;color:var(--tc-ink);margin:6px 0 2px;overflow-wrap:anywhere;}
+#page-tp-home .tph-kpi .t{font-size:12px;color:var(--tc-soft);}
+#page-tp-home .tph-kpi .t.bad{color:#C0352B;} #page-tp-home .tph-kpi .t.good{color:#1E8A52;}
+#page-tp-home .tph-sec{margin-top:34px;}
+#page-tp-home .tph-sh{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+#page-tp-home .tph-sh h2{font:800 22px 'Poppins',sans-serif;color:var(--purple);margin:0;text-transform:none;}
+#page-tp-home .tph-sh .rl{font-size:12.5px;color:var(--tc-soft);}
+#page-tp-home .tph-sh a{margin-left:auto;font:700 13px 'Inter',sans-serif;color:var(--orange-text);cursor:pointer;}
+#page-tp-home .tph-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+#page-tp-home .tph-card h3{font:700 15.5px 'Poppins',sans-serif;color:var(--purple);margin:0 0 14px;text-transform:none;}
+#page-tp-home .tph-bar{display:grid;grid-template-columns:96px minmax(0,1fr) 54px;align-items:center;gap:12px;margin:11px 0;font-size:13px;color:var(--tc-ink);}
+#page-tp-home .tph-bar .nm{display:flex;align-items:center;gap:7px;font-weight:600;white-space:nowrap;}
+#page-tp-home .tph-bar .tr{height:12px;border-radius:8px;background:var(--tc-track);overflow:hidden;}
+#page-tp-home .tph-bar .tr i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,var(--purple),#792c4e);transition:width .4s ease;}
+#page-tp-home .tph-bar .tr i.o{background:linear-gradient(90deg,#FE5F00,#FF9A56);} #page-tp-home .tph-bar .tr i.r{background:linear-gradient(90deg,#C0352B,#E8756C);} #page-tp-home .tph-bar .tr i.g{background:linear-gradient(90deg,#1E8A52,#5CCB92);}
+#page-tp-home .tph-bar .n{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;}
+#page-tp-home .tph-bar.amt{grid-template-columns:96px minmax(0,1fr) 96px;}
+#page-tp-home .tph-donutwrap{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+#page-tp-home .tph-donut{--p1:25;--p2:50;--p3:75;width:150px;height:150px;border-radius:50%;flex:0 0 auto;position:relative;background:conic-gradient(var(--c1) 0 calc(var(--p1)*1%),var(--c2) 0 calc(var(--p2)*1%),var(--c3) 0 calc(var(--p3)*1%),var(--c4) 0);}
+#page-tp-home .tph-donut::after{content:"";position:absolute;inset:26px;border-radius:50%;background:var(--tc-card);}
+#page-tp-home .tph-donut b{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1;font:800 20px 'Poppins',sans-serif;color:var(--tc-ink);}
+#page-tp-home .tph-donut b small{font:600 11px 'Inter',sans-serif;color:var(--tc-soft);}
+#page-tp-home .tph-legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:9px;}
+#page-tp-home .tph-legend div{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--tc-ink);}
+#page-tp-home .tph-legend i{width:11px;height:11px;border-radius:50%;flex:0 0 auto;}
+#page-tp-home .tph-legend span{margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums;}
+#page-tp-home .tph-rank{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;}
+#page-tp-home .tph-rank li{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--tc-line);font-size:13.5px;}
+#page-tp-home .tph-rank li:last-child{border-bottom:0;}
+#page-tp-home .tph-rank .rk{width:26px;height:26px;border-radius:50%;background:var(--tc-chip);color:var(--orange-text);font:800 12px 'Poppins',sans-serif;display:flex;align-items:center;justify-content:center;}
+#page-tp-home .tph-rank li:nth-child(-n+3) .rk{background:var(--orange);color:#fff;}
+#page-tp-home .tph-rank .pn{min-width:0;} #page-tp-home .tph-rank .pn b{display:block;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;} #page-tp-home .tph-rank .pn small{color:var(--tc-soft);font-size:11.5px;}
+#page-tp-home .tph-rank .am{font-weight:800;font-variant-numeric:tabular-nums;}
+#page-tp-home .tph-more{margin-top:10px;background:transparent;border:1.5px solid var(--tc-line);border-radius:30px;padding:8px 16px;font:700 12.5px 'Inter',sans-serif;color:var(--tc-ink);cursor:pointer;}
+#page-tp-home .tph-tp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+#page-tp-home .tph-pc{background:var(--tc-card);border:1px solid var(--tc-line);border-radius:18px;box-shadow:var(--shadow-soft);padding:16px 18px;display:flex;flex-direction:column;gap:12px;min-width:0;}
+#page-tp-home .tph-pc .hd{display:flex;align-items:center;gap:12px;}
+#page-tp-home .tph-pc .av{width:42px;height:42px;border-radius:13px;background:var(--tc-chip);color:var(--orange-text);font:800 14px 'Poppins',sans-serif;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+#page-tp-home .tph-pc .hd b{display:block;font:700 14.5px 'Poppins',sans-serif;color:var(--tc-ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;} #page-tp-home .tph-pc .hd small{color:var(--tc-soft);font-size:11.5px;}
+#page-tp-home .tph-pc .st{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+#page-tp-home .tph-pc .st div{background:var(--tc-chip);border-radius:12px;padding:8px 10px;} #page-tp-home .tph-pc .st small{display:block;font:700 10px 'Inter',sans-serif;letter-spacing:.4px;text-transform:uppercase;color:var(--tc-soft);} #page-tp-home .tph-pc .st b{font:800 15px 'Poppins',sans-serif;color:var(--tc-ink);}
+#page-tp-home .tph-pc .st b.pos{color:#1E8A52;} #page-tp-home .tph-pc .st b.neg{color:#C0352B;}
+#page-tp-home .tph-pc .btn{min-height:38px;font-size:12.5px;padding:0 14px;align-self:flex-start;}
+@media(max-width:1000px){#page-tp-home .tph-top{grid-template-columns:1fr;} #page-tp-home .tph-tp{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:760px){
+  #page-tp-home .tph-two{grid-template-columns:1fr;} #page-tp-home .tph-kpis{grid-template-columns:repeat(2,minmax(0,1fr));} #page-tp-home .tph-tp{grid-template-columns:1fr;}
+  #page-tp-home .tph-fig .big{font-size:34px;} #page-tp-home .tph-bar{grid-template-columns:84px minmax(0,1fr) 46px;} #page-tp-home .tph-bar.amt{grid-template-columns:84px minmax(0,1fr) 84px;}
+  #page-tp-home .es-hero{padding-bottom:70px;}
+}
+</style>
+<style>
+/* Mockup helper: "viewing as" switch on both logged-in homes (Registered Partner home <-> Trusted Partner home), same pattern as Marketplace / My Profile */
+.hm-sw{position:absolute;right:20px;top:10px;z-index:6;display:flex;align-items:center;gap:8px;font:700 10.5px 'Inter',sans-serif;letter-spacing:.3px;text-transform:uppercase;color:rgba(255,255,255,.86);}
+.hm-sw .seg{display:inline-flex;border:1.5px dashed rgba(255,255,255,.4);border-radius:9px;overflow:hidden;background:rgba(255,255,255,.1);}
+.hm-sw button{border:0;background:transparent;color:#fff;font:700 10.5px 'Inter',sans-serif;padding:4px 10px;cursor:pointer;text-transform:none;letter-spacing:0;}
+.hm-sw button.on{background:var(--orange);}
+.hm-sw.light{color:var(--ink-soft);}
+.hm-sw.light .seg{border-color:#E3B993;background:rgba(255,255,255,.75);}
+.hm-sw.light button{color:var(--ink);} .hm-sw.light button.on{color:#fff;}
+#dashMainContent section.hero{position:relative;}
+@media(max-width:700px){.hm-sw{position:static;justify-content:flex-end;padding:10px 14px 0;} .hm-sw.light{padding-top:12px;}}
+</style>
+<style>
+/* Net4Log Services (2026-10-12): services grouped into Connect / Operate / Protect panels (supplied "SERVICES Net4Log Servcies Final" design). Unique sv- classes. */
+.sv-intro{max-width:880px;margin:0 auto;text-align:center;font-size:16px;line-height:1.75;color:var(--ink-soft,#5B5470)}
+.sv-intro strong{color:var(--purple,#2A007C);font-weight:600}
+.sv-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch;max-width:1120px;margin:0 auto}
+.sv-group{display:flex;flex-direction:column;background:#fff;border:1px solid var(--sv-line);border-radius:22px;overflow:hidden;box-shadow:0 12px 32px rgba(73,28,80,.08)}
+.sv-connect{--sv-line:#F6E3D6;--sv-head:#FFF0E2;--sv-label:#B3460C}
+.sv-operate{--sv-line:#CDEBDB;--sv-head:#E0F4EA;--sv-label:#18704A}
+.sv-protect{--sv-line:#F3E6BD;--sv-head:#FFF6D9;--sv-label:#8A5A00}
+.sv-head{min-height:132px;display:flex;align-items:flex-start;padding:26px 24px 22px;background:var(--sv-head)}
+.sv-eyebrow{margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--sv-label)}
+.sv-title{margin:0 0 6px;font-size:21px;font-weight:600;line-height:1.25;color:var(--purple,#2A007C)}
+.sv-sub{margin:0;font-size:13px;line-height:1.5;color:var(--ink-soft,#5B5470)}
+.sv-body{display:flex;flex-direction:column;gap:10px;padding:16px;flex:1}
+.sv-item{display:flex;align-items:center;gap:14px;padding:12px;min-height:100px;border:1px solid #F3ECE6;border-radius:14px;background:#fff;color:var(--purple,#2A007C);text-decoration:none;cursor:pointer;transition:border-color .15s,background-color .15s}
+.sv-item:hover{border-color:var(--sv-line);background:#FFFCFA;text-decoration:none}
+.sv-item:focus-visible,.sv-btn:focus-visible{outline:2px solid var(--purple,#2A007C);outline-offset:2px}
+.sv-ic{flex-shrink:0;width:42px;height:42px;border-radius:11px;background:var(--purple,#2A007C);color:#fff;display:flex;align-items:center;justify-content:center}
+.sv-item:nth-child(even) .sv-ic{background:var(--orange,#FE5F00)}
+.sv-text{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.sv-name{font-size:15px;font-weight:600}
+.sv-desc{font-size:12.5px;line-height:1.4;color:var(--ink-soft,#5B5470)}
+.sv-help{margin-top:auto;display:flex;flex-direction:column;gap:10px;padding:20px;border-radius:16px;background:#FFFBEE}
+.sv-help-t{margin:0;font-size:16px;font-weight:600;color:var(--purple,#2A007C)}
+.sv-help-x{margin:0;font-size:13px;line-height:1.5;color:var(--ink-soft,#5B5470)}
+.sv-btn{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 20px;border-radius:999px;background:var(--orange,#FE5F00);color:#1A0550;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer}
+.sv-btn:hover{background:#E85600;color:#1A0550;text-decoration:none}
+@media (max-width:960px){.sv-grid{grid-template-columns:1fr;max-width:560px}}
+@media (max-width:640px){.sv-intro{text-align:left}}
+@media (prefers-reduced-motion:reduce){.sv-item{transition:none}}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -4350,33 +4473,35 @@ html body .modal-header .modal-title{ margin-left: 0 !important; margin-right: 0
     <section class="ill-hero full">
 <div class="ill-wrap"><span class="ill-pill"><i></i>Net4Log Services</span>
 <h1 class="ill-h1">NET4LOG <em>Services</em></h1>
+<p class="ill-sub">Everything your logistics business needs, in one trusted network.</p>
 <div class="ill-cta guest-only"><a class="btn btn-primary" href="#" onclick="openRegistration(event)">Join free</a><a class="btn btn-ghost" href="#" onclick="showStaticPage('contact-us',event)">Talk to us</a></div>
 </div>
 <div class="ill-art"><svg viewBox="0 0 560 270" preserveAspectRatio="xMaxYMax meet" aria-hidden="true"><circle cx="480" cy="64" r="44" fill="#FFB27A" opacity=".35"/><circle cx="480" cy="64" r="30" fill="#FF9A56"/><g class="ill-cloud1"><use href="#ill-cloud" x="300" y="22" width="120" height="44" opacity=".9"/></g><g class="ill-cloud2"><use href="#ill-cloud" x="40" y="86" width="96" height="36" opacity=".75"/></g><g class="ill-birds" fill="none" stroke="#E8541B" stroke-linecap="round" stroke-linejoin="round"><path d="M18 58 q6-8 12 0 q6-8 12 0" stroke-width="2"/><path d="M56 40 q5-6 10 0 q5-6 10 0" stroke-width="1.8"/><path d="M44 76 q4-5 8 0 q4-5 8 0" stroke-width="1.6"/></g><g class="ill-shipg"><use href="#ill-ship" x="60" y="112" width="440" height="170"/></g><path class="ill-dash" d="M182 52 Q256 96 328 106" fill="none" stroke="#E8541B" stroke-width="1.8"/><g class="ill-flyer"><g transform="rotate(-48 163 38)"><use href="#ill-plane" x="128" y="3" width="70" height="70"/></g></g><circle cx="334" cy="108" r="7" fill="#FE5F00"/></svg></div><div class="ill-sea b"></div><div class="ill-sea a"></div>
 </section>
 
-    <section class="section">
-        <div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;">
-            <p style="font-size:16px;color:var(--ink-soft);"><strong style="color:var(--purple);">Net4Log offers more than a connection platform –</strong> it's a complete suite of products and services built to elevate your business. At its core is <strong style="color:var(--purple);">Partner World</strong>, the world's most trusted global directory of logisticians, connecting you with thoroughly vetted partners to power your global operations. We also offer a range of <strong style="color:var(--purple);">digital solutions</strong> to help you streamline processes through technology, and our annual <strong style="color:var(--purple);">Net4Log conferences</strong> bring your partners together in person to strengthen key relationships. Explore our services below to see how we can accelerate your growth.</p>
-        </div>
-    </section>
+    <section class="section"><div class="wrap" style="text-align:center;margin-left:auto;margin-right:auto;"><p class="sv-intro"><strong>Net4Log offers more than a connection platform</strong> – it’s a complete suite of services built to grow your business. <strong>Connect</strong> with trusted partners worldwide through Partner World and our annual conferences. <strong>Operate</strong> more efficiently with digital tools, negotiated rates and add-on services. And <strong>trade with confidence</strong>, backed by dispute support and freight protection. Explore our services below.</p></div></section>
 
-    <section class="section" style="padding-top:0;">
-        <div class="wrap">
-            <div class="feature-grid">
-<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('partner-world',event)" onkeydown="if(event.key==='Enter')showStaticPage('partner-world',event)"><span class="f-ic"><svg width="26" height="26" aria-hidden="true"><use href="#n4l-partnerworld"></use></svg></span><h3>Partner World</h3></article>
-<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('partner-marketplace',event)" onkeydown="if(event.key==='Enter')showStaticPage('partner-marketplace',event)"><span class="f-ic"><svg width="26" height="26" aria-hidden="true"><use href="#n4l-partnermarketplace"></use></svg></span><h3>Partner Marketplace</h3></article>
-<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('digital-connect',event)" onkeydown="if(event.key==='Enter')showStaticPage('digital-connect',event)"><span class="f-ic"><svg width="26" height="26" aria-hidden="true"><use href="#n4l-digitalconnect"></use></svg></span><h3>Digital Connect</h3></article>
-<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('statistics',event)" onkeydown="if(event.key==='Enter')showStaticPage('statistics',event)"><span class="f-ic"><svg width="26" height="26" aria-hidden="true"><use href="#n4l-statistics"></use></svg></span><h3>Statistics</h3></article>
-<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('value-adds',event)" onkeydown="if(event.key==='Enter')showStaticPage('value-adds',event)"><span class="f-ic"><svg width="26" height="26" aria-hidden="true"><use href="#n4l-valueadds"></use></svg></span><h3>Value Adds</h3></article>
-<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('legal-council',event)" onkeydown="if(event.key==='Enter')showStaticPage('legal-council',event)"><span class="f-ic"><svg width="26" height="26" aria-hidden="true"><use href="#n4l-legalcounsel"></use></svg></span><h3>Legal Council</h3></article>
-<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('conference',event)" onkeydown="if(event.key==='Enter')showStaticPage('conference',event)"><span class="f-ic"><svg width="26" height="26" aria-hidden="true"><use href="#n4l-conference"></use></svg></span><h3>Conference</h3></article>
-<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('better-buy',event)" onkeydown="if(event.key==='Enter')showStaticPage('better-buy',event)"><span class="f-ic"><svg width="26" height="26" aria-hidden="true"><use href="#n4l-betterbuy"></use></svg></span><h3>Better Buy</h3></article>
-<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('freight-protection',event)" onkeydown="if(event.key==='Enter')showStaticPage('freight-protection',event)"><span class="f-ic"><svg width="26" height="26" aria-hidden="true"><use href="#n4l-freightprotection"></use></svg></span><h3>Freight Protection Plan</h3></article>
-<article class="feature svc-card" role="link" tabindex="0" onclick="showStaticPage('trade-influencer',event)" onkeydown="if(event.key==='Enter')showStaticPage('trade-influencer',event)"><span class="f-ic"><svg width="26" height="26" aria-hidden="true"><use href="#n4l-tradeinfluencer"></use></svg></span><h3>Trade Influencer</h3></article>
-            </div>
-        </div>
-    </section>
+    <section class="section" style="padding-top:0;"><div class="wrap">
+<div class="sv-grid">
+<section class="sv-group sv-connect" aria-labelledby="sv-g-connect"><header class="sv-head"><div><p class="sv-eyebrow">Connect</p><h3 class="sv-title" id="sv-g-connect">Grow your network</h3><p class="sv-sub">Find trusted partners, showcase your services and win new business.</p></div></header><div class="sv-body">
+<a class="sv-item" href="#" onclick="showStaticPage('partner-world',event)"><span class="sv-ic"><svg width="24" height="24" aria-hidden="true"><use href="#n4l-partnerworld"></use></svg></span><span class="sv-text"><span class="sv-name">Partner World</span><span class="sv-desc">Find, connect and grow with partners across the Net4Log network.</span></span></a>
+<a class="sv-item" href="#" onclick="showStaticPage('partner-marketplace',event)"><span class="sv-ic"><svg width="24" height="24" aria-hidden="true"><use href="#n4l-partnermarketplace"></use></svg></span><span class="sv-text"><span class="sv-name">Partner Marketplace</span><span class="sv-desc">Showcase your services, find solutions and generate leads with partners.</span></span></a>
+<a class="sv-item" href="#" onclick="showStaticPage('conference',event)"><span class="sv-ic"><svg width="24" height="24" aria-hidden="true"><use href="#n4l-conference"></use></svg></span><span class="sv-text"><span class="sv-name">Conference</span><span class="sv-desc">Meet partners face to face</span></span></a>
+<a class="sv-item" href="#" onclick="showStaticPage('trade-influencer',event)"><span class="sv-ic"><svg width="24" height="24" aria-hidden="true"><use href="#n4l-tradeinfluencer"></use></svg></span><span class="sv-text"><span class="sv-name">Trade Influencer</span><span class="sv-desc">An extra sales channel connecting traders to partners’ online rates and quotes.</span></span></a>
+</div></section>
+<section class="sv-group sv-operate" aria-labelledby="sv-g-operate"><header class="sv-head"><div><p class="sv-eyebrow">Operate</p><h3 class="sv-title" id="sv-g-operate">Run your business</h3><p class="sv-sub">Digital tools, shared services and negotiated rates to cut costs.</p></div></header><div class="sv-body">
+<a class="sv-item" href="#" onclick="showStaticPage('digital-connect',event)"><span class="sv-ic"><svg width="24" height="24" aria-hidden="true"><use href="#n4l-digitalconnect"></use></svg></span><span class="sv-text"><span class="sv-name">Digital Connect</span><span class="sv-desc">Affordable digital tools that streamline every stage of shipment execution.</span></span></a>
+<a class="sv-item" href="#" onclick="showStaticPage('statistics',event)"><span class="sv-ic"><svg width="24" height="24" aria-hidden="true"><use href="#n4l-statistics"></use></svg></span><span class="sv-text"><span class="sv-name">Statistics</span><span class="sv-desc">Shipping volume reports by sea, air, land and rail, plus performance reviews.</span></span></a>
+<a class="sv-item" href="#" onclick="showStaticPage('better-buy',event)"><span class="sv-ic"><svg width="24" height="24" aria-hidden="true"><use href="#n4l-betterbuy"></use></svg></span><span class="sv-text"><span class="sv-name">Better Buy</span><span class="sv-desc">Save on shipping with carrier rates negotiated on our collective volume.</span></span></a>
+<a class="sv-item" href="#" onclick="showStaticPage('value-adds',event)"><span class="sv-ic"><svg width="24" height="24" aria-hidden="true"><use href="#n4l-valueadds"></use></svg></span><span class="sv-text"><span class="sv-name">Value Adds</span><span class="sv-desc">Add-on services from legal advice and cargo insurance to JBM software.</span></span></a>
+</div></section>
+<section class="sv-group sv-protect" aria-labelledby="sv-g-protect"><header class="sv-head"><div><p class="sv-eyebrow">Protect</p><h3 class="sv-title" id="sv-g-protect">Trade with confidence</h3><p class="sv-sub">Resolve disputes fairly and stay protected if a partner can’t pay.</p></div></header><div class="sv-body">
+<a class="sv-item" href="#" onclick="showStaticPage('legal-council',event)"><span class="sv-ic"><svg width="24" height="24" aria-hidden="true"><use href="#n4l-legalcounsel"></use></svg></span><span class="sv-text"><span class="sv-name">Legal Council</span><span class="sv-desc">A clear framework to resolve partner disputes, with Net4Log Legal support.</span></span></a>
+<a class="sv-item" href="#" onclick="showStaticPage('freight-protection',event)"><span class="sv-ic"><svg width="24" height="24" aria-hidden="true"><use href="#n4l-freightprotection"></use></svg></span><span class="sv-text"><span class="sv-name">Freight Protection Plan</span><span class="sv-desc">Insurance against unpaid freight invoices if a partner becomes insolvent.</span></span></a>
+<div class="sv-help"><p class="sv-help-t">Need help choosing?</p><p class="sv-help-x">Our team can recommend the right services for your business.</p><a class="sv-btn" href="#" onclick="showStaticPage('contact-us',event)">Talk to our team <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+</div></section>
+</div>
+    </div></section>
     </main>
 </div>
 
@@ -6264,6 +6389,98 @@ window.n4lHeroNet = function(pageId, canvasId){
         </div>
     </section>
     </main>
+</div>
+
+<div class="static-page es-fam" id="page-tp-home" style="display:none;">
+<main>
+<section class="es-hero">
+    <canvas class="es-net" id="tphNet" aria-hidden="true"></canvas><div class="es-floor" aria-hidden="true"></div>
+    <div class="hm-sw"><span>Mockup &middot; viewing as</span><span class="seg"><button type="button" onclick="homeView('reg')">Registered Partner</button><button type="button" class="on" onclick="homeView('tp')">Trusted Partner</button></span></div>
+    <div class="wrap">
+        <div class="es-id">
+            <div class="es-badge"><span class="sx-em">&#129309;</span></div>
+            <div class="es-who">
+                <div class="es-kick">Trusted Partner</div>
+                <h1>Hello, Captain Aslam</h1>
+                <div class="es-meta"><span><span class="sx-em">&#128100;</span> Partner ID <b>NET000066</b></span><span><span class="sx-em">&#127970;</span> Aslam And Company &middot; Trusted Partner</span></div>
+            </div>
+        </div>
+        <div class="tph-range">
+            <div class="tph-seg" id="tphSeg" role="group" aria-label="Date range">
+                <button type="button" data-r="7d" onclick="tphRange('7d')">Last 7 days</button>
+                <button type="button" data-r="30d" onclick="tphRange('30d')">Last 30 days</button>
+                <button type="button" data-r="ytd" class="on" onclick="tphRange('ytd')">Year to date</button>
+                <button type="button" data-r="custom" onclick="tphRange('custom')">Custom&hellip;</button>
+            </div>
+            <div class="tph-custom" id="tphCustom"><span>From</span><input type="date" id="tphFrom" value="2026-09-01"><span>to</span><input type="date" id="tphTo" value="2026-10-12"><button type="button" class="btn btn-primary" onclick="tphRange('custom',true)">Apply</button></div>
+        </div>
+    </div>
+</section>
+
+<section class="tph-body">
+<div class="wrap">
+    <div class="tph-top">
+        <div class="tph-card tph-fig">
+            <div class="ey" id="tphEy">Year to date &middot; active records only</div>
+            <div class="big"><span id="tphBig">47,530.00</span><small>USD</small></div>
+            <div class="sub" id="tphSub">Invoiced in range &mdash; sales 29,730.00 &middot; purchases 17,800.00</div>
+            <div class="tph-chips">
+                <div class="tph-chip od"><span class="sx-em">&#9201;</span><span id="tphChipOd">1 invoice overdue &middot; 1,200.00</span></div>
+                <div class="tph-chip ok"><span class="sx-em">&#9989;</span><span id="tphChipOk">22,400.00 settled</span></div>
+                <div class="tph-chip dp"><span class="sx-em">&#9878;&#65039;</span><span id="tphChipDp">1 active dispute &middot; 1,200.00</span></div>
+            </div>
+        </div>
+        <div class="tph-kpis">
+            <div class="tph-kpi k1"><div class="l">Shipments (in range)</div><div class="v" id="tphK1">142</div><div class="t" id="tphK1t">across 4 modes</div></div>
+            <div class="tph-kpi k2"><div class="l">In transit (in range)</div><div class="v" id="tphK2">18</div><div class="t" id="tphK2t">interim status</div></div>
+            <div class="tph-kpi k3"><div class="l">Booked / pending</div><div class="v" id="tphK3">6</div><div class="t" id="tphK3t">need a master status</div></div>
+            <div class="tph-kpi k4"><div class="l">Outstanding</div><div class="v">2,940.00</div><div class="t">all-time, USD</div></div>
+            <div class="tph-kpi k5"><div class="l">Overdue</div><div class="v">1,200.00</div><div class="t bad">1 invoice past due</div></div>
+            <div class="tph-kpi k6"><div class="l">Disputes</div><div class="v">1</div><div class="t good">1,200.00 under review</div></div>
+        </div>
+    </div>
+
+    <div class="tph-sec">
+        <div class="tph-sh"><h2>E-Shipments</h2><span class="rl" id="tphRl1">Year to date</span><a onclick="showStaticPage('eshipments',event)">Open E-Shipments &rarr;</a></div>
+        <div class="tph-two">
+            <div class="tph-card"><h3>Shipment volume by mode</h3><div id="tphModes"></div></div>
+            <div class="tph-card"><h3>Status mix</h3>
+                <div class="tph-donutwrap">
+                    <div class="tph-donut" id="tphDonut1"><b><span id="tphDonut1T">142</span><small>shipments</small></b></div>
+                    <div class="tph-legend" id="tphLegend1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tph-sec">
+        <div class="tph-sh"><h2>E-SOA</h2><span class="rl">Receivables &middot; all-time</span><a onclick="showStaticPage('esoa',event)">Open E-SOA &rarr;</a></div>
+        <div class="tph-two">
+            <div class="tph-card"><h3>Outstanding by age</h3><div id="tphAging"></div></div>
+            <div class="tph-card"><h3>Settlement position</h3>
+                <div class="tph-donutwrap">
+                    <div class="tph-donut" id="tphDonut2"><b><span id="tphDonut2T">26.5k</span><small>USD total</small></b></div>
+                    <div class="tph-legend" id="tphLegend2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tph-sec">
+        <div class="tph-sh"><h2>Top partners</h2><span class="rl">Across the whole Net4Log network &middot; by invoiced value &middot; year to date</span></div>
+        <div class="tph-two">
+            <div class="tph-card"><h3>Top sellers <small style="font:600 12px 'Inter';color:var(--tc-soft)">(network-wide)</small></h3><ol class="tph-rank" id="tphSellers"></ol><button type="button" class="tph-more" onclick="tphMore('tphSellers',this)">Show all 10</button></div>
+            <div class="tph-card"><h3>Top buyers <small style="font:600 12px 'Inter';color:var(--tc-soft)">(network-wide)</small></h3><ol class="tph-rank" id="tphBuyers"></ol><button type="button" class="tph-more" onclick="tphMore('tphBuyers',this)">Show all 10</button></div>
+        </div>
+    </div>
+
+    <div class="tph-sec">
+        <div class="tph-sh"><h2>Trading partners</h2><span class="rl">Your most active counterparties</span></div>
+        <div class="tph-tp" id="tphPartners"></div>
+    </div>
+</div>
+</section>
+</main>
 </div>
 
 <!-- ===================== FORGOT PASSWORD ===================== -->
@@ -9845,6 +10062,7 @@ window.n4lHeroNet = function(pageId, canvasId){
 
 <!-- ===================== HERO ===================== -->
 <section class="hero">
+    <div class="hm-sw light"><span>Mockup &middot; viewing as</span><span class="seg"><button type="button" class="on" onclick="homeView('reg')">Registered Partner</button><button type="button" onclick="homeView('tp')">Trusted Partner</button></span></div>
     <div class="wrap">
         <div>
             <span class="eyebrow"><span class="dot"></span> Registered Partner</span>
@@ -11144,6 +11362,13 @@ window.n4lHeroNet = function(pageId, canvasId){
 (function(){
     function openFromHash(){
         var slug = (location.hash || '').replace(/^#\/?/, '');
+        if(slug === 'tp-home' || slug === 'rp-home'){
+            var b = document.getElementById('beforeLoginSection'), a = document.getElementById('afterLoginSection');
+            if(b) b.style.display = 'none'; if(a) a.style.display = '';
+            document.body.classList.add('n4l-logged');
+            if(typeof homeView === 'function') homeView(slug === 'tp-home' ? 'tp' : 'reg');
+            return;
+        }
         if(!slug || !document.getElementById('page-' + slug) || typeof showStaticPage !== 'function') return;
         try{ showStaticPage(slug); }catch(e){}
     }
@@ -11379,6 +11604,71 @@ window.n4lHeroNet = function(pageId, canvasId){
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })(window, document);
 
+</script>
+<script>
+/* Trusted Partner Home: sample data + range / list behaviour (mockup only) */
+(function(){
+  var YTD={ship:142,transit:18,booked:6,modes:{Air:31,Sea:78,Land:24,Rail:9},status:{Pending:6,Start:22,Interim:18,End:96},sales:29730,purch:17800,settled:22400,odN:1,odAmt:1200,dpN:1,dpAmt:1200,out:2940};
+  var LBL={'7d':'Last 7 days','30d':'Last 30 days','ytd':'Year to date','custom':'Custom range'};
+  var SCALE={'7d':.035,'30d':.13,'ytd':1};
+  var AGING=[['Current',1740,'g'],['1\u201330 days',0,'o'],['31\u201360 days',1200,'r'],['61\u201390 days',0,'r'],['90+ days',0,'r']];
+  var MODEICON={Air:'\u2708\uFE0F',Sea:'\uD83D\uDEA2',Land:'\uD83D\uDE9A',Rail:'\uD83D\uDE86'};
+  var STC={Pending:'#F2A33A',Start:'#3B82D6',Interim:'#7C55C9',End:'#2FA36B'};
+  var SELL=[['Horizon Global Forwarding','NET000012',482300],['Trans-Oceanic Logistics Ltd','NET000027',431850],['Meridian Logistics Group','NET000078',398420],['Pacific Freight Solutions','NET000041',366190],['Eurolink Cargo GmbH','NET000033',341770],['Sino Gateway Shipping','NET000019',318260],['Atlantic Bridge Freight','NET000058',296540],['Harbour Line Shipping','NET000052',274110],['Southern Cross Logistics','NET000071',251980],['Gulf transport llc','NET000076',233640]];
+  var BUY=[['Trans-Oceanic Logistics Ltd','NET000027',512400],['Horizon Global Forwarding','NET000012',467930],['Sino Gateway Shipping','NET000019',420150],['Eurolink Cargo GmbH','NET000033',389670],['Global Logistics LLC','NET000080',352810],['Atlantic Bridge Freight','NET000058',327440],['Pacific Freight Solutions','NET000041',301920],['Southern Cross Logistics','NET000071',279360],['Oriental Cargo Services','NET000093',256080],['Nordic Sea Logistics','NET000101',238750]];
+  var PART=[['Pacific Freight Solutions','NET000041',38,24,'12,950.00',1],['Meridian Logistics Group','NET000078',27,19,'(10,650.00)',-1],['Global Logistics LLC','NET000080',21,15,'2,780.00',1],['Gulf transport llc','NET000076',17,11,'1,420.00',1],['Harbour Line Shipping','NET000052',14,9,'(860.00)',-1],['Oriental Cargo Services','NET000093',9,6,'540.00',1]];
+  var $=function(id){return document.getElementById(id);};
+  function fmt(n){return n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+  function ini(n){return n.split(' ').slice(0,2).map(function(w){return w[0];}).join('').toUpperCase();}
+  function rank(id,rows,max){ var h=''; rows.forEach(function(r,i){ h+='<li'+(i>=5?' class="x" style="display:none"':'')+'><span class="rk">'+(i+1)+'</span><span class="pn"><b>'+r[0]+'</b><small>Partner ID '+r[1]+'</small></span><span class="am">'+fmt(r[2])+'</span></li>'; }); $(id).innerHTML=h; }
+  function donut(id,vals,cols){ var tot=vals.reduce(function(a,b){return a+b;},0)||1, acc=0, d=$(id), i; for(i=0;i<3;i++){ acc=(i<vals.length)?acc+vals[i]/tot*100:100; d.style.setProperty('--p'+(i+1),acc.toFixed(2)); } for(i=0;i<4;i++){ d.style.setProperty('--c'+(i+1),cols[Math.min(i,cols.length-1)]); } }   /* a donut with fewer than 4 segments repeats its last colour */
+  function legend(id,items){ $(id).innerHTML=items.map(function(it){return '<div><i style="background:'+it[1]+'"></i>'+it[0]+'<span>'+it[2]+'</span></div>';}).join(''); }
+  function render(key,days){
+    var f=SCALE[key]; if(key==='custom') f=Math.max(.01,Math.min(1,days/365));
+    var s=function(n){return Math.round(n*f);};
+    var ship=s(YTD.ship), tr=s(YTD.transit), bk=s(YTD.booked), sales=YTD.sales*f, pur=YTD.purch*f, settled=YTD.settled*f;
+    $('tphEy').innerHTML=(key==='custom'?'Custom range \u00b7 '+days+' days':LBL[key])+' \u00b7 active records only';
+    $('tphBig').textContent=fmt(sales+pur); $('tphSub').innerHTML='Invoiced in range \u2014 sales '+fmt(sales)+' \u00b7 purchases '+fmt(pur);
+    $('tphChipOd').textContent=YTD.odN+' invoice overdue \u00b7 '+fmt(YTD.odAmt); $('tphChipOk').textContent=fmt(settled)+' settled'; $('tphChipDp').textContent=YTD.dpN+' active dispute \u00b7 '+fmt(YTD.dpAmt);
+    $('tphK1').textContent=ship; $('tphK2').textContent=tr; $('tphK3').textContent=bk;
+    var rl=key==='custom'?days+' days':LBL[key]; $('tphRl1').textContent=rl;
+    var modes=YTD.modes, mx=1; Object.keys(modes).forEach(function(k){ mx=Math.max(mx,s(modes[k])); });
+    $('tphModes').innerHTML=Object.keys(modes).map(function(k){ var v=s(modes[k]); return '<div class="tph-bar"><span class="nm">'+MODEICON[k]+' '+k+'</span><span class="tr"><i class="'+(k==='Sea'?'':'o')+'" style="width:'+(v/mx*100)+'%"></i></span><span class="n">'+v+'</span></div>'; }).join('');
+    var st=YTD.status, sv=Object.keys(st).map(function(k){return s(st[k]);}), tot=sv.reduce(function(a,b){return a+b;},0);
+    donut('tphDonut1',sv,Object.keys(st).map(function(k){return STC[k];})); $('tphDonut1T').textContent=tot;
+    legend('tphLegend1',Object.keys(st).map(function(k,i){return [k,STC[k],sv[i]];}));
+  }
+  function static_(){
+    var mx=1; AGING.forEach(function(a){mx=Math.max(mx,a[1]);});
+    $('tphAging').innerHTML=AGING.map(function(a){ return '<div class="tph-bar amt"><span class="nm">'+a[0]+'</span><span class="tr"><i class="'+a[2]+'" style="width:'+(a[1]/mx*100)+'%"></i></span><span class="n">'+fmt(a[1])+'</span></div>'; }).join('');
+    var set=22400,out=YTD.out,dis=YTD.dpAmt; donut('tphDonut2',[set,out-dis,dis],['#2FA36B','#7C55C9','#E8756C']);
+    $('tphDonut2T').textContent=((set+out)/1000).toFixed(1)+'k';
+    legend('tphLegend2',[['Settled','#2FA36B',fmt(set)],['Outstanding','#7C55C9',fmt(out-dis)],['Disputed','#E8756C',fmt(dis)]]);
+    rank('tphSellers',SELL); rank('tphBuyers',BUY);
+    $('tphPartners').innerHTML=PART.map(function(p){ return '<div class="tph-pc"><div class="hd"><span class="av">'+ini(p[0])+'</span><div style="min-width:0"><b>'+p[0]+'</b><small>Partner ID '+p[1]+'</small></div></div><div class="st"><div><small>Shipments</small><b>'+p[2]+'</b></div><div><small>Invoices</small><b>'+p[3]+'</b></div><div><small>Net</small><b class="'+(p[5]>0?'pos':'neg')+'">'+p[4]+'</b></div></div><button type="button" class="btn btn-ghost" onclick="showStaticPage(\'esoa\',event)">View SOA &rarr;</button></div>'; }).join('');
+  }
+  window.tphRange=function(k,apply){
+    var seg=$('tphSeg'); [].forEach.call(seg.children,function(b){ b.classList.toggle('on',b.getAttribute('data-r')===k); });
+    $('tphCustom').classList.toggle('show',k==='custom');
+    if(k==='custom'){ var a=new Date($('tphFrom').value), b=new Date($('tphTo').value); var d=Math.round((b-a)/86400000)+1; if(isNaN(d)||d<1) d=30; render('custom',d); } else render(k);
+  };
+  window.tphMore=function(id,btn){ var open=btn.getAttribute('data-o')==='1'; [].forEach.call($(id).querySelectorAll('li.x'),function(li){ li.style.display=open?'none':''; }); btn.setAttribute('data-o',open?'0':'1'); btn.textContent=open?'Show all 10':'Show top 5'; };
+  static_(); render('ytd');
+  if(window.n4lHeroNet) n4lHeroNet('page-tp-home','tphNet');
+})();
+</script>
+<script>
+/* Mockup helper: switch between the Registered Partner home and the Trusted Partner home (also index.html#rp-home / #tp-home) */
+window.homeView=function(v){
+    if(v==='tp'){ showStaticPage('tp-home'); }
+    else {
+        try{ __staticReturnState='after'; }catch(e){}
+        closeStaticPage();
+        var m=document.getElementById('dashMainContent'), h=document.getElementById('dashHomeContent');   /* the Registered Partner dashboard, not the public home content */
+        if(m) m.style.display=''; if(h) h.style.display='none';
+        window.scrollTo({top:0,behavior:'smooth'});
+    }
+};
 </script>
 </body>
 </html>
