@@ -2192,7 +2192,7 @@ html body .modal-header .modal-title{ margin-left: 0 !important; margin-right: 0
 .TPContainer .tpx-lanes{position:relative;z-index:4;margin-top:22px;background:var(--chip);border:1px solid var(--chipb);color:var(--chipt);border-radius:20px;padding:10px 18px 12px;backdrop-filter:blur(6px);}
 .TPContainer .tpx-lanes .hd{display:flex;justify-content:space-between;align-items:center;font:800 11px Inter,sans-serif;letter-spacing:.6px;text-transform:uppercase;padding:4px 0 6px;}
 .TPContainer .tpx-lanes .hd a{color:inherit;text-decoration:underline;cursor:pointer;font-weight:700;letter-spacing:0;text-transform:none;font-size:12.5px;}
-.TPContainer .tpx-lane{display:grid;grid-template-columns:150px 190px minmax(0,1fr) 84px;gap:14px;align-items:center;padding:8px 0;border-top:1px solid var(--ln);font-size:12.5px;}
+.TPContainer .tpx-lane{display:grid;grid-template-columns:150px 190px minmax(0,1fr) 124px;gap:14px;align-items:center;padding:8px 0;border-top:1px solid var(--ln);font-size:12.5px;}
 .TPContainer .tpx-lane b{font-weight:700;white-space:nowrap;}.TPContainer .tpx-lane .rt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.85;}
 .TPContainer .tpx-lane .ln{position:relative;height:6px;border-radius:4px;background:var(--ln);}
 .TPContainer .tpx-lane .ln i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:4px;background:linear-gradient(90deg,#FE5F00,#FF9A56);transition:width 2.2s cubic-bezier(.2,.8,.2,1);}
@@ -2209,7 +2209,7 @@ html body .modal-header .modal-title{ margin-left: 0 !important; margin-right: 0
 @keyframes tpxtrolley{0%,100%{transform:translateX(0)}50%{transform:translateX(120px)}}@keyframes tpxhang{0%,100%{transform:translateY(0)}35%,65%{transform:translateY(34px)}}
 @keyframes tpxtrain{from{transform:translateX(-420px)}to{transform:translateX(640px)}}@keyframes tpxtruck{from{transform:translateX(640px)}to{transform:translateX(-260px)}}
 @keyframes tpxroad{to{stroke-dashoffset:-48}}@keyframes tpxspin{to{transform:rotate(360deg)}}
-@media(max-width:900px){.TPContainer .tpx-hero{padding:20px 16px 16px;}.TPContainer .tpx-top{grid-template-columns:1fr;}.TPContainer #n4lHeroFigure{font-size:48px;}.TPContainer .tpx-lane{grid-template-columns:1fr 84px;row-gap:6px;}.TPContainer .tpx-lane .ln{grid-column:1/-1;order:3;margin-top:10px;}.TPContainer .tpx-lane .rt{grid-column:1/-1;order:2;}}
+@media(max-width:900px){.TPContainer .tpx-hero{padding:20px 16px 16px;}.TPContainer .tpx-top{grid-template-columns:1fr;}.TPContainer #n4lHeroFigure{font-size:48px;}.TPContainer .tpx-lane{grid-template-columns:1fr 124px;row-gap:6px;}.TPContainer .tpx-lane .ln{grid-column:1/-1;order:3;margin-top:10px;}.TPContainer .tpx-lane .rt{grid-column:1/-1;order:2;}}
 @media(prefers-reduced-motion:reduce){.TPContainer .tpx-hero:not(.motion-on) *{animation:none !important;transition:none !important;}}
 
 /* ===== Live touches for the rest of the Trusted Partner dashboard (2026-10-12): KPI count-up + all-clear, chart grow-in, aging slide-in, value bars, trading-partner cards ===== */
@@ -2311,6 +2311,25 @@ html body .modal-header .modal-title{ margin-left: 0 !important; margin-right: 0
 .TPContainer .tpx-scene svg svg{overflow:hidden;}
 .TPContainer .tpx-scene{z-index:1;}
 .TPContainer .tpx-col{position:relative;z-index:2;}
+
+/* ===== Place picker (2026-10-12): weather + sky for the user's chosen place (default = registered city) ===== */
+.TPContainer .tpx-place{display:inline-flex;align-items:center;gap:6px;margin-left:10px;vertical-align:middle;background:var(--chip);border:1px solid var(--chipb);color:var(--chipt);border-radius:30px;padding:5px 12px;font:700 12px Inter,sans-serif;cursor:pointer;max-width:100%;}
+.TPContainer .tpx-place:hover,.TPContainer .tpx-place[aria-expanded="true"]{border-color:#FE5F00;}
+.TPContainer .tpx-place .nm{max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.TPContainer .tpx-pop{position:absolute;left:0;top:34px;z-index:30;width:min(360px,calc(100vw - 32px));max-height:min(420px,60vh);overflow:auto;background:#fff;color:#2B2140;border:1px solid #F3E6D8;border-radius:20px;box-shadow:0 24px 48px -20px rgba(42,0,124,.45);padding:16px 18px;text-align:left;}
+.TPContainer .tpx-pop[hidden]{display:none;}
+.TPContainer .tpx-pop h4{font:800 13px Poppins,sans-serif;color:#2A007C;margin:0 0 8px;}
+.TPContainer .tpx-pop .cur{background:#FFF3E6;border-radius:12px;padding:9px 12px;font:600 13px Inter,sans-serif;}
+.TPContainer .tpx-pop .cur small{display:block;color:#7A6F8C;font-weight:500;margin-top:2px;}
+.TPContainer .tpx-pop .sec{font:800 11px Inter,sans-serif;letter-spacing:.6px;text-transform:uppercase;color:#7A6F8C;margin:14px 0 6px;}
+.TPContainer .tpx-pop input{width:100%;height:40px;border:1.5px solid #F0DFCF;border-radius:12px;padding:0 12px;font:600 13px Inter,sans-serif;color:#2B2140;background:#fff;}
+.TPContainer .tpx-pop ul{list-style:none;margin:6px 0 0;padding:0;}
+.TPContainer .tpx-pop li button{display:flex;width:100%;align-items:center;gap:10px;text-align:left;background:transparent;border:0;border-radius:10px;padding:8px 10px;font:600 13px Inter,sans-serif;color:#2B2140;cursor:pointer;}
+.TPContainer .tpx-pop li button:hover,.TPContainer .tpx-pop li button:focus-visible{background:#FFF3E6;outline:none;}
+.TPContainer .tpx-pop li small{color:#7A6F8C;font-weight:500;margin-left:auto;white-space:nowrap;}
+.TPContainer .tpx-pop .act{display:block;width:100%;margin-top:8px;text-align:left;background:#fff;border:1.5px solid #F0DFCF;border-radius:12px;padding:9px 12px;font:700 13px Inter,sans-serif;color:#2A007C;cursor:pointer;}
+.TPContainer .tpx-pop .act:hover{border-color:#FE5F00;}
+.TPContainer .tpx-pop .msg{font:500 12px Inter,sans-serif;color:#7A6F8C;padding:6px 10px;}
 </style>
 <style>
 /* Mockup helper: "viewing as" switch on both logged-in homes (Registered Partner home <-> Trusted Partner home), same pattern as Marketplace / My Profile */
@@ -6608,7 +6627,18 @@ window.n4lHeroNet = function(pageId, canvasId){
     </div>
         <div class="tpx-top">
             <div class="tpx-col">
-                <div class="tpx-kick"><span id="n4lHeroEyebrow">Year to date &middot; active records only</span><span class="tpx-live"><i></i>Live</span></div>
+                <div class="tpx-kick"><span id="n4lHeroEyebrow">Year to date &middot; active records only</span><span class="tpx-live"><i></i>Live</span><button type="button" class="tpx-place" id="tpxPlace" aria-haspopup="true" aria-expanded="false" title="Weather and sky for this place"><span class="sx-em">📍</span><span class="nm" id="tpxPlaceName">Dubai</span><span id="tpxPlaceWx">…</span><span aria-hidden="true">▾</span></button></div>
+                <div class="tpx-pop" id="tpxPop" hidden role="dialog" aria-label="Choose the place for weather and sky">
+                    <h4>Weather and sky for</h4>
+                    <div class="cur" id="tpxCur">Dubai<small>Registered city</small></div>
+                    <div class="sec">Search a city</div>
+                    <input id="tpxQ" type="search" placeholder="Type a city, e.g. Rotterdam" autocomplete="off" aria-label="Search a city">
+                    <ul id="tpxRes"></ul>
+                    <div class="sec">My offices</div>
+                    <ul id="tpxOff"></ul>
+                    <button type="button" class="act" id="tpxGeo"><span class="sx-em">📡</span> Use my current location</button>
+                    <button type="button" class="act" id="tpxReset"><span class="sx-em">↺</span> Back to my registered city</button>
+                </div>
                 <h2 class="tpx-greet" id="tpxGreet">Hello, Captain Aslam</h2>
                 <div id="n4lHeroFigure">&nbsp;</div>
                 <div id="n4lHeroSub">&nbsp;</div>
@@ -11985,6 +12015,65 @@ window.n4lHeroNet = function(pageId, canvasId){
  [].forEach.call(document.querySelectorAll('.tpx-mock button[data-m]'),function(b){b.onclick=function(){setM(b.getAttribute('data-m')==='on')}});
  setM(true);
  var _c=hero.className;new MutationObserver(function(){if(hero.className.indexOf('motion-on')<0&&hero.__want!==false){}}).observe(hero,{attributes:true,attributeFilter:['class']});
+})();
+</script>
+<script>
+/* Place picker (mockup): weather + sky for the chosen place. Default = registered city; change by typing a city, picking an office, or using the device location.
+   Live data in this mockup comes from Open-Meteo (geocoding + forecast, no key). Production needs a provider/licence decision and a server-side call. */
+(function(){
+ var P=document.getElementById('page-tp-home'),hero=document.getElementById('n4lHero');if(!P||!hero)return;
+ function $(i){return document.getElementById(i)}
+ function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+ var REG={name:'Dubai',country:'United Arab Emirates',lat:25.2048,lon:55.2708,src:'registered'};
+ var OFFICES=[{name:'Dubai',country:'United Arab Emirates',lat:25.2048,lon:55.2708,tag:'Head office'},{name:'Rotterdam',country:'Netherlands',lat:51.9244,lon:4.4777,tag:'Branch'},{name:'Singapore',country:'Singapore',lat:1.3521,lon:103.8198,tag:'Branch'}];
+ var KEY='n4lHeroPlace';
+ function load(){try{var v=JSON.parse(localStorage.getItem(KEY));if(v&&v.name&&isFinite(v.lat))return v}catch(e){}return REG}
+ function save(p){try{localStorage.setItem(KEY,JSON.stringify(p))}catch(e){}}
+ var place=load(),seq=0;
+ function wxInfo(c){if(c>=95)return['Thunderstorm','storm'];if((c>=51&&c<=67)||(c>=80&&c<=82))return[c>=61?'Rain':'Drizzle','rain'];if((c>=71&&c<=77)||c===85||c===86)return['Snow','clear'];if(c===45||c===48)return['Fog','clear'];if(c===3)return['Overcast','clear'];if(c===2)return['Partly cloudy','clear'];return['Clear','clear']}
+ function mins(s){return parseInt(s.slice(11,13),10)*60+parseInt(s.slice(14,16),10)}
+ function bucket(n,sr,ss){if(n<sr-30)return't-night';if(n<sr+240)return't-morning';if(n<ss-90)return't-day';if(n<ss+30)return't-evening';return't-night'}
+ function clickBtn(sel){var b=P.querySelector('.tpx-mock '+sel);if(b)b.click()}
+ function label(p,wx){$('tpxPlaceName').textContent=p.name;$('tpxPlaceWx').textContent=wx?'\u00B7 '+wx:'';$('tpxCur').innerHTML=esc(p.name)+(p.country?', '+esc(p.country):'')+'<small>'+({registered:'Your registered city',office:'One of your offices',search:'Chosen city',device:'Your current location'}[p.src]||'')+'</small>'}
+ function fallback(p){var h=new Date().getHours();clickBtn('button[data-t="'+(h<11?'t-morning':h<17?'t-day':h<20?'t-evening':'t-night')+'"]');clickBtn('button[data-w="clear"]');label(p,'weather unavailable')}
+ function apply(p){
+  place=p;label(p,'\u2026');var my=++seq;
+  var url='https://api.open-meteo.com/v1/forecast?latitude='+p.lat+'&longitude='+p.lon+'&current=temperature_2m,weather_code&daily=sunrise,sunset&timezone=auto&forecast_days=1';
+  if(!window.fetch){fallback(p);return}
+  fetch(url).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(d){
+   if(my!==seq)return;
+   var c=d.current,sr=d.daily.sunrise[0],ss=d.daily.sunset[0],info=wxInfo(c.weather_code);
+   clickBtn('button[data-t="'+bucket(mins(c.time),mins(sr),mins(ss))+'"]');clickBtn('button[data-w="'+info[1]+'"]');
+   label(p,Math.round(c.temperature_2m)+'\u00B0C '+info[0].toLowerCase());
+  }).catch(function(){if(my===seq)fallback(p)});
+ }
+ function choose(p){save(p);closePop();apply(p)}
+ /* panel open/close */
+ var pop=$('tpxPop'),btn=$('tpxPlace');
+ var topEl=hero.querySelector('.tpx-top');
+ function openPop(){pop.hidden=false;btn.setAttribute('aria-expanded','true');if(topEl)topEl.style.zIndex='40';$('tpxQ').focus()}
+ function closePop(){pop.hidden=true;btn.setAttribute('aria-expanded','false');if(topEl)topEl.style.zIndex=''}
+ btn.onclick=function(e){e.stopPropagation();pop.hidden?openPop():closePop()};
+ document.addEventListener('click',function(e){if(!pop.hidden&&!pop.contains(e.target)&&e.target!==btn&&!btn.contains(e.target))closePop()});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!pop.hidden){closePop();btn.focus()}});
+ /* offices */
+ $('tpxOff').innerHTML=OFFICES.map(function(o,i){return '<li><button type="button" data-i="'+i+'"><span class="sx-em">\uD83C\uDFE2</span> '+esc(o.name)+'<small>'+esc(o.tag)+'</small></button></li>'}).join('');
+ $('tpxOff').onclick=function(e){var b=e.target.closest('button[data-i]');if(!b)return;var o=OFFICES[b.getAttribute('data-i')];choose({name:o.name,country:o.country,lat:o.lat,lon:o.lon,src:'office'})};
+ /* type-ahead city search */
+ var timer=null;
+ $('tpxQ').oninput=function(){clearTimeout(timer);var q=this.value.trim(),ul=$('tpxRes');if(q.length<2){ul.innerHTML='';return}
+  timer=setTimeout(function(){ul.innerHTML='<li class="msg">Searching\u2026</li>';
+   fetch('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(q)+'&count=6&language=en&format=json').then(function(r){return r.json()}).then(function(d){
+    var rs=d.results||[];if(!rs.length){ul.innerHTML='<li class="msg">No city found. Check the spelling.</li>';return}
+    ul.innerHTML=rs.map(function(c,i){return '<li><button type="button" data-i="'+i+'">'+esc(c.name)+'<small>'+esc([c.admin1,c.country].filter(Boolean).join(', '))+'</small></button></li>'}).join('');
+    ul.onclick=function(e){var b=e.target.closest('button[data-i]');if(!b)return;var c=rs[b.getAttribute('data-i')];choose({name:c.name,country:c.country||'',lat:c.latitude,lon:c.longitude,src:'search'})};
+   }).catch(function(){ul.innerHTML='<li class="msg">Search is not available right now.</li>'})},300)};
+ /* device location (opt-in) */
+ $('tpxGeo').onclick=function(){var g=this;if(!navigator.geolocation){$('tpxRes').innerHTML='<li class="msg">This browser cannot share a location.</li>';return}
+  navigator.geolocation.getCurrentPosition(function(pos){choose({name:'My location',country:'',lat:pos.coords.latitude,lon:pos.coords.longitude,src:'device'})},function(){$('tpxRes').innerHTML='<li class="msg">Location was not shared. You can still search a city.</li>'},{timeout:8000})};
+ $('tpxReset').onclick=function(){choose(REG)};
+ /* start + refresh every 30 min */
+ apply(place);setInterval(function(){apply(place)},30*60*1000);
 })();
 </script>
 <script>
