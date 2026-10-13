@@ -2082,7 +2082,7 @@ html body .modal-header .modal-title{ margin-left: 0 !important; margin-right: 0
 .TPContainer .n4l-kpi-tile::before{content:var(--ke,"");order:-1;position:relative;z-index:1;width:40px;height:40px;border-radius:13px;background:var(--kc,#F1EAFB);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px;}
 .TPContainer .n4l-kpi-tile>*{position:relative;z-index:1;}
 .TPContainer .n4l-kpi-tile:nth-child(1){--kc:#FFE8D4;--ke:"\1F6A2";}
-.TPContainer .n4l-kpi-tile:nth-child(2){--kc:#DCEBFB;--ke:"\1F69B";}
+.TPContainer .n4l-kpi-tile:nth-child(2){--kc:#DCEBFB;--ke:"\1F69A";}
 .TPContainer .n4l-kpi-tile:nth-child(3){--kc:#FFF0D1;--ke:"\23F3";}
 .TPContainer .n4l-kpi-tile:nth-child(4){--kc:#E9E0FA;--ke:"\1F9FE";}
 .TPContainer .n4l-kpi-tile:nth-child(5){--kc:#FADFDC;--ke:"\23F1";}
@@ -2279,21 +2279,6 @@ html body .modal-header .modal-title{ margin-left: 0 !important; margin-right: 0
 @media(max-width:700px){.TPContainer .tpx-mock{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch}.TPContainer .tpx-mock>*{flex:0 0 auto}}
 
 /* ===== Weather layer (2026-10-12): Rain and Thunderstorm over any hero scene ===== */
-.TPContainer .tpx-wx{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden;opacity:0;transition:opacity .8s;}
-.TPContainer .tpx-hero.wx-rain .tpx-wx,.TPContainer .tpx-hero.wx-storm .tpx-wx{opacity:1;}
-.TPContainer .tpx-wx i{position:absolute;top:-8%;width:2px;border-radius:2px;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(214,228,255,.9));transform:skewX(-12deg);animation:tpxrain linear infinite;}
-.TPContainer .tpx-wx .wxc{position:absolute;left:0;top:0;width:200%;height:46%;animation:tpxwv 60s linear infinite;opacity:.55;}
-.TPContainer .tpx-wx .flash{position:absolute;inset:0;background:#fff;opacity:0;}
-.TPContainer .tpx-hero.wx-storm .tpx-wx .flash{animation:tpxflash 7s linear infinite;}
-.TPContainer .tpx-wx .bolt{position:absolute;top:6%;width:70px;height:46%;opacity:0;filter:drop-shadow(0 0 10px #FFF3B0);}
-.TPContainer .tpx-hero.wx-storm .tpx-wx .bolt{animation:tpxflash 7s linear infinite;}
-.TPContainer .tpx-hero.wx-storm .tpx-wx .bolt.b2{animation-delay:-3.4s;}
-.TPContainer .tpx-hero.wx-storm .tpx-wx .flash.f2{animation-delay:-3.4s;}
-.TPContainer .tpx-hero.wx-rain{--sky1:#9AA6BA;--sky2:#D3D0DB;--kick:#33466b;--sea1:#6C8FAE;--sea2:#3E5F80;--stars:0;--gr1:#8A7D78;--gr2:#6F6460;--hill:#B9C2D0;--hill2:#A3AEC0;}
-.TPContainer .tpx-hero.wx-storm{--sky1:#171a2e;--sky2:#3a3f5e;--tx:#fff;--tx2:rgba(255,255,255,.88);--kick:#BFD0FF;--big:#fff;--chip:rgba(255,255,255,.12);--chipb:rgba(255,255,255,.28);--chipt:#fff;--sea1:#2f4a78;--sea2:#16243f;--stars:0;--gr1:#2a2540;--gr2:#1c1830;--hill:#2b2f4a;--hill2:#212540;--ln:rgba(255,255,255,.3);}
-.TPContainer .tpx-hero.wx-rain .tpx-lanes,.TPContainer .tpx-hero.wx-rain .tpx-tick,.TPContainer .tpx-hero.wx-rain .tpx-chips>div{background:rgba(255,255,255,.88);}
-@keyframes tpxrain{from{top:-8%}to{top:104%}}
-@keyframes tpxflash{0%,91%,100%{opacity:0}92%{opacity:.75}93%{opacity:.05}94.5%{opacity:.9}96.5%{opacity:0}}
 @media(prefers-reduced-motion:reduce){.TPContainer .tpx-hero:not(.motion-on) .tpx-wx i,.TPContainer .tpx-hero:not(.motion-on) .tpx-wx .flash,.TPContainer .tpx-hero:not(.motion-on) .tpx-wx .bolt{animation:none !important;}}
 
 /* ===== Lighthouse scene v2 (2026-10-12): rotating light, rolling waves, sailing ship, plane crossing the sky ===== */
@@ -2314,7 +2299,25 @@ html body .modal-header .modal-title{ margin-left: 0 !important; margin-right: 0
 .TPContainer .tpx-scene svg svg{overflow:hidden;}
 .TPContainer .tpx-scene{z-index:1;}
 .TPContainer .tpx-col{position:relative;z-index:2;}
-
+/* an office with no saved map pin is listed but cannot be picked */
+.TPContainer .tpx-pop li button:disabled{opacity:.55;cursor:not-allowed;}
+/* compact hero (2026-10-13, "decrease the height of this hero card"): tighter vertical rhythm on wide screens, wider text column so the chips sit on two rows, smaller scene */
+@media(min-width:901px){
+.TPContainer .tpx-hero{padding-top:14px;padding-bottom:14px;}
+.TPContainer .tpx-top{grid-template-columns:1.25fr .75fr;gap:20px;}
+.TPContainer .tpx-col{max-width:760px;padding-bottom:4px;}
+.TPContainer .tpx-hero .tpx-greet{font-size:23px !important;margin:6px 0 0 !important;}
+.TPContainer #n4lHeroFigure{font-size:50px;margin:6px 0 4px;}
+.TPContainer #n4lHeroFigure small{font-size:19px;}
+.TPContainer .tpx-tick{margin-top:10px;padding:7px 14px;min-height:40px;}
+.TPContainer .tpx-chips{margin-top:10px;gap:8px;}
+.TPContainer .tpx-chips>div{padding:6px 14px;}
+.TPContainer .tpx-lanes{margin-top:12px;padding:6px 18px 8px;}
+.TPContainer .tpx-lane{padding:6px 0;}
+}
+/* greeting in brand orange ("make Good afternoon Orange"); lighter orange on the dark evening / night / storm skies so it stays readable */
+.TPContainer .tpx-hero .tpx-col .tpx-greet{color:#FE5F00 !important;}
+.TPContainer .tpx-hero.t-evening .tpx-col .tpx-greet,.TPContainer .tpx-hero.t-night .tpx-col .tpx-greet,
 /* ===== Place picker (2026-10-12): weather + sky for the user's chosen place (default = registered city) ===== */
 .TPContainer .tpx-place{display:inline-flex;align-items:center;gap:6px;margin-left:10px;vertical-align:middle;background:var(--chip);border:1px solid var(--chipb);color:var(--chipt);border-radius:30px;padding:5px 12px;font:700 12px Inter,sans-serif;cursor:pointer;max-width:100%;}
 .TPContainer .tpx-place:hover,.TPContainer .tpx-place[aria-expanded="true"]{border-color:#FE5F00;}
@@ -6618,7 +6621,6 @@ window.n4lHeroNet = function(pageId, canvasId){
     <div class="n4l-theme-toggle" id="n4lThemeToggle" style="display:none"></div>
     <div class="tpx-hero t-day" id="n4lHero">
         <div class="tpx-stars" id="tpxStars"></div>
-        <div class="tpx-wx" id="tpxWx"></div>
         <div class="tpx-ctrl"><div class="n4l-filter-row" style="display:flex;align-items:center;gap:8px;padding:14px 0 0;flex-wrap:wrap;">
         <button type="button" class="n4l-range-btn" data-range="7d" style="height:34px;border:1px solid #BFBFBF;background:#fff;color:#52514e;font-weight:700;font-size:12px;padding:0 13px;border-radius:8px;">Last 7 days</button>
         <button type="button" class="n4l-range-btn" data-range="30d" style="height:34px;border:1px solid #BFBFBF;background:#fff;color:#52514e;font-weight:700;font-size:12px;padding:0 13px;border-radius:8px;">Last 30 days</button>
@@ -6626,21 +6628,16 @@ window.n4lHeroNet = function(pageId, canvasId){
         <button type="button" class="n4l-range-btn" data-range="custom" style="height:34px;border:1px solid #BFBFBF;background:#fff;color:#52514e;font-weight:700;font-size:12px;padding:0 13px;border-radius:8px;">Custom&hellip;</button>
         <div id="n4lCustomRange" style="display:none;align-items:center;gap:6px;font-size:11.5px;"><input type="date" id="n4lCustomFrom" value="2026-01-01" style="height:34px;border:1px solid #BFBFBF;border-radius:7px;padding:0 8px;"><span>to</span><input type="date" id="n4lCustomTo" value="2026-10-12" style="height:34px;border:1px solid #BFBFBF;border-radius:7px;padding:0 8px;"><button type="button" id="n4lCustomApply" style="height:34px;border:1px solid #2A007C;background:#2A007C;color:#fff;font-weight:700;font-size:11.5px;padding:0 11px;border-radius:7px;">Apply</button></div>
     </div>
-    <div class="tpx-mock"><span>Mockup &middot; scene:</span><button type="button" data-s="ship">Ship</button><button type="button" data-s="port" class="on">Port crane</button><button type="button" data-s="globe">Globe</button><button type="button" data-s="road">Road and rail</button><button type="button" data-s="air">Airport</button><button type="button" data-s="ware">Warehouse</button><button type="button" data-s="hub">Network hub</button><button type="button" data-s="city">City delivery</button><button type="button" data-s="rail">Rail yard</button><button type="button" data-s="sort">Sorting hub</button><button type="button" data-s="wind">Wind power</button><button type="button" data-s="light">Lighthouse</button><span style="margin-left:10px">sky:</span><button type="button" data-t="t-morning">Morning</button><button type="button" data-t="t-day">Day</button><button type="button" data-t="t-evening">Evening</button><button type="button" data-t="t-night">Night</button><span style="margin-left:10px">weather:</span><button type="button" data-w="clear" class="on">Clear</button><button type="button" data-w="rain">Rain</button><button type="button" data-w="storm">Thunderstorm</button><span style="margin-left:10px">motion:</span><button type="button" data-m="on" class="on">On</button><button type="button" data-m="off">Off</button></div>
+    <div class="tpx-mock"><span>Mockup &middot; scene:</span><button type="button" data-s="ship">Ship</button><button type="button" data-s="port" class="on">Port crane</button><button type="button" data-s="globe">Globe</button><button type="button" data-s="road">Road and rail</button><button type="button" data-s="air">Airport</button><button type="button" data-s="ware">Warehouse</button><button type="button" data-s="hub">Network hub</button><button type="button" data-s="city">City delivery</button><button type="button" data-s="rail">Rail yard</button><button type="button" data-s="sort">Sorting hub</button><button type="button" data-s="wind">Wind power</button><button type="button" data-s="light">Lighthouse</button><span style="margin-left:10px">sky:</span><button type="button" data-t="t-morning">Morning</button><button type="button" data-t="t-day">Day</button><button type="button" data-t="t-evening">Evening</button><button type="button" data-t="t-night">Night</button><span style="margin-left:10px">motion:</span><button type="button" data-m="on" class="on">On</button><button type="button" data-m="off">Off</button></div>
     </div>
         <div class="tpx-top">
             <div class="tpx-col">
-                <div class="tpx-kick"><span id="n4lHeroEyebrow">Year to date &middot; active records only</span><span class="tpx-live"><i></i>Live</span><button type="button" class="tpx-place" id="tpxPlace" aria-haspopup="true" aria-expanded="false" title="Weather and sky for this place"><span class="sx-em">📍</span><span class="nm" id="tpxPlaceName">Dubai</span><span id="tpxPlaceWx">…</span><span aria-hidden="true">▾</span></button></div>
-                <div class="tpx-pop" id="tpxPop" hidden role="dialog" aria-label="Choose the place for weather and sky">
-                    <h4>Weather and sky for</h4>
-                    <div class="cur" id="tpxCur">Dubai<small>Registered city</small></div>
-                    <div class="sec">Search a city</div>
-                    <input id="tpxQ" type="search" placeholder="Type a city, e.g. Rotterdam" autocomplete="off" aria-label="Search a city">
-                    <ul id="tpxRes"></ul>
+                <div class="tpx-kick"><span id="n4lHeroEyebrow">Year to date &middot; active records only</span><span class="tpx-live"><i></i>Live</span><button type="button" class="tpx-place" id="tpxPlace" aria-haspopup="true" aria-expanded="false" title="Day or night at this place"><span class="sx-em">📍</span><span class="nm" id="tpxPlaceName">Dubai</span><span aria-hidden="true">▾</span></button></div>
+                <div class="tpx-pop" id="tpxPop" hidden role="dialog" aria-label="Choose the place for the sky">
+                    <h4>Day or night at</h4>
+                    <div class="cur" id="tpxCur">Dubai<small>Your registered city (follows your own clock)</small></div>
                     <div class="sec">My offices</div>
                     <ul id="tpxOff"></ul>
-                    <div class="sec">Service locations</div>
-                    <ul id="tpxLoc"></ul>
                     <button type="button" class="act" id="tpxGeo"><span class="sx-em">📡</span> Use my current location</button>
                     <button type="button" class="act" id="tpxReset"><span class="sx-em">↺</span> Back to my registered city</button>
                 </div>
@@ -7206,7 +7203,7 @@ function SelectCheckbox1(){var n=0,t=0,rows=document.querySelectorAll('#page-bil
  var SETS={Open:[['N4LPT-000020', '04-Aug-2026 05:36 AM', 'TP Application', 'Open', 't20']],Closed:[['N4LPT-000014', '19-Jun-2026 11:02 AM', 'Profile Update', 'Closed', 't14'], ['N4LPT-000009', '02-May-2026 03:48 PM', 'Registration Help', 'Closed', 't9']]};
  function esc(x){return String(x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
  function toast(t){var d=document.createElement('div');d.textContent=t;d.style.cssText='position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#341552;color:#fff;border-radius:30px;padding:12px 22px;font:600 13.5px Inter,sans-serif;z-index:99999;box-shadow:0 18px 36px -16px rgba(0,0,0,.5)';document.body.appendChild(d);setTimeout(function(){d.remove()},2600)}
- window.viewTicketDetails=function(id){toast('Opens the ticket details page in the portal (mockup)')};
+ window.viewTicketDetails=function(id){if(window.srdShow){window.srdShow(id);}else{toast('Ticket details page not loaded');}};
  window.SearchClick=function(){
   var st=document.getElementById('rdbPending').checked?'Open':'Closed',q=(document.getElementById('txtSearch').value||'').trim().toLowerCase();
   var rows=SETS[st].filter(function(t){return !q||t[0].toLowerCase().indexOf(q)!==-1;});
@@ -7221,6 +7218,283 @@ function SelectCheckbox1(){var n=0,t=0,rows=document.querySelectorAll('#page-bil
 </script><script>
 (function(){
     var page = document.getElementById('page-service-request'), cv = document.getElementById('srNet'), ctx = cv.getContext('2d'), nodes = [], W = 0, H = 0, run = false;
+    function size(){ var r = cv.getBoundingClientRect(); W = r.width; H = r.height; var d = Math.min(2, window.devicePixelRatio || 1); cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); }
+    function seed(){ nodes = []; var n = Math.max(26, Math.round(W / 38)); for(var i = 0; i < n; i++) nodes.push({x:Math.random() * W, y:Math.random() * H, vx:(Math.random() - .5) * .35, vy:(Math.random() - .5) * .35, o:Math.random() < .18}); }
+    function frame(){
+        if(page.style.display === 'none'){ run = false; return; }
+        ctx.clearRect(0, 0, W, H);
+        for(var i = 0; i < nodes.length; i++){
+            var a = nodes[i]; a.x += a.vx; a.y += a.vy; if(a.x < 0 || a.x > W) a.vx *= -1; if(a.y < 0 || a.y > H) a.vy *= -1;
+            for(var j = i + 1; j < nodes.length; j++){ var b = nodes[j], dx = a.x - b.x, dy = a.y - b.y, d = dx * dx + dy * dy; if(d < 17000){ ctx.strokeStyle = 'rgba(255,255,255,' + (0.32 * (1 - d / 17000)).toFixed(3) + ')'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); } }
+        }
+        for(var k = 0; k < nodes.length; k++){ var p = nodes[k]; ctx.beginPath(); ctx.arc(p.x, p.y, p.o ? 3.2 : 1.8, 0, 6.2832); ctx.fillStyle = p.o ? '#FE5F00' : 'rgba(255,255,255,.6)'; if(p.o){ ctx.shadowColor = '#FE5F00'; ctx.shadowBlur = 12; } ctx.fill(); ctx.shadowBlur = 0; }
+        requestAnimationFrame(frame);
+    }
+    function start(){ if(run) return; size(); if(!nodes.length) seed(); run = true; requestAnimationFrame(frame); }
+    window.addEventListener('resize', function(){ if(run){ size(); seed(); } });
+    new MutationObserver(function(){ if(page.style.display !== 'none') start(); }).observe(page, {attributes:true, attributeFilter:['style']});
+})();
+</script>
+</div>
+
+<div class="static-page" id="page-service-request-details" style="display:none;">
+<style>
+
+
+    #page-service-request-details{--purple:#341552;--purple-soft:#792c4e;--h-net:255,255,255;--h-node:#FF9A56;--h-grid:rgba(255,255,255,.12);--h-pill:rgba(255,255,255,.1);--h-pline:rgba(255,255,255,.26);}
+    #page-service-request-details .wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+    /* hero: same plum + height + futuristic effects as My Profile / TP Application */
+    #page-service-request-details .fh-hero{background:var(--plum-gradient);color:#fff;padding:38px 0 0;position:relative;overflow:hidden;min-height:var(--func-hero-h);display:flex;flex-direction:column;justify-content:center;}
+    #page-service-request-details .fh-hero::before{content:"";position:absolute;bottom:-140px;left:-90px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(254,95,0,.24),transparent 70%);pointer-events:none;}
+    #page-service-request-details .fh-hero::after{content:"";position:absolute;top:-120px;right:-80px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);pointer-events:none;animation:sdDrift 14s ease-in-out infinite alternate;}
+    @keyframes sdDrift{from{transform:translate(0,0);}to{transform:translate(-50px,40px);}}
+    #page-service-request-details .fh-net{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+    #page-service-request-details .fh-floor{position:absolute;left:-30%;right:-30%;bottom:0;height:150px;z-index:0;pointer-events:none;background-image:linear-gradient(var(--h-grid) 1px,transparent 1px),linear-gradient(90deg,var(--h-grid) 1px,transparent 1px);background-size:46px 46px;transform:perspective(380px) rotateX(62deg);transform-origin:50% 100%;-webkit-mask-image:linear-gradient(to top,#000 5%,transparent 90%);mask-image:linear-gradient(to top,#000 5%,transparent 90%);animation:sdGrid 7s linear infinite;}
+    @keyframes sdGrid{to{background-position:0 46px,0 0;}}
+    #page-service-request-details .fh-hero .wrap{position:relative;z-index:1;width:100%;flex:1;display:flex;flex-direction:column;justify-content:space-between;}
+    #page-service-request-details .fh-id{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+    #page-service-request-details .fh-badge{position:relative;flex:0 0 auto;width:88px;height:88px;border-radius:24px;background:linear-gradient(135deg,var(--cream-2),#FFDDBB);color:var(--purple);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px #4f1e50,0 14px 34px -8px rgba(254,95,0,.5);}
+    #page-service-request-details .fh-badge::before{content:"";position:absolute;inset:-7px;border-radius:30px;padding:2px;background:conic-gradient(from 0deg,#FE5F00,#FF9A56,#FF9A56,#FE5F00);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:sdSpin 6s linear infinite;}
+    @keyframes sdSpin{to{transform:rotate(360deg);}}
+    #page-service-request-details .fh-who{flex:1;min-width:240px;}
+    #page-service-request-details .fh-kick{font:700 11.5px 'Inter',sans-serif;letter-spacing:1.1px;text-transform:uppercase;color:#FFB27A;}
+    #page-service-request-details .fh-who h1{font:800 30px/1.15 'Poppins',sans-serif;color:#fff !important;margin:6px 0 10px;text-transform:none;}
+    #page-service-request-details .fh-meta{display:flex;flex-wrap:wrap;gap:8px 10px;font-size:13px;}
+    #page-service-request-details .fh-meta span{display:inline-flex;align-items:center;gap:7px;background:var(--h-pill);border:1px solid var(--h-pline);border-radius:30px;padding:5px 12px;color:#fff;}
+    #page-service-request-details .fh-actions{display:flex;gap:10px;flex-wrap:wrap;}
+    #page-service-request-details .fh-actions .btn{min-height:44px;padding:0 20px;font-size:14px;}
+    #page-service-request-details .fh-actions .btn-ghost{background:var(--h-pill);color:#fff;border:1.5px solid rgba(255,255,255,.35);}
+    #page-service-request-details .fh-actions .btn-ghost:hover{background:rgba(255,255,255,.2);border-color:#fff;}
+    #page-service-request-details .fh-kpis{display:none;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0 0;}
+    #page-service-request-details .fh-kpi{background:var(--h-pill);border:1px solid var(--h-pline);border-radius:16px;padding:12px 16px;color:#fff;min-width:0;}
+    #page-service-request-details .fh-kpi .l{font:700 11px 'Inter',sans-serif;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.86);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    #page-service-request-details .fh-kpi .v{font:800 28px/1.1 'Poppins',sans-serif;margin:4px 0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    #page-service-request-details .fh-kpi .t{font-size:12px;font-weight:600;color:#6EE7A8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    #page-service-request-details .fh-kpi.warn .v{color:var(--orange);} #page-service-request-details .fh-kpi.warn .t{color:#FFB27A;}
+    #page-service-request-details .fh-strength{margin-top:26px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.26);border-bottom:0;border-radius:18px 18px 0 0;padding:16px 22px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+    #page-service-request-details .fh-ring{--p:50;flex:0 0 auto;width:54px;height:54px;border-radius:50%;background:conic-gradient(#FE5F00 calc(var(--p)*1%),rgba(255,255,255,.2) 0);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(254,95,0,.45);animation:sdPulse 3s ease-in-out infinite;}
+    @keyframes sdPulse{0%,100%{box-shadow:0 0 12px rgba(254,95,0,.35);}50%{box-shadow:0 0 28px rgba(254,95,0,.7);}}
+    #page-service-request-details .fh-ring b{width:42px;height:42px;border-radius:50%;background:#43194C;display:flex;align-items:center;justify-content:center;font:700 13px 'Poppins',sans-serif;}
+    #page-service-request-details .fh-strength .tx{flex:1;min-width:220px;}
+    #page-service-request-details .fh-strength .tx b{display:block;font:700 15px 'Poppins',sans-serif;}
+    #page-service-request-details .fh-strength .tx span{font-size:12.5px;color:rgba(255,255,255,.86);}
+    #page-service-request-details .fh-strength a{color:#FFB27A !important;font-weight:700;border-bottom:1.5px solid rgba(255,178,122,.5);cursor:pointer;}
+    #page-service-request-details .fh-sact .btn{min-height:38px;padding:0 16px;font-size:13px;background:var(--orange);color:#fff !important;border:0;}
+    #page-service-request-details .fh-sw{position:absolute;right:20px;top:10px;z-index:3;display:flex;align-items:center;gap:8px;font:700 10.5px 'Inter',sans-serif;letter-spacing:.3px;text-transform:uppercase;color:rgba(255,255,255,.86);}
+    #page-service-request-details .fh-sw .seg{display:inline-flex;border:1.5px dashed var(--h-pline);border-radius:9px;overflow:hidden;background:var(--h-pill);}
+    #page-service-request-details .fh-sw button{border:0;background:transparent;color:#fff;font:700 10.5px 'Inter',sans-serif;padding:4px 10px;cursor:pointer;text-transform:none;letter-spacing:0;}
+    #page-service-request-details .fh-sw button.on{background:var(--orange);}
+    /* body */
+    #page-service-request-details .fh-in input,#page-service-request-details .fh-in select,#page-service-request-details .fh-in textarea{width:100%;box-sizing:border-box;border:1.5px solid #E7D8C6;border-radius:13px;background:#FFFDFA;padding:10px 13px;font:500 14px 'Inter',sans-serif;color:var(--ink);outline:0;}
+    #page-service-request-details .fh-in input:focus,#page-service-request-details .fh-in select:focus,#page-service-request-details .fh-in textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(42,0,124,.12);}
+    #page-service-request-details .fh-in textarea{resize:vertical;min-height:110px;}
+    /* dialogs */
+    #page-service-request-details .fh-mod{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(27,19,48,.55);}
+    #page-service-request-details .fh-mod.open{display:flex;}
+    #page-service-request-details .fh-dlg{width:100%;max-width:640px;max-height:calc(100vh - 36px);display:flex;flex-direction:column;background:#fff;border-radius:22px;box-shadow:0 40px 80px -30px rgba(27,19,48,.7);overflow:hidden;}
+    #page-service-request-details .fh-dlg.sm{max-width:460px;}
+    #page-service-request-details .fh-dh{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid #F5EBDF;}
+    #page-service-request-details .fh-dh h3{font:700 17px 'Poppins',sans-serif;color:var(--purple);margin:0;text-transform:none;}
+    #page-service-request-details .fh-x{border:0;background:var(--cream-2);width:34px;height:34px;border-radius:10px;font-size:20px;line-height:1;cursor:pointer;color:var(--ink-soft);}
+    #page-service-request-details .fh-db{padding:18px 22px;overflow-y:auto;}
+    #page-service-request-details .fh-df{display:flex;gap:10px;justify-content:flex-end;padding:14px 22px;border-top:1px solid #F5EBDF;background:#FFFDFA;}
+    #page-service-request-details .fh-df .btn{min-height:44px;padding:0 22px;}
+    #page-service-request-details .fh-note{display:flex;gap:10px;align-items:flex-start;background:#FFF6EC;border:1px solid #FBDDBF;border-radius:14px;padding:12px 14px;font-size:12.5px;color:var(--ink-soft);margin-bottom:14px;line-height:1.5;}
+    #page-service-request-details .fh-note svg{flex:0 0 auto;color:var(--orange);margin-top:1px;}
+    #page-service-request-details .fh-err{display:none;margin-top:5px;font-size:12px;font-weight:600;color:#D23C32;}
+    #page-service-request-details .fh-thx{text-align:center;padding:26px 10px;}
+    #page-service-request-details .fh-thx .ck{width:76px;height:76px;border-radius:50%;background:#E3F7EC;color:#1E8A52;display:inline-flex;align-items:center;justify-content:center;margin-bottom:10px;}
+    #page-service-request-details .fh-thx h3{font:800 20px 'Poppins',sans-serif;color:var(--purple);margin:0 0 6px;} #page-service-request-details .fh-thx p{color:var(--ink-soft);font-size:14px;margin:0 0 16px;}
+    #page-service-request-details .fh-toast{position:fixed;left:50%;top:84px;transform:translateX(-50%);z-index:110;background:#14532D;color:#fff;border-radius:14px;padding:11px 18px;font-size:13.5px;font-weight:600;box-shadow:0 18px 40px -16px rgba(0,0,0,.5);display:none;max-width:calc(100% - 24px);}
+    #page-service-request-details .fh-toast.show{display:block;}
+    #page-service-request-details .btn[disabled]{opacity:.5;cursor:not-allowed;box-shadow:none;}
+    @media(max-width:1279px){#page-service-request-details .fh-kpis{display:none;}}
+    @media(max-width:1000px){
+        #page-service-request-details .fh-sact{display:none;}
+    }
+    @media(max-width:700px){
+        #page-service-request-details .fh-hero{padding-top:14px;min-height:0;}
+        #page-service-request-details .fh-meta span:nth-child(n+2){display:none;}
+        #page-service-request-details .fh-badge{width:58px;height:58px;border-radius:17px;}
+        #page-service-request-details .fh-who h1{font-size:21px;margin:4px 0 8px;}
+        #page-service-request-details .fh-meta{gap:6px 8px;} #page-service-request-details .fh-meta span{font-size:12px;padding:3px 10px;}
+        #page-service-request-details .fh-meta span:nth-child(n+3){display:none;}
+        #page-service-request-details .fh-actions .btn{min-height:40px;padding:0 14px;}
+        #page-service-request-details .fh-strength{margin-top:14px;padding:10px 14px;gap:12px;}
+        #page-service-request-details .fh-strength .tx span{display:none;} #page-service-request-details .fh-strength .tx b{font-size:14px;}
+        #page-service-request-details .fh-sw{display:none;}
+        #page-service-request-details .fh-floor{height:90px;}
+        #page-service-request-details .fh-mod{align-items:flex-end;padding:0;}
+        #page-service-request-details .fh-dlg{max-width:none;border-radius:22px 22px 0 0;max-height:92vh;}
+        #page-service-request-details .fh-df{padding:12px 18px calc(12px + env(safe-area-inset-bottom));} #page-service-request-details .fh-df .btn{flex:1;}
+        #page-service-request-details .fh-db{padding:16px 18px;}
+    }
+    @media(prefers-reduced-motion:reduce){#page-service-request-details .fh-hero::after,#page-service-request-details .fh-floor,#page-service-request-details .fh-badge::before,#page-service-request-details .fh-ring{animation:none;}}
+
+    #page-service-request-details .fh-body{background:#FFF9F3;padding:30px 0 90px;}
+    #page-service-request-details .fh-wrap{max-width:560px;margin:0 auto;}
+    #page-service-request-details .fh-card{background:#fff;border:1px solid #F5EBDF;border-radius:22px;box-shadow:var(--shadow-soft);padding:28px;}
+    #page-service-request-details .fh-card h2{font:800 22px 'Poppins',sans-serif;color:var(--purple);margin:0 0 4px;text-transform:none;}
+    #page-service-request-details .fh-card p.sub{font-size:14px;line-height:1.5;color:var(--ink-soft);margin:0 0 20px;}
+    #page-service-request-details .fh-f{margin-bottom:16px;}
+    #page-service-request-details .fh-f label{display:block;font:600 13px 'Inter',sans-serif;color:var(--ink);margin-bottom:6px;}
+    #page-service-request-details .fh-in{position:relative;}
+    #page-service-request-details .fh-in input{width:100%;box-sizing:border-box;border:1.5px solid #E7D8C6;border-radius:13px;background:#FFFDFA;padding:12px 46px 12px 14px;font:500 15px 'Inter',sans-serif;color:var(--ink);outline:0;}
+    #page-service-request-details .fh-in input:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(42,0,124,.12);}
+    #page-service-request-details .fh-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:0;background:transparent;border-radius:10px;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;}
+    #page-service-request-details .fh-eye:hover{background:var(--cream-2);color:var(--purple);}
+    #page-service-request-details .fh-err{display:none;margin-top:5px;font-size:12px;font-weight:600;color:#D23C32;}
+    #page-service-request-details .fh-f.err .fh-err{display:block;}
+    #page-service-request-details .fh-f.err .fh-in input{border-color:#E0483E;background:#FFF6F5;}
+    #page-service-request-details .fh-match{display:none;margin-top:5px;font-size:12px;font-weight:600;color:#1E8A52;}
+    #page-service-request-details .fh-match.on{display:block;}
+    #page-service-request-details .fh-alert{display:none;gap:10px;align-items:flex-start;background:#FFF0EE;border:1px solid #F5C6C0;color:#B23A2E;border-radius:14px;padding:12px 14px;font-size:13.5px;margin-bottom:16px;}
+    #page-service-request-details .fh-alert.on{display:flex;}
+    #page-service-request-details .fh-alert ul{margin:0;padding-left:18px;}
+    #page-service-request-details .fh-go{width:100%;min-height:48px;font-size:15px;}
+    #page-service-request-details .fh-done{display:none;text-align:center;padding:14px 4px 4px;}
+    #page-service-request-details .fh-done .ck{width:84px;height:84px;border-radius:50%;background:#E3F7EC;color:#1E8A52;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;}
+    #page-service-request-details .fh-done h2{font:800 22px 'Poppins',sans-serif;color:var(--purple);margin:0 0 6px;}
+    #page-service-request-details .fh-done p{color:var(--ink-soft);font-size:14px;margin:0 0 20px;}
+    #page-service-request-details .fh-done .btn{min-width:180px;min-height:46px;}
+    #page-service-request-details .fh-mock{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:14px;font-size:12px;color:var(--ink-soft);}
+    #page-service-request-details .fh-mock code{background:#fff;border:1.5px dashed #E7D8C6;border-radius:8px;padding:2px 8px;font-weight:700;color:var(--purple);}
+    @media(max-width:700px){#page-service-request-details .fh-card{padding:20px 16px;border-radius:18px;}}
+
+/* Service Request Details V2 (2026-10-13): request summary + description + attachments + emails. Hero = WarmFuncPage kit (.fh-*). */
+#page-service-request-details .srd-body{padding:26px 0 90px;}
+#page-service-request-details .srd-layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:22px;align-items:start;}
+#page-service-request-details .srd-side{background:#fff;border:1px solid #F5EBDF;border-radius:22px;box-shadow:var(--shadow-soft);padding:22px;position:sticky;top:96px;}
+#page-service-request-details .srd-side h3,#page-service-request-details .srd-card h3{font:800 17px 'Poppins',sans-serif;color:var(--purple);margin:0 0 6px;text-transform:none;}
+#page-service-request-details .srd-row{padding:12px 0;border-top:1px solid #F5EBDF;}
+#page-service-request-details .srd-row:first-of-type{border-top:0;}
+#page-service-request-details .srd-row .k{display:block;font:700 11.5px 'Inter',sans-serif;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-soft);margin:0 0 3px;}
+#page-service-request-details .srd-row .v{display:block;font:600 14.5px 'Inter',sans-serif;color:#2B2140;overflow-wrap:anywhere;margin:0;}
+#page-service-request-details .srd-main{display:flex;flex-direction:column;gap:18px;min-width:0;}
+#page-service-request-details .srd-card{background:#fff;border:1px solid #F5EBDF;border-radius:22px;box-shadow:var(--shadow-soft);padding:22px;min-width:0;}
+#page-service-request-details .srd-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:0 0 14px;}
+#page-service-request-details .srd-subject{font:800 20px 'Poppins',sans-serif;color:#2B2140;margin:0;overflow-wrap:anywhere;text-transform:none;}
+#page-service-request-details .srd-date{display:block;font-size:12.5px;color:var(--ink-soft);margin-top:4px;}
+#page-service-request-details .srd-st{display:inline-flex;align-items:center;gap:6px;border-radius:20px;padding:5px 12px;font:700 12px 'Inter',sans-serif;background:#E1EEFB;color:#1F5FA8;white-space:nowrap;}
+#page-service-request-details .srd-st::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;}
+#page-service-request-details .srd-st.open{background:#E3F7EC;color:#1E8A52;}
+#page-service-request-details .srd-st.closed{background:#EEEAF2;color:#6a6277;}
+#page-service-request-details .srd-desc{background:#FFFBF6;border:1px solid #F5EBDF;border-radius:16px;padding:18px;min-height:140px;max-height:560px;overflow:auto;font-size:14.5px;line-height:1.65;color:#2B2140;overflow-wrap:anywhere;}
+#page-service-request-details .srd-desc img{max-width:100%;height:auto;}
+#page-service-request-details .srd-desc p{margin:0 0 10px;}
+#page-service-request-details .srd-files{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-top:10px;}
+#page-service-request-details .srd-file{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;border:1px solid #F0DFCF;border-radius:16px;background:#fff;cursor:pointer;text-align:center;transition:transform .18s ease,box-shadow .18s ease;}
+#page-service-request-details .srd-file:hover{transform:translateY(-2px);box-shadow:0 14px 26px -18px rgba(42,0,124,.4);}
+#page-service-request-details .srd-file img{width:46px;height:46px;object-fit:contain;border-radius:8px;}
+#page-service-request-details .srd-file span{font:600 12px 'Inter',sans-serif;color:#2B2140;overflow-wrap:anywhere;line-height:1.35;}
+#page-service-request-details .srd-mt{margin-top:10px;}
+#page-service-request-details .srd-mails{width:100%;border-collapse:separate;border-spacing:0;margin-top:10px;}
+#page-service-request-details .srd-mails th{font:700 11.5px 'Inter',sans-serif;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-soft);text-align:left;padding:10px 12px;border-bottom:1.5px solid #F0DFCF;background:#FFFBF6;}
+#page-service-request-details .srd-mails td{font:500 13.5px 'Inter',sans-serif;color:#2B2140;padding:13px 12px;border-bottom:1px solid #F5EBDF;text-align:left;overflow-wrap:anywhere;vertical-align:top;}
+#page-service-request-details .srd-mails tr:last-child td{border-bottom:0;}
+#page-service-request-details .srd-mails th:last-child,#page-service-request-details .srd-mails td:last-child{white-space:nowrap;width:1%;}
+#page-service-request-details .srd-mails a.srd-view{display:inline-flex;align-items:center;min-height:34px;padding:0 14px;border-radius:12px;border:1.5px solid #F0DFCF;font:700 12.5px 'Inter',sans-serif;color:var(--purple);text-decoration:none;cursor:pointer;}
+#page-service-request-details .srd-mails a.srd-view:hover{background:#FFF0E2;}
+#page-service-request-details .srd-empty{border:1.5px dashed #E7D8C6;border-radius:16px;padding:26px 16px;text-align:center;color:var(--ink-soft);font-size:14px;margin-top:10px;}
+#page-service-request-details .srd-notice{background:#fff;border:1.5px dashed #E7D8C6;border-radius:20px;padding:40px 20px;text-align:center;color:var(--ink-soft);font-size:14px;}
+#page-service-request-details .srd-notice b{display:block;font:700 16px 'Poppins',sans-serif;color:var(--purple);margin-bottom:4px;}
+@media(max-width:1100px){
+  #page-service-request-details .srd-layout{grid-template-columns:1fr;}
+  #page-service-request-details .srd-side{position:static;}
+}
+@media(max-width:760px){
+  #page-service-request-details .srd-card,#page-service-request-details .srd-side{padding:18px;}
+  #page-service-request-details .srd-subject{font-size:18px;}
+  #page-service-request-details .srd-mails thead{display:none;}
+  #page-service-request-details .srd-mails,#page-service-request-details .srd-mails tbody,#page-service-request-details .srd-mails tr,#page-service-request-details .srd-mails td{display:block;width:100%;}
+  #page-service-request-details .srd-mails tr{border:1px solid #F0DFCF;border-radius:16px;padding:6px 14px;margin-bottom:10px;}
+  #page-service-request-details .srd-mails td{border-bottom:0;padding:6px 0;}
+  #page-service-request-details .srd-mails td::before{content:attr(data-l);display:block;font:700 11px 'Inter',sans-serif;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-soft);margin-bottom:1px;}
+}
+#page-service-request-details .srd-file .srd-fi{font-size:34px;line-height:46px;height:46px;}#page-service-request-details .srd-file .srd-fi span{font-size:inherit;line-height:inherit;}
+@media(min-width:1280px){
+ #page-service-request-details .fh-hero{padding-top:20px;}
+ #page-service-request-details .fh-hero .fh-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:12px 0 0;}
+ #page-service-request-details .fh-hero .fh-kpi{padding:8px 14px;border-radius:14px;}
+ #page-service-request-details .fh-hero .fh-kpi .l{font-size:10.5px;}
+ #page-service-request-details .fh-hero .fh-kpi .v{font-size:15px !important;line-height:1.3 !important;margin:2px 0 0;}
+ #page-service-request-details .fh-hero .fh-kpi .t{display:none;}
+ #page-service-request-details .fh-hero .fh-strength{margin-top:12px;padding:10px 20px;}
+ #page-service-request-details .fh-hero .fh-ring{width:44px;height:44px;}
+ #page-service-request-details .fh-hero .fh-ring b{width:34px;height:34px;font-size:12px;}
+}
+
+</style>
+<div class="n4l-fh n4l-srd">
+<section class="fh-hero">
+    <canvas class="fh-net es-net" id="sdNet" aria-hidden="true"></canvas><div class="fh-floor" aria-hidden="true"></div>
+    <div class="wrap">
+        <div class="fh-id">
+            <div class="fh-badge"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a2 2 0 0 0 0 6v3a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3a2 2 0 0 1 0-6V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"/><path d="M13 4v3M13 11v2M13 17v3"/></svg></div>
+            <div class="fh-who">
+                <div class="fh-kick">Net4Log Support</div>
+                <h1 id="srdRef">N4LPT-000020</h1>
+                <div class="fh-meta"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Partner ID <b>NET000066</b></span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a2 2 0 0 0 0 6v3a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3a2 2 0 0 1 0-6V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"/><path d="M13 4v3M13 11v2M13 17v3"/></svg> Aslam And Company</span></div>
+            </div>
+            <div class="fh-actions"><a class="btn btn-ghost" onclick="showStaticPage('service-request');return false;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back to requests</a></div>
+        </div>
+        <div class="fh-kpis" aria-label="Request at a glance">
+            <div class="fh-kpi"><div class="l">Status</div><div class="v" id="srdK1">Open</div><div class="t">current status</div></div>
+            <div class="fh-kpi"><div class="l">Request type</div><div class="v" id="srdK2" style="font-size:20px;line-height:1.3;">TP Application</div><div class="t">ticket type</div></div>
+            <div class="fh-kpi"><div class="l">Raised on</div><div class="v" id="srdK3" style="font-size:20px;line-height:1.3;">04-Aug-2026 05:36 AM</div><div class="t">request date</div></div>
+            <div class="fh-kpi"><div class="l">Assigned to</div><div class="v" id="srdK4" style="font-size:20px;line-height:1.3;">Net4Log Support</div><div class="t">support owner</div></div>
+        </div>
+        <div class="fh-strength">
+            <div class="fh-ring" style="--p:100"><b id="srdRing">2</b></div>
+            <div class="tx"><b id="srdSum">3 attachments &middot; 2 emails</b><span>Everything exchanged on this request is listed below.</span></div>
+        </div>
+    </div>
+</section>
+<section class="fh-body srd-body"><div class="wrap">
+    <div class="srd-layout">
+        <aside class="srd-side" aria-label="Request details">
+            <h3>Request details</h3>
+            <div class="srd-row"><span class="k">Ticket type</span><p class="v" id="srdS1"></p></div>
+            <div class="srd-row"><span class="k">Request reference</span><p class="v" id="srdS2"></p></div>
+            <div class="srd-row"><span class="k">Assigned to</span><p class="v" id="srdS3"></p></div>
+            <div class="srd-row"><span class="k">EDC</span><p class="v" id="srdS4"></p></div>
+            <div class="srd-row"><span class="k">Sender mail</span><p class="v" id="srdS5"></p></div>
+        </aside>
+        <div class="srd-main">
+            <div class="srd-card">
+                <div class="srd-head"><div><h2 class="srd-subject" id="srdSubj"></h2><span class="srd-date" id="srdDate"></span></div><span class="srd-st" id="srdSt"></span></div>
+                <div class="srd-desc" id="srdDesc"></div>
+            </div>
+            <div class="srd-card"><h3>Attachments</h3><div id="srdFiles"></div></div>
+            <div class="srd-card"><h3>Emails</h3><div id="srdMails"></div></div>
+        </div>
+    </div>
+</div></section>
+</div>
+<script>
+(function(){
+ var D={"t20": ["N4LPT-000020", "TP Application", "Open", "04-Aug-2026 05:36 AM", "Net4Log Support", "18-Aug-2026", "aslam.at@jupiterbs.com", "Trusted Partner application for NET000066", "<p>Hello team,</p><p>We would like to upgrade <b>Aslam And Company</b> to a Trusted Partner. The signed application form, the company registration certificate and the bank letter are attached.</p><p>Please confirm the next step and the expected completion date.</p><p>Regards,<br>Aslam</p>", [["TP_Application_Form.pdf", "pdf"], ["Company_Registration.pdf", "pdf"], ["Bank_Letter.docx", "doc"]], [["aslam.at@jupiterbs.com", "support@net4log.com", "Trusted Partner application for NET000066", "04-Aug-2026", "N4LMAIL-000412"], ["support@net4log.com", "aslam.at@jupiterbs.com", "RE: Trusted Partner application for NET000066", "05-Aug-2026", "N4LMAIL-000419"]]], "t14": ["N4LPT-000014", "Profile Update", "Closed", "19-Jun-2026 11:02 AM", "Net4Log Support", "24-Jun-2026", "aslam.at@jupiterbs.com", "Update billing address on my profile", "<p>Please update the billing address for Aslam And Company to the new office address shared in the attached sheet.</p>", [["New_Address.xlsx", "xls"]], [["aslam.at@jupiterbs.com", "support@net4log.com", "Update billing address on my profile", "19-Jun-2026", "N4LMAIL-000288"]]], "t9": ["N4LPT-000009", "Registration Help", "Closed", "02-May-2026 03:48 PM", "Net4Log Support", "06-May-2026", "aslam.at@jupiterbs.com", "Unable to verify my registration email", "<p>The verification link in the registration email shows as expired. Could you resend it?</p>", [], []]}, IC={"pdf": "&#128196;", "doc": "&#128209;", "xls": "&#128202;", "png": "&#128444;", "txt": "&#128221;"};
+ function esc(x){return String(x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+ function $(i){return document.getElementById(i)}
+ function toast(t){var d=document.createElement('div');d.textContent=t;d.style.cssText='position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#341552;color:#fff;border-radius:30px;padding:12px 22px;font:600 13.5px Inter,sans-serif;z-index:99999;box-shadow:0 18px 36px -16px rgba(0,0,0,.5)';document.body.appendChild(d);setTimeout(function(){d.remove()},2600)}
+ window.srdOpenFile=function(n){toast('Opens '+n+' in a new tab (mockup)')};
+ window.srdMail=function(r){toast('Opens email '+r+' (mockup)')};
+ window.srdFill=function(id){
+  var t=D[id]||D.t20,files=t[9],mails=t[10],cls=t[2].toLowerCase();
+  $('srdRef').textContent=t[0];$('srdK1').textContent=t[2];$('srdK2').textContent=t[1];$('srdK3').textContent=t[3];$('srdK4').textContent=t[4];
+  $('srdS1').textContent=t[1];$('srdS2').textContent=t[0];$('srdS3').textContent=t[4];$('srdS4').textContent=t[5];$('srdS5').textContent=t[6];
+  $('srdSubj').textContent=t[7];$('srdDate').textContent='Date: '+t[3];$('srdSt').textContent=t[2];$('srdSt').className='srd-st '+cls;$('srdDesc').innerHTML=t[8];
+  $('srdRing').textContent=mails.length;
+  $('srdSum').textContent=files.length+' attachment'+(files.length===1?'':'s')+' \u00b7 '+mails.length+' email'+(mails.length===1?'':'s');
+  $('srdFiles').innerHTML=files.length?'<div class="srd-files">'+files.map(function(f){return '<div class="srd-file" role="button" tabindex="0" onclick="srdOpenFile(\''+esc(f[0])+'\')"><span class="srd-fi">'+IC[f[1]]+'</span><span>'+esc(f[0])+'</span></div>';}).join('')+'</div>':'<div class="srd-empty">No attachments on this request.</div>';
+  $('srdMails').innerHTML=mails.length?'<table class="srd-mails"><thead><tr><th>From Email ID</th><th>To Email ID</th><th>Subject</th><th>Sent on</th><th>Mail Reference</th><th>View</th></tr></thead><tbody>'+mails.map(function(m){return '<tr><td data-l="From">'+esc(m[0])+'</td><td data-l="To">'+esc(m[1])+'</td><td data-l="Subject">'+esc(m[2])+'</td><td data-l="Sent on">'+esc(m[3])+'</td><td data-l="Reference">'+esc(m[4])+'</td><td><a href="#" class="srd-view" onclick="srdMail(\''+esc(m[4])+'\');return false;">View</a></td></tr>';}).join('')+'</tbody></table>':'<div class="srd-empty">No emails on this request yet.</div>';
+ };
+ window.srdShow=function(id){window.srdFill(id);showStaticPage('service-request-details');window.scrollTo(0,0);};
+ window.srdFill('t20');
+})();
+</script><script>
+(function(){
+    var page = document.getElementById('page-service-request-details'), cv = document.getElementById('sdNet'), ctx = cv.getContext('2d'), nodes = [], W = 0, H = 0, run = false;
     function size(){ var r = cv.getBoundingClientRect(); W = r.width; H = r.height; var d = Math.min(2, window.devicePixelRatio || 1); cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); }
     function seed(){ nodes = []; var n = Math.max(26, Math.round(W / 38)); for(var i = 0; i < n; i++) nodes.push({x:Math.random() * W, y:Math.random() * H, vx:(Math.random() - .5) * .35, vy:(Math.random() - .5) * .35, o:Math.random() < .18}); }
     function frame(){
@@ -12535,22 +12809,6 @@ function SelectCheckbox1(){var n=0,t=0,rows=document.querySelectorAll('#page-bil
 })();
 </script>
 <script>
-/* Weather layer (mockup): rain / thunderstorm over any scene. In the portal this would be driven by the partner's city weather, not buttons. */
-(function(){
- var hero=document.getElementById('n4lHero'),wx=document.getElementById('tpxWx');if(!hero||!wx)return;
- var BOLT='<svg class="bolt" style="left:__L__%" viewBox="0 0 70 160" aria-hidden="true"><polygon points="42,0 14,78 34,78 22,160 58,64 38,64 52,0" fill="#FFF8CC"/></svg>';
- var CL='<svg class="wxc" viewBox="0 0 1200 140" preserveAspectRatio="none" aria-hidden="true"><g fill="#4b5170"><ellipse cx="120" cy="40" rx="150" ry="44"/><ellipse cx="300" cy="62" rx="170" ry="48"/><ellipse cx="520" cy="36" rx="160" ry="46"/><ellipse cx="760" cy="58" rx="180" ry="50"/><ellipse cx="980" cy="38" rx="150" ry="44"/><ellipse cx="1140" cy="60" rx="140" ry="44"/></g></svg>';
- function setW(w){hero.classList.remove('wx-rain','wx-storm');wx.innerHTML='';
-  [].forEach.call(document.querySelectorAll('.tpx-mock button[data-w]'),function(b){b.classList.toggle('on',b.getAttribute('data-w')===w)});
-  if(w==='clear')return;
-  var n=w==='storm'?150:90,h='',i,r=7;function R(){r=(r*9301+49297)%233280;return r/233280}
-  for(i=0;i<n;i++){var dur=(w==='storm'?.45:.7)+R()*(w==='storm'?.35:.5);h+='<i style="left:'+(R()*104-2).toFixed(1)+'%;height:'+(14+R()*16).toFixed(0)+'px;animation-duration:'+dur.toFixed(2)+'s;animation-delay:-'+(R()*dur*2).toFixed(2)+'s;opacity:'+(.35+R()*.5).toFixed(2)+'"></i>'}
-  wx.innerHTML=(w==='storm'?CL:'')+h+(w==='storm'?'<div class="flash"></div><div class="flash f2"></div>'+BOLT.replace('__L__','68')+BOLT.replace('__L__','24').replace('class="bolt"','class="bolt b2"'):'');
-  hero.classList.add(w==='storm'?'wx-storm':'wx-rain')}
- [].forEach.call(document.querySelectorAll('.tpx-mock button[data-w]'),function(b){b.onclick=function(){setW(b.getAttribute('data-w'))}});
-})();
-</script>
-<script>
 /* Motion switch (mockup): defaults to ON so the animation can be reviewed even when the OS asks for reduced motion. In the portal the OS setting is honoured. */
 (function(){
  var hero=document.getElementById('n4lHero');if(!hero)return;
@@ -12561,65 +12819,53 @@ function SelectCheckbox1(){var n=0,t=0,rows=document.querySelectorAll('#page-bil
 })();
 </script>
 <script>
-/* Place picker (mockup): weather + sky for the chosen place. Default = registered city; change by typing a city, picking an office, or using the device location.
-   Live data in this mockup comes from Open-Meteo (geocoding + forecast, no key). Production needs a provider/licence decision and a server-side call. */
+/* Place picker (mockup): day / night for the chosen place. Default = registered city (no coordinates, so it follows the visitor's own clock); an office with a saved map pin uses
+   sunrise / sunset for that spot. Nothing is called outside the page: no weather or geocoding service. Same maths as Content/js/TpHeroLive.js in the portal. */
 (function(){
  var P=document.getElementById('page-tp-home'),hero=document.getElementById('n4lHero');if(!P||!hero)return;
  function $(i){return document.getElementById(i)}
  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
- var REG={name:'Dubai',country:'United Arab Emirates',lat:25.2048,lon:55.2708,src:'registered'};
- var OFFICES=[{name:'Dubai',country:'United Arab Emirates',lat:25.2048,lon:55.2708,tag:'Head office'},{name:'Rotterdam',country:'Netherlands',lat:51.9244,lon:4.4777,tag:'Branch'},{name:'Singapore',country:'Singapore',lat:1.3521,lon:103.8198,tag:'Branch'}];
- var KEY='n4lHeroPlace';
- function load(){try{var v=JSON.parse(localStorage.getItem(KEY));if(v&&v.name&&isFinite(v.lat))return v}catch(e){}return REG}
+ var REG={name:'Dubai',country:'United Arab Emirates',src:'registered'};
+ var OFFICES=[{name:'Dubai',addr:'Head office, Business Bay',geo:true,lat:25.2048,lon:55.2708},{name:'Rotterdam',addr:'Branch, Maasboulevard',geo:true,lat:51.9244,lon:4.4777},{name:'Singapore',addr:'Branch, Raffles Place',geo:true,lat:1.3521,lon:103.8198},{name:'Mumbai',addr:'',geo:false}];
+ var KEY='n4lHeroPlace2';
+ function load(){try{var v=JSON.parse(localStorage.getItem(KEY));if(v&&v.name&&(v.src==='registered'||isFinite(v.lat)))return v}catch(e){}return REG}
  function save(p){try{localStorage.setItem(KEY,JSON.stringify(p))}catch(e){}}
- var place=load(),seq=0;
- function wxInfo(c){if(c>=95)return['Thunderstorm','storm'];if((c>=51&&c<=67)||(c>=80&&c<=82))return[c>=61?'Rain':'Drizzle','rain'];if((c>=71&&c<=77)||c===85||c===86)return['Snow','clear'];if(c===45||c===48)return['Fog','clear'];if(c===3)return['Overcast','clear'];if(c===2)return['Partly cloudy','clear'];return['Clear','clear']}
- function mins(s){return parseInt(s.slice(11,13),10)*60+parseInt(s.slice(14,16),10)}
- function bucket(n,sr,ss){if(n<sr-30)return't-night';if(n<sr+240)return't-morning';if(n<ss-90)return't-day';if(n<ss+30)return't-evening';return't-night'}
+ var place=load();
+ var RAD=Math.PI/180,DAYMS=86400000,J1970=2440588,J2000=2451545,OBL=RAD*23.4397,J0=0.0009;
+ function toJ(d){return d.valueOf()/DAYMS-0.5+J1970}
+ function clockSky(){var h=new Date().getHours();return h<11?'t-morning':h<17?'t-day':h<20?'t-evening':'t-night'}
+ function sunSky(lat,lon,now){
+  var lw=RAD*-lon,phi=RAD*lat,t=toJ(now),d=t-J2000,n=Math.round(d-J0-lw/(2*Math.PI)),ds=J0+lw/(2*Math.PI)+n;
+  var M=RAD*(357.5291+0.98560028*ds),L=M+RAD*(1.9148*Math.sin(M)+0.02*Math.sin(2*M)+0.0003*Math.sin(3*M))+RAD*102.9372+Math.PI,dec=Math.asin(Math.sin(OBL)*Math.sin(L));
+  var c=(Math.sin(-0.833*RAD)-Math.sin(phi)*Math.sin(dec))/(Math.cos(phi)*Math.cos(dec));
+  if(c<=-1)return't-day';if(c>=1)return't-night';
+  var jn=J2000+ds+0.0053*Math.sin(M)-0.0069*Math.sin(2*L),a=J0+(Math.acos(c)+lw)/(2*Math.PI)+n,js=J2000+a+0.0053*Math.sin(M)-0.0069*Math.sin(2*L),jr=jn-(js-jn);
+  var m=(t-jr)*1440,len=(js-jr)*1440;
+  if(m<-30)return't-night';if(m<240)return't-morning';if(m<len-90)return't-day';if(m<len+30)return't-evening';return't-night'}
+ function skyAt(p){return p&&isFinite(p.lat)&&isFinite(p.lon)?sunSky(p.lat,p.lon,new Date()):clockSky()}
  function clickBtn(sel){var b=P.querySelector('.tpx-mock '+sel);if(b)b.click()}
- function label(p,wx){$('tpxPlaceName').textContent=p.name;$('tpxPlaceWx').textContent=wx?'\u00B7 '+wx:'';$('tpxCur').innerHTML=esc(p.name)+(p.country?', '+esc(p.country):'')+'<small>'+({registered:'Your registered city',office:'One of your offices',search:'Chosen city',device:'Your current location'}[p.src]||'')+'</small>'}
- function fallback(p){var h=new Date().getHours();clickBtn('button[data-t="'+(h<11?'t-morning':h<17?'t-day':h<20?'t-evening':'t-night')+'"]');clickBtn('button[data-w="clear"]');label(p,'weather unavailable')}
- function apply(p){
-  place=p;label(p,'\u2026');var my=++seq;
-  var url='https://api.open-meteo.com/v1/forecast?latitude='+p.lat+'&longitude='+p.lon+'&current=temperature_2m,weather_code&daily=sunrise,sunset&timezone=auto&forecast_days=1';
-  if(!window.fetch){fallback(p);return}
-  fetch(url).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(d){
-   if(my!==seq)return;
-   var c=d.current,sr=d.daily.sunrise[0],ss=d.daily.sunset[0],info=wxInfo(c.weather_code);
-   clickBtn('button[data-t="'+bucket(mins(c.time),mins(sr),mins(ss))+'"]');clickBtn('button[data-w="'+info[1]+'"]');
-   label(p,Math.round(c.temperature_2m)+'\u00B0C '+info[0].toLowerCase());
-  }).catch(function(){if(my===seq)fallback(p)});
- }
+ var SRC={registered:'Your registered city (follows your own clock)',office:'One of your offices',device:'Your current location'};
+ function label(p){$('tpxPlaceName').textContent=p.name;$('tpxCur').innerHTML=esc(p.name)+(p.country?', '+esc(p.country):'')+'<small>'+(SRC[p.src]||'')+'</small>'}
+ function msg(t){label(place);$('tpxCur').insertAdjacentHTML('beforeend','<small>'+esc(t)+'</small>')}
+ function apply(p){place=p;clickBtn('button[data-t="'+skyAt(p)+'"]');label(p)}
  function choose(p){save(p);closePop();apply(p)}
  /* panel open/close */
  var pop=$('tpxPop'),btn=$('tpxPlace');
  var topEl=hero.querySelector('.tpx-top');
- function openPop(){pop.hidden=false;btn.setAttribute('aria-expanded','true');if(topEl)topEl.style.zIndex='40';$('tpxQ').focus()}
+ function openPop(){pop.hidden=false;btn.setAttribute('aria-expanded','true');if(topEl)topEl.style.zIndex='40'}
  function closePop(){pop.hidden=true;btn.setAttribute('aria-expanded','false');if(topEl)topEl.style.zIndex=''}
  btn.onclick=function(e){e.stopPropagation();pop.hidden?openPop():closePop()};
  document.addEventListener('click',function(e){if(!pop.hidden&&!pop.contains(e.target)&&e.target!==btn&&!btn.contains(e.target))closePop()});
  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!pop.hidden){closePop();btn.focus()}});
- /* offices */
- $('tpxOff').innerHTML=OFFICES.map(function(o,i){return '<li><button type="button" data-i="'+i+'"><span class="sx-em">\uD83C\uDFE2</span> '+esc(o.name)+'<small>'+esc(o.tag)+'</small></button></li>'}).join('');
- $('tpxOff').onclick=function(e){var b=e.target.closest('button[data-i]');if(!b)return;var o=OFFICES[b.getAttribute('data-i')];choose({name:o.name,country:o.country,lat:o.lat,lon:o.lon,src:'office'})};
- var LOCS=[{name:'Kolkata',code:'INCCU',port:'Air',lat:22.5726,lon:88.3639},{name:'Jebel Ali',code:'AEJEA',port:'Sea',lat:25.0118,lon:55.0617}];
- $('tpxLoc').innerHTML=LOCS.map(function(l,i){return '<li><button type="button" data-i="'+i+'"><span>\u2693</span> '+esc(l.name)+'<small>'+esc(l.code+' \u00B7 '+l.port)+'</small></button></li>'}).join('');
- $('tpxLoc').onclick=function(e){var b=e.target.closest('button[data-i]');if(!b)return;var l=LOCS[b.getAttribute('data-i')];choose({name:l.name,country:'',lat:l.lat,lon:l.lon,src:'office'})};
- /* type-ahead city search */
- var timer=null;
- $('tpxQ').oninput=function(){clearTimeout(timer);var q=this.value.trim(),ul=$('tpxRes');if(q.length<2){ul.innerHTML='';return}
-  timer=setTimeout(function(){ul.innerHTML='<li class="msg">Searching\u2026</li>';
-   fetch('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(q)+'&count=6&language=en&format=json').then(function(r){return r.json()}).then(function(d){
-    var rs=d.results||[];if(!rs.length){ul.innerHTML='<li class="msg">No city found. Check the spelling.</li>';return}
-    ul.innerHTML=rs.map(function(c,i){return '<li><button type="button" data-i="'+i+'">'+esc(c.name)+'<small>'+esc([c.admin1,c.country].filter(Boolean).join(', '))+'</small></button></li>'}).join('');
-    ul.onclick=function(e){var b=e.target.closest('button[data-i]');if(!b)return;var c=rs[b.getAttribute('data-i')];choose({name:c.name,country:c.country||'',lat:c.latitude,lon:c.longitude,src:'search'})};
-   }).catch(function(){ul.innerHTML='<li class="msg">Search is not available right now.</li>'})},300)};
- /* device location (opt-in) */
- $('tpxGeo').onclick=function(){var g=this;if(!navigator.geolocation){$('tpxRes').innerHTML='<li class="msg">This browser cannot share a location.</li>';return}
-  navigator.geolocation.getCurrentPosition(function(pos){choose({name:'My location',country:'',lat:pos.coords.latitude,lon:pos.coords.longitude,src:'device'})},function(){$('tpxRes').innerHTML='<li class="msg">Location was not shared. You can still search a city.</li>'},{timeout:8000})};
+ /* offices: only the ones with a saved map pin can be picked */
+ $('tpxOff').innerHTML=OFFICES.map(function(o,i){return '<li><button type="button" data-i="'+i+'"'+(o.geo?'':' disabled title="Add a map pin to this office in My Profile"')+'><span class="sx-em">\uD83C\uDFE2</span> '+esc(o.name)+'<small>'+esc(o.geo?o.addr:'No map pin yet')+'</small></button></li>'}).join('');
+ $('tpxOff').onclick=function(e){var b=e.target.closest('button[data-i]');if(!b||b.disabled)return;var o=OFFICES[b.getAttribute('data-i')];if(o&&o.geo)choose({name:o.name,country:'',lat:o.lat,lon:o.lon,src:'office'})};
+ /* device location (opt-in, answered by the browser itself) */
+ $('tpxGeo').onclick=function(){if(!navigator.geolocation){msg('This browser cannot share a location.');return}
+  navigator.geolocation.getCurrentPosition(function(pos){choose({name:'My location',country:'',lat:pos.coords.latitude,lon:pos.coords.longitude,src:'device'})},function(){msg('Location was not shared.')},{timeout:8000})};
  $('tpxReset').onclick=function(){choose(REG)};
- /* start + refresh every 30 min */
- apply(place);setInterval(function(){apply(place)},30*60*1000);
+ /* start + refresh every 5 min */
+ apply(place);setInterval(function(){if(!document.hidden)apply(place)},5*60*1000);
 })();
 </script>
 <script>
